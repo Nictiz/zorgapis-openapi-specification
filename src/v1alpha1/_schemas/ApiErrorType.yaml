@@ -1,0 +1,25 @@
+type: string
+enum:
+  - ALREADY_EXISTS
+  - FAILED_PRECONDITION
+  - INTERNAL
+  - INVALID_ARGUMENT
+  - NOT_FOUND
+  - PERMISSION_DENIED
+  - RESOURCE_EXHAUSTED
+  - UNAUTHENTICATED
+  - UNAVAILABLE
+description: |
+  Error type:
+  
+  - `ALREADY_EXISTS` - Already exists
+  - `FAILED_PRECONDITION` - Failed precondition
+  - `INTERNAL` - Internal
+  - `INVALID_ARGUMENT` - Invalid argument
+  - `NOT_FOUND` - Not found
+  - `PERMISSION_DENIED` - Permission denied
+  - `RESOURCE_EXHAUSTED` - Resource exhausted
+  - `UNAUTHENTICATED` - Unauthenticated
+  - `UNAVAILABLE` - Unavailable
+examples:
+  - INVALID_ARGUMENT

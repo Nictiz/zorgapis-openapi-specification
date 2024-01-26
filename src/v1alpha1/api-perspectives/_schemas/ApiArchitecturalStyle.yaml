@@ -1,0 +1,19 @@
+type: string
+enum:
+  - REST
+  - SOAP
+  - GRAPHQL
+  - ODATA
+  - GRPC
+  - OTHER
+description: |
+  The API architectural style:
+  
+  - `REST` - REST architectural style.
+  - `SOAP` - SOAP architectural style.
+  - `GRAPHQL` - GraphQL architectural style.
+  - `ODATA` - OData architectural style.
+  - `GRPC` - gRPC architectural style.
+  - `OTHER` - Other architectural style.
+examples:
+  - REST

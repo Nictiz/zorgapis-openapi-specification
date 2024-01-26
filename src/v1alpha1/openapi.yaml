@@ -1,0 +1,92 @@
+openapi: 3.1.0
+
+info:
+  title: ZorgAPIs API
+  version: 0.1.0
+  description:
+    $ref: './info#description.md'
+  license:
+    name: MIT License
+    url: https://choosealicense.com/licenses/mit/
+    
+security: []
+
+tags:
+    # organizations
+  - name: organizations
+    description: Organizations API
+    
+    # api-requirements-versions
+  - name: api-requirements-versions
+    description: API requirements versions API
+  - name: api-requirements-version.api-requirements
+    description: API requirements version API requirements API
+    
+    # api-specifications
+  - name: api-specifications
+    description: API specifications API
+  - name: api-specification.versions
+    description: API specification versions API
+  - name: api-specification.version.urls
+    description: API specification version URLs API
+  - name: api-specification.version.declarations-of-conformity
+    description: API specification version declarations of conformity API
+
+servers:
+  - url: 'https://{environment}.zorgapis.nl/v1alpha1'
+    variables:
+      environment:
+        default: api.sandbox
+        enum:
+          - api.sandbox
+
+paths:
+  # organizations
+  /organizations:
+    $ref: './organizations/_paths/organizations.yaml'
+  /organizations/{organizationId}:
+    $ref: './organizations/_paths/organizations_{organizationId}.yaml'
+    
+  # api-requirements-versions
+  /api-requirements-versions:
+    $ref: './api-requirements-versions/_paths/api-requirements-versions.yaml'
+  /api-requirements-versions/{versionName}:
+    $ref: './api-requirements-versions/_paths/api-requirements-versions_{versionName}.yaml'
+  # api-requirements-versions/api-requirements
+  /api-requirements-versions/{versionName}/api-requirements:
+    $ref: './api-requirements-versions/api-requirements/_paths/api-requirements.yaml'
+    
+  # api-specifications
+  /api-specifications:
+    $ref: './api-specifications/_paths/api-specifications.yaml'
+  /api-specifications/{apiSpecificationId}:
+    $ref: './api-specifications/_paths/api-specifications_{apiSpecificationId}.yaml'
+  # api-specifications/versions
+  /api-specifications/{apiSpecificationId}/versions:
+    $ref: './api-specifications/versions/_paths/versions.yaml'
+  /api-specifications/{apiSpecificationId}/versions/{versionId}:
+    $ref: './api-specifications/versions/_paths/versions_{versionId}.yaml'
+  # api-specifications/versions/urls
+  /api-specifications/{apiSpecificationId}/versions/{versionId}/urls:
+    $ref: './api-specifications/versions/urls/_paths/urls.yaml'
+  /api-specifications/{apiSpecificationId}/versions/{versionId}/urls/{urlId}:
+    $ref: './api-specifications/versions/urls/_paths/urls_{urlId}.yaml'
+  # api-specifications/versions/declarations-of-conformity
+  /api-specifications/{apiSpecificationId}/versions/{versionId}/declarations-of-conformity:
+    $ref: './api-specifications/versions/declarations-of-conformity/_paths/declarations-of-conformity.yaml'
+  /api-specifications/{apiSpecificationId}/versions/{versionId}/declarations-of-conformity/{declarationOfConformityId}:
+    $ref: './api-specifications/versions/declarations-of-conformity/_paths/declarations-of-conformity_{declarationOfConformityId}.yaml'
+    
+components:
+  # Reusable schemas (data models)
+  schemas:
+    $ref: './_schemas.yaml'
+  # Reusable path, query, header and cookie parameters
+  parameters:
+    $ref: './_parameters.yaml'
+  # Reusable responses, such as 400 Bad Request
+  responses:
+    $ref: './_responses.yaml'
+  # Reusable response headers
+  headers:
+    $ref: './_headers.yaml'

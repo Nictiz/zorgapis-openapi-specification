@@ -1,0 +1,21 @@
+name: filter
+in: query
+description:
+  $ref: './filter#description.md'
+required: false
+schema:
+  type: string
+  default: ''
+examples:
+  empty:
+    value: ''
+    summary: Empty
+  nameStartsWith:
+    value: stw(name,"Nictiz")
+    summary: Starts with
+  nameEqualsOr:
+    value: or(eq(name,"Nictiz"),eq(name,"MedMij"))
+    summary: Name equals (OR)
+  createdInOctober2023:
+    value: and(eq(year(createTime),2023),eq(month(createTime),10))
+    summary: Created in October 2023

@@ -1,0 +1,9 @@
+description: Not found error
+content:
+  application/json:
+    schema:
+      $ref: '../_schemas/ApiError.yaml'
+    example:
+      status: 404
+      type: NOT_FOUND
+      message: The resource you requested does not exist

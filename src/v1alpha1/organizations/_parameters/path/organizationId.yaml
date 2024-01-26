@@ -1,0 +1,9 @@
+name: organizationId
+in: path
+required: true
+description: The ID of the organization
+schema:
+  type: string
+  format: uuid
+  examples:
+    - b9b95cd7-8d6e-4c91-8861-854828cf1730

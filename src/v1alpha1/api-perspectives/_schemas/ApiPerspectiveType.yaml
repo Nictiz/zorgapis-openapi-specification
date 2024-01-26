@@ -1,0 +1,23 @@
+type: string
+enum:
+  - API_SPECIFICATION
+  - API_SERVER_IMPLEMENTATION
+  - API_SERVER_DEPLOYMENT
+  - API_CLIENT_IMPLEMENTATION
+  - API_CLIENT_DEPLOYMENT
+  - API_AGREEMENT
+description: |
+  Due to the different perspectives on what an API is, this specification differentiates between:
+  
+  - `API_SPECIFICATION` - An API specification is a formal specification of the API.
+  - `API_SERVER_IMPLEMENTATION` - An API server implementation is the server-side software code that implements the
+    API specification.
+  - `API_SERVER_DEPLOYMENT` - An API server deployment is an instance of the server-side software; the actual service
+    deployed by an organization to provide value for its clients.
+  - `API_CLIENT_IMPLEMENTATION` - An API client implementation is the client-side software code that implements the
+    API specification.
+  - `API_CLIENT_DEPLOYMENT` - An API client deployment is an instance of the client-side software.
+  - `API_AGREEMENT` - An API agreement is a legal agreement typically between a software provider and a client that
+    outlines the terms of use for an API.
+examples:
+  - API_SPECIFICATION

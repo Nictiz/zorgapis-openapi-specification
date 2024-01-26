@@ -1,0 +1,9 @@
+description: Already exists error
+content:
+  application/json:
+    schema:
+      $ref: '../_schemas/ApiError.yaml'
+    example:
+      status: 409
+      type: ALREADY_EXISTS
+      message: The request tried to create a resource that already exists

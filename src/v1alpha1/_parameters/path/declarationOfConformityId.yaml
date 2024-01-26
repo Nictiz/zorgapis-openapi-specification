@@ -1,0 +1,9 @@
+name: declarationOfConformityId
+in: path
+required: true
+description: The ID of the declaration of conformity
+schema:
+  type: string
+  format: uuid
+  examples:
+    - dc944125-5269-4dd9-afda-413a37ed9733

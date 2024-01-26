@@ -1,0 +1,9 @@
+description: Resource exhausted error
+content:
+  application/json:
+    schema:
+      $ref: '../_schemas/ApiError.yaml'
+    example:
+      status: 429
+      type: RESOURCE_EXHAUSTED
+      message: The requests quota has been exhausted

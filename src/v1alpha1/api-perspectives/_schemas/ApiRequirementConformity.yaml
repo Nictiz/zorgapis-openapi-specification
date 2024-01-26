@@ -1,0 +1,19 @@
+description: The API requirement conformity information
+type: object
+required:
+  - conformityType
+properties:
+  conformityType:
+    description: The API requirement conformity type
+    allOf:
+      - $ref: '../../_schemas/ConformityType.yaml'
+    examples:
+      - CONFORMANT
+  remarks:
+    description: The API requirement conformity remarks
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - This is an example text.

@@ -1,0 +1,22 @@
+# Resource definition for Create, Read operations
+allOf:
+  - $ref: './ApiSpecificationVersionDeclarationOfConformity.yaml'
+    # Extend
+  - type: object
+    required:
+      - requirements
+    properties:
+      requirements:
+        description: |
+          A string-to-object map where keys are API requirement codes and values are objects of
+          `ApiRequirementConformity`
+        type: object
+        additionalProperties:
+          $ref: '../../../../api-perspectives/_schemas/ApiRequirementConformity.yaml'
+        examples:
+          - SD001:
+              conformityType: CONFORMANT
+              remarks: This is an example text.
+            SD001.001:
+              conformityType: CONFORMANT
+  - $ref: '../../../../_schemas/BasicResponse.yaml'

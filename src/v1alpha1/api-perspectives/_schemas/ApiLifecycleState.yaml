@@ -1,0 +1,19 @@
+type: string
+enum:
+  - CREATED
+  - PROTOTYPED
+  - PUBLISHED
+  - BLOCKED
+  - DEPRECATED
+  - RETIRED
+description: |
+  The API lifecycle state:
+  
+  - `CREATED` - The API is created but is not ready for consumption.
+  - `PROTOTYPED` - An API prototype is created for early promotion and consumer testing.
+  - `PUBLISHED` - The API is ready to be used.
+  - `BLOCKED` - The API is temporarily blocked from being used.
+  - `DEPRECATED` - The old version of the API is DEPRECATED when a newer version of the API is PUBLISHED.
+  - `RETIRED` - The API is no longer in use and has been moved to the RETIRED state.
+examples:
+  - PUBLISHED

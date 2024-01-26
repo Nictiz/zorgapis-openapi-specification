@@ -1,0 +1,42 @@
+description: The Semantic Versioning Specification (SemVer) version information
+type: object
+required:
+  - major
+  - minor
+  - patch
+properties:
+  # Example: 1.0.0-beta+exp.sha.5114f85
+  # https://semver.org/#backusnaur-form-grammar-for-valid-semver-versions
+  major:
+    description: The major version
+    type: integer
+    format: int32
+    minimum: 0
+    examples:
+      - 1
+  minor:
+    description: The minor version
+    type: integer
+    format: int32
+    minimum: 0
+    examples:
+      - 0
+  patch:
+    description: The patch version
+    type: integer
+    format: int32
+    minimum: 0
+    examples:
+      - 0
+  preRelease:
+    description: The pre-release label
+    type: string
+    maxLength: 255
+    examples:
+      - beta
+  build:
+    description: The build metadata label
+    type: string
+    maxLength: 255
+    examples:
+      - exp.sha.5114f85

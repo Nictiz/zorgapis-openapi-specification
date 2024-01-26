@@ -1,0 +1,29 @@
+type: string
+enum:
+  - API_CLIENT_DEPLOYER
+  - API_CLIENT_DEVELOPER
+  - API_INFRASTRUCTURE
+  - API_LOGICAL_DESIGNER
+  - API_PROVIDER
+  - API_SERVER_DEPLOYER
+  - API_SERVER_DEVELOPER
+  - API_SPECIFIER
+  - API_USER
+description: |
+  The roles involved with the development, exploitation and use of APIs:
+  
+  - `API_CLIENT_DEPLOYER` - Technical responsibilities for employing an API, as deployed by the API server deployer,
+    and specified by the API specifier, thus implementing the final responsibilities of the API user.
+  - `API_CLIENT_DEVELOPER` - Technical responsibilities for supplying software for the API client deployer.
+  - `API_INFRASTRUCTURE` - Technical responsibilities for conveying specified APIs between API clients and API servers.
+  - `API_LOGICAL_DESIGNER` - Responsibilities for logically specifying both data and the operations to be implemented
+    in the API.
+  - `API_PROVIDER` - End responsibilities for providing the value and meaning of an API, as agreed with API users.
+  - `API_SERVER_DEPLOYER` - Technical responsibilities for deploying an API, as specified by an API specifier, thus
+    implementing the end responsibilities of the API provider.
+  - `API_SERVER_DEVELOPER` - Technical responsibilities for supplying software for the API server deployer.
+  - `API_SPECIFIER` - Responsibilities for technically specifying the API so that an API server deployer knows what to
+    deploy and an API client knows what to employ.
+  - `API_USER` - End responsibilities for using the value and meaning of an API, as agreed with the API provider.
+examples:
+  - API_SPECIFIER

@@ -1,0 +1,21 @@
+name: sort
+in: query
+description:
+  $ref: './sort#description.md'
+required: false
+schema:
+  type: string
+  default: ''
+examples:
+  empty:
+    value: ''
+    summary: Empty
+  createTime:
+    value: asc(createTime)
+    summary: Create time (ascending)
+  combinedSort:
+    value: asc(name),desc(createTime)
+    summary: Combined sort
+  nestedField:
+    value: asc(user.name)
+    summary: Nested field

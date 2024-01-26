@@ -1,0 +1,15 @@
+type: string
+enum:
+  - DRAFT
+  - PUBLISHED
+  - DEPRECATED
+  - RETIRED
+description: |
+  The product lifecycle state:
+  
+  - `DRAFT` - The product is being prepared, or is incomplete.
+  - `PUBLISHED` - The product is ready to be used.
+  - `DEPRECATED` - The old version of the product is DEPRECATED when a newer version of the product is PUBLISHED.
+  - `RETIRED` - The product is no longer in use and has been moved to the RETIRED state.
+examples:
+  - PUBLISHED

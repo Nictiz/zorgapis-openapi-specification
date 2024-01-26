@@ -1,0 +1,61 @@
+# Abstract base schema
+description: The API requirements version information
+type: object
+required:
+  - name
+  - description
+  - url
+  - publishTime
+  - lifecycleState
+  - semVer
+  # Read-only
+  - id
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the API requirements version
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 29c4913a-5ca1-4e91-8353-48866eb6093e
+  name:
+    description: The name of the API requirements version
+    type: string
+    maxLength: 255
+    examples:
+      - '1.2.0'
+  description:
+    description: The description of the API requirements version
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - This specification sets out requirements for Application Programming Interfaces (APIs) in Dutch Healthcare.
+        It has been developed as part of the Nictiz API strategy.
+  url:
+    description: The URL of the API requirements version documentation
+    type: string
+    maxLength: 1000
+    examples:
+      - 'https://nictiz.github.io/api-requirements-docs/v1.2.0/'
+  publishTime:
+    description: The date and time at which the API requirements version was published
+    type: string
+    format: date-time
+    examples:
+      - '2023-07-12T10:45:30.500Z'
+  semVer:
+    allOf:
+      - $ref: '../../_schemas/SemVer.yaml'
+    examples:
+      - major: 1
+        minor: 2
+        patch: 0
+  lifecycleState:
+    description: The lifecycle state of the API requirements version
+    allOf:
+      - $ref: '../../_schemas/ProductLifecycleState.yaml'
+    examples:
+      - PUBLISHED

@@ -1,0 +1,222 @@
+{
+  "requirementsVersion": "1.2.0",
+  "requirements": {
+    "SD001": {
+      "conformityType": "CONFORMANT",
+      "remarks": "This is an example text."
+    },
+    "SD001.001": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.002": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.003": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.004": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.005": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.006": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.007": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.008": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.009": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.010": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.011": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.012": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.013": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.014": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.015": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.016": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD001.017": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD002": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD002.001": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD002.002": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD002.003": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD003": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD003.001": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD003.002": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD004": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD004.001": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD004.002": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD004.003": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD004.004": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD005": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD005.001": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD005.002": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD009": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD009.001": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD009.002": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD009.003": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD010": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD011": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD012": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD013": {
+      "conformityType": "CONFORMANT"
+    },
+    "SD014": {
+      "conformityType": "CONFORMANT"
+    },
+    "DI001": {
+      "conformityType": "CONFORMANT"
+    },
+    "DI001.001": {
+      "conformityType": "CONFORMANT"
+    },
+    "DI001.002": {
+      "conformityType": "CONFORMANT"
+    },
+    "DI001.003": {
+      "conformityType": "CONFORMANT"
+    },
+    "LM001": {
+      "conformityType": "CONFORMANT"
+    },
+    "LM001.001": {
+      "conformityType": "CONFORMANT"
+    },
+    "LM001.002": {
+      "conformityType": "CONFORMANT"
+    },
+    "LM001.003": {
+      "conformityType": "CONFORMANT"
+    },
+    "LM001.004": {
+      "conformityType": "CONFORMANT"
+    },
+    "LM002": {
+      "conformityType": "CONFORMANT"
+    },
+    "LM002.001": {
+      "conformityType": "CONFORMANT"
+    },
+    "LM002.002": {
+      "conformityType": "CONFORMANT"
+    },
+    "LM002.003": {
+      "conformityType": "CONFORMANT"
+    },
+    "LM008": {
+      "conformityType": "CONFORMANT"
+    },
+    "DR001": {
+      "conformityType": "CONFORMANT"
+    },
+    "DR012": {
+      "conformityType": "CONFORMANT"
+    },
+    "DR-R001": {
+      "conformityType": "CONFORMANT"
+    },
+    "DR-R002": {
+      "conformityType": "CONFORMANT"
+    },
+    "SC001": {
+      "conformityType": "CONFORMANT"
+    },
+    "SC006": {
+      "conformityType": "CONFORMANT"
+    },
+    "SC007": {
+      "conformityType": "CONFORMANT"
+    },
+    "SC008": {
+      "conformityType": "CONFORMANT"
+    },
+    "SC009": {
+      "conformityType": "CONFORMANT"
+    },
+    "SC-R001": {
+      "conformityType": "CONFORMANT"
+    },
+    "SC-R002": {
+      "conformityType": "CONFORMANT"
+    },
+    "SC-R003": {
+      "conformityType": "CONFORMANT"
+    },
+    "IS001": {
+      "conformityType": "CONFORMANT"
+    },
+    "IS003.001": {
+      "conformityType": "CONFORMANT"
+    },
+    "IS003.002": {
+      "conformityType": "CONFORMANT"
+    },
+    "IS003": {
+      "conformityType": "CONFORMANT"
+    }
+  }
+}

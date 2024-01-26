@@ -1,0 +1,15 @@
+type: string
+enum:
+  - FUNCTIONAL_DESIGN
+  - TECHNICAL_DESIGN
+  - OPENAPI_SPECIFICATION
+  - OTHER
+description: |
+  The API specification version URL type:
+  
+  - `FUNCTIONAL_DESIGN` - Functional design.
+  - `TECHNICAL_DESIGN` - Technical design.
+  - `OPENAPI_SPECIFICATION` - OpenAPI Specification (OAS).
+  - `OTHER` - Other.
+examples:
+  - OPENAPI_SPECIFICATION

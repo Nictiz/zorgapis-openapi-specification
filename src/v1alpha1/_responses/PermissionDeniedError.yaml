@@ -1,0 +1,9 @@
+description: Permission denied error
+content:
+  application/json:
+    schema:
+      $ref: '../_schemas/ApiError.yaml'
+    example:
+      status: 403
+      type: PERMISSION_DENIED
+      message: The user is not authorized to make this request

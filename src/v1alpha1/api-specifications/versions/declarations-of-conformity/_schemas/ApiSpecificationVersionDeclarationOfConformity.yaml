@@ -1,0 +1,50 @@
+# Abstract base schema
+description: The API specification version declaration of conformity information
+type: object
+required:
+  - requirementsVersion
+  # Read-only
+  - id
+  - rankingLevel
+  - rankings
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the API specification version declaration of conformity
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 188c9c2c-ea9e-48fa-8423-5e8e2f60161c
+  requirementsVersion:
+    description: The name of the API requirements version
+    type: string
+    maxLength: 255
+    examples:
+      - '1.2.0'
+  rankingLevel:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The API specification version ranking level
+    readOnly: true
+    allOf:
+      - $ref: '../../../../api-perspectives/_schemas/ApiRankingLevel.yaml'
+    examples:
+      - OPEN_API
+  rankings:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: |
+      A string-to-object map where keys are strings of `ApiRankingType` and values are objects of `ApiRanking`
+    readOnly: true
+    type: object
+    additionalProperties:
+      $ref: '../../../../api-perspectives/_schemas/ApiRanking.yaml'
+    examples:
+      - OPEN_API:
+          score: 27
+          maximumScore: 31
+        TECHNICALLY_STANDARDIZED_API:
+          score: 6
+          maximumScore: 11
+        FULLY_STANDARDIZED_API:
+          score: 2
+          maximumScore: 6

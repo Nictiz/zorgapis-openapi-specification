@@ -1,0 +1,9 @@
+description: Internal server error
+content:
+  application/json:
+    schema:
+      $ref: '../_schemas/ApiError.yaml'
+    example:
+      status: 500
+      type: INTERNAL
+      message: Internal server error

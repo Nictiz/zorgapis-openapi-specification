@@ -1,0 +1,4 @@
+allOf:
+  - $ref: './ApiSpecificationVersionUrl.yaml'
+    # Override
+  - description: The basic API specification version URL information

@@ -1,0 +1,52 @@
+# Abstract base schema
+description: The API specification version information
+type: object
+required:
+  - name
+  - publishTime
+  - semVer
+  - lifecycleState
+  # Read-only
+  - id
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the API specification version
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 15261fd0-b292-45d9-b6b1-266cc922fb50
+  name:
+    description: The name of the API specification version
+    type: string
+    maxLength: 255
+    examples:
+      - '2.0'
+  description:
+    description: The description of the API specification version
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - Verzamelen Huisartsgegevens 2.0
+  publishTime:
+    description: The date and time at which the API requirements version was published
+    type: string
+    format: date-time
+    examples:
+      - '2020-09-02T00:00:00.000Z'
+  semVer:
+    allOf:
+      - $ref: '../../../_schemas/SemVer.yaml'
+    examples:
+      - major: 2
+        minor: 0
+        patch: 0
+  lifecycleState:
+    description: The lifecycle state of the API specification version
+    allOf:
+      - $ref: '../../../api-perspectives/_schemas/ApiLifecycleState.yaml'
+    examples:
+      - PUBLISHED

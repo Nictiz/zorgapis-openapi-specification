@@ -1,0 +1,13 @@
+type: string
+enum:
+  - CONFORMANT
+  - NOT_CONFORMANT
+  - NOT_EVALUATED
+description: |
+  The conformity type:
+  
+  - `CONFORMANT` - Conformity evaluation has passed, the resource is conformant.
+  - `NOT_CONFORMANT` - Conformity evaluation has not passed, the resource is not conformant.
+  - `NOT_EVALUATED` - Conformity has not been evaluated.
+examples:
+  - CONFORMANT

@@ -1,0 +1,23 @@
+type: object
+required:
+  - status
+  - type
+  - message
+properties:
+  status:
+    type: integer
+    format: int32
+    examples:
+      - 400
+  type:
+    $ref: './ApiErrorType.yaml'
+  message:
+    type: string
+    examples:
+      - Message describing the error
+  details:
+    type:
+      - 'array'
+      - 'null'
+    items:
+      $ref: './ApiErrorDetails.yaml'

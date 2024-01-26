@@ -1,0 +1,10 @@
+description: Bad request error. This is mostly for syntax errors (e.g. incorrect JSON format), for semantic errors see
+  status `422`.
+content:
+  application/json:
+    schema:
+      $ref: '../_schemas/ApiError.yaml'
+    example:
+      status: 400
+      type: INVALID_ARGUMENT
+      message: Failed to parse body

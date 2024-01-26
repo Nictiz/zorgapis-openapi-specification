@@ -1,0 +1,29 @@
+# Abstract base schema
+description: The API specification version URL information
+type: object
+required:
+  - type
+  - url
+  # Read-only
+  - id
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the API specification version URL
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 37bfbf71-570c-45c1-9fbf-7e5f63db61b8
+  type:
+    description: The API specification version URL type
+    allOf:
+      - $ref: './ApiSpecificationVersionUrlType.yaml'
+    examples:
+      - FUNCTIONAL_DESIGN
+  url:
+    description: The API specification version URL
+    type: string
+    maxLength: 1000
+    examples:
+      - 'https://informatiestandaarden.nictiz.nl/wiki/MedMij:V2020.01/OntwerpHuisartsgegevens'

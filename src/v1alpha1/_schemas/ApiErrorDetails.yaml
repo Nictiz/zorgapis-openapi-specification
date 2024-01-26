@@ -1,0 +1,16 @@
+type: object
+required:
+  - location
+  - message
+properties:
+  location:
+    description: |
+      The specific item that caused the error. For example, if you specify an invalid value for a parameter, the 
+      `location` will be the name of the parameter.
+    type: string
+    examples:
+      - propertyName
+  message:
+    type: string
+    examples:
+      - Message describing the error

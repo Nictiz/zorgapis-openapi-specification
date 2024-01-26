@@ -1,0 +1,8 @@
+name: versionName
+in: path
+required: true
+description: The name of the version
+schema:
+  type: string
+  examples:
+    - 1.0.0

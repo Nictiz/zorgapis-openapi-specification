@@ -1,0 +1,9 @@
+name: urlId
+in: path
+required: true
+description: The ID of the URL
+schema:
+  type: string
+  format: uuid
+  examples:
+    - 2cc6437b-c5a6-4afa-9d0c-1544a8d19342

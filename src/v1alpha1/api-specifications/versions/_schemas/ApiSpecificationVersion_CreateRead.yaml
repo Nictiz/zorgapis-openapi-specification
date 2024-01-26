@@ -1,0 +1,20 @@
+# Resource definition for Create, Read operations
+allOf:
+  - $ref: './ApiSpecificationVersion.yaml'
+    # Extend
+  - type: object
+    required:
+      - urls
+      # Read-only
+      - lastDeclarationOfConformity
+    properties:
+      urls:
+        type: array
+        items:
+          $ref: '../urls/_schemas/BasicApiSpecificationVersionUrl.yaml'
+      lastDeclarationOfConformity:
+        # Returned by GET, not used in POST/PUT/PATCH
+        readOnly: true
+        allOf:
+          - $ref: '../declarations-of-conformity/_schemas/BasicApiSpecificationVersionDeclarationOfConformity.yaml'
+  - $ref: '../../../_schemas/BasicResponse.yaml'

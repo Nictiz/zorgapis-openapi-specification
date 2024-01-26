@@ -1,0 +1,16 @@
+# Resource definition for Create, Read operations
+allOf:
+  - $ref: './ApiRequirementsVersion.yaml'
+    # Extend
+  - type: object
+    required:
+      # Write-only
+      - apiRequirements
+    properties:
+      apiRequirements:
+        # Used in POST/PUT/PATCH, not returned by GET
+        type: array
+        writeOnly: true
+        items:
+          $ref: '../api-requirements/_schemas/ApiRequirement.yaml'
+  - $ref: '../../_schemas/BasicResponse.yaml'

@@ -1,0 +1,9 @@
+description: Unavailable error
+content:
+  application/json:
+    schema:
+      $ref: '../_schemas/ApiError.yaml'
+    example:
+      status: 503
+      type: UNAVAILABLE
+      message: The server was unable to process the request

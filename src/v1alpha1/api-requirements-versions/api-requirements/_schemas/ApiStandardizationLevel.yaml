@@ -1,0 +1,15 @@
+type: string
+enum:
+  - OPEN_API
+  - TECHNICALLY_STANDARDIZED_API
+  - FULLY_STANDARDIZED_API
+description: |
+  The levels of API standardization:
+  
+  - `OPEN_API` - Requirements at this level aim to increase reusability, discoverability and quality, without
+    restricting APIs to specific technical and/or semantical standards.
+  - `TECHNICALLY_STANDARDIZED_API` - Requirements at this level aim to increase the technical harmonization of APIs.
+  - `FULLY_STANDARDIZED_API` - Requirements at this level aim to increase software interoperability by setting
+    requirements for standardizing all parts of APIs.
+examples:
+  - OPEN_API

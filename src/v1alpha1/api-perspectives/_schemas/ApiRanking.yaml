@@ -1,0 +1,20 @@
+description: The API ranking information
+type: object
+required:
+  - score
+  - maximumScore
+properties:
+  score:
+    description: The API ranking score
+    type: integer
+    format: int32
+    minimum: 0
+    examples:
+      - 27
+  maximumScore:
+    description: The API ranking maximum score
+    type: integer
+    format: int32
+    minimum: 0
+    examples:
+      - 31

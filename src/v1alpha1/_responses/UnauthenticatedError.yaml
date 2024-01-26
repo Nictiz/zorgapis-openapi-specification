@@ -1,0 +1,9 @@
+description: Unauthenticated error
+content:
+  application/json:
+    schema:
+      $ref: '../_schemas/ApiError.yaml'
+    example:
+      status: 401
+      type: UNAUTHENTICATED
+      message: The request did not include valid authentication credentials

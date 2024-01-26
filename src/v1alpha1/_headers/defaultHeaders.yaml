@@ -1,0 +1,5 @@
+﻿# Convenience file with default headers for an operation, which can be used to easily add default header definitions to
+# a response definition like so:
+# 
+# headers:
+#   $ref: './defaultHeaders.yaml'

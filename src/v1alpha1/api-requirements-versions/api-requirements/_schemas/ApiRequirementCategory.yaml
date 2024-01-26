@@ -1,0 +1,25 @@
+type: string
+enum:
+  - API_SPECIFICATION_AND_DOCUMENTATION
+  - API_TESTABILITY
+  - API_DISCOVERABILITY
+  - API_ONBOARDING
+  - API_LIFECYCLE_MANAGEMENT_AND_VERSIONING
+  - API_AGREEMENTS
+  - API_DESIGN_RULES
+  - API_SECURITY
+  - HEALTH_INFORMATION_STANDARDS_COMPLIANCE
+description: |
+  The API requirement category:
+  
+  - `API_SPECIFICATION_AND_DOCUMENTATION` - API specification & documentation
+  - `API_TESTABILITY` - API testability
+  - `API_DISCOVERABILITY` - API discoverability
+  - `API_ONBOARDING` - API onboarding
+  - `API_LIFECYCLE_MANAGEMENT_AND_VERSIONING` - API lifecycle management & versioning
+  - `API_AGREEMENTS` - API agreements
+  - `API_DESIGN_RULES` - API Design Rules
+  - `API_SECURITY` - API security
+  - `HEALTH_INFORMATION_STANDARDS_COMPLIANCE` - Health Information Standards compliance
+examples:
+  - API_SPECIFICATION_AND_DOCUMENTATION

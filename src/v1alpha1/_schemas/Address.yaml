@@ -1,0 +1,66 @@
+description: The address information
+type:
+  - 'object'
+  - 'null'
+properties:
+  street:
+    description: The street name
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 255
+    examples:
+      - Oude Middenweg
+  houseNumber:
+    description: The house number
+    type:
+      - 'integer'
+      - 'null'
+    format: int32
+    minimum: 0
+    examples:
+      - 55
+  houseNumberAddition:
+    description: The house number addition
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 100
+    examples:
+      - A
+  addressLine2:
+    description: |
+      Address line 2 is for the apartment, suite, room, floor, building, unit, department, or any other designation not
+      part of the physical address
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 255
+    examples:
+      - Office building Palazzo Giardino
+  postalCode:
+    description: The postal code
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 10
+    examples:
+      - 2491 AC
+  city:
+    description: The city
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 255
+    examples:
+      - The Hague
+  stateOrRegion:
+    description: The state, region or province
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 255
+    examples:
+      - South Holland
+  country:
+    $ref: './Country.yaml'

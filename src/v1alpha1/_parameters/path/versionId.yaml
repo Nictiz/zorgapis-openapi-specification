@@ -1,0 +1,9 @@
+name: versionId
+in: path
+required: true
+description: The ID of the version
+schema:
+  type: string
+  format: uuid
+  examples:
+    - 14b441d7-2f17-4461-8a0b-02d331594b66

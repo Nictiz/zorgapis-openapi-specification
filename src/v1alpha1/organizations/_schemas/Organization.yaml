@@ -1,0 +1,56 @@
+# Abstract base schema
+description: The organization information 
+type: object
+required:
+  - name
+  - emailAddress
+  # Read-only
+  - id
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the organization
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - b9b95cd7-8d6e-4c91-8861-854828cf1730
+  name:
+    description: The name of the organization
+    type: string
+    maxLength: 255
+    examples:
+      - Nictiz
+  description:
+    description: The description of the organization
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - Nictiz is the Dutch competence center for electronic exchange of health and care information.
+  website:
+    description: The website URL of the organization
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - 'https://nictiz.nl/'
+  emailAddress:
+    description: The email address of the organization
+    type: string
+    format: email
+    maxLength: 254
+    examples:
+      - info@nictiz.nl
+  phoneNumber:
+    description: The phone number of the organization
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 50
+    examples:
+      - +31 (0)70 317 3450
+  address:
+    $ref: '../../_schemas/Address.yaml'

@@ -1,0 +1,15 @@
+type: string
+enum:
+  - NONE
+  - OPEN_API
+  - TECHNICALLY_STANDARDIZED_API
+  - FULLY_STANDARDIZED_API
+description: |
+  The API ranking level:
+  
+  - `NONE` - None.
+  - `OPEN_API` - Open API.
+  - `TECHNICALLY_STANDARDIZED_API` - Technically standardized API.
+  - `FULLY_STANDARDIZED_API` - Fully standardized API.
+examples:
+  - OPEN_API

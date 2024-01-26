@@ -1,0 +1,4 @@
+allOf:
+  - $ref: './ApiSpecificationVersionDeclarationOfConformity.yaml'
+    # Override
+  - description: The basic API specification version declaration of conformity information

@@ -1,0 +1,9 @@
+name: apiSpecificationId
+in: path
+required: true
+description: The ID of the API specification
+schema:
+  type: string
+  format: uuid
+  examples:
+    - fe30bf05-de07-4556-9b17-1f82d62fe45f
