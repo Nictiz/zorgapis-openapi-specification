@@ -1,0 +1,37 @@
+name: Publish docs
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      
+    - name: Bundle
+      run: |
+        npx @redocly/cli bundle ./src/v1alpha1/openapi.yaml --output=./build/openapi.yaml
+        
+    - name: Lint
+      run: |
+        npx @redocly/cli lint ./build/openapi.yaml --skip-rule=no-invalid-media-type-examples --skip-rule=no-unused-components
+        
+    - name: Build
+      run: |
+        npx @redocly/cli build-docs ./build/openapi.yaml --output=./build/index.html
+    
+    # Deploy docs by creating a new Git commit on `gh-pages` branch
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3 # https://github.com/peaceiris/actions-gh-pages
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
