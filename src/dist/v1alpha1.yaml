@@ -31,18 +31,25 @@ security: []
 tags:
   - name: organizations
     description: Organizations API
+    x-displayName: Organizations
   - name: api-requirements-versions
     description: API requirements versions API
+    x-displayName: API requirements versions
   - name: api-requirements-version.api-requirements
     description: API requirements version API requirements API
+    x-displayName: API requirements version API requirements
   - name: api-specifications
     description: API specifications API
+    x-displayName: API specifications
   - name: api-specification.versions
     description: API specification versions API
+    x-displayName: API specification versions
   - name: api-specification.version.urls
     description: API specification version URLs API
+    x-displayName: API specification version URLs
   - name: api-specification.version.declarations-of-conformity
     description: API specification version declarations of conformity API
+    x-displayName: API specification version declarations of conformity
 paths:
   /organizations:
     get:
@@ -1479,150 +1486,150 @@ paths:
                   requirementsVersion: 1.2.0
                   requirements:
                     SD001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                       remarks: This is an example text.
                     SD001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.005:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.006:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.007:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.010:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.011:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.013:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.014:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.015:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.016:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.017:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD010:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD011:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD013:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD014:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR-R001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR-R002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC006:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC007:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC-R001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC-R002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC-R003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
               ApiSpecificationVersionDeclarationOfConformity_1-2-0_SOAP:
                 summary: 1.2.0 SOAP
                 description: |
@@ -1632,146 +1639,146 @@ paths:
                   requirementsVersion: 1.2.0
                   requirements:
                     SD001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                       remarks: This is an example text.
                     SD001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.005:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.006:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.007:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.010:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.011:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.013:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.014:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.015:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.016:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.017:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD010:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD011:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD013:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD014:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR-S001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC006:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC007:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC-S001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC-S002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
               ApiSpecificationVersionDeclarationOfConformity_1-2-0_GRAPHQL:
                 summary: 1.2.0 GRAPHQL
                 description: |
@@ -1781,140 +1788,140 @@ paths:
                   requirementsVersion: 1.2.0
                   requirements:
                     SD001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                       remarks: This is an example text.
                     SD001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.005:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.006:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.007:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.010:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.011:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.013:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.014:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.015:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.016:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.017:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD010:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD011:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD013:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD014:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC006:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC007:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
               ApiSpecificationVersionDeclarationOfConformity_1-2-0_ODATA:
                 summary: 1.2.0 ODATA
                 description: |
@@ -1924,140 +1931,140 @@ paths:
                   requirementsVersion: 1.2.0
                   requirements:
                     SD001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                       remarks: This is an example text.
                     SD001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.005:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.006:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.007:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.010:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.011:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.013:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.014:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.015:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.016:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.017:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD010:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD011:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD013:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD014:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC006:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC007:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
               ApiSpecificationVersionDeclarationOfConformity_1-2-0_GRPC:
                 summary: 1.2.0 GRPC
                 description: |
@@ -2067,140 +2074,140 @@ paths:
                   requirementsVersion: 1.2.0
                   requirements:
                     SD001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                       remarks: This is an example text.
                     SD001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.005:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.006:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.007:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.010:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.011:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.013:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.014:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.015:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.016:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.017:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD010:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD011:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD013:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD014:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC006:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC007:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
               ApiSpecificationVersionDeclarationOfConformity_1-2-0_OTHER:
                 summary: 1.2.0 OTHER
                 description: |
@@ -2210,140 +2217,140 @@ paths:
                   requirementsVersion: 1.2.0
                   requirements:
                     SD001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                       remarks: This is an example text.
                     SD001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.005:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.006:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.007:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.010:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.011:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.013:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.014:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.015:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.016:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD001.017:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD002.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD003.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD004.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD005.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD009.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD010:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD011:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD013:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SD014:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DI001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM001.004:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM002.003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     LM008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     DR012:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC006:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC007:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC008:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     SC009:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003.001:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003.002:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
                     IS003:
-                      conformityType: CONFORMANT
+                      conformityType: NOT_EVALUATED
       responses:
         '201':
           description: Created
@@ -4505,3 +4512,17 @@ components:
         type: integer
         examples:
           - 78
+x-tagGroups:
+  - name: Organizations
+    tags:
+      - organizations
+  - name: API requirements
+    tags:
+      - api-requirements-versions
+      - api-requirements-version.api-requirements
+  - name: API specifications
+    tags:
+      - api-specifications
+      - api-specification.versions
+      - api-specification.version.urls
+      - api-specification.version.declarations-of-conformity

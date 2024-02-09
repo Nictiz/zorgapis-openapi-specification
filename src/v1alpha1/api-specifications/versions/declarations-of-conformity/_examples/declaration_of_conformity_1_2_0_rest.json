@@ -2,221 +2,221 @@
   "requirementsVersion": "1.2.0",
   "requirements": {
     "SD001": {
-      "conformityType": "CONFORMANT",
+      "conformityType": "NOT_EVALUATED",
       "remarks": "This is an example text."
     },
     "SD001.001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.002": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.003": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.004": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.005": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.006": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.007": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.008": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.009": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.010": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.011": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.012": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.013": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.014": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.015": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.016": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD001.017": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD002": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD002.001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD002.002": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD002.003": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD003": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD003.001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD003.002": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD004": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD004.001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD004.002": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD004.003": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD004.004": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD005": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD005.001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD005.002": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD009": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD009.001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD009.002": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD009.003": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD010": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD011": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD012": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD013": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SD014": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "DI001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "DI001.001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "DI001.002": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "DI001.003": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "LM001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "LM001.001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "LM001.002": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "LM001.003": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "LM001.004": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "LM002": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "LM002.001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "LM002.002": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "LM002.003": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "LM008": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "DR001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "DR012": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "DR-R001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "DR-R002": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SC001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SC006": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SC007": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SC008": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SC009": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SC-R001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SC-R002": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "SC-R003": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "IS001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "IS003.001": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "IS003.002": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     },
     "IS003": {
-      "conformityType": "CONFORMANT"
+      "conformityType": "NOT_EVALUATED"
     }
   }
 }
