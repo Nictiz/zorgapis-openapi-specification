@@ -15,22 +15,44 @@ tags:
     # organizations
   - name: organizations
     description: Organizations API
+    x-displayName: Organizations
     
     # api-requirements-versions
   - name: api-requirements-versions
     description: API requirements versions API
+    x-displayName: API requirements versions
   - name: api-requirements-version.api-requirements
     description: API requirements version API requirements API
+    x-displayName: API requirements version API requirements
     
     # api-specifications
   - name: api-specifications
     description: API specifications API
+    x-displayName: API specifications
   - name: api-specification.versions
     description: API specification versions API
+    x-displayName: API specification versions
   - name: api-specification.version.urls
     description: API specification version URLs API
+    x-displayName: API specification version URLs
   - name: api-specification.version.declarations-of-conformity
     description: API specification version declarations of conformity API
+    x-displayName: API specification version declarations of conformity
+
+x-tagGroups:
+  - name: Organizations
+    tags:
+      - organizations
+  - name: API requirements
+    tags:
+      - api-requirements-versions
+      - api-requirements-version.api-requirements
+  - name: API specifications
+    tags:
+      - api-specifications
+      - api-specification.versions
+      - api-specification.version.urls
+      - api-specification.version.declarations-of-conformity
 
 servers:
   - url: 'https://{environment}.zorgapis.nl/v1alpha1'
