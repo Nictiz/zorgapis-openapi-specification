@@ -13,7 +13,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../_schemas/ApiSpecification_CreateRead.yaml'
+            $ref: '../_schemas/ApiSpecification_Read.yaml'
     '400':
       $ref: '../../_responses/BadRequestError.yaml'
     '401':
@@ -51,7 +51,7 @@ patch:
       content:
         application/json:
           schema:
-            $ref: '../_schemas/ApiSpecification_CreateRead.yaml'
+            $ref: '../_schemas/ApiSpecification_Read.yaml'
     '400':
       $ref: '../../_responses/BadRequestError.yaml'
     '401':

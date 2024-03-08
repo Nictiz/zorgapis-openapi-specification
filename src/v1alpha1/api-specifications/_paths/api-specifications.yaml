@@ -19,7 +19,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '../_schemas/ApiSpecification_CreateRead.yaml'
+              $ref: '../_schemas/ApiSpecification_Read.yaml'
       headers:
         $ref: '../../_headers/defaultListHeaders.yaml'
     '400':
@@ -48,14 +48,14 @@ post:
     content:
       application/json:
         schema:
-          $ref: '../_schemas/ApiSpecification_CreateRead.yaml'
+          $ref: '../_schemas/ApiSpecification_Create.yaml'
   responses:
     '201':
       description: Created
       content:
         application/json:
           schema:
-            $ref: '../_schemas/ApiSpecification_CreateRead.yaml'
+            $ref: '../_schemas/ApiSpecification_Create.yaml'
     '400':
       $ref: '../../_responses/BadRequestError.yaml'
     '401':

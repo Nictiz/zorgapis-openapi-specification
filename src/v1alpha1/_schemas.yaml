@@ -68,8 +68,10 @@ ApiRequirementConformity:
 # api-specifications
 ApiSpecification:
   $ref: './api-specifications/_schemas/ApiSpecification.yaml'
-ApiSpecification_CreateRead:
-  $ref: './api-specifications/_schemas/ApiSpecification_CreateRead.yaml'
+ApiSpecification_Create:
+  $ref: './api-specifications/_schemas/ApiSpecification_Create.yaml'
+ApiSpecification_Read:
+  $ref: './api-specifications/_schemas/ApiSpecification_Read.yaml'
 ApiSpecification_Update:
   $ref: './api-specifications/_schemas/ApiSpecification_Update.yaml'
 # api-specifications/versions

@@ -736,7 +736,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ApiSpecification_CreateRead'
+                  $ref: '#/components/schemas/ApiSpecification_Read'
           headers:
             Total-Count:
               $ref: '#/components/headers/Total-Count'
@@ -766,14 +766,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApiSpecification_CreateRead'
+              $ref: '#/components/schemas/ApiSpecification_Create'
       responses:
         '201':
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiSpecification_CreateRead'
+                $ref: '#/components/schemas/ApiSpecification_Create'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -804,7 +804,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiSpecification_CreateRead'
+                $ref: '#/components/schemas/ApiSpecification_Read'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -842,7 +842,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiSpecification_CreateRead'
+                $ref: '#/components/schemas/ApiSpecification_Read'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -1479,7 +1479,7 @@ paths:
                 summary: 1.2.0 REST
                 description: |
                   Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-                  For architectural style `REST`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+                  For architectural style `REST`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
                 value:
                   requirementsVersion: 1.2.0
                   requirements:
@@ -1632,7 +1632,7 @@ paths:
                 summary: 1.2.0 SOAP
                 description: |
                   Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-                  For architectural style `SOAP`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+                  For architectural style `SOAP`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
                 value:
                   requirementsVersion: 1.2.0
                   requirements:
@@ -1781,7 +1781,7 @@ paths:
                 summary: 1.2.0 GRAPHQL
                 description: |
                   Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-                  For architectural style `GRAPHQL`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+                  For architectural style `GRAPHQL`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
                 value:
                   requirementsVersion: 1.2.0
                   requirements:
@@ -1924,7 +1924,7 @@ paths:
                 summary: 1.2.0 ODATA
                 description: |
                   Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-                  For architectural style `ODATA`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+                  For architectural style `ODATA`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
                 value:
                   requirementsVersion: 1.2.0
                   requirements:
@@ -2067,7 +2067,7 @@ paths:
                 summary: 1.2.0 GRPC
                 description: |
                   Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-                  For architectural style `GRPC`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+                  For architectural style `GRPC`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
                 value:
                   requirementsVersion: 1.2.0
                   requirements:
@@ -2210,7 +2210,7 @@ paths:
                 summary: 1.2.0 OTHER
                 description: |
                   Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-                  For architectural style `OTHER`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+                  For architectural style `OTHER`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
                 value:
                   requirementsVersion: 1.2.0
                   requirements:
@@ -3819,7 +3819,7 @@ components:
               readOnly: true
               allOf:
                 - $ref: '#/components/schemas/BasicApiSpecificationVersionDeclarationOfConformity'
-    ApiSpecification_CreateRead:
+    ApiSpecification_Read:
       allOf:
         - $ref: '#/components/schemas/ApiSpecification'
         - type: object
@@ -3858,6 +3858,34 @@ components:
               readOnly: true
               allOf:
                 - $ref: '#/components/schemas/BasicApiSpecificationVersion'
+        - $ref: '#/components/schemas/BasicResponse'
+    ApiSpecification_Create:
+      allOf:
+        - $ref: '#/components/schemas/ApiSpecification'
+        - type: object
+          required:
+            - organizationId
+            - architecturalStyle
+          properties:
+            organizationId:
+              description: The ID of the organization that maintains the API specification
+              type: string
+              format: uuid
+              examples:
+                - 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
+            organization:
+              readOnly: true
+              allOf:
+                - $ref: '#/components/schemas/BasicOrganization'
+              examples:
+                - id: 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
+                  name: Stichting MedMij
+            architecturalStyle:
+              description: The architectural style of the API specification
+              allOf:
+                - $ref: '#/components/schemas/ApiArchitecturalStyle'
+              examples:
+                - REST
         - $ref: '#/components/schemas/BasicResponse'
     ApiSpecification_Update:
       allOf:

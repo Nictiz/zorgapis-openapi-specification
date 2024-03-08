@@ -59,42 +59,42 @@ post:
             summary: 1.2.0 REST
             description: |
               Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-              For architectural style `REST`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+              For architectural style `REST`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
             value:
               $ref: '../_examples/declaration_of_conformity_1_2_0_rest.json'
           ApiSpecificationVersionDeclarationOfConformity_1-2-0_SOAP:
             summary: 1.2.0 SOAP
             description: |
               Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-              For architectural style `SOAP`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+              For architectural style `SOAP`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
             value:
               $ref: '../_examples/declaration_of_conformity_1_2_0_soap.json'
           ApiSpecificationVersionDeclarationOfConformity_1-2-0_GRAPHQL:
             summary: 1.2.0 GRAPHQL
             description: |
               Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-              For architectural style `GRAPHQL`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+              For architectural style `GRAPHQL`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
             value:
               $ref: '../_examples/declaration_of_conformity_1_2_0_common.json'
           ApiSpecificationVersionDeclarationOfConformity_1-2-0_ODATA:
             summary: 1.2.0 ODATA
             description: |
               Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-              For architectural style `ODATA`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+              For architectural style `ODATA`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
             value:
               $ref: '../_examples/declaration_of_conformity_1_2_0_common.json'
           ApiSpecificationVersionDeclarationOfConformity_1-2-0_GRPC:
             summary: 1.2.0 GRPC
             description: |
               Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-              For architectural style `GRPC`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+              For architectural style `GRPC`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
             value:
               $ref: '../_examples/declaration_of_conformity_1_2_0_common.json'
           ApiSpecificationVersionDeclarationOfConformity_1-2-0_OTHER:
             summary: 1.2.0 OTHER
             description: |
               Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-              For architectural style `OTHER`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+              For architectural style `OTHER`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
             value:
               $ref: '../_examples/declaration_of_conformity_1_2_0_common.json'
   responses:

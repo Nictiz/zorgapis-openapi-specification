@@ -1,4 +1,4 @@
-# Resource definition for Create, Read operations
+# Resource definition for Read operations
 allOf:
   - $ref: './ApiSpecification.yaml'
     # Extend
