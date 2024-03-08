@@ -4347,7 +4347,7 @@ components:
       schema:
         type: string
         examples:
-          - 1.0.0
+          - 1.2.0
     apiSpecificationId:
       name: apiSpecificationId
       in: path
