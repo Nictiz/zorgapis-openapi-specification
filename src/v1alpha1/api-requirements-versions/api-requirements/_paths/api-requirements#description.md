@@ -44,6 +44,12 @@ The following table lists the field names and operators you can use in a filter 
 |                             |                           | `reg`    | `?filter=reg(code,"^[a-zA-Z0-9 ]+$")`                         |
 | `requirementLevel`          | `RequirementLevel`        | `eq`     | `?filter=eq(requirementLevel,"MUST")`                         |
 |                             |                           | `neq`    | `?filter=neq(requirementLevel,"MUST")`                        |
+| `score`                     | `integer`                 | `eq`     | `?filter=eq(score,1)`                                         |
+|                             |                           | `neq`    | `?filter=neq(score,1)`                                        |
+|                             |                           | `gt`     | `?filter=gt(score,1)`                                         |
+|                             |                           | `gte`    | `?filter=gte(score,1)`                                        |
+|                             |                           | `lt`     | `?filter=lt(score,1)`                                         |
+|                             |                           | `lte`    | `?filter=lte(score,1)`                                        |
 | `category`                  | `ApiRequirementCategory`  | `eq`     | `?filter=eq(category,"API_SPECIFICATION_AND_DOCUMENTATION")`  |
 |                             |                           | `neq`    | `?filter=neq(category,"API_SPECIFICATION_AND_DOCUMENTATION")` |
 | `roles.$it`                 | `ApiRole`                 | `eq`     | `?filter=any(roles,eq($it,"API_SPECIFIER"))`                  |
