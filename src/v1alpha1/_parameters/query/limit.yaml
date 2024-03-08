@@ -10,4 +10,4 @@ schema:
   maximum: 100
   default: 100
   examples:
-    - 10
+    - 100

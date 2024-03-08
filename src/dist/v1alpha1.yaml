@@ -3990,7 +3990,7 @@ components:
         maximum: 100
         default: 100
         examples:
-          - 10
+          - 100
     skip:
       name: skip
       in: query
@@ -4010,7 +4010,7 @@ components:
         minimum: 0
         default: 0
         examples:
-          - 100
+          - 0
     sort:
       name: sort
       in: query

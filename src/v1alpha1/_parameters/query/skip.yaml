@@ -9,4 +9,4 @@ schema:
   minimum: 0
   default: 0
   examples:
-    - 100
+    - 0
