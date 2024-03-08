@@ -14,10 +14,6 @@ properties:
     readOnly: true
     examples:
       - fe30bf05-de07-4556-9b17-1f82d62fe45f
-  isArchived:
-    description: Whether the API specification is archived
-    type: boolean
-    default: false
   name:
     description: The name of the API specification
     type: string

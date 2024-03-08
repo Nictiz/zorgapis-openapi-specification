@@ -36,8 +36,6 @@ The following table lists the field names and operators you can use in a filter 
 |---------------------------------------------------------------|-------------------------|----------|----------------------------------------------------------------------------------------------|
 | `id`                                                          | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                      |
 |                                                               |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                     |
-| `isArchived`                                                  | `boolean`               | `eq`     | `?filter=eq(isArchived,true)`                                                                |
-|                                                               |                         | `neq`    | `?filter=neq(isArchived,false)`                                                              |
 | `name`                                                        | `string`                | `eq`     | `?filter=eq(name,"Verzamelen Huisartsgegevens")`                                             |
 |                                                               |                         | `neq`    | `?filter=neq(name,"Verzamelen Huisartsgegevens")`                                            |
 |                                                               |                         | `has`    | `?filter=has(name,"Verzamelen")`                                                             |

@@ -166,18 +166,6 @@ Name is either ("Nictiz" `OR` "MedMij"):
 ?filter=or(eq(name,"Nictiz"),eq(name,"MedMij"))
 ```
 
-Name is "Nictiz" `AND` item is not archived:
-
-```
-?filter=and(eq(name,"Nictiz"),eq(isArchived,false))
-```
-
-Name is either ("Nictiz" `OR` "MedMij") `AND` item is not archived:
-
-```
-?filter=and(or(eq(name,"Nictiz"),eq(name,"MedMij")),eq(isArchived,false))
-```
-
 Name does `NOT` end with "Mij":
 
 ```
