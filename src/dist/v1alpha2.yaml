@@ -21,7 +21,7 @@ info:
     name: MIT License
     url: https://choosealicense.com/licenses/mit/
 servers:
-  - url: https://{environment}.zorgapis.nl/v1alpha1
+  - url: https://{environment}.zorgapis.nl/v1alpha2
     variables:
       environment:
         default: api.sandbox

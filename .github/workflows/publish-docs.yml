@@ -17,7 +17,7 @@ jobs:
       
     - name: Bundle
       run: |
-        npx @redocly/cli@1.10.1 bundle ./src/v1alpha1/openapi.yaml --output=./build/openapi.yaml
+        npx @redocly/cli@1.10.1 bundle ./src/v1alpha2/openapi.yaml --output=./build/openapi.yaml
         
     - name: Lint
       run: |
