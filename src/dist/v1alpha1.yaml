@@ -3059,7 +3059,7 @@ components:
           type: string
           maxLength: 255
           examples:
-            - ZorgAPIs Bot
+            - Bot
     BasicResponse:
       type: object
       required:
@@ -3656,7 +3656,7 @@ components:
           examples:
             - Verzamelen Huisartsgegevens 2.0
         publishTime:
-          description: The date and time at which the API requirements version was published
+          description: The date and time at which the API specification version was published
           type: string
           format: date-time
           examples:
