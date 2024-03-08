@@ -20,7 +20,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '../_schemas/ApiRequirement.yaml'
+              $ref: '../_schemas/ApiRequirement_CreateRead.yaml'
       headers:
         $ref: '../../../_headers/defaultListHeaders.yaml'
     '400':

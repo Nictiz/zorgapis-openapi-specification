@@ -1,4 +1,4 @@
-description: The API requirement information
+﻿description: The API requirement information
 type: object
 required:
   - code
@@ -101,7 +101,7 @@ properties:
     items:
       $ref: './ApiStandardizationLevel.yaml'
     examples:
-      - 
+      -
         - OPEN_API
         - TECHNICALLY_STANDARDIZED_API
         - FULLY_STANDARDIZED_API

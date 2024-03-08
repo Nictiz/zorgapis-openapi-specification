@@ -627,7 +627,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ApiRequirement'
+                  $ref: '#/components/schemas/ApiRequirement_CreateRead'
           headers:
             Total-Count:
               $ref: '#/components/headers/Total-Count'
@@ -3550,6 +3550,10 @@ components:
     ApiRequirementsVersion_Update:
       allOf:
         - $ref: '#/components/schemas/ApiRequirementsVersion'
+    ApiRequirement_CreateRead:
+      allOf:
+        - $ref: '#/components/schemas/ApiRequirement'
+        - $ref: '#/components/schemas/BasicResponse'
     ApiSpecification:
       description: The API specification information
       type: object

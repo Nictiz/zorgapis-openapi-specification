@@ -42,6 +42,8 @@ ApiRequirementsVersion_Update:
 # api-requirements-versions/api-requirements
 ApiRequirement:
   $ref: './api-requirements-versions/api-requirements/_schemas/ApiRequirement.yaml'
+ApiRequirement_CreateRead:
+  $ref: './api-requirements-versions/api-requirements/_schemas/ApiRequirement_CreateRead.yaml'
 ApiRequirementCategory:
   $ref: './api-requirements-versions/api-requirements/_schemas/ApiRequirementCategory.yaml'
 ApiRole:
