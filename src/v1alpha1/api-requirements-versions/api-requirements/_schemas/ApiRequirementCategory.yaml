@@ -12,11 +12,11 @@ enum:
 description: |
   The API requirement category:
   
-  - `API_SPECIFICATION_AND_DOCUMENTATION` - API specification & documentation
+  - `API_SPECIFICATION_AND_DOCUMENTATION` - API specification and documentation
   - `API_TESTABILITY` - API testability
   - `API_DISCOVERABILITY` - API discoverability
   - `API_ONBOARDING` - API onboarding
-  - `API_LIFECYCLE_MANAGEMENT_AND_VERSIONING` - API lifecycle management & versioning
+  - `API_LIFECYCLE_MANAGEMENT_AND_VERSIONING` - API lifecycle management and versioning
   - `API_AGREEMENTS` - API agreements
   - `API_DESIGN_RULES` - API Design Rules
   - `API_SECURITY` - API security
