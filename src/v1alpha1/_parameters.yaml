@@ -6,8 +6,6 @@ urlId:
   $ref: './_parameters/path/urlId.yaml'
 versionId:
   $ref: './_parameters/path/versionId.yaml'
-versionName:
-  $ref: './_parameters/path/versionName.yaml'
 # query
 count:
   $ref: './_parameters/query/count.yaml'
@@ -24,6 +22,11 @@ sort:
 # path
 organizationId:
   $ref: './organizations/_parameters/path/organizationId.yaml'
+
+# api-requirements-versions
+# path
+versionName:
+  $ref: './api-requirements-versions/_parameters/path/versionName.yaml'
 
 # api-specifications
 # path

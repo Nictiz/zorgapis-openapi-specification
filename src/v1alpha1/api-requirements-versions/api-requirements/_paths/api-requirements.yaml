@@ -6,7 +6,7 @@ get:
   tags:
     - api-requirements-version.api-requirements
   parameters:
-    - $ref: '../../../_parameters/path/versionName.yaml'
+    - $ref: '../../_parameters/path/versionName.yaml'
     - $ref: '../../../_parameters/query/limit.yaml'
     - $ref: '../../../_parameters/query/skip.yaml'
     - $ref: '../../../_parameters/query/sort.yaml'

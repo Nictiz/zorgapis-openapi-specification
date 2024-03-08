@@ -6,7 +6,7 @@ get:
   tags:
     - api-requirements-versions
   parameters:
-    - $ref: '../../_parameters/path/versionName.yaml'
+    - $ref: '../_parameters/path/versionName.yaml'
   responses:
     '200':
       description: Success
@@ -38,7 +38,7 @@ patch:
   tags:
     - api-requirements-versions
   parameters:
-    - $ref: '../../_parameters/path/versionName.yaml'
+    - $ref: '../_parameters/path/versionName.yaml'
   requestBody:
     description: Updated API requirements version object
     content:
