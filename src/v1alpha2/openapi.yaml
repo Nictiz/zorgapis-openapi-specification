@@ -9,7 +9,8 @@ info:
     name: MIT License
     url: https://choosealicense.com/licenses/mit/
     
-security: []
+security:
+  - oauth2: []
 
 tags:
   # users
@@ -166,3 +167,6 @@ components:
   # Reusable response headers
   headers:
     $ref: './_headers.yaml'
+  # Reusable security schemes
+  securitySchemes: 
+    $ref: './_securitySchemes.yaml'
