@@ -3,6 +3,11 @@
   description:
     $ref: './memberships#description.md'
   operationId: listUserMemberships
+  security:
+    - oauth2:
+        - users:read
+    - oauth2:
+        - users:write
   tags:
     - user.memberships
   parameters:

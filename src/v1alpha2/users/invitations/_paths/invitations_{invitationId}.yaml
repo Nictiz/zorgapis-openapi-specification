@@ -3,6 +3,11 @@
   description: |
     Returns a single user invitation.
   operationId: getUserInvitationById
+  security:
+    - oauth2:
+        - users:read
+    - oauth2:
+        - users:write
   tags:
     - user.invitations
   parameters:

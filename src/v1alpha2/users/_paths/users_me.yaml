@@ -3,6 +3,11 @@
   description: |
     Returns a single user.
   operationId: getUserForAuthenticatedUser
+  security:
+    - oauth2:
+        - users:read
+    - oauth2:
+        - users:write
   tags:
     - users
   responses:

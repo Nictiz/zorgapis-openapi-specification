@@ -3,6 +3,9 @@
   description: |
     Decline a pending user invitation.
   operationId: declineUserInvitation
+  security:
+    - oauth2:
+        - users:write
   tags:
     - user.invitations
   parameters:

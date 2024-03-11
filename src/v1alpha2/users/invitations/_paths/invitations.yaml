@@ -3,6 +3,11 @@
   description:
     $ref: './invitations#description.md'
   operationId: listUserInvitations
+  security:
+    - oauth2:
+        - users:read
+    - oauth2:
+        - users:write
   tags:
     - user.invitations
   parameters:

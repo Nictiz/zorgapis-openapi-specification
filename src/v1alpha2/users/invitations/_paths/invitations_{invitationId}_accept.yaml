@@ -3,6 +3,9 @@
   description: |
     Accept a pending user invitation.
   operationId: acceptUserInvitation
+  security:
+    - oauth2:
+        - users:write
   tags:
     - user.invitations
   parameters:

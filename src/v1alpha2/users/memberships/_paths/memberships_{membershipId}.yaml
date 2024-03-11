@@ -3,6 +3,11 @@
   description: |
     Returns a single user membership.
   operationId: getUserMembershipById
+  security:
+    - oauth2:
+        - users:read
+    - oauth2:
+        - users:write
   tags:
     - user.memberships
   parameters:
@@ -33,6 +38,9 @@ delete:
   description: |
     Deletes a single user membership.
   operationId: deleteUserMembership
+  security:
+    - oauth2:
+        - users:write
   tags:
     - user.memberships
   parameters:

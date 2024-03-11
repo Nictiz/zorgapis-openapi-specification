@@ -27,7 +27,8 @@ servers:
         default: api.sandbox
         enum:
           - api.sandbox
-security: []
+security:
+  - oauth2: []
 tags:
   - name: users
     description: Users API
@@ -72,6 +73,11 @@ paths:
       description: |
         Returns a single user.
       operationId: getUserForAuthenticatedUser
+      security:
+        - oauth2:
+            - users:read
+        - oauth2:
+            - users:write
       tags:
         - users
       responses:
@@ -102,6 +108,11 @@ paths:
       summary: List all user invitations
       description: "\uFEFFReturns a list of user invitations.\n\n<details>\n<summary>Details</summary>\n\n## Sort expressions\n\nThe following table lists the field names and directions you can use in a sort expression.\n\n| Field          | Type        | Direction | Example                    |\n|----------------|-------------|-----------|----------------------------|\n| `id`           | `uuid`      | `asc`     | `?sort=asc(id)`            |\n|                |             | `desc`    | `?sort=desc(id)`           |\n| `emailAddress` | `string`    | `asc`     | `?sort=asc(emailAddress)`  |\n|                |             | `desc`    | `?sort=desc(emailAddress)` |\n| `responseTime` | `date-time` | `asc`     | `?sort=asc(responseTime)`  |\n|                |             | `desc`    | `?sort=desc(responseTime)` |\n| `createTime`   | `date-time` | `asc`     | `?sort=asc(createTime)`    |\n|                |             | `desc`    | `?sort=desc(createTime)`   |\n| `updateTime`   | `date-time` | `asc`     | `?sort=asc(updateTime)`    |\n|                |             | `desc`    | `?sort=desc(updateTime)`   |\n\n### Default sort expression\n\nIf the `sort` parameter is omitted, the default sort expression is used:\n\n```\n?sort=desc(createTime)\n```\n\nThis causes results to be sorted by `createTime` in descending order (from most recent to oldest).\n\n## Filter expressions\n\nThe following table lists the field names and operators you can use in a filter expression.\n\n| Field            | Type               | Operator | Example                                                              |\n|------------------|--------------------|----------|----------------------------------------------------------------------|\n| `id`             | `uuid`             | `eq`     | `?filter=eq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`              |\n|                  |                    | `neq`    | `?filter=neq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`             |\n| `organizationId` | `uuid`             | `eq`     | `?filter=eq(organizationId,\"533d3fe3-bccc-405a-9904-4f516e892856\")`  |\n|                  |                    | `neq`    | `?filter=neq(organizationId,\"533d3fe3-bccc-405a-9904-4f516e892856\")` |\n| `emailAddress`   | `string`           | `eq`     | `?filter=eq(emailAddress,\"john.doe@nictiz.nl\")`                      |\n|                  |                    | `neq`    | `?filter=neq(emailAddress,\"john.doe@nictiz.nl\")`                     |\n|                  |                    | `has`    | `?filter=has(emailAddress,\"john\")`                                   |\n|                  |                    | `stw`    | `?filter=stw(emailAddress,\"john\")`                                   |\n|                  |                    | `enw`    | `?filter=enw(emailAddress,\"nictiz.nl\")`                              |\n|                  |                    | `reg`    | `?filter=reg(emailAddress,\"^[a-zA-Z0-9 ]+$\")`                        |\n| `status`         | `InvitationStatus` | `eq`     | `?filter=eq(status,\"PENDING\")`                                       |\n|                  |                    | `neq`    | `?filter=neq(status,\"PENDING\")`                                      |\n| `responseTime`   | `date-time`        | `eq`     | `?filter=eq(responseTime,\"2024-03-16T14:15:30.500Z\")`                |\n|                  |                    | `neq`    | `?filter=neq(responseTime,\"2024-03-16T14:15:30.500Z\")`               |\n|                  |                    | `gt`     | `?filter=gt(responseTime,\"2024-03-16T14:15:30.500Z\")`                |\n|                  |                    | `gte`    | `?filter=gte(responseTime,\"2024-03-16T14:15:30.500Z\")`               |\n|                  |                    | `lt`     | `?filter=lt(responseTime,\"2024-03-16T14:15:30.500Z\")`                |\n|                  |                    | `lte`    | `?filter=lte(responseTime,\"2024-03-16T14:15:30.500Z\")`               |\n| `createTime`     | `date-time`        | `eq`     | `?filter=eq(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `neq`    | `?filter=neq(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |                    | `gt`     | `?filter=gt(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `gte`    | `?filter=gte(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |                    | `lt`     | `?filter=lt(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `lte`    | `?filter=lte(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n| `updateTime`     | `date-time`        | `eq`     | `?filter=eq(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `neq`    | `?filter=neq(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |                    | `gt`     | `?filter=gt(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `gte`    | `?filter=gte(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |                    | `lt`     | `?filter=lt(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `lte`    | `?filter=lte(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n\n</details>"
       operationId: listUserInvitations
+      security:
+        - oauth2:
+            - users:read
+        - oauth2:
+            - users:write
       tags:
         - user.invitations
       parameters:
@@ -142,6 +153,11 @@ paths:
       description: |
         Returns a single user invitation.
       operationId: getUserInvitationById
+      security:
+        - oauth2:
+            - users:read
+        - oauth2:
+            - users:write
       tags:
         - user.invitations
       parameters:
@@ -173,6 +189,9 @@ paths:
       description: |
         Accept a pending user invitation.
       operationId: acceptUserInvitation
+      security:
+        - oauth2:
+            - users:write
       tags:
         - user.invitations
       parameters:
@@ -204,6 +223,9 @@ paths:
       description: |
         Decline a pending user invitation.
       operationId: declineUserInvitation
+      security:
+        - oauth2:
+            - users:write
       tags:
         - user.invitations
       parameters:
@@ -234,6 +256,11 @@ paths:
       summary: List all user memberships
       description: "\uFEFFReturns a list of user memberships.\n\n<details>\n<summary>Details</summary>\n\n## Sort expressions\n\nThe following table lists the field names and directions you can use in a sort expression.\n\n| Field          | Type        | Direction | Example                    |\n|----------------|-------------|-----------|----------------------------|\n| `id`           | `uuid`      | `asc`     | `?sort=asc(id)`            |\n|                |             | `desc`    | `?sort=desc(id)`           |\n| `createTime`   | `date-time` | `asc`     | `?sort=asc(createTime)`    |\n|                |             | `desc`    | `?sort=desc(createTime)`   |\n| `updateTime`   | `date-time` | `asc`     | `?sort=asc(updateTime)`    |\n|                |             | `desc`    | `?sort=desc(updateTime)`   |\n\n### Default sort expression\n\nIf the `sort` parameter is omitted, the default sort expression is used:\n\n```\n?sort=desc(createTime)\n```\n\nThis causes results to be sorted by `createTime` in descending order (from most recent to oldest).\n\n## Filter expressions\n\nThe following table lists the field names and operators you can use in a filter expression.\n\n| Field            | Type        | Operator | Example                                                              |\n|------------------|-------------|----------|----------------------------------------------------------------------|\n| `id`             | `uuid`      | `eq`     | `?filter=eq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`              |\n|                  |             | `neq`    | `?filter=neq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`             |\n| `organizationId` | `uuid`      | `eq`     | `?filter=eq(organizationId,\"533d3fe3-bccc-405a-9904-4f516e892856\")`  |\n|                  |             | `neq`    | `?filter=neq(organizationId,\"533d3fe3-bccc-405a-9904-4f516e892856\")` |\n| `createTime`     | `date-time` | `eq`     | `?filter=eq(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |             | `neq`    | `?filter=neq(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |             | `gt`     | `?filter=gt(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |             | `gte`    | `?filter=gte(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |             | `lt`     | `?filter=lt(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |             | `lte`    | `?filter=lte(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n| `updateTime`     | `date-time` | `eq`     | `?filter=eq(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |             | `neq`    | `?filter=neq(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |             | `gt`     | `?filter=gt(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |             | `gte`    | `?filter=gte(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |             | `lt`     | `?filter=lt(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |             | `lte`    | `?filter=lte(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n\n</details>"
       operationId: listUserMemberships
+      security:
+        - oauth2:
+            - users:read
+        - oauth2:
+            - users:write
       tags:
         - user.memberships
       parameters:
@@ -274,6 +301,11 @@ paths:
       description: |
         Returns a single user membership.
       operationId: getUserMembershipById
+      security:
+        - oauth2:
+            - users:read
+        - oauth2:
+            - users:write
       tags:
         - user.memberships
       parameters:
@@ -304,6 +336,9 @@ paths:
       description: |
         Deletes a single user membership.
       operationId: deleteUserMembership
+      security:
+        - oauth2:
+            - users:write
       tags:
         - user.memberships
       parameters:
@@ -5380,6 +5415,55 @@ components:
         type: integer
         examples:
           - 78
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: TODO
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.sandbox.zorgapis.nl/realms/zorgapis/protocol/openid-connect/auth
+          tokenUrl: https://auth.sandbox.zorgapis.nl/realms/zorgapis/protocol/openid-connect/token
+          refreshUrl: https://auth.sandbox.zorgapis.nl/realms/zorgapis/protocol/openid-connect/token
+          scopes:
+            openid: Informs the Authorization Server that the Client is making an OpenID Connect request.
+            offline_access: |
+              Requests that an OAuth 2.0 `refresh_token` be issued that can be used to obtain an Access Token.
+            email: |
+              Requests access to the `email` claim, which contains the user's email address, and `email_verified`, which is a 
+              boolean indicating whether the email address was verified by the user.
+            profile: |
+              Requests access to the End-User's default profile Claims, which are: `name`, `family_name`, `given_name`, 
+              `middle_name`, `nickname`, `preferred_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, 
+              `zoneinfo`, `locale`, and `updated_at`.    
+            users:read: Grants read access to user endpoints.
+            users:write: Grants read and write access to user endpoints.
+            organizations:read: Grants read access to organization endpoints.
+            organizations:write: Grants read and write access to organization endpoints.
+            api-requirements-versions:read: Grants read access to API requirements version endpoints.
+            api-requirements-versions:write: Grants read and write access to API requirements version endpoints.
+            api-specifications:read: Grants read access to API specification endpoints.
+            api-specifications:write: Grants read and write access to API specification endpoints.
+        clientCredentials:
+          tokenUrl: https://auth.sandbox.zorgapis.nl/realms/zorgapis/protocol/openid-connect/token
+          scopes:
+            openid: Informs the Authorization Server that the Client is making an OpenID Connect request.
+            offline_access: |
+              Requests that an OAuth 2.0 `refresh_token` be issued that can be used to obtain an Access Token.
+            email: |
+              Requests access to the `email` claim, which contains the user's email address, and `email_verified`, which is a 
+              boolean indicating whether the email address was verified by the user.
+            profile: |
+              Requests access to the End-User's default profile Claims, which are: `name`, `family_name`, `given_name`, 
+              `middle_name`, `nickname`, `preferred_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, 
+              `zoneinfo`, `locale`, and `updated_at`.    
+            users:read: Grants read access to user endpoints.
+            users:write: Grants write (including read) access to user endpoints.
+            organizations:read: Grants read access to organization endpoints.
+            organizations:write: Grants write (including read) access to organization endpoints.
+            api-requirements-versions:read: Grants read access to API requirements version endpoints.
+            api-requirements-versions:write: Grants write (including read) access to API requirements version endpoints.
+            api-specifications:read: Grants read access to API specification endpoints.
+            api-specifications:write: Grants write (including read) access to API specification endpoints.
 x-tagGroups:
   - name: Users
     tags:
