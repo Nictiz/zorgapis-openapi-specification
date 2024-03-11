@@ -3,6 +3,9 @@
   description: |
     Cancel a pending organization invitation.
   operationId: cancelOrganizationInvitation
+  security:
+    - oauth2:
+        - organizations:write
   tags:
     - organization.invitations
   parameters:

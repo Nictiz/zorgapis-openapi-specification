@@ -3,6 +3,11 @@
   description:
     $ref: './invitations#description.md'
   operationId: listOrganizationInvitations
+  security:
+    - oauth2:
+        - organizations:read
+    - oauth2:
+        - organizations:write
   tags:
     - organization.invitations
   parameters:
@@ -42,6 +47,9 @@ post:
   description: |
     Adds an organization invitation to the collection.
   operationId: addOrganizationInvitation
+  security:
+    - oauth2:
+        - organizations:write
   tags:
     - organization.invitations
   parameters:
