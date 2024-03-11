@@ -19,6 +19,9 @@ tags:
   - name: organization.invitations
     description: Organization invitations API
     x-displayName: Organization invitations
+  - name: organization.memberships
+    description: Organization memberships API
+    x-displayName: Organization memberships
     
     # api-requirements-versions
   - name: api-requirements-versions
@@ -47,6 +50,7 @@ x-tagGroups:
     tags:
       - organizations
       - organization.invitations
+      - organization.memberships
   - name: API requirements
     tags:
       - api-requirements-versions
@@ -79,6 +83,11 @@ paths:
     $ref: './organizations/invitations/_paths/invitations_{invitationId}.yaml'
   /organizations/{organizationId}/invitations/{invitationId}:cancel:
     $ref: './organizations/invitations/_paths/invitations_{invitationId}_cancel.yaml'
+  # organizations/memberships
+  /organizations/{organizationId}/memberships:
+    $ref: './organizations/memberships/_paths/memberships.yaml'
+  /organizations/{organizationId}/memberships/{membershipId}:
+    $ref: './organizations/memberships/_paths/memberships_{membershipId}.yaml'
     
   # api-requirements-versions
   /api-requirements-versions:

@@ -35,6 +35,9 @@ tags:
   - name: organization.invitations
     description: Organization invitations API
     x-displayName: Organization invitations
+  - name: organization.memberships
+    description: Organization memberships API
+    x-displayName: Organization memberships
   - name: api-requirements-versions
     description: API requirements versions API
     x-displayName: API requirements versions
@@ -410,6 +413,107 @@ paths:
           $ref: '#/components/responses/UnauthenticatedError'
         '403':
           $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /organizations/{organizationId}/memberships:
+    get:
+      summary: List all organization memberships
+      description: "\uFEFFReturns a list of organization memberships.\n\n<details>\n<summary>Details</summary>\n\n## Sort expressions\n\nThe following table lists the field names and directions you can use in a sort expression.\n\n| Field          | Type        | Direction | Example                    |\n|----------------|-------------|-----------|----------------------------|\n| `id`           | `uuid`      | `asc`     | `?sort=asc(id)`            |\n|                |             | `desc`    | `?sort=desc(id)`           |\n| `createTime`   | `date-time` | `asc`     | `?sort=asc(createTime)`    |\n|                |             | `desc`    | `?sort=desc(createTime)`   |\n| `updateTime`   | `date-time` | `asc`     | `?sort=asc(updateTime)`    |\n|                |             | `desc`    | `?sort=desc(updateTime)`   |\n\n### Default sort expression\n\nIf the `sort` parameter is omitted, the default sort expression is used:\n\n```\n?sort=desc(createTime)\n```\n\nThis causes results to be sorted by `createTime` in descending order (from most recent to oldest).\n\n## Filter expressions\n\nThe following table lists the field names and operators you can use in a filter expression.\n\n| Field          | Type               | Operator | Example                                                      |\n|----------------|--------------------|----------|--------------------------------------------------------------|\n| `id`           | `uuid`             | `eq`     | `?filter=eq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`      |\n|                |                    | `neq`    | `?filter=neq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`     |\n| `userId`       | `uuid`             | `eq`     | `?filter=eq(userId,\"533d3fe3-bccc-405a-9904-4f516e892856\")`  |\n|                |                    | `neq`    | `?filter=neq(userId,\"533d3fe3-bccc-405a-9904-4f516e892856\")` |\n| `createTime`   | `date-time`        | `eq`     | `?filter=eq(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `neq`    | `?filter=neq(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `gt`     | `?filter=gt(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `gte`    | `?filter=gte(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `lt`     | `?filter=lt(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `lte`    | `?filter=lte(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n| `updateTime`   | `date-time`        | `eq`     | `?filter=eq(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `neq`    | `?filter=neq(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `gt`     | `?filter=gt(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `gte`    | `?filter=gte(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `lt`     | `?filter=lt(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `lte`    | `?filter=lte(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n\n</details>"
+      operationId: listOrganizationMemberships
+      tags:
+        - organization.memberships
+      parameters:
+        - $ref: '#/components/parameters/organizationId'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrganizationMembership_Read'
+          headers:
+            Total-Count:
+              $ref: '#/components/headers/Total-Count'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /organizations/{organizationId}/memberships/{membershipId}:
+    get:
+      summary: Get an organization membership by ID
+      description: |
+        Returns a single organization membership.
+      operationId: getOrganizationMembershipById
+      tags:
+        - organization.memberships
+      parameters:
+        - $ref: '#/components/parameters/organizationId'
+        - $ref: '#/components/parameters/membershipId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMembership_Read'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+    delete:
+      summary: Delete an organization membership
+      description: |
+        Deletes a single organization membership.
+      operationId: deleteOrganizationMembership
+      tags:
+        - organization.memberships
+      parameters:
+        - $ref: '#/components/parameters/organizationId'
+        - $ref: '#/components/parameters/membershipId'
+      responses:
+        '204':
+          $ref: '#/components/responses/EmptyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
         '422':
           $ref: '#/components/responses/InvalidArgumentError'
         '429':
@@ -3435,6 +3539,39 @@ components:
               examples:
                 - CANCELED
         - $ref: '#/components/schemas/BasicResponse'
+    OrganizationMembership:
+      description: The organization membership information
+      type: object
+      required:
+        - id
+        - userId
+        - user
+      properties:
+        id:
+          description: The ID of the organization membership
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - cefdc28f-550d-4005-9ca7-c1836202c37b
+        userId:
+          description: The ID of the user
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 7375d2bf-884c-4adf-86f5-5b35f0da864b
+        user:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicUser'
+          examples:
+            - id: 7375d2bf-884c-4adf-86f5-5b35f0da864b
+              name: John Doe
+    OrganizationMembership_Read:
+      allOf:
+        - $ref: '#/components/schemas/OrganizationMembership'
+        - $ref: '#/components/schemas/BasicResponse'
     SemVer:
       description: The Semantic Versioning Specification (SemVer) version information
       type: object
@@ -4640,6 +4777,16 @@ components:
         format: uuid
         examples:
           - 30ca5cc5-b84c-4993-b15b-8ab182dab89c
+    membershipId:
+      name: membershipId
+      in: path
+      required: true
+      description: The ID of the membership
+      schema:
+        type: string
+        format: uuid
+        examples:
+          - cefdc28f-550d-4005-9ca7-c1836202c37b
     versionName:
       name: versionName
       in: path
@@ -4800,6 +4947,7 @@ x-tagGroups:
     tags:
       - organizations
       - organization.invitations
+      - organization.memberships
   - name: API requirements
     tags:
       - api-requirements-versions

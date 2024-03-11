@@ -42,6 +42,11 @@ OrganizationInvitation_Create:
   $ref: './organizations/invitations/_schemas/OrganizationInvitation_Create.yaml'
 OrganizationInvitation_Read:
   $ref: './organizations/invitations/_schemas/OrganizationInvitation_Read.yaml'
+# organizations/memberships
+OrganizationMembership:
+  $ref: './organizations/memberships/_schemas/OrganizationMembership.yaml'
+OrganizationMembership_Read:
+  $ref: './organizations/memberships/_schemas/OrganizationMembership_Read.yaml'
 
 # api-requirements-versions
 ApiRequirementsVersion:

@@ -1,0 +1,9 @@
+﻿name: membershipId
+in: path
+required: true
+description: The ID of the membership
+schema:
+  type: string
+  format: uuid
+  examples:
+    - cefdc28f-550d-4005-9ca7-c1836202c37b
