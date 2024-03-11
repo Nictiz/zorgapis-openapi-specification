@@ -12,7 +12,15 @@ info:
 security: []
 
 tags:
-    # organizations
+  # users
+  - name: users
+    description: Users API
+    x-displayName: Users
+  - name: user.memberships
+    description: User memberships API
+    x-displayName: User memberships
+    
+  # organizations
   - name: organizations
     description: Organizations API
     x-displayName: Organizations
@@ -23,7 +31,7 @@ tags:
     description: Organization memberships API
     x-displayName: Organization memberships
     
-    # api-requirements-versions
+  # api-requirements-versions
   - name: api-requirements-versions
     description: API requirements versions API
     x-displayName: API requirements versions
@@ -31,7 +39,7 @@ tags:
     description: API requirements version API requirements API
     x-displayName: API requirements version API requirements
     
-    # api-specifications
+  # api-specifications
   - name: api-specifications
     description: API specifications API
     x-displayName: API specifications
@@ -46,6 +54,10 @@ tags:
     x-displayName: API specification version declarations of conformity
 
 x-tagGroups:
+  - name: Users
+    tags:
+      - users
+      - user.memberships
   - name: Organizations
     tags:
       - organizations
@@ -71,6 +83,13 @@ servers:
           - api.sandbox
 
 paths:
+  # users
+  # users/memberships
+  /users/me/memberships:
+    $ref: './users/memberships/_paths/memberships.yaml'
+  /users/me/memberships/{membershipId}:
+    $ref: './users/memberships/_paths/memberships_{membershipId}.yaml'
+    
   # organizations
   /organizations:
     $ref: './organizations/_paths/organizations.yaml'

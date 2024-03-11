@@ -22,6 +22,13 @@ RequirementLevel:
 SemVer:
   $ref: './_schemas/SemVer.yaml'
 
+# users
+# users/memberships
+UserMembership:
+  $ref: './users/memberships/_schemas/UserMembership.yaml'
+UserMembership_Read:
+  $ref: './users/memberships/_schemas/UserMembership_Read.yaml'
+
 # organizations
 BasicOrganization:
   $ref: './organizations/_schemas/BasicOrganization.yaml'
