@@ -3,6 +3,11 @@ get:
   description:
     $ref: './api-requirements#description.md'
   operationId: listApiRequirementsVersionApiRequirements
+  security:
+    - oauth2:
+        - api-requirements-versions:read
+    - oauth2:
+        - api-requirements-versions:write
   tags:
     - api-requirements-version.api-requirements
   parameters:

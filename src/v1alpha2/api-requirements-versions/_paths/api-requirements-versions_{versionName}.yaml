@@ -3,6 +3,11 @@ get:
   description: |
     Returns a single API requirements version.
   operationId: getApiRequirementsVersionByName
+  security:
+    - oauth2:
+        - api-requirements-versions:read
+    - oauth2:
+        - api-requirements-versions:write
   tags:
     - api-requirements-versions
   parameters:
@@ -35,6 +40,9 @@ patch:
   description: |
     Updates a single API requirements version.
   operationId: updateApiRequirementsVersion
+  security:
+    - oauth2:
+        - api-requirements-versions:write
   tags:
     - api-requirements-versions
   parameters:

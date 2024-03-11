@@ -3,6 +3,11 @@ get:
   description:
     $ref: './api-requirements-versions#description.md'
   operationId: listApiRequirementsVersions
+  security:
+    - oauth2:
+        - api-requirements-versions:read
+    - oauth2:
+        - api-requirements-versions:write
   tags:
     - api-requirements-versions
   parameters:
@@ -41,6 +46,9 @@ post:
   description: |
     Adds an API requirements version to the collection.
   operationId: addApiRequirementsVersion
+  security:
+    - oauth2:
+        - api-requirements-versions:write
   tags:
     - api-requirements-versions
   requestBody:
