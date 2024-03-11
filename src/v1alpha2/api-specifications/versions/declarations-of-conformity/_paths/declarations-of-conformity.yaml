@@ -3,6 +3,11 @@ get:
   description:
     $ref: './declarations-of-conformity#description.md'
   operationId: listApiSpecificationVersionDeclarationsOfConformity
+  security:
+    - oauth2:
+        - api-specifications:read
+    - oauth2:
+        - api-specifications:write
   tags:
     - api-specification.version.declarations-of-conformity
   parameters:
@@ -43,6 +48,9 @@ post:
   description: |
     Adds an API specification version declaration of conformity to the collection.
   operationId: addApiSpecificationVersionDeclarationOfConformity
+  security:
+    - oauth2:
+        - api-specifications:write
   tags:
     - api-specification.version.declarations-of-conformity
   parameters:

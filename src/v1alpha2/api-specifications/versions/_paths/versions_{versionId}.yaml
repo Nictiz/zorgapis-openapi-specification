@@ -3,6 +3,11 @@ get:
   description: |
     Returns a single API specification version.
   operationId: getApiSpecificationVersionById
+  security:
+    - oauth2:
+        - api-specifications:read
+    - oauth2:
+        - api-specifications:write
   tags:
     - api-specification.versions
   parameters:
@@ -36,6 +41,9 @@ patch:
   description: |
     Updates a single API specification version.
   operationId: updateApiSpecificationVersion
+  security:
+    - oauth2:
+        - api-specifications:write
   tags:
     - api-specification.versions
   parameters:

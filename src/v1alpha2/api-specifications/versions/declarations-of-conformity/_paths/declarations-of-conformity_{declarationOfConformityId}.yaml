@@ -3,6 +3,11 @@ get:
   description: |
     Returns a single API specification version declaration of conformity.
   operationId: getApiSpecificationVersionDeclarationOfConformityById
+  security:
+    - oauth2:
+        - api-specifications:read
+    - oauth2:
+        - api-specifications:write
   tags:
     - api-specification.version.declarations-of-conformity
   parameters:

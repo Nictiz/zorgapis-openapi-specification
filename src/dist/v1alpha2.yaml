@@ -447,6 +447,11 @@ paths:
 
         </details>
       operationId: listOrganizations
+      security:
+        - oauth2:
+            - organizations:read
+        - oauth2:
+            - organizations:write
       tags:
         - organizations
       parameters:
@@ -486,6 +491,9 @@ paths:
       description: |
         Adds an organization to the collection.
       operationId: addOrganization
+      security:
+        - oauth2:
+            - organizations:write
       tags:
         - organizations
       requestBody:
@@ -521,6 +529,11 @@ paths:
       description: |
         Returns a single organization.
       operationId: getOrganizationById
+      security:
+        - oauth2:
+            - organizations:read
+        - oauth2:
+            - organizations:write
       tags:
         - organizations
       parameters:
@@ -553,6 +566,9 @@ paths:
       description: |
         Updates a single organization.
       operationId: updateOrganization
+      security:
+        - oauth2:
+            - organizations:write
       tags:
         - organizations
       parameters:
@@ -591,6 +607,11 @@ paths:
       summary: List all organization invitations
       description: "\uFEFFReturns a list of organization invitations.\n\n<details>\n<summary>Details</summary>\n\n## Sort expressions\n\nThe following table lists the field names and directions you can use in a sort expression.\n\n| Field          | Type        | Direction | Example                    |\n|----------------|-------------|-----------|----------------------------|\n| `id`           | `uuid`      | `asc`     | `?sort=asc(id)`            |\n|                |             | `desc`    | `?sort=desc(id)`           |\n| `emailAddress` | `string`    | `asc`     | `?sort=asc(emailAddress)`  |\n|                |             | `desc`    | `?sort=desc(emailAddress)` |\n| `responseTime` | `date-time` | `asc`     | `?sort=asc(responseTime)`  |\n|                |             | `desc`    | `?sort=desc(responseTime)` |\n| `createTime`   | `date-time` | `asc`     | `?sort=asc(createTime)`    |\n|                |             | `desc`    | `?sort=desc(createTime)`   |\n| `updateTime`   | `date-time` | `asc`     | `?sort=asc(updateTime)`    |\n|                |             | `desc`    | `?sort=desc(updateTime)`   |\n\n### Default sort expression\n\nIf the `sort` parameter is omitted, the default sort expression is used:\n\n```\n?sort=desc(createTime)\n```\n\nThis causes results to be sorted by `createTime` in descending order (from most recent to oldest).\n\n## Filter expressions\n\nThe following table lists the field names and operators you can use in a filter expression.\n\n| Field          | Type               | Operator | Example                                                      |\n|----------------|--------------------|----------|--------------------------------------------------------------|\n| `id`           | `uuid`             | `eq`     | `?filter=eq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`      |\n|                |                    | `neq`    | `?filter=neq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`     |\n| `emailAddress` | `string`           | `eq`     | `?filter=eq(emailAddress,\"john.doe@nictiz.nl\")`              |\n|                |                    | `neq`    | `?filter=neq(emailAddress,\"john.doe@nictiz.nl\")`             |\n|                |                    | `has`    | `?filter=has(emailAddress,\"john\")`                           |\n|                |                    | `stw`    | `?filter=stw(emailAddress,\"john\")`                           |\n|                |                    | `enw`    | `?filter=enw(emailAddress,\"nictiz.nl\")`                      |\n|                |                    | `reg`    | `?filter=reg(emailAddress,\"^[a-zA-Z0-9 ]+$\")`                |\n| `status`       | `InvitationStatus` | `eq`     | `?filter=eq(status,\"PENDING\")`                               |\n|                |                    | `neq`    | `?filter=neq(status,\"PENDING\")`                              |\n| `userId`       | `uuid`             | `eq`     | `?filter=eq(userId,\"533d3fe3-bccc-405a-9904-4f516e892856\")`  |\n|                |                    | `neq`    | `?filter=neq(userId,\"533d3fe3-bccc-405a-9904-4f516e892856\")` |\n| `responseTime` | `date-time`        | `eq`     | `?filter=eq(responseTime,\"2024-03-16T14:15:30.500Z\")`        |\n|                |                    | `neq`    | `?filter=neq(responseTime,\"2024-03-16T14:15:30.500Z\")`       |\n|                |                    | `gt`     | `?filter=gt(responseTime,\"2024-03-16T14:15:30.500Z\")`        |\n|                |                    | `gte`    | `?filter=gte(responseTime,\"2024-03-16T14:15:30.500Z\")`       |\n|                |                    | `lt`     | `?filter=lt(responseTime,\"2024-03-16T14:15:30.500Z\")`        |\n|                |                    | `lte`    | `?filter=lte(responseTime,\"2024-03-16T14:15:30.500Z\")`       |\n| `createTime`   | `date-time`        | `eq`     | `?filter=eq(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `neq`    | `?filter=neq(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `gt`     | `?filter=gt(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `gte`    | `?filter=gte(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `lt`     | `?filter=lt(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `lte`    | `?filter=lte(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n| `updateTime`   | `date-time`        | `eq`     | `?filter=eq(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `neq`    | `?filter=neq(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `gt`     | `?filter=gt(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `gte`    | `?filter=gte(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `lt`     | `?filter=lt(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `lte`    | `?filter=lte(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n\n</details>"
       operationId: listOrganizationInvitations
+      security:
+        - oauth2:
+            - organizations:read
+        - oauth2:
+            - organizations:write
       tags:
         - organization.invitations
       parameters:
@@ -631,6 +652,9 @@ paths:
       description: |
         Adds an organization invitation to the collection.
       operationId: addOrganizationInvitation
+      security:
+        - oauth2:
+            - organizations:write
       tags:
         - organization.invitations
       parameters:
@@ -668,6 +692,11 @@ paths:
       description: |
         Returns a single organization invitation.
       operationId: getOrganizationInvitationById
+      security:
+        - oauth2:
+            - organizations:read
+        - oauth2:
+            - organizations:write
       tags:
         - organization.invitations
       parameters:
@@ -700,6 +729,9 @@ paths:
       description: |
         Cancel a pending organization invitation.
       operationId: cancelOrganizationInvitation
+      security:
+        - oauth2:
+            - organizations:write
       tags:
         - organization.invitations
       parameters:
@@ -731,6 +763,11 @@ paths:
       summary: List all organization memberships
       description: "\uFEFFReturns a list of organization memberships.\n\n<details>\n<summary>Details</summary>\n\n## Sort expressions\n\nThe following table lists the field names and directions you can use in a sort expression.\n\n| Field          | Type        | Direction | Example                    |\n|----------------|-------------|-----------|----------------------------|\n| `id`           | `uuid`      | `asc`     | `?sort=asc(id)`            |\n|                |             | `desc`    | `?sort=desc(id)`           |\n| `createTime`   | `date-time` | `asc`     | `?sort=asc(createTime)`    |\n|                |             | `desc`    | `?sort=desc(createTime)`   |\n| `updateTime`   | `date-time` | `asc`     | `?sort=asc(updateTime)`    |\n|                |             | `desc`    | `?sort=desc(updateTime)`   |\n\n### Default sort expression\n\nIf the `sort` parameter is omitted, the default sort expression is used:\n\n```\n?sort=desc(createTime)\n```\n\nThis causes results to be sorted by `createTime` in descending order (from most recent to oldest).\n\n## Filter expressions\n\nThe following table lists the field names and operators you can use in a filter expression.\n\n| Field          | Type               | Operator | Example                                                      |\n|----------------|--------------------|----------|--------------------------------------------------------------|\n| `id`           | `uuid`             | `eq`     | `?filter=eq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`      |\n|                |                    | `neq`    | `?filter=neq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`     |\n| `userId`       | `uuid`             | `eq`     | `?filter=eq(userId,\"533d3fe3-bccc-405a-9904-4f516e892856\")`  |\n|                |                    | `neq`    | `?filter=neq(userId,\"533d3fe3-bccc-405a-9904-4f516e892856\")` |\n| `createTime`   | `date-time`        | `eq`     | `?filter=eq(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `neq`    | `?filter=neq(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `gt`     | `?filter=gt(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `gte`    | `?filter=gte(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `lt`     | `?filter=lt(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `lte`    | `?filter=lte(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n| `updateTime`   | `date-time`        | `eq`     | `?filter=eq(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `neq`    | `?filter=neq(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `gt`     | `?filter=gt(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `gte`    | `?filter=gte(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `lt`     | `?filter=lt(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `lte`    | `?filter=lte(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n\n</details>"
       operationId: listOrganizationMemberships
+      security:
+        - oauth2:
+            - organizations:read
+        - oauth2:
+            - organizations:write
       tags:
         - organization.memberships
       parameters:
@@ -772,6 +809,11 @@ paths:
       description: |
         Returns a single organization membership.
       operationId: getOrganizationMembershipById
+      security:
+        - oauth2:
+            - organizations:read
+        - oauth2:
+            - organizations:write
       tags:
         - organization.memberships
       parameters:
@@ -803,6 +845,9 @@ paths:
       description: |
         Deletes a single organization membership.
       operationId: deleteOrganizationMembership
+      security:
+        - oauth2:
+            - organizations:write
       tags:
         - organization.memberships
       parameters:
@@ -940,6 +985,11 @@ paths:
 
         </details>
       operationId: listApiRequirementsVersions
+      security:
+        - oauth2:
+            - api-requirements-versions:read
+        - oauth2:
+            - api-requirements-versions:write
       tags:
         - api-requirements-versions
       parameters:
@@ -979,6 +1029,9 @@ paths:
       description: |
         Adds an API requirements version to the collection.
       operationId: addApiRequirementsVersion
+      security:
+        - oauth2:
+            - api-requirements-versions:write
       tags:
         - api-requirements-versions
       requestBody:
@@ -1014,6 +1067,11 @@ paths:
       description: |
         Returns a single API requirements version.
       operationId: getApiRequirementsVersionByName
+      security:
+        - oauth2:
+            - api-requirements-versions:read
+        - oauth2:
+            - api-requirements-versions:write
       tags:
         - api-requirements-versions
       parameters:
@@ -1046,6 +1104,9 @@ paths:
       description: |
         Updates a single API requirements version.
       operationId: updateApiRequirementsVersion
+      security:
+        - oauth2:
+            - api-requirements-versions:write
       tags:
         - api-requirements-versions
       parameters:
@@ -1168,6 +1229,11 @@ paths:
 
         </details>
       operationId: listApiRequirementsVersionApiRequirements
+      security:
+        - oauth2:
+            - api-requirements-versions:read
+        - oauth2:
+            - api-requirements-versions:write
       tags:
         - api-requirements-version.api-requirements
       parameters:
@@ -1278,6 +1344,11 @@ paths:
 
         </details>
       operationId: listApiSpecifications
+      security:
+        - oauth2:
+            - api-specifications:read
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specifications
       parameters:
@@ -1317,6 +1388,9 @@ paths:
       description: |
         Adds an API specification to the collection.
       operationId: addApiSpecification
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specifications
       requestBody:
@@ -1352,6 +1426,11 @@ paths:
       description: |
         Returns a single API specification.
       operationId: getApiSpecificationById
+      security:
+        - oauth2:
+            - api-specifications:read
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specifications
       parameters:
@@ -1384,6 +1463,9 @@ paths:
       description: |
         Updates a single API specification.
       operationId: updateApiSpecification
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specifications
       parameters:
@@ -1538,6 +1620,11 @@ paths:
 
         </details>
       operationId: listApiSpecificationVersions
+      security:
+        - oauth2:
+            - api-specifications:read
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specification.versions
       parameters:
@@ -1578,6 +1665,9 @@ paths:
       description: |
         Adds an API specification version to the collection.
       operationId: addApiSpecificationVersion
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specification.versions
       parameters:
@@ -1615,6 +1705,11 @@ paths:
       description: |
         Returns a single API specification version.
       operationId: getApiSpecificationVersionById
+      security:
+        - oauth2:
+            - api-specifications:read
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specification.versions
       parameters:
@@ -1648,6 +1743,9 @@ paths:
       description: |
         Updates a single API specification version.
       operationId: updateApiSpecificationVersion
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specification.versions
       parameters:
@@ -1739,6 +1837,11 @@ paths:
 
         </details>
       operationId: listApiSpecificationVersionUrls
+      security:
+        - oauth2:
+            - api-specifications:read
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specification.version.urls
       parameters:
@@ -1780,6 +1883,9 @@ paths:
       description: |
         Adds an API specification version URL to the collection.
       operationId: addApiSpecificationVersionUrl
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specification.version.urls
       parameters:
@@ -1818,6 +1924,11 @@ paths:
       description: |
         Returns a single API specification version URL.
       operationId: getApiSpecificationVersionUrlById
+      security:
+        - oauth2:
+            - api-specifications:read
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specification.version.urls
       parameters:
@@ -1852,6 +1963,9 @@ paths:
       description: |
         Updates a single API specification version URL.
       operationId: updateApiSpecificationVersionUrl
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specification.version.urls
       parameters:
@@ -1892,6 +2006,9 @@ paths:
       description: |
         Deletes a single API specification version URL.
       operationId: deleteApiSpecificationVersionUrl
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specification.version.urls
       parameters:
@@ -1980,6 +2097,11 @@ paths:
 
         </details>
       operationId: listApiSpecificationVersionDeclarationsOfConformity
+      security:
+        - oauth2:
+            - api-specifications:read
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specification.version.declarations-of-conformity
       parameters:
@@ -2021,6 +2143,9 @@ paths:
       description: |
         Adds an API specification version declaration of conformity to the collection.
       operationId: addApiSpecificationVersionDeclarationOfConformity
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specification.version.declarations-of-conformity
       parameters:
@@ -2934,6 +3059,11 @@ paths:
       description: |
         Returns a single API specification version declaration of conformity.
       operationId: getApiSpecificationVersionDeclarationOfConformityById
+      security:
+        - oauth2:
+            - api-specifications:read
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specification.version.declarations-of-conformity
       parameters:

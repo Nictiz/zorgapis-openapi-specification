@@ -3,6 +3,11 @@ get:
   description:
     $ref: './versions#description.md'
   operationId: listApiSpecificationVersions
+  security:
+    - oauth2:
+        - api-specifications:read
+    - oauth2:
+        - api-specifications:write
   tags:
     - api-specification.versions
   parameters:
@@ -42,6 +47,9 @@ post:
   description: |
     Adds an API specification version to the collection.
   operationId: addApiSpecificationVersion
+  security:
+    - oauth2:
+        - api-specifications:write
   tags:
     - api-specification.versions
   parameters:

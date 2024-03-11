@@ -3,6 +3,11 @@ get:
   description:
     $ref: './api-specifications#description.md'
   operationId: listApiSpecifications
+  security:
+    - oauth2:
+        - api-specifications:read
+    - oauth2:
+        - api-specifications:write
   tags:
     - api-specifications
   parameters:
@@ -41,6 +46,9 @@ post:
   description: |
     Adds an API specification to the collection.
   operationId: addApiSpecification
+  security:
+    - oauth2:
+        - api-specifications:write
   tags:
     - api-specifications
   requestBody:

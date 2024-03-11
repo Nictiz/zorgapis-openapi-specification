@@ -3,6 +3,11 @@ get:
   description: |
     Returns a single API specification version URL.
   operationId: getApiSpecificationVersionUrlById
+  security:
+    - oauth2:
+        - api-specifications:read
+    - oauth2:
+        - api-specifications:write
   tags:
     - api-specification.version.urls
   parameters:
@@ -37,6 +42,9 @@ patch:
   description: |
     Updates a single API specification version URL.
   operationId: updateApiSpecificationVersionUrl
+  security:
+    - oauth2:
+        - api-specifications:write
   tags:
     - api-specification.version.urls
   parameters:
@@ -77,6 +85,9 @@ delete:
   description: |
     Deletes a single API specification version URL.
   operationId: deleteApiSpecificationVersionUrl
+  security:
+    - oauth2:
+        - api-specifications:write
   tags:
     - api-specification.version.urls
   parameters:
