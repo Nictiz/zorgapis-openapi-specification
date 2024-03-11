@@ -66,6 +66,37 @@ tags:
     description: API specification version declarations of conformity API
     x-displayName: API specification version declarations of conformity
 paths:
+  /users/me:
+    get:
+      summary: Get user information for authenticated user
+      description: |
+        Returns a single user.
+      operationId: getUserForAuthenticatedUser
+      tags:
+        - users
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User_Read'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
   /users/me/invitations:
     get:
       summary: List all user invitations
@@ -2899,6 +2930,162 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
+    User:
+      description: The user information
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          description: The ID of the user
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 2aa3349c-dfa6-4308-b562-f7fc8be6c053
+        name:
+          description: The name of the user
+          type: string
+          readOnly: true
+          maxLength: 255
+          examples:
+            - John Doe
+    BasicUser:
+      description: The basic user information
+      type: object
+      required:
+        - name
+        - id
+      properties:
+        id:
+          description: The ID of the user
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 533d3fe3-bccc-405a-9904-4f516e892856
+        name:
+          description: The name of the user
+          type: string
+          maxLength: 255
+          examples:
+            - Bot
+    BasicResponse:
+      type: object
+      required:
+        - createTime
+        - createdByUserId
+        - updateTime
+        - updatedByUserId
+      properties:
+        createTime:
+          description: The date and time at which the item was created
+          type: string
+          format: date-time
+          readOnly: true
+          examples:
+            - '2023-10-24T14:15:30.500Z'
+        createdByUserId:
+          description: The ID of the user that created the item
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 533d3fe3-bccc-405a-9904-4f516e892856
+        createdByUser:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicUser'
+        updateTime:
+          description: The date and time at which the item was last updated
+          type: string
+          format: date-time
+          readOnly: true
+          examples:
+            - '2023-10-25T10:45:30.500Z'
+        updatedByUserId:
+          description: The ID of the user that last updated the item
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 533d3fe3-bccc-405a-9904-4f516e892856
+        updatedByUser:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicUser'
+    User_Read:
+      allOf:
+        - $ref: '#/components/schemas/User'
+        - $ref: '#/components/schemas/BasicResponse'
+    ApiErrorType:
+      type: string
+      enum:
+        - ALREADY_EXISTS
+        - FAILED_PRECONDITION
+        - INTERNAL
+        - INVALID_ARGUMENT
+        - NOT_FOUND
+        - PERMISSION_DENIED
+        - RESOURCE_EXHAUSTED
+        - UNAUTHENTICATED
+        - UNAVAILABLE
+      description: |
+        Error type:
+
+        - `ALREADY_EXISTS` - Already exists
+        - `FAILED_PRECONDITION` - Failed precondition
+        - `INTERNAL` - Internal
+        - `INVALID_ARGUMENT` - Invalid argument
+        - `NOT_FOUND` - Not found
+        - `PERMISSION_DENIED` - Permission denied
+        - `RESOURCE_EXHAUSTED` - Resource exhausted
+        - `UNAUTHENTICATED` - Unauthenticated
+        - `UNAVAILABLE` - Unavailable
+      examples:
+        - INVALID_ARGUMENT
+    ApiErrorDetails:
+      type: object
+      required:
+        - location
+        - message
+      properties:
+        location:
+          description: |
+            The specific item that caused the error. For example, if you specify an invalid value for a parameter, the 
+            `location` will be the name of the parameter.
+          type: string
+          examples:
+            - propertyName
+        message:
+          type: string
+          examples:
+            - Message describing the error
+    ApiError:
+      type: object
+      required:
+        - status
+        - type
+        - message
+      properties:
+        status:
+          type: integer
+          format: int32
+          examples:
+            - 400
+        type:
+          $ref: '#/components/schemas/ApiErrorType'
+        message:
+          type: string
+          examples:
+            - Message describing the error
+        details:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/ApiErrorDetails'
     BasicOrganization:
       description: The basic organization information
       type: object
@@ -2973,70 +3160,6 @@ components:
         - `DECLINED` - The invitation has been declined by the invited user.
       examples:
         - PENDING
-    BasicUser:
-      description: The basic user information
-      type: object
-      required:
-        - name
-        - id
-      properties:
-        id:
-          description: The ID of the user
-          type: string
-          format: uuid
-          readOnly: true
-          examples:
-            - 533d3fe3-bccc-405a-9904-4f516e892856
-        name:
-          description: The name of the user
-          type: string
-          maxLength: 255
-          examples:
-            - Bot
-    BasicResponse:
-      type: object
-      required:
-        - createTime
-        - createdByUserId
-        - updateTime
-        - updatedByUserId
-      properties:
-        createTime:
-          description: The date and time at which the item was created
-          type: string
-          format: date-time
-          readOnly: true
-          examples:
-            - '2023-10-24T14:15:30.500Z'
-        createdByUserId:
-          description: The ID of the user that created the item
-          type: string
-          format: uuid
-          readOnly: true
-          examples:
-            - 533d3fe3-bccc-405a-9904-4f516e892856
-        createdByUser:
-          readOnly: true
-          allOf:
-            - $ref: '#/components/schemas/BasicUser'
-        updateTime:
-          description: The date and time at which the item was last updated
-          type: string
-          format: date-time
-          readOnly: true
-          examples:
-            - '2023-10-25T10:45:30.500Z'
-        updatedByUserId:
-          description: The ID of the user that last updated the item
-          type: string
-          format: uuid
-          readOnly: true
-          examples:
-            - 533d3fe3-bccc-405a-9904-4f516e892856
-        updatedByUser:
-          readOnly: true
-          allOf:
-            - $ref: '#/components/schemas/BasicUser'
     UserInvitation_Read:
       allOf:
         - $ref: '#/components/schemas/UserInvitation'
@@ -3061,73 +3184,6 @@ components:
               examples:
                 - '2024-03-11T00:00:00.000Z'
         - $ref: '#/components/schemas/BasicResponse'
-    ApiErrorType:
-      type: string
-      enum:
-        - ALREADY_EXISTS
-        - FAILED_PRECONDITION
-        - INTERNAL
-        - INVALID_ARGUMENT
-        - NOT_FOUND
-        - PERMISSION_DENIED
-        - RESOURCE_EXHAUSTED
-        - UNAUTHENTICATED
-        - UNAVAILABLE
-      description: |
-        Error type:
-
-        - `ALREADY_EXISTS` - Already exists
-        - `FAILED_PRECONDITION` - Failed precondition
-        - `INTERNAL` - Internal
-        - `INVALID_ARGUMENT` - Invalid argument
-        - `NOT_FOUND` - Not found
-        - `PERMISSION_DENIED` - Permission denied
-        - `RESOURCE_EXHAUSTED` - Resource exhausted
-        - `UNAUTHENTICATED` - Unauthenticated
-        - `UNAVAILABLE` - Unavailable
-      examples:
-        - INVALID_ARGUMENT
-    ApiErrorDetails:
-      type: object
-      required:
-        - location
-        - message
-      properties:
-        location:
-          description: |
-            The specific item that caused the error. For example, if you specify an invalid value for a parameter, the 
-            `location` will be the name of the parameter.
-          type: string
-          examples:
-            - propertyName
-        message:
-          type: string
-          examples:
-            - Message describing the error
-    ApiError:
-      type: object
-      required:
-        - status
-        - type
-        - message
-      properties:
-        status:
-          type: integer
-          format: int32
-          examples:
-            - 400
-        type:
-          $ref: '#/components/schemas/ApiErrorType'
-        message:
-          type: string
-          examples:
-            - Message describing the error
-        details:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: '#/components/schemas/ApiErrorDetails'
     UserInvitation_Accept:
       allOf:
         - $ref: '#/components/schemas/UserInvitation'
@@ -5249,6 +5305,16 @@ components:
             status: 403
             type: PERMISSION_DENIED
             message: The user is not authorized to make this request
+    NotFoundError:
+      description: Not found error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+          example:
+            status: 404
+            type: NOT_FOUND
+            message: The resource you requested does not exist
     InvalidArgumentError:
       description: |
         Invalid argument error. This is different from status `400` in that the syntax is correct (e.g. correct JSON format), 
@@ -5296,16 +5362,6 @@ components:
             message: Internal server error
     EmptyResponse:
       description: Empty response
-    NotFoundError:
-      description: Not found error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-          example:
-            status: 404
-            type: NOT_FOUND
-            message: The resource you requested does not exist
     AlreadyExistsError:
       description: Already exists error
       content:

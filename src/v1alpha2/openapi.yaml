@@ -88,6 +88,8 @@ servers:
 
 paths:
   # users
+  /users/me:
+    $ref: './users/_paths/users_me.yaml'
   # users/invitations
   /users/me/invitations:
     $ref: './users/invitations/_paths/invitations.yaml'

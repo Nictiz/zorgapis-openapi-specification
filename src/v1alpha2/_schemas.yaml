@@ -23,6 +23,8 @@ SemVer:
   $ref: './_schemas/SemVer.yaml'
 
 # users
+User:
+  $ref: './users/_schemas/User.yaml'
 # users/invitations
 UserInvitation:
   $ref: './users/invitations/_schemas/UserInvitation.yaml'

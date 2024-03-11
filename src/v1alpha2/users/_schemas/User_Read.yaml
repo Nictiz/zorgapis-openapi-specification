@@ -1,0 +1,4 @@
+﻿# Resource definition for Read operations
+allOf:
+  - $ref: './User.yaml'
+  - $ref: '../../_schemas/BasicResponse.yaml'
