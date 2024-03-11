@@ -23,6 +23,15 @@ SemVer:
   $ref: './_schemas/SemVer.yaml'
 
 # users
+# users/invitations
+UserInvitation:
+  $ref: './users/invitations/_schemas/UserInvitation.yaml'
+UserInvitation_Accept:
+  $ref: './users/invitations/_schemas/UserInvitation_Accept.yaml'
+UserInvitation_Decline:
+  $ref: './users/invitations/_schemas/UserInvitation_Decline.yaml'
+UserInvitation_Read:
+  $ref: './users/invitations/_schemas/UserInvitation_Read.yaml'
 # users/memberships
 UserMembership:
   $ref: './users/memberships/_schemas/UserMembership.yaml'

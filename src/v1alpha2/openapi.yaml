@@ -16,6 +16,9 @@ tags:
   - name: users
     description: Users API
     x-displayName: Users
+  - name: user.invitations
+    description: User invitations API
+    x-displayName: User invitations
   - name: user.memberships
     description: User memberships API
     x-displayName: User memberships
@@ -57,6 +60,7 @@ x-tagGroups:
   - name: Users
     tags:
       - users
+      - user.invitations
       - user.memberships
   - name: Organizations
     tags:
@@ -84,6 +88,15 @@ servers:
 
 paths:
   # users
+  # users/invitations
+  /users/me/invitations:
+    $ref: './users/invitations/_paths/invitations.yaml'
+  /users/me/invitations/{invitationId}:
+    $ref: './users/invitations/_paths/invitations_{invitationId}.yaml'
+  /users/me/invitations/{invitationId}:accept:
+    $ref: './users/invitations/_paths/invitations_{invitationId}_accept.yaml'
+  /users/me/invitations/{invitationId}:decline:
+    $ref: './users/invitations/_paths/invitations_{invitationId}_decline.yaml'
   # users/memberships
   /users/me/memberships:
     $ref: './users/memberships/_paths/memberships.yaml'

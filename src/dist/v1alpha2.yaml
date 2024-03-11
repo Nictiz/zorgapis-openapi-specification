@@ -32,6 +32,9 @@ tags:
   - name: users
     description: Users API
     x-displayName: Users
+  - name: user.invitations
+    description: User invitations API
+    x-displayName: User invitations
   - name: user.memberships
     description: User memberships API
     x-displayName: User memberships
@@ -63,6 +66,138 @@ tags:
     description: API specification version declarations of conformity API
     x-displayName: API specification version declarations of conformity
 paths:
+  /users/me/invitations:
+    get:
+      summary: List all user invitations
+      description: "\uFEFFReturns a list of user invitations.\n\n<details>\n<summary>Details</summary>\n\n## Sort expressions\n\nThe following table lists the field names and directions you can use in a sort expression.\n\n| Field          | Type        | Direction | Example                    |\n|----------------|-------------|-----------|----------------------------|\n| `id`           | `uuid`      | `asc`     | `?sort=asc(id)`            |\n|                |             | `desc`    | `?sort=desc(id)`           |\n| `emailAddress` | `string`    | `asc`     | `?sort=asc(emailAddress)`  |\n|                |             | `desc`    | `?sort=desc(emailAddress)` |\n| `responseTime` | `date-time` | `asc`     | `?sort=asc(responseTime)`  |\n|                |             | `desc`    | `?sort=desc(responseTime)` |\n| `createTime`   | `date-time` | `asc`     | `?sort=asc(createTime)`    |\n|                |             | `desc`    | `?sort=desc(createTime)`   |\n| `updateTime`   | `date-time` | `asc`     | `?sort=asc(updateTime)`    |\n|                |             | `desc`    | `?sort=desc(updateTime)`   |\n\n### Default sort expression\n\nIf the `sort` parameter is omitted, the default sort expression is used:\n\n```\n?sort=desc(createTime)\n```\n\nThis causes results to be sorted by `createTime` in descending order (from most recent to oldest).\n\n## Filter expressions\n\nThe following table lists the field names and operators you can use in a filter expression.\n\n| Field            | Type               | Operator | Example                                                              |\n|------------------|--------------------|----------|----------------------------------------------------------------------|\n| `id`             | `uuid`             | `eq`     | `?filter=eq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`              |\n|                  |                    | `neq`    | `?filter=neq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`             |\n| `organizationId` | `uuid`             | `eq`     | `?filter=eq(organizationId,\"533d3fe3-bccc-405a-9904-4f516e892856\")`  |\n|                  |                    | `neq`    | `?filter=neq(organizationId,\"533d3fe3-bccc-405a-9904-4f516e892856\")` |\n| `emailAddress`   | `string`           | `eq`     | `?filter=eq(emailAddress,\"john.doe@nictiz.nl\")`                      |\n|                  |                    | `neq`    | `?filter=neq(emailAddress,\"john.doe@nictiz.nl\")`                     |\n|                  |                    | `has`    | `?filter=has(emailAddress,\"john\")`                                   |\n|                  |                    | `stw`    | `?filter=stw(emailAddress,\"john\")`                                   |\n|                  |                    | `enw`    | `?filter=enw(emailAddress,\"nictiz.nl\")`                              |\n|                  |                    | `reg`    | `?filter=reg(emailAddress,\"^[a-zA-Z0-9 ]+$\")`                        |\n| `status`         | `InvitationStatus` | `eq`     | `?filter=eq(status,\"PENDING\")`                                       |\n|                  |                    | `neq`    | `?filter=neq(status,\"PENDING\")`                                      |\n| `responseTime`   | `date-time`        | `eq`     | `?filter=eq(responseTime,\"2024-03-16T14:15:30.500Z\")`                |\n|                  |                    | `neq`    | `?filter=neq(responseTime,\"2024-03-16T14:15:30.500Z\")`               |\n|                  |                    | `gt`     | `?filter=gt(responseTime,\"2024-03-16T14:15:30.500Z\")`                |\n|                  |                    | `gte`    | `?filter=gte(responseTime,\"2024-03-16T14:15:30.500Z\")`               |\n|                  |                    | `lt`     | `?filter=lt(responseTime,\"2024-03-16T14:15:30.500Z\")`                |\n|                  |                    | `lte`    | `?filter=lte(responseTime,\"2024-03-16T14:15:30.500Z\")`               |\n| `createTime`     | `date-time`        | `eq`     | `?filter=eq(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `neq`    | `?filter=neq(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |                    | `gt`     | `?filter=gt(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `gte`    | `?filter=gte(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |                    | `lt`     | `?filter=lt(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `lte`    | `?filter=lte(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n| `updateTime`     | `date-time`        | `eq`     | `?filter=eq(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `neq`    | `?filter=neq(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |                    | `gt`     | `?filter=gt(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `gte`    | `?filter=gte(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |                    | `lt`     | `?filter=lt(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `lte`    | `?filter=lte(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n\n</details>"
+      operationId: listUserInvitations
+      tags:
+        - user.invitations
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserInvitation_Read'
+          headers:
+            Total-Count:
+              $ref: '#/components/headers/Total-Count'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /users/me/invitations/{invitationId}:
+    get:
+      summary: Get a user invitation by ID
+      description: |
+        Returns a single user invitation.
+      operationId: getUserInvitationById
+      tags:
+        - user.invitations
+      parameters:
+        - $ref: '#/components/parameters/invitationId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInvitation_Read'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /users/me/invitations/{invitationId}:accept:
+    post:
+      summary: Accept a pending user invitation
+      description: |
+        Accept a pending user invitation.
+      operationId: acceptUserInvitation
+      tags:
+        - user.invitations
+      parameters:
+        - $ref: '#/components/parameters/invitationId'
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInvitation_Accept'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /users/me/invitations/{invitationId}:decline:
+    post:
+      summary: Decline a pending user invitation
+      description: |
+        Decline a pending user invitation.
+      operationId: declineUserInvitation
+      tags:
+        - user.invitations
+      parameters:
+        - $ref: '#/components/parameters/invitationId'
+      responses:
+        '200':
+          description: Declined
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInvitation_Decline'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
   /users/me/memberships:
     get:
       summary: List all user memberships
@@ -2784,21 +2919,22 @@ components:
           maxLength: 255
           examples:
             - Nictiz
-    UserMembership:
-      description: The user membership information
+    UserInvitation:
+      description: The user invitation information
       type: object
       required:
         - id
         - organizationId
         - organization
+        - emailAddress
       properties:
         id:
-          description: The ID of the user membership
+          description: The ID of the organization invitation
           type: string
           format: uuid
           readOnly: true
           examples:
-            - cefdc28f-550d-4005-9ca7-c1836202c37b
+            - 30ca5cc5-b84c-4993-b15b-8ab182dab89c
         organizationId:
           description: The ID of the organization
           type: string
@@ -2813,6 +2949,30 @@ components:
           examples:
             - id: b9b95cd7-8d6e-4c91-8861-854828cf1730
               name: Nictiz
+        emailAddress:
+          description: The email address of the user being invited
+          type: string
+          format: email
+          readOnly: true
+          maxLength: 254
+          examples:
+            - john.doe@nictiz.nl
+    InvitationStatus:
+      type: string
+      enum:
+        - PENDING
+        - CANCELED
+        - ACCEPTED
+        - DECLINED
+      description: |
+        The invitation status:
+
+        - `PENDING` - The invitation is pending.
+        - `CANCELED` - The invitation has been canceled by an organization member.
+        - `ACCEPTED` - The invitation has been accepted by the invited user.
+        - `DECLINED` - The invitation has been declined by the invited user.
+      examples:
+        - PENDING
     BasicUser:
       description: The basic user information
       type: object
@@ -2877,9 +3037,29 @@ components:
           readOnly: true
           allOf:
             - $ref: '#/components/schemas/BasicUser'
-    UserMembership_Read:
+    UserInvitation_Read:
       allOf:
-        - $ref: '#/components/schemas/UserMembership'
+        - $ref: '#/components/schemas/UserInvitation'
+        - type: object
+          required:
+            - status
+          properties:
+            status:
+              description: The status of the user invitation
+              readOnly: true
+              allOf:
+                - $ref: '#/components/schemas/InvitationStatus'
+              examples:
+                - ACCEPTED
+            responseTime:
+              description: The date and time at which the invited user responded to the invite
+              type:
+                - string
+                - 'null'
+              format: date-time
+              readOnly: true
+              examples:
+                - '2024-03-11T00:00:00.000Z'
         - $ref: '#/components/schemas/BasicResponse'
     ApiErrorType:
       type: string
@@ -2948,6 +3128,87 @@ components:
             - 'null'
           items:
             $ref: '#/components/schemas/ApiErrorDetails'
+    UserInvitation_Accept:
+      allOf:
+        - $ref: '#/components/schemas/UserInvitation'
+        - type: object
+          required:
+            - status
+          properties:
+            status:
+              description: The status of the user invitation
+              readOnly: true
+              allOf:
+                - $ref: '#/components/schemas/InvitationStatus'
+              examples:
+                - ACCEPTED
+            responseTime:
+              description: The date and time at which the invited user responded to the invite
+              type:
+                - string
+                - 'null'
+              format: date-time
+              readOnly: true
+              examples:
+                - '2024-03-11T00:00:00.000Z'
+        - $ref: '#/components/schemas/BasicResponse'
+    UserInvitation_Decline:
+      allOf:
+        - $ref: '#/components/schemas/UserInvitation'
+        - type: object
+          required:
+            - status
+          properties:
+            status:
+              description: The status of the user invitation
+              readOnly: true
+              allOf:
+                - $ref: '#/components/schemas/InvitationStatus'
+              examples:
+                - DECLINED
+            responseTime:
+              description: The date and time at which the invited user responded to the invite
+              type:
+                - string
+                - 'null'
+              format: date-time
+              readOnly: true
+              examples:
+                - '2024-03-11T00:00:00.000Z'
+        - $ref: '#/components/schemas/BasicResponse'
+    UserMembership:
+      description: The user membership information
+      type: object
+      required:
+        - id
+        - organizationId
+        - organization
+      properties:
+        id:
+          description: The ID of the user membership
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - cefdc28f-550d-4005-9ca7-c1836202c37b
+        organizationId:
+          description: The ID of the organization
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - b9b95cd7-8d6e-4c91-8861-854828cf1730
+        organization:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicOrganization'
+          examples:
+            - id: b9b95cd7-8d6e-4c91-8861-854828cf1730
+              name: Nictiz
+    UserMembership_Read:
+      allOf:
+        - $ref: '#/components/schemas/UserMembership'
+        - $ref: '#/components/schemas/BasicResponse'
     Country:
       type: string
       enum:
@@ -3607,22 +3868,6 @@ components:
           maxLength: 254
           examples:
             - john.doe@nictiz.nl
-    InvitationStatus:
-      type: string
-      enum:
-        - PENDING
-        - CANCELED
-        - ACCEPTED
-        - DECLINED
-      description: |
-        The invitation status:
-
-        - `PENDING` - The invitation is pending.
-        - `CANCELED` - The invitation has been canceled by an organization member.
-        - `ACCEPTED` - The invitation has been accepted by the invited user.
-        - `DECLINED` - The invitation has been declined by the invited user.
-      examples:
-        - PENDING
     OrganizationInvitation_Read:
       allOf:
         - $ref: '#/components/schemas/OrganizationInvitation'
@@ -4894,6 +5139,16 @@ components:
       schema:
         type: boolean
         default: false
+    invitationId:
+      name: invitationId
+      in: path
+      required: true
+      description: The ID of the invitation
+      schema:
+        type: string
+        format: uuid
+        examples:
+          - 30ca5cc5-b84c-4993-b15b-8ab182dab89c
     membershipId:
       name: membershipId
       in: path
@@ -4914,16 +5169,6 @@ components:
         format: uuid
         examples:
           - b9b95cd7-8d6e-4c91-8861-854828cf1730
-    invitationId:
-      name: invitationId
-      in: path
-      required: true
-      description: The ID of the invitation
-      schema:
-        type: string
-        format: uuid
-        examples:
-          - 30ca5cc5-b84c-4993-b15b-8ab182dab89c
     versionName:
       name: versionName
       in: path
@@ -5083,6 +5328,7 @@ x-tagGroups:
   - name: Users
     tags:
       - users
+      - user.invitations
       - user.memberships
   - name: Organizations
     tags:
