@@ -5,9 +5,6 @@ allOf:
     required:
       # Read-only
       - status
-      - userId
-      - user
-      - responseTime
     properties:
       status:
         # Returned by GET, not used in POST/PUT/PATCH
@@ -33,7 +30,6 @@ allOf:
         allOf:
           - $ref: '../../../_schemas/BasicUser.yaml'
         type:
-          # TODO: Does this work?
           - 'object'
           - 'null'
         examples:

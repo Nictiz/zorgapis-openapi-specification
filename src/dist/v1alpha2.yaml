@@ -3368,9 +3368,6 @@ components:
         - type: object
           required:
             - status
-            - userId
-            - user
-            - responseTime
           properties:
             status:
               description: The status of the organization invitation
