@@ -31,6 +31,17 @@ Organization_CreateRead:
   $ref: './organizations/_schemas/Organization_CreateRead.yaml'
 Organization_Update:
   $ref: './organizations/_schemas/Organization_Update.yaml'
+# organizations/invitations
+InvitationStatus:
+  $ref: './organizations/invitations/_schemas/InvitationStatus.yaml'
+OrganizationInvitation:
+  $ref: './organizations/invitations/_schemas/OrganizationInvitation.yaml'
+OrganizationInvitation_Cancel:
+  $ref: './organizations/invitations/_schemas/OrganizationInvitation_Cancel.yaml'
+OrganizationInvitation_Create:
+  $ref: './organizations/invitations/_schemas/OrganizationInvitation_Create.yaml'
+OrganizationInvitation_Read:
+  $ref: './organizations/invitations/_schemas/OrganizationInvitation_Read.yaml'
 
 # api-requirements-versions
 ApiRequirementsVersion:

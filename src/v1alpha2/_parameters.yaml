@@ -2,6 +2,8 @@
 # path
 declarationOfConformityId:
   $ref: './_parameters/path/declarationOfConformityId.yaml'
+invitationId:
+  $ref: './_parameters/path/invitationId.yaml'
 urlId:
   $ref: './_parameters/path/urlId.yaml'
 versionId:

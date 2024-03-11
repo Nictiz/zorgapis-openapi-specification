@@ -1,0 +1,9 @@
+﻿name: invitationId
+in: path
+required: true
+description: The ID of the invitation
+schema:
+  type: string
+  format: uuid
+  examples:
+    - 30ca5cc5-b84c-4993-b15b-8ab182dab89c

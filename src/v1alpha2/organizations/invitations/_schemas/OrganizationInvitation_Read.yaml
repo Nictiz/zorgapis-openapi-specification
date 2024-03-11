@@ -1,0 +1,52 @@
+﻿# Resource definition for Read operations
+allOf:
+  - $ref: './OrganizationInvitation.yaml'
+  - type: object
+    required:
+      # Read-only
+      - status
+      - userId
+      - user
+      - responseTime
+    properties:
+      status:
+        # Returned by GET, not used in POST/PUT/PATCH
+        description: The status of the organization invitation
+        readOnly: true
+        allOf:
+          - $ref: './InvitationStatus.yaml'
+        examples:
+          - ACCEPTED
+      userId:
+        # Returned by GET, not used in POST/PUT/PATCH
+        description: The ID of the user that responded to the invitation
+        type:
+          - 'string'
+          - 'null'
+        format: uuid
+        readOnly: true
+        examples:
+          - 7375d2bf-884c-4adf-86f5-5b35f0da864b
+      user:
+        # Returned by GET, not used in POST/PUT/PATCH
+        readOnly: true
+        allOf:
+          - $ref: '../../../_schemas/BasicUser.yaml'
+        type:
+          # TODO: Does this work?
+          - 'object'
+          - 'null'
+        examples:
+          - id: 7375d2bf-884c-4adf-86f5-5b35f0da864b
+            name: John Doe
+      responseTime:
+        # Returned by GET, not used in POST/PUT/PATCH
+        description: The date and time at which the invited user responded to the invite
+        type:
+          - 'string'
+          - 'null'
+        format: date-time
+        readOnly: true
+        examples:
+          - '2024-03-11T00:00:00.000Z'
+  - $ref: '../../../_schemas/BasicResponse.yaml'
