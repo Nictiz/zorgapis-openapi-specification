@@ -8,7 +8,7 @@ flows:
     scopes:
       openid: Informs the Authorization Server that the Client is making an OpenID Connect request.
       offline_access: |
-        Requests that an OAuth 2.0 `refresh_token` be issued that can be used to obtain an Access Token.
+        Requests an OAuth 2.0 `refresh_token` to be issued that can be used to obtain an Access Token.
       email: |
         Requests access to the `email` claim, which contains the user's email address, and `email_verified`, which is a 
         boolean indicating whether the email address was verified by the user.
@@ -33,7 +33,7 @@ flows:
     scopes:
       openid: Informs the Authorization Server that the Client is making an OpenID Connect request.
       offline_access: |
-        Requests that an OAuth 2.0 `refresh_token` be issued that can be used to obtain an Access Token.
+        Requests an OAuth 2.0 `refresh_token` to be issued that can be used to obtain an Access Token.
       email: |
         Requests access to the `email` claim, which contains the user's email address, and `email_verified`, which is a 
         boolean indicating whether the email address was verified by the user.
