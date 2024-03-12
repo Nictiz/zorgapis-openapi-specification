@@ -26,7 +26,7 @@ properties:
     # Returned by GET, not used in POST/PUT/PATCH
     readOnly: true
     allOf:
-      - $ref: './BasicUser.yaml'
+      - $ref: '../users/_schemas/BasicUser.yaml'
   updateTime:
     # Returned by GET, not used in POST/PUT/PATCH
     description: The date and time at which the item was last updated
@@ -47,4 +47,4 @@ properties:
     # Returned by GET, not used in POST/PUT/PATCH
     readOnly: true
     allOf:
-      - $ref: './BasicUser.yaml'
+      - $ref: '../users/_schemas/BasicUser.yaml'

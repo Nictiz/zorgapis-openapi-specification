@@ -9,8 +9,6 @@ ApiErrorType:
   $ref: './_schemas/ApiErrorType.yaml'
 BasicResponse:
   $ref: './_schemas/BasicResponse.yaml'
-BasicUser:
-  $ref: './_schemas/BasicUser.yaml'
 ConformityType:
   $ref: './_schemas/ConformityType.yaml'
 Country:
@@ -23,6 +21,8 @@ SemVer:
   $ref: './_schemas/SemVer.yaml'
 
 # users
+BasicUser:
+  $ref: './users/_schemas/BasicUser.yaml'
 User:
   $ref: './users/_schemas/User.yaml'
 # users/invitations
