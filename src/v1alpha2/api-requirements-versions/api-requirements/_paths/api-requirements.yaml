@@ -9,7 +9,7 @@ get:
     - oauth2:
         - api-requirements-versions:write
   tags:
-    - api-requirements-version.api-requirements
+    - api-requirements-versions.api-requirements
   parameters:
     - $ref: '../../_parameters/path/versionName.yaml'
     - $ref: '../../../_parameters/query/limit.yaml'

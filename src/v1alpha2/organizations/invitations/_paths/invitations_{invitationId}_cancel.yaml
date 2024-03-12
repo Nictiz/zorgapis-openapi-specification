@@ -7,7 +7,7 @@
     - oauth2:
         - organizations:write
   tags:
-    - organization.invitations
+    - organizations.invitations
   parameters:
     - $ref: '../../_parameters/path/organizationId.yaml'
     - $ref: '../../../_parameters/path/invitationId.yaml'

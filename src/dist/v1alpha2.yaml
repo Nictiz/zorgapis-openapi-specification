@@ -33,37 +33,37 @@ tags:
   - name: users
     description: Users API
     x-displayName: Users
-  - name: user.invitations
+  - name: users.invitations
     description: User invitations API
     x-displayName: User invitations
-  - name: user.memberships
+  - name: users.memberships
     description: User memberships API
     x-displayName: User memberships
   - name: organizations
     description: Organizations API
     x-displayName: Organizations
-  - name: organization.invitations
+  - name: organizations.invitations
     description: Organization invitations API
     x-displayName: Organization invitations
-  - name: organization.memberships
+  - name: organizations.memberships
     description: Organization memberships API
     x-displayName: Organization memberships
   - name: api-requirements-versions
     description: API requirements versions API
     x-displayName: API requirements versions
-  - name: api-requirements-version.api-requirements
+  - name: api-requirements-versions.api-requirements
     description: API requirements version API requirements API
     x-displayName: API requirements version API requirements
   - name: api-specifications
     description: API specifications API
     x-displayName: API specifications
-  - name: api-specification.versions
+  - name: api-specifications.versions
     description: API specification versions API
     x-displayName: API specification versions
-  - name: api-specification.version.urls
+  - name: api-specifications.versions.urls
     description: API specification version URLs API
     x-displayName: API specification version URLs
-  - name: api-specification.version.declarations-of-conformity
+  - name: api-specifications.versions.declarations-of-conformity
     description: API specification version declarations of conformity API
     x-displayName: API specification version declarations of conformity
 paths:
@@ -114,7 +114,7 @@ paths:
         - oauth2:
             - users:write
       tags:
-        - user.invitations
+        - users.invitations
       parameters:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/skip'
@@ -159,7 +159,7 @@ paths:
         - oauth2:
             - users:write
       tags:
-        - user.invitations
+        - users.invitations
       parameters:
         - $ref: '#/components/parameters/invitationId'
       responses:
@@ -193,7 +193,7 @@ paths:
         - oauth2:
             - users:write
       tags:
-        - user.invitations
+        - users.invitations
       parameters:
         - $ref: '#/components/parameters/invitationId'
       responses:
@@ -227,7 +227,7 @@ paths:
         - oauth2:
             - users:write
       tags:
-        - user.invitations
+        - users.invitations
       parameters:
         - $ref: '#/components/parameters/invitationId'
       responses:
@@ -262,7 +262,7 @@ paths:
         - oauth2:
             - users:write
       tags:
-        - user.memberships
+        - users.memberships
       parameters:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/skip'
@@ -307,7 +307,7 @@ paths:
         - oauth2:
             - users:write
       tags:
-        - user.memberships
+        - users.memberships
       parameters:
         - $ref: '#/components/parameters/membershipId'
       responses:
@@ -340,7 +340,7 @@ paths:
         - oauth2:
             - users:write
       tags:
-        - user.memberships
+        - users.memberships
       parameters:
         - $ref: '#/components/parameters/membershipId'
       responses:
@@ -613,7 +613,7 @@ paths:
         - oauth2:
             - organizations:write
       tags:
-        - organization.invitations
+        - organizations.invitations
       parameters:
         - $ref: '#/components/parameters/organizationId'
         - $ref: '#/components/parameters/limit'
@@ -656,7 +656,7 @@ paths:
         - oauth2:
             - organizations:write
       tags:
-        - organization.invitations
+        - organizations.invitations
       parameters:
         - $ref: '#/components/parameters/organizationId'
       requestBody:
@@ -698,7 +698,7 @@ paths:
         - oauth2:
             - organizations:write
       tags:
-        - organization.invitations
+        - organizations.invitations
       parameters:
         - $ref: '#/components/parameters/organizationId'
         - $ref: '#/components/parameters/invitationId'
@@ -733,7 +733,7 @@ paths:
         - oauth2:
             - organizations:write
       tags:
-        - organization.invitations
+        - organizations.invitations
       parameters:
         - $ref: '#/components/parameters/organizationId'
         - $ref: '#/components/parameters/invitationId'
@@ -769,7 +769,7 @@ paths:
         - oauth2:
             - organizations:write
       tags:
-        - organization.memberships
+        - organizations.memberships
       parameters:
         - $ref: '#/components/parameters/organizationId'
         - $ref: '#/components/parameters/limit'
@@ -815,7 +815,7 @@ paths:
         - oauth2:
             - organizations:write
       tags:
-        - organization.memberships
+        - organizations.memberships
       parameters:
         - $ref: '#/components/parameters/organizationId'
         - $ref: '#/components/parameters/membershipId'
@@ -849,7 +849,7 @@ paths:
         - oauth2:
             - organizations:write
       tags:
-        - organization.memberships
+        - organizations.memberships
       parameters:
         - $ref: '#/components/parameters/organizationId'
         - $ref: '#/components/parameters/membershipId'
@@ -1235,7 +1235,7 @@ paths:
         - oauth2:
             - api-requirements-versions:write
       tags:
-        - api-requirements-version.api-requirements
+        - api-requirements-versions.api-requirements
       parameters:
         - $ref: '#/components/parameters/versionName'
         - $ref: '#/components/parameters/limit'
@@ -1626,7 +1626,7 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specification.versions
+        - api-specifications.versions
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/limit'
@@ -1669,7 +1669,7 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specification.versions
+        - api-specifications.versions
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
       requestBody:
@@ -1711,7 +1711,7 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specification.versions
+        - api-specifications.versions
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -1747,7 +1747,7 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specification.versions
+        - api-specifications.versions
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -1843,7 +1843,7 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specification.version.urls
+        - api-specifications.versions.urls
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -1887,7 +1887,7 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specification.version.urls
+        - api-specifications.versions.urls
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -1930,7 +1930,7 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specification.version.urls
+        - api-specifications.versions.urls
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -1967,7 +1967,7 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specification.version.urls
+        - api-specifications.versions.urls
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -2010,7 +2010,7 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specification.version.urls
+        - api-specifications.versions.urls
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -2103,7 +2103,7 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specification.version.declarations-of-conformity
+        - api-specifications.versions.declarations-of-conformity
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -2147,7 +2147,7 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specification.version.declarations-of-conformity
+        - api-specifications.versions.declarations-of-conformity
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -3065,7 +3065,7 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specification.version.declarations-of-conformity
+        - api-specifications.versions.declarations-of-conformity
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -5598,20 +5598,20 @@ x-tagGroups:
   - name: Users
     tags:
       - users
-      - user.invitations
-      - user.memberships
+      - users.invitations
+      - users.memberships
   - name: Organizations
     tags:
       - organizations
-      - organization.invitations
-      - organization.memberships
+      - organizations.invitations
+      - organizations.memberships
   - name: API requirements
     tags:
       - api-requirements-versions
-      - api-requirements-version.api-requirements
+      - api-requirements-versions.api-requirements
   - name: API specifications
     tags:
       - api-specifications
-      - api-specification.versions
-      - api-specification.version.urls
-      - api-specification.version.declarations-of-conformity
+      - api-specifications.versions
+      - api-specifications.versions.urls
+      - api-specifications.versions.declarations-of-conformity

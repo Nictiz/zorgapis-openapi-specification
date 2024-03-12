@@ -9,7 +9,7 @@
     - oauth2:
         - users:write
   tags:
-    - user.invitations
+    - users.invitations
   parameters:
     - $ref: '../../../_parameters/path/invitationId.yaml'
   responses:

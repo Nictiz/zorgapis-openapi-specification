@@ -9,7 +9,7 @@ get:
     - oauth2:
         - api-specifications:write
   tags:
-    - api-specification.versions
+    - api-specifications.versions
   parameters:
     - $ref: '../../_parameters/path/apiSpecificationId.yaml'
     - $ref: '../../../_parameters/query/limit.yaml'
@@ -51,7 +51,7 @@ post:
     - oauth2:
         - api-specifications:write
   tags:
-    - api-specification.versions
+    - api-specifications.versions
   parameters:
     - $ref: '../../_parameters/path/apiSpecificationId.yaml'
   requestBody:

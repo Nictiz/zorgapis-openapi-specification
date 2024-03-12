@@ -9,7 +9,7 @@ get:
     - oauth2:
         - api-specifications:write
   tags:
-    - api-specification.version.declarations-of-conformity
+    - api-specifications.versions.declarations-of-conformity
   parameters:
     - $ref: '../../../_parameters/path/apiSpecificationId.yaml'
     - $ref: '../../../../_parameters/path/versionId.yaml'
@@ -52,7 +52,7 @@ post:
     - oauth2:
         - api-specifications:write
   tags:
-    - api-specification.version.declarations-of-conformity
+    - api-specifications.versions.declarations-of-conformity
   parameters:
     - $ref: '../../../_parameters/path/apiSpecificationId.yaml'
     - $ref: '../../../../_parameters/path/versionId.yaml'

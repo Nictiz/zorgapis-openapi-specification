@@ -9,7 +9,7 @@
     - oauth2:
         - organizations:write
   tags:
-    - organization.memberships
+    - organizations.memberships
   parameters:
     - $ref: '../../_parameters/path/organizationId.yaml'
     - $ref: '../../../_parameters/query/limit.yaml'

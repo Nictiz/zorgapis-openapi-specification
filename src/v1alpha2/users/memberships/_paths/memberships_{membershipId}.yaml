@@ -9,7 +9,7 @@
     - oauth2:
         - users:write
   tags:
-    - user.memberships
+    - users.memberships
   parameters:
     - $ref: '../../../_parameters/path/membershipId.yaml'
   responses:
@@ -42,7 +42,7 @@ delete:
     - oauth2:
         - users:write
   tags:
-    - user.memberships
+    - users.memberships
   parameters:
     - $ref: '../../../_parameters/path/membershipId.yaml'
   responses:

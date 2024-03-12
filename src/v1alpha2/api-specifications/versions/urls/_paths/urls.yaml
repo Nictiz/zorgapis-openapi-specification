@@ -9,7 +9,7 @@ get:
     - oauth2:
         - api-specifications:write
   tags:
-    - api-specification.version.urls
+    - api-specifications.versions.urls
   parameters:
     - $ref: '../../../_parameters/path/apiSpecificationId.yaml'
     - $ref: '../../../../_parameters/path/versionId.yaml'
@@ -52,7 +52,7 @@ post:
     - oauth2:
         - api-specifications:write
   tags:
-    - api-specification.version.urls
+    - api-specifications.versions.urls
   parameters:
     - $ref: '../../../_parameters/path/apiSpecificationId.yaml'
     - $ref: '../../../../_parameters/path/versionId.yaml'
