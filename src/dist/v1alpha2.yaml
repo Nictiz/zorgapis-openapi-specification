@@ -5548,7 +5548,7 @@ components:
   securitySchemes:
     oauth2:
       type: oauth2
-      description: TODO
+      description: This API uses OAuth 2.0 for secure authentication.
       flows:
         authorizationCode:
           authorizationUrl: https://auth.sandbox.zorgapis.nl/realms/zorgapis/protocol/openid-connect/auth

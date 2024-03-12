@@ -1,6 +1,5 @@
 ﻿type: oauth2
-# TODO: Description
-description: TODO
+description: This API uses OAuth 2.0 for secure authentication.
 flows:
   authorizationCode:
     authorizationUrl: https://auth.sandbox.zorgapis.nl/realms/zorgapis/protocol/openid-connect/auth
