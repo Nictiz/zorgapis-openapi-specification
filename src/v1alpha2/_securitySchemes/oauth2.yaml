@@ -16,18 +16,18 @@ flows:
         Requests access to the End-User's default profile Claims, which are: `name`, `family_name`, `given_name`, 
         `middle_name`, `nickname`, `preferred_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, 
         `zoneinfo`, `locale`, and `updated_at`.    
-        
+      
       users:read: Grants read access to user endpoints.
-      users:write: Grants read and write access to user endpoints.
+      users:write: Grants write (including read) access to user endpoints.
       
       organizations:read: Grants read access to organization endpoints.
-      organizations:write: Grants read and write access to organization endpoints.
+      organizations:write: Grants write (including read) access to organization endpoints.
       
       api-requirements-versions:read: Grants read access to API requirements version endpoints.
-      api-requirements-versions:write: Grants read and write access to API requirements version endpoints.
+      api-requirements-versions:write: Grants write (including read) access to API requirements version endpoints.
       
       api-specifications:read: Grants read access to API specification endpoints.
-      api-specifications:write: Grants read and write access to API specification endpoints.
+      api-specifications:write: Grants write (including read) access to API specification endpoints.
   clientCredentials:
     tokenUrl: https://auth.sandbox.zorgapis.nl/realms/zorgapis/protocol/openid-connect/token
     scopes:
