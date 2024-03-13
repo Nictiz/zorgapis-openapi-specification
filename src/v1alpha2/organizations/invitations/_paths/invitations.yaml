@@ -6,8 +6,6 @@
   security:
     - oauth2:
         - organizations:read
-    - oauth2:
-        - organizations:write
   tags:
     - organizations.invitations
   parameters:

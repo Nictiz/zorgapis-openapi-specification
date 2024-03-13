@@ -6,8 +6,6 @@ get:
   security:
     - oauth2:
         - api-specifications:read
-    - oauth2:
-        - api-specifications:write
   tags:
     - api-specifications.versions.urls
   parameters:

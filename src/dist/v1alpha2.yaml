@@ -76,8 +76,6 @@ paths:
       security:
         - oauth2:
             - users:read
-        - oauth2:
-            - users:write
       tags:
         - users
       responses:
@@ -111,8 +109,6 @@ paths:
       security:
         - oauth2:
             - users:read
-        - oauth2:
-            - users:write
       tags:
         - users.invitations
       parameters:
@@ -156,8 +152,6 @@ paths:
       security:
         - oauth2:
             - users:read
-        - oauth2:
-            - users:write
       tags:
         - users.invitations
       parameters:
@@ -259,8 +253,6 @@ paths:
       security:
         - oauth2:
             - users:read
-        - oauth2:
-            - users:write
       tags:
         - users.memberships
       parameters:
@@ -304,8 +296,6 @@ paths:
       security:
         - oauth2:
             - users:read
-        - oauth2:
-            - users:write
       tags:
         - users.memberships
       parameters:
@@ -450,8 +440,6 @@ paths:
       security:
         - oauth2:
             - organizations:read
-        - oauth2:
-            - organizations:write
       tags:
         - organizations
       parameters:
@@ -532,8 +520,6 @@ paths:
       security:
         - oauth2:
             - organizations:read
-        - oauth2:
-            - organizations:write
       tags:
         - organizations
       parameters:
@@ -610,8 +596,6 @@ paths:
       security:
         - oauth2:
             - organizations:read
-        - oauth2:
-            - organizations:write
       tags:
         - organizations.invitations
       parameters:
@@ -695,8 +679,6 @@ paths:
       security:
         - oauth2:
             - organizations:read
-        - oauth2:
-            - organizations:write
       tags:
         - organizations.invitations
       parameters:
@@ -766,8 +748,6 @@ paths:
       security:
         - oauth2:
             - organizations:read
-        - oauth2:
-            - organizations:write
       tags:
         - organizations.memberships
       parameters:
@@ -812,8 +792,6 @@ paths:
       security:
         - oauth2:
             - organizations:read
-        - oauth2:
-            - organizations:write
       tags:
         - organizations.memberships
       parameters:
@@ -988,8 +966,6 @@ paths:
       security:
         - oauth2:
             - api-requirements-versions:read
-        - oauth2:
-            - api-requirements-versions:write
       tags:
         - api-requirements-versions
       parameters:
@@ -1070,8 +1046,6 @@ paths:
       security:
         - oauth2:
             - api-requirements-versions:read
-        - oauth2:
-            - api-requirements-versions:write
       tags:
         - api-requirements-versions
       parameters:
@@ -1232,8 +1206,6 @@ paths:
       security:
         - oauth2:
             - api-requirements-versions:read
-        - oauth2:
-            - api-requirements-versions:write
       tags:
         - api-requirements-versions.api-requirements
       parameters:
@@ -1347,8 +1319,6 @@ paths:
       security:
         - oauth2:
             - api-specifications:read
-        - oauth2:
-            - api-specifications:write
       tags:
         - api-specifications
       parameters:
@@ -1429,8 +1399,6 @@ paths:
       security:
         - oauth2:
             - api-specifications:read
-        - oauth2:
-            - api-specifications:write
       tags:
         - api-specifications
       parameters:
@@ -1623,8 +1591,6 @@ paths:
       security:
         - oauth2:
             - api-specifications:read
-        - oauth2:
-            - api-specifications:write
       tags:
         - api-specifications.versions
       parameters:
@@ -1708,8 +1674,6 @@ paths:
       security:
         - oauth2:
             - api-specifications:read
-        - oauth2:
-            - api-specifications:write
       tags:
         - api-specifications.versions
       parameters:
@@ -1840,8 +1804,6 @@ paths:
       security:
         - oauth2:
             - api-specifications:read
-        - oauth2:
-            - api-specifications:write
       tags:
         - api-specifications.versions.urls
       parameters:
@@ -1927,8 +1889,6 @@ paths:
       security:
         - oauth2:
             - api-specifications:read
-        - oauth2:
-            - api-specifications:write
       tags:
         - api-specifications.versions.urls
       parameters:
@@ -2100,8 +2060,6 @@ paths:
       security:
         - oauth2:
             - api-specifications:read
-        - oauth2:
-            - api-specifications:write
       tags:
         - api-specifications.versions.declarations-of-conformity
       parameters:
@@ -3062,8 +3020,6 @@ paths:
       security:
         - oauth2:
             - api-specifications:read
-        - oauth2:
-            - api-specifications:write
       tags:
         - api-specifications.versions.declarations-of-conformity
       parameters:
@@ -5566,13 +5522,13 @@ components:
               `middle_name`, `nickname`, `preferred_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, 
               `zoneinfo`, `locale`, and `updated_at`.    
             users:read: Grants read access to user endpoints.
-            users:write: Grants write (including read) access to user endpoints.
+            users:write: Grants write access to user endpoints.
             organizations:read: Grants read access to organization endpoints.
-            organizations:write: Grants write (including read) access to organization endpoints.
+            organizations:write: Grants write access to organization endpoints.
             api-requirements-versions:read: Grants read access to API requirements version endpoints.
-            api-requirements-versions:write: Grants write (including read) access to API requirements version endpoints.
+            api-requirements-versions:write: Grants write access to API requirements version endpoints.
             api-specifications:read: Grants read access to API specification endpoints.
-            api-specifications:write: Grants write (including read) access to API specification endpoints.
+            api-specifications:write: Grants write access to API specification endpoints.
         clientCredentials:
           tokenUrl: https://auth.sandbox.zorgapis.nl/realms/zorgapis/protocol/openid-connect/token
           scopes:
@@ -5587,13 +5543,13 @@ components:
               `middle_name`, `nickname`, `preferred_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, 
               `zoneinfo`, `locale`, and `updated_at`.    
             users:read: Grants read access to user endpoints.
-            users:write: Grants write (including read) access to user endpoints.
+            users:write: Grants write access to user endpoints.
             organizations:read: Grants read access to organization endpoints.
-            organizations:write: Grants write (including read) access to organization endpoints.
+            organizations:write: Grants write access to organization endpoints.
             api-requirements-versions:read: Grants read access to API requirements version endpoints.
-            api-requirements-versions:write: Grants write (including read) access to API requirements version endpoints.
+            api-requirements-versions:write: Grants write access to API requirements version endpoints.
             api-specifications:read: Grants read access to API specification endpoints.
-            api-specifications:write: Grants write (including read) access to API specification endpoints.
+            api-specifications:write: Grants write access to API specification endpoints.
 x-tagGroups:
   - name: Users
     tags:
