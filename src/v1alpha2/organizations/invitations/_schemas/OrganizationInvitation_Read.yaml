@@ -29,9 +29,6 @@ allOf:
         readOnly: true
         allOf:
           - $ref: '../../../users/_schemas/BasicUser.yaml'
-        type:
-          - 'object'
-          - 'null'
         examples:
           - id: 7375d2bf-884c-4adf-86f5-5b35f0da864b
             name: John Doe
