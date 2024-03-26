@@ -1,0 +1,24 @@
+﻿# Abstract base schema
+description: The user information
+type: object
+required:
+  # Read-only
+  - id
+  - name
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the user
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 2aa3349c-dfa6-4308-b562-f7fc8be6c053
+  name:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The name of the user
+    type: string
+    readOnly: true
+    maxLength: 255
+    examples:
+      - John Doe

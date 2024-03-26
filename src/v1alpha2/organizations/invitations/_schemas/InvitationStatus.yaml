@@ -1,0 +1,15 @@
+﻿type: string
+enum:
+  - PENDING
+  - CANCELED
+  - ACCEPTED
+  - DECLINED
+description: |
+  The invitation status:
+  
+  - `PENDING` - The invitation is pending.
+  - `CANCELED` - The invitation has been canceled by an organization member.
+  - `ACCEPTED` - The invitation has been accepted by the invited user.
+  - `DECLINED` - The invitation has been declined by the invited user.
+examples:
+  - PENDING

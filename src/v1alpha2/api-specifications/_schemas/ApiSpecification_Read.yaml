@@ -1,0 +1,43 @@
+# Resource definition for Read operations
+allOf:
+  - $ref: './ApiSpecification.yaml'
+    # Extend
+  - type: object
+    required:
+      - organizationId
+      - architecturalStyle
+    properties:
+      organizationId:
+        description: The ID of the organization that maintains the API specification
+        type: string
+        format: uuid
+        examples:
+          - 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
+      organization:
+        # Returned by GET, not used in POST/PUT/PATCH
+        readOnly: true
+        allOf:
+          - $ref: '../../organizations/_schemas/BasicOrganization.yaml'
+        examples:
+          - id: 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
+            name: Stichting MedMij
+      architecturalStyle:
+        description: The architectural style of the API specification
+        allOf:
+          - $ref: '../../api-perspectives/_schemas/ApiArchitecturalStyle.yaml'
+        examples:
+          - REST
+      mainVersionId:
+        description: The ID of the main version of the API specification
+        type:
+          - 'string'
+          - 'null'
+        format: uuid
+        examples:
+          - 15261fd0-b292-45d9-b6b1-266cc922fb50
+      mainVersion:
+        # Returned by GET, not used in POST/PUT/PATCH
+        readOnly: true
+        allOf:
+          - $ref: '../versions/_schemas/BasicApiSpecificationVersion.yaml'
+  - $ref: '../../_schemas/BasicResponse.yaml'

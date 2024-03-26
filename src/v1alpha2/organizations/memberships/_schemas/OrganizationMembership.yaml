@@ -1,0 +1,33 @@
+﻿# Abstract base schema
+description: The organization membership information
+type: object
+required:
+  # Read-only
+  - id
+  - userId
+  - user
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the organization membership
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - cefdc28f-550d-4005-9ca7-c1836202c37b
+  userId:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the user
+    type: 'string'
+    format: uuid
+    readOnly: true
+    examples:
+      - 7375d2bf-884c-4adf-86f5-5b35f0da864b
+  user:
+    # Returned by GET, not used in POST/PUT/PATCH
+    readOnly: true
+    allOf:
+      - $ref: '../../../users/_schemas/BasicUser.yaml'
+    examples:
+      - id: 7375d2bf-884c-4adf-86f5-5b35f0da864b
+        name: John Doe

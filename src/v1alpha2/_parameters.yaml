@@ -1,0 +1,38 @@
+# common
+# path
+declarationOfConformityId:
+  $ref: './_parameters/path/declarationOfConformityId.yaml'
+invitationId:
+  $ref: './_parameters/path/invitationId.yaml'
+membershipId:
+  $ref: './_parameters/path/membershipId.yaml'
+urlId:
+  $ref: './_parameters/path/urlId.yaml'
+versionId:
+  $ref: './_parameters/path/versionId.yaml'
+# query
+count:
+  $ref: './_parameters/query/count.yaml'
+filter:
+  $ref: './_parameters/query/filter.yaml'
+limit:
+  $ref: './_parameters/query/limit.yaml'
+skip:
+  $ref: './_parameters/query/skip.yaml'
+sort:
+  $ref: './_parameters/query/sort.yaml'
+
+# organizations
+# path
+organizationId:
+  $ref: './organizations/_parameters/path/organizationId.yaml'
+
+# api-requirements-versions
+# path
+versionName:
+  $ref: './api-requirements-versions/_parameters/path/versionName.yaml'
+
+# api-specifications
+# path
+apiSpecificationId:
+  $ref: './api-specifications/_parameters/path/apiSpecificationId.yaml'

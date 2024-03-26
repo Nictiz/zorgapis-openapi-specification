@@ -1,0 +1,50 @@
+type: object
+required:
+  # Read-only
+  - createTime
+  - createdByUserId
+  - updateTime
+  - updatedByUserId
+properties:
+  createTime:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The date and time at which the item was created
+    type: string
+    format: date-time
+    readOnly: true
+    examples:
+      - '2023-10-24T14:15:30.500Z'
+  createdByUserId:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the user that created the item
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 533d3fe3-bccc-405a-9904-4f516e892856
+  createdByUser:
+    # Returned by GET, not used in POST/PUT/PATCH
+    readOnly: true
+    allOf:
+      - $ref: '../users/_schemas/BasicUser.yaml'
+  updateTime:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The date and time at which the item was last updated
+    type: string
+    format: date-time
+    readOnly: true
+    examples:
+      - '2023-10-25T10:45:30.500Z'
+  updatedByUserId:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the user that last updated the item
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 533d3fe3-bccc-405a-9904-4f516e892856
+  updatedByUser:
+    # Returned by GET, not used in POST/PUT/PATCH
+    readOnly: true
+    allOf:
+      - $ref: '../users/_schemas/BasicUser.yaml'

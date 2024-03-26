@@ -84,7 +84,7 @@ specification, follow these steps:
 npm i -g @redocly/cli
 ```
 3. Bundle the specification from the command line (in the API specification's root folder) for the specific API version
-   (e.g. `v1alpha1`):
+   (e.g. `v1alpha2`):
 ```shell
-redocly bundle ./v1alpha1/openapi.yaml --output v1alpha1.yaml
+redocly bundle ./v1alpha2/openapi.yaml --output v1alpha2.yaml
 ```

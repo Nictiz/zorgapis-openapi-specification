@@ -1,0 +1,21 @@
+description: The basic user information
+type: object
+required:
+  - name
+  # Read-only
+  - id
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the user
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 533d3fe3-bccc-405a-9904-4f516e892856
+  name:
+    description: The name of the user
+    type: string
+    maxLength: 255
+    examples:
+      - Bot

@@ -1,0 +1,17 @@
+﻿# Resource definition for Create operations
+allOf:
+  - $ref: './OrganizationInvitation.yaml'
+  - type: object
+    required:
+      # Read-only
+      - status
+    properties:
+      status:
+        # Returned by GET, not used in POST/PUT/PATCH
+        description: The status of the organization invitation
+        readOnly: true
+        allOf:
+          - $ref: './InvitationStatus.yaml'
+        examples:
+          - PENDING
+  - $ref: '../../../_schemas/BasicResponse.yaml'

@@ -1,0 +1,139 @@
+# common
+Address:
+  $ref: './_schemas/Address.yaml'
+ApiError:
+  $ref: './_schemas/ApiError.yaml'
+ApiErrorDetails:
+  $ref: './_schemas/ApiErrorDetails.yaml'
+ApiErrorType:
+  $ref: './_schemas/ApiErrorType.yaml'
+BasicResponse:
+  $ref: './_schemas/BasicResponse.yaml'
+ConformityType:
+  $ref: './_schemas/ConformityType.yaml'
+Country:
+  $ref: './_schemas/Country.yaml'
+ProductLifecycleState:
+  $ref: './_schemas/ProductLifecycleState.yaml'
+RequirementLevel:
+  $ref: './_schemas/RequirementLevel.yaml'
+SemVer:
+  $ref: './_schemas/SemVer.yaml'
+
+# users
+BasicUser:
+  $ref: './users/_schemas/BasicUser.yaml'
+User:
+  $ref: './users/_schemas/User.yaml'
+# users/invitations
+UserInvitation:
+  $ref: './users/invitations/_schemas/UserInvitation.yaml'
+UserInvitation_Accept:
+  $ref: './users/invitations/_schemas/UserInvitation_Accept.yaml'
+UserInvitation_Decline:
+  $ref: './users/invitations/_schemas/UserInvitation_Decline.yaml'
+UserInvitation_Read:
+  $ref: './users/invitations/_schemas/UserInvitation_Read.yaml'
+# users/memberships
+UserMembership:
+  $ref: './users/memberships/_schemas/UserMembership.yaml'
+UserMembership_Read:
+  $ref: './users/memberships/_schemas/UserMembership_Read.yaml'
+
+# organizations
+BasicOrganization:
+  $ref: './organizations/_schemas/BasicOrganization.yaml'
+Organization:
+  $ref: './organizations/_schemas/Organization.yaml'
+Organization_CreateRead:
+  $ref: './organizations/_schemas/Organization_CreateRead.yaml'
+Organization_Update:
+  $ref: './organizations/_schemas/Organization_Update.yaml'
+# organizations/invitations
+InvitationStatus:
+  $ref: './organizations/invitations/_schemas/InvitationStatus.yaml'
+OrganizationInvitation:
+  $ref: './organizations/invitations/_schemas/OrganizationInvitation.yaml'
+OrganizationInvitation_Cancel:
+  $ref: './organizations/invitations/_schemas/OrganizationInvitation_Cancel.yaml'
+OrganizationInvitation_Create:
+  $ref: './organizations/invitations/_schemas/OrganizationInvitation_Create.yaml'
+OrganizationInvitation_Read:
+  $ref: './organizations/invitations/_schemas/OrganizationInvitation_Read.yaml'
+# organizations/memberships
+OrganizationMembership:
+  $ref: './organizations/memberships/_schemas/OrganizationMembership.yaml'
+OrganizationMembership_Read:
+  $ref: './organizations/memberships/_schemas/OrganizationMembership_Read.yaml'
+
+# api-requirements-versions
+ApiRequirementsVersion:
+  $ref: './api-requirements-versions/_schemas/ApiRequirementsVersion.yaml'
+ApiRequirementsVersion_CreateRead:
+  $ref: './api-requirements-versions/_schemas/ApiRequirementsVersion_CreateRead.yaml'
+ApiRequirementsVersion_Update:
+  $ref: './api-requirements-versions/_schemas/ApiRequirementsVersion_Update.yaml'
+# api-requirements-versions/api-requirements
+ApiRequirement:
+  $ref: './api-requirements-versions/api-requirements/_schemas/ApiRequirement.yaml'
+ApiRequirement_CreateRead:
+  $ref: './api-requirements-versions/api-requirements/_schemas/ApiRequirement_CreateRead.yaml'
+ApiRequirementCategory:
+  $ref: './api-requirements-versions/api-requirements/_schemas/ApiRequirementCategory.yaml'
+ApiRole:
+  $ref: './api-requirements-versions/api-requirements/_schemas/ApiRole.yaml'
+ApiStandardizationLevel:
+  $ref: './api-requirements-versions/api-requirements/_schemas/ApiStandardizationLevel.yaml'
+
+# api-perspectives
+ApiArchitecturalStyle:
+  $ref: './api-perspectives/_schemas/ApiArchitecturalStyle.yaml'
+ApiLifecycleState:
+  $ref: './api-perspectives/_schemas/ApiLifecycleState.yaml'
+ApiPerspectiveType:
+  $ref: './api-perspectives/_schemas/ApiPerspectiveType.yaml'
+ApiRanking:
+  $ref: './api-perspectives/_schemas/ApiRanking.yaml'
+ApiRankingLevel:
+  $ref: './api-perspectives/_schemas/ApiRankingLevel.yaml'
+ApiRankingType:
+  $ref: './api-perspectives/_schemas/ApiRankingType.yaml'
+ApiRequirementConformity:
+  $ref: './api-perspectives/_schemas/ApiRequirementConformity.yaml'
+
+# api-specifications
+ApiSpecification:
+  $ref: './api-specifications/_schemas/ApiSpecification.yaml'
+ApiSpecification_Create:
+  $ref: './api-specifications/_schemas/ApiSpecification_Create.yaml'
+ApiSpecification_Read:
+  $ref: './api-specifications/_schemas/ApiSpecification_Read.yaml'
+ApiSpecification_Update:
+  $ref: './api-specifications/_schemas/ApiSpecification_Update.yaml'
+# api-specifications/versions
+ApiSpecificationVersion:
+  $ref: './api-specifications/versions/_schemas/ApiSpecificationVersion.yaml'
+ApiSpecificationVersion_CreateRead:
+  $ref: './api-specifications/versions/_schemas/ApiSpecificationVersion_CreateRead.yaml'
+ApiSpecificationVersion_Update:
+  $ref: './api-specifications/versions/_schemas/ApiSpecificationVersion_Update.yaml'
+BasicApiSpecificationVersion:
+  $ref: './api-specifications/versions/_schemas/BasicApiSpecificationVersion.yaml'
+# api-specifications/versions/declarations-of-conformity
+ApiSpecificationVersionDeclarationOfConformity:
+  $ref: './api-specifications/versions/declarations-of-conformity/_schemas/ApiSpecificationVersionDeclarationOfConformity.yaml'
+ApiSpecificationVersionDeclarationOfConformity_CreateRead:
+  $ref: './api-specifications/versions/declarations-of-conformity/_schemas/ApiSpecificationVersionDeclarationOfConformity_CreateRead.yaml'
+BasicApiSpecificationVersionDeclarationOfConformity:
+  $ref: './api-specifications/versions/declarations-of-conformity/_schemas/BasicApiSpecificationVersionDeclarationOfConformity.yaml'
+# api-specifications/versions/urls
+ApiSpecificationVersionUrl:
+  $ref: './api-specifications/versions/urls/_schemas/ApiSpecificationVersionUrl.yaml'
+ApiSpecificationVersionUrl_CreateRead:
+  $ref: './api-specifications/versions/urls/_schemas/ApiSpecificationVersionUrl_CreateRead.yaml'
+ApiSpecificationVersionUrl_Update:
+  $ref: './api-specifications/versions/urls/_schemas/ApiSpecificationVersionUrl_Update.yaml'
+ApiSpecificationVersionUrlType:
+  $ref: './api-specifications/versions/urls/_schemas/ApiSpecificationVersionUrlType.yaml'
+BasicApiSpecificationVersionUrl:
+  $ref: './api-specifications/versions/urls/_schemas/BasicApiSpecificationVersionUrl.yaml'
