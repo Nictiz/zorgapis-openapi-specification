@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: ZorgAPIs API
-  version: 0.1.0
+  version: 0.2.0
   description: |-
     Definition of the Dutch API Library for Healthcare (ZorgAPIs) API.
 
@@ -17,40 +17,344 @@ info:
     Nictiz has developed an [API strategy](https://nictiz.github.io/api-strategie-docs/) for Dutch Healthcare and
     [requirements](https://nictiz.github.io/api-requirements-docs/) for Application Programming Interfaces (APIs) in Dutch
     Healthcare.
+  contact:
+    name: ZorgAPIs Developer Portal
+    url: https://developer.zorgapis.nl/
   license:
     name: MIT License
     url: https://choosealicense.com/licenses/mit/
 servers:
-  - url: https://{environment}.zorgapis.nl/v1alpha1
+  - url: https://{environment}.zorgapis.nl/v1alpha2
     variables:
       environment:
         default: api.sandbox
         enum:
           - api.sandbox
-security: []
+security:
+  - oauth2: []
 tags:
+  - name: users
+    description: Users API
+    x-displayName: Users
+  - name: users.invitations
+    description: User invitations API
+    x-displayName: User invitations
+  - name: users.memberships
+    description: User memberships API
+    x-displayName: User memberships
   - name: organizations
     description: Organizations API
     x-displayName: Organizations
+  - name: organizations.invitations
+    description: Organization invitations API
+    x-displayName: Organization invitations
+  - name: organizations.memberships
+    description: Organization memberships API
+    x-displayName: Organization memberships
   - name: api-requirements-versions
     description: API requirements versions API
     x-displayName: API requirements versions
-  - name: api-requirements-version.api-requirements
+  - name: api-requirements-versions.api-requirements
     description: API requirements version API requirements API
     x-displayName: API requirements version API requirements
   - name: api-specifications
     description: API specifications API
     x-displayName: API specifications
-  - name: api-specification.versions
+  - name: api-specifications.versions
     description: API specification versions API
     x-displayName: API specification versions
-  - name: api-specification.version.urls
+  - name: api-specifications.versions.urls
     description: API specification version URLs API
     x-displayName: API specification version URLs
-  - name: api-specification.version.declarations-of-conformity
+  - name: api-specifications.versions.declarations-of-conformity
     description: API specification version declarations of conformity API
     x-displayName: API specification version declarations of conformity
 paths:
+  /users/me:
+    get:
+      summary: Get user information for authenticated user
+      description: |
+        Returns a single user.
+      operationId: getUserForAuthenticatedUser
+      security:
+        - oauth2:
+            - users:read
+      tags:
+        - users
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User_Read'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /users/me/invitations:
+    get:
+      summary: List all user invitations
+      description: "\uFEFFReturns a list of user invitations.\n\n<details>\n<summary>Details</summary>\n\n## Sort expressions\n\nThe following table lists the field names and directions you can use in a sort expression.\n\n| Field          | Type        | Direction | Example                    |\n|----------------|-------------|-----------|----------------------------|\n| `id`           | `uuid`      | `asc`     | `?sort=asc(id)`            |\n|                |             | `desc`    | `?sort=desc(id)`           |\n| `emailAddress` | `string`    | `asc`     | `?sort=asc(emailAddress)`  |\n|                |             | `desc`    | `?sort=desc(emailAddress)` |\n| `responseTime` | `date-time` | `asc`     | `?sort=asc(responseTime)`  |\n|                |             | `desc`    | `?sort=desc(responseTime)` |\n| `createTime`   | `date-time` | `asc`     | `?sort=asc(createTime)`    |\n|                |             | `desc`    | `?sort=desc(createTime)`   |\n| `updateTime`   | `date-time` | `asc`     | `?sort=asc(updateTime)`    |\n|                |             | `desc`    | `?sort=desc(updateTime)`   |\n\n### Default sort expression\n\nIf the `sort` parameter is omitted, the default sort expression is used:\n\n```\n?sort=desc(createTime)\n```\n\nThis causes results to be sorted by `createTime` in descending order (from most recent to oldest).\n\n## Filter expressions\n\nThe following table lists the field names and operators you can use in a filter expression.\n\n| Field            | Type               | Operator | Example                                                              |\n|------------------|--------------------|----------|----------------------------------------------------------------------|\n| `id`             | `uuid`             | `eq`     | `?filter=eq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`              |\n|                  |                    | `neq`    | `?filter=neq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`             |\n| `organizationId` | `uuid`             | `eq`     | `?filter=eq(organizationId,\"533d3fe3-bccc-405a-9904-4f516e892856\")`  |\n|                  |                    | `neq`    | `?filter=neq(organizationId,\"533d3fe3-bccc-405a-9904-4f516e892856\")` |\n| `emailAddress`   | `string`           | `eq`     | `?filter=eq(emailAddress,\"john.doe@nictiz.nl\")`                      |\n|                  |                    | `neq`    | `?filter=neq(emailAddress,\"john.doe@nictiz.nl\")`                     |\n|                  |                    | `has`    | `?filter=has(emailAddress,\"john\")`                                   |\n|                  |                    | `stw`    | `?filter=stw(emailAddress,\"john\")`                                   |\n|                  |                    | `enw`    | `?filter=enw(emailAddress,\"nictiz.nl\")`                              |\n|                  |                    | `reg`    | `?filter=reg(emailAddress,\"^[a-zA-Z0-9 ]+$\")`                        |\n| `status`         | `InvitationStatus` | `eq`     | `?filter=eq(status,\"PENDING\")`                                       |\n|                  |                    | `neq`    | `?filter=neq(status,\"PENDING\")`                                      |\n| `responseTime`   | `date-time`        | `eq`     | `?filter=eq(responseTime,\"2024-03-16T14:15:30.500Z\")`                |\n|                  |                    | `neq`    | `?filter=neq(responseTime,\"2024-03-16T14:15:30.500Z\")`               |\n|                  |                    | `gt`     | `?filter=gt(responseTime,\"2024-03-16T14:15:30.500Z\")`                |\n|                  |                    | `gte`    | `?filter=gte(responseTime,\"2024-03-16T14:15:30.500Z\")`               |\n|                  |                    | `lt`     | `?filter=lt(responseTime,\"2024-03-16T14:15:30.500Z\")`                |\n|                  |                    | `lte`    | `?filter=lte(responseTime,\"2024-03-16T14:15:30.500Z\")`               |\n| `createTime`     | `date-time`        | `eq`     | `?filter=eq(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `neq`    | `?filter=neq(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |                    | `gt`     | `?filter=gt(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `gte`    | `?filter=gte(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |                    | `lt`     | `?filter=lt(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `lte`    | `?filter=lte(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n| `updateTime`     | `date-time`        | `eq`     | `?filter=eq(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `neq`    | `?filter=neq(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |                    | `gt`     | `?filter=gt(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `gte`    | `?filter=gte(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |                    | `lt`     | `?filter=lt(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |                    | `lte`    | `?filter=lte(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n\n</details>"
+      operationId: listUserInvitations
+      security:
+        - oauth2:
+            - users:read
+      tags:
+        - users.invitations
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserInvitation_Read'
+          headers:
+            Total-Count:
+              $ref: '#/components/headers/Total-Count'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /users/me/invitations/{invitationId}:
+    get:
+      summary: Get a user invitation by ID
+      description: |
+        Returns a single user invitation.
+      operationId: getUserInvitationById
+      security:
+        - oauth2:
+            - users:read
+      tags:
+        - users.invitations
+      parameters:
+        - $ref: '#/components/parameters/invitationId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInvitation_Read'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /users/me/invitations/{invitationId}:accept:
+    post:
+      summary: Accept a pending user invitation
+      description: |
+        Accept a pending user invitation.
+      operationId: acceptUserInvitation
+      security:
+        - oauth2:
+            - users:write
+      tags:
+        - users.invitations
+      parameters:
+        - $ref: '#/components/parameters/invitationId'
+      responses:
+        '200':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInvitation_Accept'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /users/me/invitations/{invitationId}:decline:
+    post:
+      summary: Decline a pending user invitation
+      description: |
+        Decline a pending user invitation.
+      operationId: declineUserInvitation
+      security:
+        - oauth2:
+            - users:write
+      tags:
+        - users.invitations
+      parameters:
+        - $ref: '#/components/parameters/invitationId'
+      responses:
+        '200':
+          description: Declined
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInvitation_Decline'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /users/me/memberships:
+    get:
+      summary: List all user memberships
+      description: "\uFEFFReturns a list of user memberships.\n\n<details>\n<summary>Details</summary>\n\n## Sort expressions\n\nThe following table lists the field names and directions you can use in a sort expression.\n\n| Field          | Type        | Direction | Example                    |\n|----------------|-------------|-----------|----------------------------|\n| `id`           | `uuid`      | `asc`     | `?sort=asc(id)`            |\n|                |             | `desc`    | `?sort=desc(id)`           |\n| `createTime`   | `date-time` | `asc`     | `?sort=asc(createTime)`    |\n|                |             | `desc`    | `?sort=desc(createTime)`   |\n| `updateTime`   | `date-time` | `asc`     | `?sort=asc(updateTime)`    |\n|                |             | `desc`    | `?sort=desc(updateTime)`   |\n\n### Default sort expression\n\nIf the `sort` parameter is omitted, the default sort expression is used:\n\n```\n?sort=desc(createTime)\n```\n\nThis causes results to be sorted by `createTime` in descending order (from most recent to oldest).\n\n## Filter expressions\n\nThe following table lists the field names and operators you can use in a filter expression.\n\n| Field            | Type        | Operator | Example                                                              |\n|------------------|-------------|----------|----------------------------------------------------------------------|\n| `id`             | `uuid`      | `eq`     | `?filter=eq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`              |\n|                  |             | `neq`    | `?filter=neq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`             |\n| `organizationId` | `uuid`      | `eq`     | `?filter=eq(organizationId,\"533d3fe3-bccc-405a-9904-4f516e892856\")`  |\n|                  |             | `neq`    | `?filter=neq(organizationId,\"533d3fe3-bccc-405a-9904-4f516e892856\")` |\n| `createTime`     | `date-time` | `eq`     | `?filter=eq(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |             | `neq`    | `?filter=neq(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |             | `gt`     | `?filter=gt(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |             | `gte`    | `?filter=gte(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |             | `lt`     | `?filter=lt(createTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |             | `lte`    | `?filter=lte(createTime,\"2024-03-16T14:15:30.500Z\")`                 |\n| `updateTime`     | `date-time` | `eq`     | `?filter=eq(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |             | `neq`    | `?filter=neq(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |             | `gt`     | `?filter=gt(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |             | `gte`    | `?filter=gte(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n|                  |             | `lt`     | `?filter=lt(updateTime,\"2024-03-16T14:15:30.500Z\")`                  |\n|                  |             | `lte`    | `?filter=lte(updateTime,\"2024-03-16T14:15:30.500Z\")`                 |\n\n</details>"
+      operationId: listUserMemberships
+      security:
+        - oauth2:
+            - users:read
+      tags:
+        - users.memberships
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserMembership_Read'
+          headers:
+            Total-Count:
+              $ref: '#/components/headers/Total-Count'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /users/me/memberships/{membershipId}:
+    get:
+      summary: Get a user membership by ID
+      description: |
+        Returns a single user membership.
+      operationId: getUserMembershipById
+      security:
+        - oauth2:
+            - users:read
+      tags:
+        - users.memberships
+      parameters:
+        - $ref: '#/components/parameters/membershipId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserMembership_Read'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+    delete:
+      summary: Delete a user membership
+      description: |
+        Deletes a single user membership.
+      operationId: deleteUserMembership
+      security:
+        - oauth2:
+            - users:write
+      tags:
+        - users.memberships
+      parameters:
+        - $ref: '#/components/parameters/membershipId'
+      responses:
+        '204':
+          $ref: '#/components/responses/EmptyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
   /organizations:
     get:
       summary: List all organizations
@@ -136,6 +440,9 @@ paths:
 
         </details>
       operationId: listOrganizations
+      security:
+        - oauth2:
+            - organizations:read
       tags:
         - organizations
       parameters:
@@ -175,6 +482,9 @@ paths:
       description: |
         Adds an organization to the collection.
       operationId: addOrganization
+      security:
+        - oauth2:
+            - organizations:write
       tags:
         - organizations
       requestBody:
@@ -210,6 +520,9 @@ paths:
       description: |
         Returns a single organization.
       operationId: getOrganizationById
+      security:
+        - oauth2:
+            - organizations:read
       tags:
         - organizations
       parameters:
@@ -242,6 +555,9 @@ paths:
       description: |
         Updates a single organization.
       operationId: updateOrganization
+      security:
+        - oauth2:
+            - organizations:write
       tags:
         - organizations
       parameters:
@@ -259,6 +575,268 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Organization_CreateRead'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /organizations/{organizationId}/invitations:
+    get:
+      summary: List all organization invitations
+      description: "\uFEFFReturns a list of organization invitations.\n\n<details>\n<summary>Details</summary>\n\n## Sort expressions\n\nThe following table lists the field names and directions you can use in a sort expression.\n\n| Field          | Type        | Direction | Example                    |\n|----------------|-------------|-----------|----------------------------|\n| `id`           | `uuid`      | `asc`     | `?sort=asc(id)`            |\n|                |             | `desc`    | `?sort=desc(id)`           |\n| `emailAddress` | `string`    | `asc`     | `?sort=asc(emailAddress)`  |\n|                |             | `desc`    | `?sort=desc(emailAddress)` |\n| `responseTime` | `date-time` | `asc`     | `?sort=asc(responseTime)`  |\n|                |             | `desc`    | `?sort=desc(responseTime)` |\n| `createTime`   | `date-time` | `asc`     | `?sort=asc(createTime)`    |\n|                |             | `desc`    | `?sort=desc(createTime)`   |\n| `updateTime`   | `date-time` | `asc`     | `?sort=asc(updateTime)`    |\n|                |             | `desc`    | `?sort=desc(updateTime)`   |\n\n### Default sort expression\n\nIf the `sort` parameter is omitted, the default sort expression is used:\n\n```\n?sort=desc(createTime)\n```\n\nThis causes results to be sorted by `createTime` in descending order (from most recent to oldest).\n\n## Filter expressions\n\nThe following table lists the field names and operators you can use in a filter expression.\n\n| Field          | Type               | Operator | Example                                                      |\n|----------------|--------------------|----------|--------------------------------------------------------------|\n| `id`           | `uuid`             | `eq`     | `?filter=eq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`      |\n|                |                    | `neq`    | `?filter=neq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`     |\n| `emailAddress` | `string`           | `eq`     | `?filter=eq(emailAddress,\"john.doe@nictiz.nl\")`              |\n|                |                    | `neq`    | `?filter=neq(emailAddress,\"john.doe@nictiz.nl\")`             |\n|                |                    | `has`    | `?filter=has(emailAddress,\"john\")`                           |\n|                |                    | `stw`    | `?filter=stw(emailAddress,\"john\")`                           |\n|                |                    | `enw`    | `?filter=enw(emailAddress,\"nictiz.nl\")`                      |\n|                |                    | `reg`    | `?filter=reg(emailAddress,\"^[a-zA-Z0-9 ]+$\")`                |\n| `status`       | `InvitationStatus` | `eq`     | `?filter=eq(status,\"PENDING\")`                               |\n|                |                    | `neq`    | `?filter=neq(status,\"PENDING\")`                              |\n| `userId`       | `uuid`             | `eq`     | `?filter=eq(userId,\"533d3fe3-bccc-405a-9904-4f516e892856\")`  |\n|                |                    | `neq`    | `?filter=neq(userId,\"533d3fe3-bccc-405a-9904-4f516e892856\")` |\n| `responseTime` | `date-time`        | `eq`     | `?filter=eq(responseTime,\"2024-03-16T14:15:30.500Z\")`        |\n|                |                    | `neq`    | `?filter=neq(responseTime,\"2024-03-16T14:15:30.500Z\")`       |\n|                |                    | `gt`     | `?filter=gt(responseTime,\"2024-03-16T14:15:30.500Z\")`        |\n|                |                    | `gte`    | `?filter=gte(responseTime,\"2024-03-16T14:15:30.500Z\")`       |\n|                |                    | `lt`     | `?filter=lt(responseTime,\"2024-03-16T14:15:30.500Z\")`        |\n|                |                    | `lte`    | `?filter=lte(responseTime,\"2024-03-16T14:15:30.500Z\")`       |\n| `createTime`   | `date-time`        | `eq`     | `?filter=eq(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `neq`    | `?filter=neq(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `gt`     | `?filter=gt(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `gte`    | `?filter=gte(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `lt`     | `?filter=lt(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `lte`    | `?filter=lte(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n| `updateTime`   | `date-time`        | `eq`     | `?filter=eq(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `neq`    | `?filter=neq(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `gt`     | `?filter=gt(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `gte`    | `?filter=gte(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `lt`     | `?filter=lt(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `lte`    | `?filter=lte(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n\n</details>"
+      operationId: listOrganizationInvitations
+      security:
+        - oauth2:
+            - organizations:read
+      tags:
+        - organizations.invitations
+      parameters:
+        - $ref: '#/components/parameters/organizationId'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrganizationInvitation_Read'
+          headers:
+            Total-Count:
+              $ref: '#/components/headers/Total-Count'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+    post:
+      summary: Add an organization invitation
+      description: |
+        Adds an organization invitation to the collection.
+      operationId: addOrganizationInvitation
+      security:
+        - oauth2:
+            - organizations:write
+      tags:
+        - organizations.invitations
+      parameters:
+        - $ref: '#/components/parameters/organizationId'
+      requestBody:
+        description: Organization invitation object to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationInvitation_Create'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationInvitation_Create'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /organizations/{organizationId}/invitations/{invitationId}:
+    get:
+      summary: Get an organization invitation by ID
+      description: |
+        Returns a single organization invitation.
+      operationId: getOrganizationInvitationById
+      security:
+        - oauth2:
+            - organizations:read
+      tags:
+        - organizations.invitations
+      parameters:
+        - $ref: '#/components/parameters/organizationId'
+        - $ref: '#/components/parameters/invitationId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationInvitation_Read'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /organizations/{organizationId}/invitations/{invitationId}:cancel:
+    post:
+      summary: Cancel a pending organization invitation
+      description: |
+        Cancel a pending organization invitation.
+      operationId: cancelOrganizationInvitation
+      security:
+        - oauth2:
+            - organizations:write
+      tags:
+        - organizations.invitations
+      parameters:
+        - $ref: '#/components/parameters/organizationId'
+        - $ref: '#/components/parameters/invitationId'
+      responses:
+        '200':
+          description: Canceled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationInvitation_Cancel'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /organizations/{organizationId}/memberships:
+    get:
+      summary: List all organization memberships
+      description: "\uFEFFReturns a list of organization memberships.\n\n<details>\n<summary>Details</summary>\n\n## Sort expressions\n\nThe following table lists the field names and directions you can use in a sort expression.\n\n| Field          | Type        | Direction | Example                    |\n|----------------|-------------|-----------|----------------------------|\n| `id`           | `uuid`      | `asc`     | `?sort=asc(id)`            |\n|                |             | `desc`    | `?sort=desc(id)`           |\n| `createTime`   | `date-time` | `asc`     | `?sort=asc(createTime)`    |\n|                |             | `desc`    | `?sort=desc(createTime)`   |\n| `updateTime`   | `date-time` | `asc`     | `?sort=asc(updateTime)`    |\n|                |             | `desc`    | `?sort=desc(updateTime)`   |\n\n### Default sort expression\n\nIf the `sort` parameter is omitted, the default sort expression is used:\n\n```\n?sort=desc(createTime)\n```\n\nThis causes results to be sorted by `createTime` in descending order (from most recent to oldest).\n\n## Filter expressions\n\nThe following table lists the field names and operators you can use in a filter expression.\n\n| Field          | Type               | Operator | Example                                                      |\n|----------------|--------------------|----------|--------------------------------------------------------------|\n| `id`           | `uuid`             | `eq`     | `?filter=eq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`      |\n|                |                    | `neq`    | `?filter=neq(id,\"533d3fe3-bccc-405a-9904-4f516e892856\")`     |\n| `userId`       | `uuid`             | `eq`     | `?filter=eq(userId,\"533d3fe3-bccc-405a-9904-4f516e892856\")`  |\n|                |                    | `neq`    | `?filter=neq(userId,\"533d3fe3-bccc-405a-9904-4f516e892856\")` |\n| `createTime`   | `date-time`        | `eq`     | `?filter=eq(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `neq`    | `?filter=neq(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `gt`     | `?filter=gt(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `gte`    | `?filter=gte(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `lt`     | `?filter=lt(createTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `lte`    | `?filter=lte(createTime,\"2024-03-16T14:15:30.500Z\")`         |\n| `updateTime`   | `date-time`        | `eq`     | `?filter=eq(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `neq`    | `?filter=neq(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `gt`     | `?filter=gt(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `gte`    | `?filter=gte(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n|                |                    | `lt`     | `?filter=lt(updateTime,\"2024-03-16T14:15:30.500Z\")`          |\n|                |                    | `lte`    | `?filter=lte(updateTime,\"2024-03-16T14:15:30.500Z\")`         |\n\n</details>"
+      operationId: listOrganizationMemberships
+      security:
+        - oauth2:
+            - organizations:read
+      tags:
+        - organizations.memberships
+      parameters:
+        - $ref: '#/components/parameters/organizationId'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrganizationMembership_Read'
+          headers:
+            Total-Count:
+              $ref: '#/components/headers/Total-Count'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /organizations/{organizationId}/memberships/{membershipId}:
+    get:
+      summary: Get an organization membership by ID
+      description: |
+        Returns a single organization membership.
+      operationId: getOrganizationMembershipById
+      security:
+        - oauth2:
+            - organizations:read
+      tags:
+        - organizations.memberships
+      parameters:
+        - $ref: '#/components/parameters/organizationId'
+        - $ref: '#/components/parameters/membershipId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationMembership_Read'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+    delete:
+      summary: Delete an organization membership
+      description: |
+        Deletes a single organization membership.
+      operationId: deleteOrganizationMembership
+      security:
+        - oauth2:
+            - organizations:write
+      tags:
+        - organizations.memberships
+      parameters:
+        - $ref: '#/components/parameters/organizationId'
+        - $ref: '#/components/parameters/membershipId'
+      responses:
+        '204':
+          $ref: '#/components/responses/EmptyResponse'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -388,6 +966,9 @@ paths:
 
         </details>
       operationId: listApiRequirementsVersions
+      security:
+        - oauth2:
+            - api-requirements-versions:read
       tags:
         - api-requirements-versions
       parameters:
@@ -427,6 +1008,9 @@ paths:
       description: |
         Adds an API requirements version to the collection.
       operationId: addApiRequirementsVersion
+      security:
+        - oauth2:
+            - api-requirements-versions:write
       tags:
         - api-requirements-versions
       requestBody:
@@ -462,6 +1046,9 @@ paths:
       description: |
         Returns a single API requirements version.
       operationId: getApiRequirementsVersionByName
+      security:
+        - oauth2:
+            - api-requirements-versions:read
       tags:
         - api-requirements-versions
       parameters:
@@ -494,6 +1081,9 @@ paths:
       description: |
         Updates a single API requirements version.
       operationId: updateApiRequirementsVersion
+      security:
+        - oauth2:
+            - api-requirements-versions:write
       tags:
         - api-requirements-versions
       parameters:
@@ -577,6 +1167,12 @@ paths:
         |                             |                           | `reg`    | `?filter=reg(code,"^[a-zA-Z0-9 ]+$")`                         |
         | `requirementLevel`          | `RequirementLevel`        | `eq`     | `?filter=eq(requirementLevel,"MUST")`                         |
         |                             |                           | `neq`    | `?filter=neq(requirementLevel,"MUST")`                        |
+        | `score`                     | `integer`                 | `eq`     | `?filter=eq(score,1)`                                         |
+        |                             |                           | `neq`    | `?filter=neq(score,1)`                                        |
+        |                             |                           | `gt`     | `?filter=gt(score,1)`                                         |
+        |                             |                           | `gte`    | `?filter=gte(score,1)`                                        |
+        |                             |                           | `lt`     | `?filter=lt(score,1)`                                         |
+        |                             |                           | `lte`    | `?filter=lte(score,1)`                                        |
         | `category`                  | `ApiRequirementCategory`  | `eq`     | `?filter=eq(category,"API_SPECIFICATION_AND_DOCUMENTATION")`  |
         |                             |                           | `neq`    | `?filter=neq(category,"API_SPECIFICATION_AND_DOCUMENTATION")` |
         | `roles.$it`                 | `ApiRole`                 | `eq`     | `?filter=any(roles,eq($it,"API_SPECIFIER"))`                  |
@@ -610,8 +1206,11 @@ paths:
 
         </details>
       operationId: listApiRequirementsVersionApiRequirements
+      security:
+        - oauth2:
+            - api-requirements-versions:read
       tags:
-        - api-requirements-version.api-requirements
+        - api-requirements-versions.api-requirements
       parameters:
         - $ref: '#/components/parameters/versionName'
         - $ref: '#/components/parameters/limit'
@@ -627,7 +1226,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ApiRequirement'
+                  $ref: '#/components/schemas/ApiRequirement_CreateRead'
           headers:
             Total-Count:
               $ref: '#/components/headers/Total-Count'
@@ -687,8 +1286,6 @@ paths:
         |---------------------------------------------------------------|-------------------------|----------|----------------------------------------------------------------------------------------------|
         | `id`                                                          | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                      |
         |                                                               |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                     |
-        | `isArchived`                                                  | `boolean`               | `eq`     | `?filter=eq(isArchived,true)`                                                                |
-        |                                                               |                         | `neq`    | `?filter=neq(isArchived,false)`                                                              |
         | `name`                                                        | `string`                | `eq`     | `?filter=eq(name,"Verzamelen Huisartsgegevens")`                                             |
         |                                                               |                         | `neq`    | `?filter=neq(name,"Verzamelen Huisartsgegevens")`                                            |
         |                                                               |                         | `has`    | `?filter=has(name,"Verzamelen")`                                                             |
@@ -722,6 +1319,9 @@ paths:
 
         </details>
       operationId: listApiSpecifications
+      security:
+        - oauth2:
+            - api-specifications:read
       tags:
         - api-specifications
       parameters:
@@ -738,7 +1338,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ApiSpecification_CreateRead'
+                  $ref: '#/components/schemas/ApiSpecification_Read'
           headers:
             Total-Count:
               $ref: '#/components/headers/Total-Count'
@@ -761,6 +1361,9 @@ paths:
       description: |
         Adds an API specification to the collection.
       operationId: addApiSpecification
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specifications
       requestBody:
@@ -768,14 +1371,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApiSpecification_CreateRead'
+              $ref: '#/components/schemas/ApiSpecification_Create'
       responses:
         '201':
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiSpecification_CreateRead'
+                $ref: '#/components/schemas/ApiSpecification_Create'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -796,6 +1399,9 @@ paths:
       description: |
         Returns a single API specification.
       operationId: getApiSpecificationById
+      security:
+        - oauth2:
+            - api-specifications:read
       tags:
         - api-specifications
       parameters:
@@ -806,7 +1412,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiSpecification_CreateRead'
+                $ref: '#/components/schemas/ApiSpecification_Read'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -828,6 +1434,9 @@ paths:
       description: |
         Updates a single API specification.
       operationId: updateApiSpecification
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
         - api-specifications
       parameters:
@@ -844,7 +1453,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiSpecification_CreateRead'
+                $ref: '#/components/schemas/ApiSpecification_Read'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -982,8 +1591,11 @@ paths:
 
         </details>
       operationId: listApiSpecificationVersions
+      security:
+        - oauth2:
+            - api-specifications:read
       tags:
-        - api-specification.versions
+        - api-specifications.versions
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/limit'
@@ -1022,8 +1634,11 @@ paths:
       description: |
         Adds an API specification version to the collection.
       operationId: addApiSpecificationVersion
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
-        - api-specification.versions
+        - api-specifications.versions
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
       requestBody:
@@ -1059,8 +1674,11 @@ paths:
       description: |
         Returns a single API specification version.
       operationId: getApiSpecificationVersionById
+      security:
+        - oauth2:
+            - api-specifications:read
       tags:
-        - api-specification.versions
+        - api-specifications.versions
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -1092,8 +1710,11 @@ paths:
       description: |
         Updates a single API specification version.
       operationId: updateApiSpecificationVersion
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
-        - api-specification.versions
+        - api-specifications.versions
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -1183,8 +1804,11 @@ paths:
 
         </details>
       operationId: listApiSpecificationVersionUrls
+      security:
+        - oauth2:
+            - api-specifications:read
       tags:
-        - api-specification.version.urls
+        - api-specifications.versions.urls
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -1224,8 +1848,11 @@ paths:
       description: |
         Adds an API specification version URL to the collection.
       operationId: addApiSpecificationVersionUrl
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
-        - api-specification.version.urls
+        - api-specifications.versions.urls
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -1262,8 +1889,11 @@ paths:
       description: |
         Returns a single API specification version URL.
       operationId: getApiSpecificationVersionUrlById
+      security:
+        - oauth2:
+            - api-specifications:read
       tags:
-        - api-specification.version.urls
+        - api-specifications.versions.urls
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -1296,8 +1926,11 @@ paths:
       description: |
         Updates a single API specification version URL.
       operationId: updateApiSpecificationVersionUrl
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
-        - api-specification.version.urls
+        - api-specifications.versions.urls
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -1336,8 +1969,11 @@ paths:
       description: |
         Deletes a single API specification version URL.
       operationId: deleteApiSpecificationVersionUrl
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
-        - api-specification.version.urls
+        - api-specifications.versions.urls
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -1424,8 +2060,11 @@ paths:
 
         </details>
       operationId: listApiSpecificationVersionDeclarationsOfConformity
+      security:
+        - oauth2:
+            - api-specifications:read
       tags:
-        - api-specification.version.declarations-of-conformity
+        - api-specifications.versions.declarations-of-conformity
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -1465,8 +2104,11 @@ paths:
       description: |
         Adds an API specification version declaration of conformity to the collection.
       operationId: addApiSpecificationVersionDeclarationOfConformity
+      security:
+        - oauth2:
+            - api-specifications:write
       tags:
-        - api-specification.version.declarations-of-conformity
+        - api-specifications.versions.declarations-of-conformity
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -1481,7 +2123,7 @@ paths:
                 summary: 1.2.0 REST
                 description: |
                   Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-                  For architectural style `REST`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+                  For architectural style `REST`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
                 value:
                   requirementsVersion: 1.2.0
                   requirements:
@@ -1634,7 +2276,7 @@ paths:
                 summary: 1.2.0 SOAP
                 description: |
                   Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-                  For architectural style `SOAP`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+                  For architectural style `SOAP`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
                 value:
                   requirementsVersion: 1.2.0
                   requirements:
@@ -1783,7 +2425,7 @@ paths:
                 summary: 1.2.0 GRAPHQL
                 description: |
                   Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-                  For architectural style `GRAPHQL`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+                  For architectural style `GRAPHQL`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
                 value:
                   requirementsVersion: 1.2.0
                   requirements:
@@ -1926,7 +2568,7 @@ paths:
                 summary: 1.2.0 ODATA
                 description: |
                   Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-                  For architectural style `ODATA`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+                  For architectural style `ODATA`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
                 value:
                   requirementsVersion: 1.2.0
                   requirements:
@@ -2069,7 +2711,7 @@ paths:
                 summary: 1.2.0 GRPC
                 description: |
                   Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-                  For architectural style `GRPC`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+                  For architectural style `GRPC`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
                 value:
                   requirementsVersion: 1.2.0
                   requirements:
@@ -2212,7 +2854,7 @@ paths:
                 summary: 1.2.0 OTHER
                 description: |
                   Example of an API specification version declaration of conformity using API requirements version `1.2.0`.
-                  For architectural style `OTHER`. See property `architecturalStyle` of `ApiSpecification_CreateRead`.
+                  For architectural style `OTHER`. See property `architecturalStyle` of schema `ApiSpecification_Create`.
                 value:
                   requirementsVersion: 1.2.0
                   requirements:
@@ -2378,8 +3020,11 @@ paths:
       description: |
         Returns a single API specification version declaration of conformity.
       operationId: getApiSpecificationVersionDeclarationOfConformityById
+      security:
+        - oauth2:
+            - api-specifications:read
       tags:
-        - api-specification.version.declarations-of-conformity
+        - api-specifications.versions.declarations-of-conformity
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
@@ -2409,6 +3054,341 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   schemas:
+    User:
+      description: The user information
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          description: The ID of the user
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 2aa3349c-dfa6-4308-b562-f7fc8be6c053
+        name:
+          description: The name of the user
+          type: string
+          readOnly: true
+          maxLength: 255
+          examples:
+            - John Doe
+    BasicUser:
+      description: The basic user information
+      type: object
+      required:
+        - name
+        - id
+      properties:
+        id:
+          description: The ID of the user
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 533d3fe3-bccc-405a-9904-4f516e892856
+        name:
+          description: The name of the user
+          type: string
+          maxLength: 255
+          examples:
+            - Bot
+    BasicResponse:
+      type: object
+      required:
+        - createTime
+        - createdByUserId
+        - updateTime
+        - updatedByUserId
+      properties:
+        createTime:
+          description: The date and time at which the item was created
+          type: string
+          format: date-time
+          readOnly: true
+          examples:
+            - '2023-10-24T14:15:30.500Z'
+        createdByUserId:
+          description: The ID of the user that created the item
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 533d3fe3-bccc-405a-9904-4f516e892856
+        createdByUser:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicUser'
+        updateTime:
+          description: The date and time at which the item was last updated
+          type: string
+          format: date-time
+          readOnly: true
+          examples:
+            - '2023-10-25T10:45:30.500Z'
+        updatedByUserId:
+          description: The ID of the user that last updated the item
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 533d3fe3-bccc-405a-9904-4f516e892856
+        updatedByUser:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicUser'
+    User_Read:
+      allOf:
+        - $ref: '#/components/schemas/User'
+        - $ref: '#/components/schemas/BasicResponse'
+    ApiErrorType:
+      type: string
+      enum:
+        - ALREADY_EXISTS
+        - FAILED_PRECONDITION
+        - INTERNAL
+        - INVALID_ARGUMENT
+        - NOT_FOUND
+        - PERMISSION_DENIED
+        - RESOURCE_EXHAUSTED
+        - UNAUTHENTICATED
+        - UNAVAILABLE
+      description: |
+        Error type:
+
+        - `ALREADY_EXISTS` - Already exists
+        - `FAILED_PRECONDITION` - Failed precondition
+        - `INTERNAL` - Internal
+        - `INVALID_ARGUMENT` - Invalid argument
+        - `NOT_FOUND` - Not found
+        - `PERMISSION_DENIED` - Permission denied
+        - `RESOURCE_EXHAUSTED` - Resource exhausted
+        - `UNAUTHENTICATED` - Unauthenticated
+        - `UNAVAILABLE` - Unavailable
+      examples:
+        - INVALID_ARGUMENT
+    ApiErrorDetails:
+      type: object
+      required:
+        - location
+        - message
+      properties:
+        location:
+          description: |
+            The specific item that caused the error. For example, if you specify an invalid value for a parameter, the 
+            `location` will be the name of the parameter.
+          type: string
+          examples:
+            - propertyName
+        message:
+          type: string
+          examples:
+            - Message describing the error
+    ApiError:
+      type: object
+      required:
+        - status
+        - type
+        - message
+      properties:
+        status:
+          type: integer
+          format: int32
+          examples:
+            - 400
+        type:
+          $ref: '#/components/schemas/ApiErrorType'
+        message:
+          type: string
+          examples:
+            - Message describing the error
+        details:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/ApiErrorDetails'
+    BasicOrganization:
+      description: The basic organization information
+      type: object
+      required:
+        - name
+        - id
+      properties:
+        id:
+          description: The ID of the organization
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - b9b95cd7-8d6e-4c91-8861-854828cf1730
+        name:
+          description: The name of the organization
+          type: string
+          maxLength: 255
+          examples:
+            - Nictiz
+    UserInvitation:
+      description: The user invitation information
+      type: object
+      required:
+        - id
+        - organizationId
+        - organization
+        - emailAddress
+      properties:
+        id:
+          description: The ID of the organization invitation
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 30ca5cc5-b84c-4993-b15b-8ab182dab89c
+        organizationId:
+          description: The ID of the organization
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - b9b95cd7-8d6e-4c91-8861-854828cf1730
+        organization:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicOrganization'
+          examples:
+            - id: b9b95cd7-8d6e-4c91-8861-854828cf1730
+              name: Nictiz
+        emailAddress:
+          description: The email address of the user being invited
+          type: string
+          format: email
+          readOnly: true
+          maxLength: 254
+          examples:
+            - john.doe@nictiz.nl
+    InvitationStatus:
+      type: string
+      enum:
+        - PENDING
+        - CANCELED
+        - ACCEPTED
+        - DECLINED
+      description: |
+        The invitation status:
+
+        - `PENDING` - The invitation is pending.
+        - `CANCELED` - The invitation has been canceled by an organization member.
+        - `ACCEPTED` - The invitation has been accepted by the invited user.
+        - `DECLINED` - The invitation has been declined by the invited user.
+      examples:
+        - PENDING
+    UserInvitation_Read:
+      allOf:
+        - $ref: '#/components/schemas/UserInvitation'
+        - type: object
+          required:
+            - status
+          properties:
+            status:
+              description: The status of the user invitation
+              readOnly: true
+              allOf:
+                - $ref: '#/components/schemas/InvitationStatus'
+              examples:
+                - ACCEPTED
+            responseTime:
+              description: The date and time at which the invited user responded to the invite
+              type:
+                - string
+                - 'null'
+              format: date-time
+              readOnly: true
+              examples:
+                - '2024-03-11T00:00:00.000Z'
+        - $ref: '#/components/schemas/BasicResponse'
+    UserInvitation_Accept:
+      allOf:
+        - $ref: '#/components/schemas/UserInvitation'
+        - type: object
+          required:
+            - status
+          properties:
+            status:
+              description: The status of the user invitation
+              readOnly: true
+              allOf:
+                - $ref: '#/components/schemas/InvitationStatus'
+              examples:
+                - ACCEPTED
+            responseTime:
+              description: The date and time at which the invited user responded to the invite
+              type:
+                - string
+                - 'null'
+              format: date-time
+              readOnly: true
+              examples:
+                - '2024-03-11T00:00:00.000Z'
+        - $ref: '#/components/schemas/BasicResponse'
+    UserInvitation_Decline:
+      allOf:
+        - $ref: '#/components/schemas/UserInvitation'
+        - type: object
+          required:
+            - status
+          properties:
+            status:
+              description: The status of the user invitation
+              readOnly: true
+              allOf:
+                - $ref: '#/components/schemas/InvitationStatus'
+              examples:
+                - DECLINED
+            responseTime:
+              description: The date and time at which the invited user responded to the invite
+              type:
+                - string
+                - 'null'
+              format: date-time
+              readOnly: true
+              examples:
+                - '2024-03-11T00:00:00.000Z'
+        - $ref: '#/components/schemas/BasicResponse'
+    UserMembership:
+      description: The user membership information
+      type: object
+      required:
+        - id
+        - organizationId
+        - organization
+      properties:
+        id:
+          description: The ID of the user membership
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - cefdc28f-550d-4005-9ca7-c1836202c37b
+        organizationId:
+          description: The ID of the organization
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - b9b95cd7-8d6e-4c91-8861-854828cf1730
+        organization:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicOrganization'
+          examples:
+            - id: b9b95cd7-8d6e-4c91-8861-854828cf1730
+              name: Nictiz
+    UserMembership_Read:
+      allOf:
+        - $ref: '#/components/schemas/UserMembership'
+        - $ref: '#/components/schemas/BasicResponse'
     Country:
       type: string
       enum:
@@ -3040,144 +4020,137 @@ components:
             - +31 (0)70 317 3450
         address:
           $ref: '#/components/schemas/Address'
-    BasicUser:
-      description: The basic user information
+    Organization_CreateRead:
+      allOf:
+        - $ref: '#/components/schemas/Organization'
+        - $ref: '#/components/schemas/BasicResponse'
+    Organization_Update:
+      allOf:
+        - $ref: '#/components/schemas/Organization'
+    OrganizationInvitation:
+      description: The organization invitation information
       type: object
       required:
-        - name
+        - emailAddress
         - id
       properties:
         id:
+          description: The ID of the organization invitation
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 30ca5cc5-b84c-4993-b15b-8ab182dab89c
+        emailAddress:
+          description: The email address of the user being invited
+          type: string
+          format: email
+          maxLength: 254
+          examples:
+            - john.doe@nictiz.nl
+    OrganizationInvitation_Read:
+      allOf:
+        - $ref: '#/components/schemas/OrganizationInvitation'
+        - type: object
+          required:
+            - status
+          properties:
+            status:
+              description: The status of the organization invitation
+              readOnly: true
+              allOf:
+                - $ref: '#/components/schemas/InvitationStatus'
+              examples:
+                - ACCEPTED
+            userId:
+              description: The ID of the user that responded to the invitation
+              type:
+                - string
+                - 'null'
+              format: uuid
+              readOnly: true
+              examples:
+                - 7375d2bf-884c-4adf-86f5-5b35f0da864b
+            user:
+              readOnly: true
+              allOf:
+                - $ref: '#/components/schemas/BasicUser'
+              examples:
+                - id: 7375d2bf-884c-4adf-86f5-5b35f0da864b
+                  name: John Doe
+            responseTime:
+              description: The date and time at which the invited user responded to the invite
+              type:
+                - string
+                - 'null'
+              format: date-time
+              readOnly: true
+              examples:
+                - '2024-03-11T00:00:00.000Z'
+        - $ref: '#/components/schemas/BasicResponse'
+    OrganizationInvitation_Create:
+      allOf:
+        - $ref: '#/components/schemas/OrganizationInvitation'
+        - type: object
+          required:
+            - status
+          properties:
+            status:
+              description: The status of the organization invitation
+              readOnly: true
+              allOf:
+                - $ref: '#/components/schemas/InvitationStatus'
+              examples:
+                - PENDING
+        - $ref: '#/components/schemas/BasicResponse'
+    OrganizationInvitation_Cancel:
+      allOf:
+        - $ref: '#/components/schemas/OrganizationInvitation'
+        - type: object
+          required:
+            - status
+          properties:
+            status:
+              description: The status of the organization invitation
+              readOnly: true
+              allOf:
+                - $ref: '#/components/schemas/InvitationStatus'
+              examples:
+                - CANCELED
+        - $ref: '#/components/schemas/BasicResponse'
+    OrganizationMembership:
+      description: The organization membership information
+      type: object
+      required:
+        - id
+        - userId
+        - user
+      properties:
+        id:
+          description: The ID of the organization membership
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - cefdc28f-550d-4005-9ca7-c1836202c37b
+        userId:
           description: The ID of the user
           type: string
           format: uuid
           readOnly: true
           examples:
-            - 533d3fe3-bccc-405a-9904-4f516e892856
-        name:
-          description: The name of the user
-          type: string
-          maxLength: 255
-          examples:
-            - ZorgAPIs Bot
-    BasicResponse:
-      type: object
-      required:
-        - createTime
-        - createdByUserId
-        - updateTime
-        - updatedByUserId
-      properties:
-        createTime:
-          description: The date and time at which the item was created
-          type: string
-          format: date-time
-          readOnly: true
-          examples:
-            - '2023-10-24T14:15:30.500Z'
-        createdByUserId:
-          description: The ID of the user that created the item
-          type: string
-          format: uuid
-          readOnly: true
-          examples:
-            - 533d3fe3-bccc-405a-9904-4f516e892856
-        createdByUser:
+            - 7375d2bf-884c-4adf-86f5-5b35f0da864b
+        user:
           readOnly: true
           allOf:
             - $ref: '#/components/schemas/BasicUser'
-        updateTime:
-          description: The date and time at which the item was last updated
-          type: string
-          format: date-time
-          readOnly: true
           examples:
-            - '2023-10-25T10:45:30.500Z'
-        updatedByUserId:
-          description: The ID of the user that last updated the item
-          type: string
-          format: uuid
-          readOnly: true
-          examples:
-            - 533d3fe3-bccc-405a-9904-4f516e892856
-        updatedByUser:
-          readOnly: true
-          allOf:
-            - $ref: '#/components/schemas/BasicUser'
-    Organization_CreateRead:
+            - id: 7375d2bf-884c-4adf-86f5-5b35f0da864b
+              name: John Doe
+    OrganizationMembership_Read:
       allOf:
-        - $ref: '#/components/schemas/Organization'
+        - $ref: '#/components/schemas/OrganizationMembership'
         - $ref: '#/components/schemas/BasicResponse'
-    ApiErrorType:
-      type: string
-      enum:
-        - ALREADY_EXISTS
-        - FAILED_PRECONDITION
-        - INTERNAL
-        - INVALID_ARGUMENT
-        - NOT_FOUND
-        - PERMISSION_DENIED
-        - RESOURCE_EXHAUSTED
-        - UNAUTHENTICATED
-        - UNAVAILABLE
-      description: |
-        Error type:
-
-        - `ALREADY_EXISTS` - Already exists
-        - `FAILED_PRECONDITION` - Failed precondition
-        - `INTERNAL` - Internal
-        - `INVALID_ARGUMENT` - Invalid argument
-        - `NOT_FOUND` - Not found
-        - `PERMISSION_DENIED` - Permission denied
-        - `RESOURCE_EXHAUSTED` - Resource exhausted
-        - `UNAUTHENTICATED` - Unauthenticated
-        - `UNAVAILABLE` - Unavailable
-      examples:
-        - INVALID_ARGUMENT
-    ApiErrorDetails:
-      type: object
-      required:
-        - location
-        - message
-      properties:
-        location:
-          description: |
-            The specific item that caused the error. For example, if you specify an invalid value for a parameter, the 
-            `location` will be the name of the parameter.
-          type: string
-          examples:
-            - propertyName
-        message:
-          type: string
-          examples:
-            - Message describing the error
-    ApiError:
-      type: object
-      required:
-        - status
-        - type
-        - message
-      properties:
-        status:
-          type: integer
-          format: int32
-          examples:
-            - 400
-        type:
-          $ref: '#/components/schemas/ApiErrorType'
-        message:
-          type: string
-          examples:
-            - Message describing the error
-        details:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: '#/components/schemas/ApiErrorDetails'
-    Organization_Update:
-      allOf:
-        - $ref: '#/components/schemas/Organization'
     SemVer:
       description: The Semantic Versioning Specification (SemVer) version information
       type: object
@@ -3333,11 +4306,11 @@ components:
       description: |
         The API requirement category:
 
-        - `API_SPECIFICATION_AND_DOCUMENTATION` - API specification & documentation
+        - `API_SPECIFICATION_AND_DOCUMENTATION` - API specification and documentation
         - `API_TESTABILITY` - API testability
         - `API_DISCOVERABILITY` - API discoverability
         - `API_ONBOARDING` - API onboarding
-        - `API_LIFECYCLE_MANAGEMENT_AND_VERSIONING` - API lifecycle management & versioning
+        - `API_LIFECYCLE_MANAGEMENT_AND_VERSIONING` - API lifecycle management and versioning
         - `API_AGREEMENTS` - API agreements
         - `API_DESIGN_RULES` - API Design Rules
         - `API_SECURITY` - API security
@@ -3552,6 +4525,10 @@ components:
     ApiRequirementsVersion_Update:
       allOf:
         - $ref: '#/components/schemas/ApiRequirementsVersion'
+    ApiRequirement_CreateRead:
+      allOf:
+        - $ref: '#/components/schemas/ApiRequirement'
+        - $ref: '#/components/schemas/BasicResponse'
     ApiSpecification:
       description: The API specification information
       type: object
@@ -3566,10 +4543,6 @@ components:
           readOnly: true
           examples:
             - fe30bf05-de07-4556-9b17-1f82d62fe45f
-        isArchived:
-          description: Whether the API specification is archived
-          type: boolean
-          default: false
         name:
           description: The name of the API specification
           type: string
@@ -3584,26 +4557,6 @@ components:
           maxLength: 1000
           examples:
             - 'Het verzamelen van huisartsgegevens: je medische dossier bij je huisarts.'
-    BasicOrganization:
-      description: The basic organization information
-      type: object
-      required:
-        - name
-        - id
-      properties:
-        id:
-          description: The ID of the organization
-          type: string
-          format: uuid
-          readOnly: true
-          examples:
-            - b9b95cd7-8d6e-4c91-8861-854828cf1730
-        name:
-          description: The name of the organization
-          type: string
-          maxLength: 255
-          examples:
-            - Nictiz
     ApiLifecycleState:
       type: string
       enum:
@@ -3825,7 +4778,7 @@ components:
               readOnly: true
               allOf:
                 - $ref: '#/components/schemas/BasicApiSpecificationVersionDeclarationOfConformity'
-    ApiSpecification_CreateRead:
+    ApiSpecification_Read:
       allOf:
         - $ref: '#/components/schemas/ApiSpecification'
         - type: object
@@ -3864,6 +4817,34 @@ components:
               readOnly: true
               allOf:
                 - $ref: '#/components/schemas/BasicApiSpecificationVersion'
+        - $ref: '#/components/schemas/BasicResponse'
+    ApiSpecification_Create:
+      allOf:
+        - $ref: '#/components/schemas/ApiSpecification'
+        - type: object
+          required:
+            - organizationId
+            - architecturalStyle
+          properties:
+            organizationId:
+              description: The ID of the organization that maintains the API specification
+              type: string
+              format: uuid
+              examples:
+                - 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
+            organization:
+              readOnly: true
+              allOf:
+                - $ref: '#/components/schemas/BasicOrganization'
+              examples:
+                - id: 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
+                  name: Stichting MedMij
+            architecturalStyle:
+              description: The architectural style of the API specification
+              allOf:
+                - $ref: '#/components/schemas/ApiArchitecturalStyle'
+              examples:
+                - REST
         - $ref: '#/components/schemas/BasicResponse'
     ApiSpecification_Update:
       allOf:
@@ -3996,7 +4977,7 @@ components:
         maximum: 100
         default: 100
         examples:
-          - 10
+          - 100
     skip:
       name: skip
       in: query
@@ -4016,7 +4997,7 @@ components:
         minimum: 0
         default: 0
         examples:
-          - 100
+          - 0
     sort:
       name: sort
       in: query
@@ -4281,18 +5262,6 @@ components:
         ?filter=or(eq(name,"Nictiz"),eq(name,"MedMij"))
         ```
 
-        Name is "Nictiz" `AND` item is not archived:
-
-        ```
-        ?filter=and(eq(name,"Nictiz"),eq(isArchived,false))
-        ```
-
-        Name is either ("Nictiz" `OR` "MedMij") `AND` item is not archived:
-
-        ```
-        ?filter=and(or(eq(name,"Nictiz"),eq(name,"MedMij")),eq(isArchived,false))
-        ```
-
         Name does `NOT` end with "Mij":
 
         ```
@@ -4347,6 +5316,26 @@ components:
       schema:
         type: boolean
         default: false
+    invitationId:
+      name: invitationId
+      in: path
+      required: true
+      description: The ID of the invitation
+      schema:
+        type: string
+        format: uuid
+        examples:
+          - 30ca5cc5-b84c-4993-b15b-8ab182dab89c
+    membershipId:
+      name: membershipId
+      in: path
+      required: true
+      description: The ID of the membership
+      schema:
+        type: string
+        format: uuid
+        examples:
+          - cefdc28f-550d-4005-9ca7-c1836202c37b
     organizationId:
       name: organizationId
       in: path
@@ -4365,7 +5354,7 @@ components:
       schema:
         type: string
         examples:
-          - 1.0.0
+          - 1.2.0
     apiSpecificationId:
       name: apiSpecificationId
       in: path
@@ -4437,6 +5426,16 @@ components:
             status: 403
             type: PERMISSION_DENIED
             message: The user is not authorized to make this request
+    NotFoundError:
+      description: Not found error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+          example:
+            status: 404
+            type: NOT_FOUND
+            message: The resource you requested does not exist
     InvalidArgumentError:
       description: |
         Invalid argument error. This is different from status `400` in that the syntax is correct (e.g. correct JSON format), 
@@ -4482,16 +5481,6 @@ components:
             status: 500
             type: INTERNAL
             message: Internal server error
-    NotFoundError:
-      description: Not found error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-          example:
-            status: 404
-            type: NOT_FOUND
-            message: The resource you requested does not exist
     EmptyResponse:
       description: Empty response
     AlreadyExistsError:
@@ -4512,17 +5501,73 @@ components:
         type: integer
         examples:
           - 78
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: This API uses OAuth 2.0 for secure authentication.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.sandbox.zorgapis.nl/realms/zorgapis/protocol/openid-connect/auth
+          tokenUrl: https://auth.sandbox.zorgapis.nl/realms/zorgapis/protocol/openid-connect/token
+          refreshUrl: https://auth.sandbox.zorgapis.nl/realms/zorgapis/protocol/openid-connect/token
+          scopes:
+            openid: Informs the Authorization Server that the Client is making an OpenID Connect request.
+            offline_access: |
+              Requests an OAuth 2.0 `refresh_token` to be issued that can be used to obtain an Access Token.
+            email: |
+              Requests access to the `email` claim, which contains the user's email address, and `email_verified`, which is a 
+              boolean indicating whether the email address was verified by the user.
+            profile: |
+              Requests access to the End-User's default profile Claims, which are: `name`, `family_name`, `given_name`, 
+              `middle_name`, `nickname`, `preferred_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, 
+              `zoneinfo`, `locale`, and `updated_at`.    
+            users:read: Grants read access to user endpoints.
+            users:write: Grants write access to user endpoints.
+            organizations:read: Grants read access to organization endpoints.
+            organizations:write: Grants write access to organization endpoints.
+            api-requirements-versions:read: Grants read access to API requirements version endpoints.
+            api-requirements-versions:write: Grants write access to API requirements version endpoints.
+            api-specifications:read: Grants read access to API specification endpoints.
+            api-specifications:write: Grants write access to API specification endpoints.
+        clientCredentials:
+          tokenUrl: https://auth.sandbox.zorgapis.nl/realms/zorgapis/protocol/openid-connect/token
+          scopes:
+            openid: Informs the Authorization Server that the Client is making an OpenID Connect request.
+            offline_access: |
+              Requests an OAuth 2.0 `refresh_token` to be issued that can be used to obtain an Access Token.
+            email: |
+              Requests access to the `email` claim, which contains the user's email address, and `email_verified`, which is a 
+              boolean indicating whether the email address was verified by the user.
+            profile: |
+              Requests access to the End-User's default profile Claims, which are: `name`, `family_name`, `given_name`, 
+              `middle_name`, `nickname`, `preferred_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, 
+              `zoneinfo`, `locale`, and `updated_at`.    
+            users:read: Grants read access to user endpoints.
+            users:write: Grants write access to user endpoints.
+            organizations:read: Grants read access to organization endpoints.
+            organizations:write: Grants write access to organization endpoints.
+            api-requirements-versions:read: Grants read access to API requirements version endpoints.
+            api-requirements-versions:write: Grants write access to API requirements version endpoints.
+            api-specifications:read: Grants read access to API specification endpoints.
+            api-specifications:write: Grants write access to API specification endpoints.
 x-tagGroups:
+  - name: Users
+    tags:
+      - users
+      - users.invitations
+      - users.memberships
   - name: Organizations
     tags:
       - organizations
+      - organizations.invitations
+      - organizations.memberships
   - name: API requirements
     tags:
       - api-requirements-versions
-      - api-requirements-version.api-requirements
+      - api-requirements-versions.api-requirements
   - name: API specifications
     tags:
       - api-specifications
-      - api-specification.versions
-      - api-specification.version.urls
-      - api-specification.version.declarations-of-conformity
+      - api-specifications.versions
+      - api-specifications.versions.urls
+      - api-specifications.versions.declarations-of-conformity
