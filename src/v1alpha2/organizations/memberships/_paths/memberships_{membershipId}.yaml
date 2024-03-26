@@ -1,65 +1,53 @@
-get:
-  summary: Get an API specification version by ID
+﻿get:
+  summary: Get an organization membership by ID
   description: |
-    Returns a single API specification version.
-  operationId: getApiSpecificationVersionById
+    Returns a single organization membership.
+  operationId: getOrganizationMembershipById
   security:
     - oauth2:
-        - api-specifications:read
+        - organizations:read
   tags:
-    - api-specifications.versions
+    - organizations.memberships
   parameters:
-    - $ref: '../../_parameters/path/apiSpecificationId.yaml'
-    - $ref: '../../../_parameters/path/versionId.yaml'
+    - $ref: '../../_parameters/path/organizationId.yaml'
+    - $ref: '../../../_parameters/path/membershipId.yaml'
   responses:
     '200':
       description: Success
       content:
         application/json:
           schema:
-            $ref: '../_schemas/ApiSpecificationVersion_CreateRead.yaml'
+            $ref: '../_schemas/OrganizationMembership_Read.yaml'
     '400':
       $ref: '../../../_responses/BadRequestError.yaml'
     '401':
       $ref: '../../../_responses/UnauthenticatedError.yaml'
     '403':
       $ref: '../../../_responses/PermissionDeniedError.yaml'
-    '404':
-      $ref: '../../../_responses/NotFoundError.yaml'
     '422':
       $ref: '../../../_responses/InvalidArgumentError.yaml'
     '429':
       $ref: '../../../_responses/ResourceExhaustedError.yaml'
     '503':
       $ref: '../../../_responses/UnavailableError.yaml'
-    5XX:
+    '5XX':
       $ref: '../../../_responses/InternalError.yaml'
-patch:
-  summary: Update an API specification version
+delete:
+  summary: Delete an organization membership
   description: |
-    Updates a single API specification version.
-  operationId: updateApiSpecificationVersion
+    Deletes a single organization membership.
+  operationId: deleteOrganizationMembership
   security:
     - oauth2:
-        - api-specifications:write
+        - organizations:write
   tags:
-    - api-specifications.versions
+    - organizations.memberships
   parameters:
-    - $ref: '../../_parameters/path/apiSpecificationId.yaml'
-    - $ref: '../../../_parameters/path/versionId.yaml'
-  requestBody:
-    description: Updated API specification version object
-    content:
-      application/json:
-        schema:
-          $ref: '../_schemas/ApiSpecificationVersion_Update.yaml'
+    - $ref: '../../_parameters/path/organizationId.yaml'
+    - $ref: '../../../_parameters/path/membershipId.yaml'
   responses:
-    '200':
-      description: Updated
-      content:
-        application/json:
-          schema:
-            $ref: '../_schemas/ApiSpecificationVersion_CreateRead.yaml'
+    '204':
+      $ref: '../../../_responses/EmptyResponse.yaml'
     '400':
       $ref: '../../../_responses/BadRequestError.yaml'
     '401':

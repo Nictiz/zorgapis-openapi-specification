@@ -1,0 +1,23 @@
+﻿# Abstract base schema
+description: The organization invitation information
+type: object
+required:
+  - emailAddress
+  # Read-only
+  - id
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the organization invitation
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 30ca5cc5-b84c-4993-b15b-8ab182dab89c
+  emailAddress:
+    description: The email address of the user being invited
+    type: string
+    format: email
+    maxLength: 254
+    examples:
+      - john.doe@nictiz.nl

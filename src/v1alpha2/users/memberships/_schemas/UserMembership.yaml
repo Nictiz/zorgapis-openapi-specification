@@ -1,0 +1,33 @@
+﻿# Abstract base schema
+description: The user membership information
+type: object
+required:
+  # Read-only
+  - id
+  - organizationId
+  - organization
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the user membership
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - cefdc28f-550d-4005-9ca7-c1836202c37b
+  organizationId:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the organization
+    type: 'string'
+    format: uuid
+    readOnly: true
+    examples:
+      - b9b95cd7-8d6e-4c91-8861-854828cf1730
+  organization:
+    # Returned by GET, not used in POST/PUT/PATCH
+    readOnly: true
+    allOf:
+      - $ref: '../../../organizations/_schemas/BasicOrganization.yaml'
+    examples:
+      - id: b9b95cd7-8d6e-4c91-8861-854828cf1730
+        name: Nictiz

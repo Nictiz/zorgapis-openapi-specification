@@ -3,6 +3,9 @@ get:
   description: |
     Returns a single API specification.
   operationId: getApiSpecificationById
+  security:
+    - oauth2:
+        - api-specifications:read
   tags:
     - api-specifications
   parameters:
@@ -35,6 +38,9 @@ patch:
   description: |
     Updates a single API specification.
   operationId: updateApiSpecification
+  security:
+    - oauth2:
+        - api-specifications:write
   tags:
     - api-specifications
   parameters:

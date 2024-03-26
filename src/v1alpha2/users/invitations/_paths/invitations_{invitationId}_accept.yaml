@@ -1,0 +1,33 @@
+﻿post:
+  summary: Accept a pending user invitation
+  description: |
+    Accept a pending user invitation.
+  operationId: acceptUserInvitation
+  security:
+    - oauth2:
+        - users:write
+  tags:
+    - users.invitations
+  parameters:
+    - $ref: '../../../_parameters/path/invitationId.yaml'
+  responses:
+    '200':
+      description: Accepted
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas/UserInvitation_Accept.yaml'
+    '400':
+      $ref: '../../../_responses/BadRequestError.yaml'
+    '401':
+      $ref: '../../../_responses/UnauthenticatedError.yaml'
+    '403':
+      $ref: '../../../_responses/PermissionDeniedError.yaml'
+    '422':
+      $ref: '../../../_responses/InvalidArgumentError.yaml'
+    '429':
+      $ref: '../../../_responses/ResourceExhaustedError.yaml'
+    '503':
+      $ref: '../../../_responses/UnavailableError.yaml'
+    '5XX':
+      $ref: '../../../_responses/InternalError.yaml'

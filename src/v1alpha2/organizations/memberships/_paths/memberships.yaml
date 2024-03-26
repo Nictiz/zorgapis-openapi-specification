@@ -1,15 +1,15 @@
-get:
-  summary: List all API requirements version API requirements
+﻿get:
+  summary: List all organization memberships
   description:
-    $ref: './api-requirements#description.md'
-  operationId: listApiRequirementsVersionApiRequirements
+    $ref: './memberships#description.md'
+  operationId: listOrganizationMemberships
   security:
     - oauth2:
-        - api-requirements-versions:read
+        - organizations:read
   tags:
-    - api-requirements-versions.api-requirements
+    - organizations.memberships
   parameters:
-    - $ref: '../../_parameters/path/versionName.yaml'
+    - $ref: '../../_parameters/path/organizationId.yaml'
     - $ref: '../../../_parameters/query/limit.yaml'
     - $ref: '../../../_parameters/query/skip.yaml'
     - $ref: '../../../_parameters/query/sort.yaml'
@@ -23,7 +23,7 @@ get:
           schema:
             type: array
             items:
-              $ref: '../_schemas/ApiRequirement_CreateRead.yaml'
+              $ref: '../_schemas/OrganizationMembership_Read.yaml'
       headers:
         $ref: '../../../_headers/defaultListHeaders.yaml'
     '400':

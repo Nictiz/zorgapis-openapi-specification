@@ -3,6 +3,9 @@ get:
   description: |
     Returns a single organization.
   operationId: getOrganizationById
+  security:
+    - oauth2:
+        - organizations:read
   tags:
     - organizations
   parameters:
@@ -35,6 +38,9 @@ patch:
   description: |
     Updates a single organization.
   operationId: updateOrganization
+  security:
+    - oauth2:
+        - organizations:write
   tags:
     - organizations
   parameters:

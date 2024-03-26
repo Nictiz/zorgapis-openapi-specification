@@ -3,8 +3,11 @@ get:
   description: |
     Returns a single API specification version URL.
   operationId: getApiSpecificationVersionUrlById
+  security:
+    - oauth2:
+        - api-specifications:read
   tags:
-    - api-specification.version.urls
+    - api-specifications.versions.urls
   parameters:
     - $ref: '../../../_parameters/path/apiSpecificationId.yaml'
     - $ref: '../../../../_parameters/path/versionId.yaml'
@@ -37,8 +40,11 @@ patch:
   description: |
     Updates a single API specification version URL.
   operationId: updateApiSpecificationVersionUrl
+  security:
+    - oauth2:
+        - api-specifications:write
   tags:
-    - api-specification.version.urls
+    - api-specifications.versions.urls
   parameters:
     - $ref: '../../../_parameters/path/apiSpecificationId.yaml'
     - $ref: '../../../../_parameters/path/versionId.yaml'
@@ -77,8 +83,11 @@ delete:
   description: |
     Deletes a single API specification version URL.
   operationId: deleteApiSpecificationVersionUrl
+  security:
+    - oauth2:
+        - api-specifications:write
   tags:
-    - api-specification.version.urls
+    - api-specifications.versions.urls
   parameters:
     - $ref: '../../../_parameters/path/apiSpecificationId.yaml'
     - $ref: '../../../../_parameters/path/versionId.yaml'
