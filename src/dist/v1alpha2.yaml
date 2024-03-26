@@ -17,6 +17,9 @@ info:
     Nictiz has developed an [API strategy](https://nictiz.github.io/api-strategie-docs/) for Dutch Healthcare and
     [requirements](https://nictiz.github.io/api-requirements-docs/) for Application Programming Interfaces (APIs) in Dutch
     Healthcare.
+  contact:
+    name: ZorgAPIs Developer Portal
+    url: https://developer.zorgapis.nl/
   license:
     name: MIT License
     url: https://choosealicense.com/licenses/mit/
