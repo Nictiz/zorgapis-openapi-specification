@@ -3,6 +3,7 @@ openapi: 3.1.0
 info:
   title: ZorgAPIs API
   version: 0.3.0
+  summary: Definition of the API Library for Dutch Healthcare (ZorgAPIs) API.
   description:
     $ref: './info#description.md'
   contact:

@@ -1,4 +1,4 @@
-Definition of the API Library for Dutch Healthcare (ZorgAPIs) API.
+This specification is maintained on [GitHub](https://github.com/Nictiz/zorgapis-openapi-specification).
 
 # Introduction
 
