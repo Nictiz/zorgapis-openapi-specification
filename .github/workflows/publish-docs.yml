@@ -1,9 +1,17 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
 name: Publish docs
 
 on:
+  # Allow running the workflow manually from the GitHub UI
+  workflow_dispatch:
   push:
     branches:
       - main
+    paths:
+      # Only run on changes to src
+      - ".github/workflows/publish-docs.yml"
+      - "src/**"
 
 permissions:
   contents: write
@@ -13,26 +21,27 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Bundle
+        run: |
+          npx @redocly/cli@1.16.0 bundle ./src/v1alpha2/openapi.yaml --output=./build/openapi.yaml
+          
+      - name: Lint
+        run: |
+          npx @redocly/cli@1.16.0 lint ./build/openapi.yaml --format=github-actions --skip-rule=no-invalid-media-type-examples --skip-rule=no-unused-components
+          
+      - name: Build
+        run: |
+          npx @redocly/cli@1.16.0 build-docs ./build/openapi.yaml --output=./build/index.html
       
-    - name: Bundle
-      run: |
-        npx @redocly/cli@1.10.6 bundle ./src/v1alpha2/openapi.yaml --output=./build/openapi.yaml
-        
-    - name: Lint
-      run: |
-        npx @redocly/cli@1.10.6 lint ./build/openapi.yaml --skip-rule=no-invalid-media-type-examples --skip-rule=no-unused-components
-        
-    - name: Build
-      run: |
-        npx @redocly/cli@1.10.6 build-docs ./build/openapi.yaml --output=./build/index.html
-    
-    # Deploy docs by creating a new Git commit on `gh-pages` branch
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3 # https://github.com/peaceiris/actions-gh-pages
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
-        cname: oas.zorgapis.nl
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@users.noreply.github.com'
+      # Deploy docs by creating a new Git commit on `gh-pages` branch
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4 # https://github.com/peaceiris/actions-gh-pages
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          cname: oas.zorgapis.nl
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
