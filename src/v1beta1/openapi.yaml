@@ -2,7 +2,8 @@ openapi: 3.1.0
 
 info:
   title: ZorgAPIs API
-  version: 0.2.0
+  version: 0.3.0
+  summary: Definition of the API Library for Dutch Healthcare (ZorgAPIs) API.
   description:
     $ref: './info#description.md'
   contact:
@@ -83,12 +84,10 @@ x-tagGroups:
       - api-specifications.versions.declarations-of-conformity
 
 servers:
-  - url: 'https://{environment}.zorgapis.nl/v1alpha2'
-    variables:
-      environment:
-        default: api.sandbox
-        enum:
-          - api.sandbox
+  - url: 'https://api.zorgapis.nl/v1beta1'
+    description: Production environment
+  - url: 'https://api.sandbox.zorgapis.nl/v1beta1'
+    description: Sandbox environment
 
 paths:
   # users
