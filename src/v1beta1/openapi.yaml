@@ -83,7 +83,7 @@ x-tagGroups:
       - api-specifications.versions.declarations-of-conformity
 
 servers:
-  - url: 'https://{environment}.zorgapis.nl/v1alpha2'
+  - url: 'https://{environment}.zorgapis.nl/v1beta1'
     variables:
       environment:
         default: api.sandbox
