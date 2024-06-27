@@ -1,14 +1,11 @@
-Definition of the Dutch API Library for Healthcare (ZorgAPIs) API.
+Definition of the API Library for Dutch Healthcare (ZorgAPIs) API.
 
 # Introduction
 
-[Nictiz](https://nictiz.nl/) is the Dutch competence centre for electronic exchange of health and care information.
-Nictiz develops and maintains standards for digital information management, ensuring that healthcare information can be
-recorded and exchanged in an unambiguous manner. To this end Nictiz maintains close cooperation with the international
-Standardization Organizations: [IHE](https://www.ihe-europe.net/), [HL7](https://www.hl7.org/),
-[SNOMED International](https://www.snomed.org/), [PCH Alliance](https://www.pchalliance.org/),
-[CEN](https://www.cencenelec.eu/)/[NEN](https://www.nen.nl/en/).
+ZorgAPIs API enables the creation of applications that can interact with the [API Library for Dutch Healthcare](
+https://www.zorgapis.nl/), such as retrieving API requirements, creating and managing organizations and API
+specifications, or publishing declarations of conformity.
 
-Nictiz has developed an [API strategy](https://nictiz.github.io/api-strategie-docs/) for Dutch Healthcare and
-[requirements](https://nictiz.github.io/api-requirements-docs/) for Application Programming Interfaces (APIs) in Dutch
-Healthcare.
+This specification is part of the [ZorgAPIs Developer Portal](https://developer.zorgapis.nl/). Utilize our
+[sandbox API](https://developer.zorgapis.nl/play/) to ensure your integrations are seamless and robust before publishing
+data to the production environment.
