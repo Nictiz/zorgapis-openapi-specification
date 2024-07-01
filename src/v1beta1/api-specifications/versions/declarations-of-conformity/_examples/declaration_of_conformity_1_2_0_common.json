@@ -2,17 +2,20 @@
   "requirementsVersion": "1.2.0",
   "requirements": {
     "SD001": {
-      "conformityType": "NOT_EVALUATED",
-      "remarks": "This is an example text."
+      "conformityType": "CONFORMANT",
+      "remarks": "Provide evidence supporting compliance claims with standards, specifications, guidelines, practices, policies, or laws. Evidence may include URLs to official third-party validation reports or audits."
     },
     "SD001.001": {
-      "conformityType": "NOT_EVALUATED"
+      "conformityType": "NOT_CONFORMANT",
+      "remarks": "For example, explain why the resource does not meet this requirement."
     },
     "SD001.002": {
-      "conformityType": "NOT_EVALUATED"
+      "conformityType": "NOT_EVALUATED",
+      "remarks": "For example, provide reasons why the conformity of this requirement has not been evaluated."
     },
     "SD001.003": {
-      "conformityType": "NOT_EVALUATED"
+      "conformityType": "NOT_APPLICABLE",
+      "remarks": "For example, explain why this requirement does not apply to the resource."
     },
     "SD001.004": {
       "conformityType": "NOT_EVALUATED"
