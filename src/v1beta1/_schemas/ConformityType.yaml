@@ -3,11 +3,13 @@ enum:
   - CONFORMANT
   - NOT_CONFORMANT
   - NOT_EVALUATED
+  - NOT_APPLICABLE
 description: |
   The conformity type:
   
   - `CONFORMANT` - Conformity evaluation has passed, the resource is conformant.
   - `NOT_CONFORMANT` - Conformity evaluation has not passed, the resource is not conformant.
   - `NOT_EVALUATED` - Conformity has not been evaluated.
+  - `NOT_APPLICABLE` - Conformity evaluation is not applicable to the resource.
 examples:
   - CONFORMANT
