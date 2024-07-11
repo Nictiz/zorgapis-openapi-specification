@@ -26,15 +26,15 @@ jobs:
         
       - name: Bundle
         run: |
-          npx @redocly/cli@1.16.0 bundle ./src/v1beta1/openapi.yaml --output=./build/openapi.yaml
+          npx @redocly/cli@1.17.1 bundle ./src/v1beta1/openapi.yaml --output=./build/openapi.yaml
           
       - name: Lint
         run: |
-          npx @redocly/cli@1.16.0 lint ./build/openapi.yaml --format=github-actions --skip-rule=no-invalid-media-type-examples --skip-rule=no-unused-components
+          npx @redocly/cli@1.17.1 lint ./build/openapi.yaml --format=github-actions --skip-rule=no-invalid-media-type-examples --skip-rule=no-unused-components
           
       - name: Build
         run: |
-          npx @redocly/cli@1.16.0 build-docs ./build/openapi.yaml --output=./build/index.html
+          npx @redocly/cli@1.17.1 build-docs ./build/openapi.yaml --output=./build/index.html
       
       # Deploy docs by creating a new Git commit on `gh-pages` branch
       - name: Deploy
