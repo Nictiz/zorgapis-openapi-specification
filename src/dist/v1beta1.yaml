@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: ZorgAPIs API
-  version: 0.3.0
+  version: 0.3.1
   summary: Definition of the API Library for Dutch Healthcare (ZorgAPIs) API.
   description: |-
     This specification is maintained on [GitHub](https://github.com/Nictiz/zorgapis-openapi-specification).
@@ -4004,13 +4004,29 @@ components:
           examples:
             - Nictiz is the Dutch competence center for electronic exchange of health and care information.
         website:
-          description: The website URL of the organization
+          description: The URL of the organization's website
           type:
             - string
             - 'null'
           maxLength: 1000
           examples:
             - https://nictiz.nl/
+        githubUrl:
+          description: The URL of the organization on GitHub
+          type:
+            - string
+            - 'null'
+          maxLength: 1000
+          examples:
+            - https://github.com/Nictiz
+        gitlabUrl:
+          description: The URL of the organization on GitLab
+          type:
+            - string
+            - 'null'
+          maxLength: 1000
+          examples:
+            - https://gitlab.com/nictiz
         emailAddress:
           description: The email address of the organization
           type: string
