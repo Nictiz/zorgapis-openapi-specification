@@ -9,7 +9,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
-This upcoming release adds optional properties `githubUrl` and `gitlabUrl` to schema `Organization`.
+## [0.3.2] - 2024-07-11
+
+This release adds optional properties `githubUrl` and `gitlabUrl` to schema `Organization`.
 
 ### Changed
 
@@ -27,7 +29,6 @@ This release adds enum value `NOT_APPLICABLE` to schema `ConformityType` and cha
 
 ### Changed
 
-- Change version from `0.3.0` to `0.3.1`
 - Change declaration of conformity examples to use enum value `NOT_CONFORMANT`
 
 ### Added
@@ -40,7 +41,6 @@ This release changes server and OAuth 2.0 URLs from `v1alpha2` sandbox environme
 
 ### Changed
 
-- Change version from `0.2.0` to `0.3.0`
 - Change base path in server URL from `v1alpha2` to `v1beta1`
 - Change OAuth 2.0 authorization, token and refresh URLs from sandbox to production
 - Change workflow "Publish docs" to use Redocly CLI version 1.16.0
@@ -51,6 +51,7 @@ This release changes server and OAuth 2.0 URLs from `v1alpha2` sandbox environme
 - Add property `summary` to `info` object
 - Add manual trigger to workflow "Publish docs"
 
-[unreleased]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.3.1...HEAD
+[unreleased]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.3.2...HEAD
+[0.3.2]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/Nictiz/zorgapis-openapi-specification/releases/tag/v0.3.0
