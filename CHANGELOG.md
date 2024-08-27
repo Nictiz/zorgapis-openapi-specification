@@ -9,6 +9,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Changed
+
+- Change `/api-specifications/{apiSpecificationId}/versions` endpoints to support `hl7StandardVersions` property
+
+### Added
+
+- Add `/hl7-standards` endpoints
+- Add `/hl7-standard-versions` endpoints
+- Add `/api-specifications/{apiSpecificationId}/versions/{versionId}/hl7-standard-versions/{hl7StandardVersionId}`
+  endpoints to support setting and deleting `hl7StandardVersions` for an `ApiSpecificationVersion`
+
 ## [0.3.2] - 2024-07-11
 
 This release adds optional properties `githubUrl` and `gitlabUrl` to schema `Organization`.
