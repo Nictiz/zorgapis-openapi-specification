@@ -157,5 +157,7 @@ TrustFrameworkVersion_CreateRead:
   $ref: './trust-framework-versions/_schemas/TrustFrameworkVersion_CreateRead.yaml'
 TrustFrameworkVersion_Update:
   $ref: './trust-framework-versions/_schemas/TrustFrameworkVersion_Update.yaml'
+BasicTrustFrameworkVersion:
+  $ref: './trust-framework-versions/_schemas/BasicTrustFrameworkVersion.yaml'
 MainTrustFrameworkVersion:
   $ref: './trust-framework-versions/_schemas/MainTrustFrameworkVersion.yaml'

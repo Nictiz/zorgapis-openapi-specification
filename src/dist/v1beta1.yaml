@@ -5455,18 +5455,76 @@ components:
               format: uuid
               examples:
                 - 15261fd0-b292-45d9-b6b1-266cc922fb50
+    BasicTrustFramework:
+      description: The basic trust framework information
+      type: object
+      required:
+        - name
+        - id
+      properties:
+        id:
+          description: The ID of the trust framework
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
+        name:
+          description: The name of the trust framework
+          type: string
+          maxLength: 255
+          examples:
+            - TODO
+    BasicTrustFrameworkVersion:
+      description: The basic trust framework version information
+      type: object
+      required:
+        - id
+        - name
+        - trustFrameworkId
+      properties:
+        id:
+          description: The ID of the trust framework version
+          type: string
+          format: uuid
+          examples:
+            - 78ca8495-a4f4-4b41-b97b-c912c2e96450
+        name:
+          description: The name of the trust framework version
+          type: string
+          maxLength: 255
+          readOnly: true
+          examples:
+            - TODO
+        trustFrameworkId:
+          description: The ID of the trust framework this version belongs to
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
+        trustFramework:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicTrustFramework'
+          examples:
+            - id: 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
+              name: TODO
     ApiSpecificationVersion_CreateRead:
       allOf:
         - $ref: '#/components/schemas/ApiSpecificationVersion'
         - type: object
           required:
-            - urls
             - lastDeclarationOfConformity
           properties:
             urls:
               type: array
               items:
                 $ref: '#/components/schemas/BasicApiSpecificationVersionUrl'
+            trustFrameworkVersions:
+              type: array
+              items:
+                $ref: '#/components/schemas/BasicTrustFrameworkVersion'
             lastDeclarationOfConformity:
               readOnly: true
               allOf:
@@ -5539,26 +5597,6 @@ components:
                   SD001.001:
                     conformityType: CONFORMANT
         - $ref: '#/components/schemas/BasicResponse'
-    BasicTrustFramework:
-      description: The basic trust framework information
-      type: object
-      required:
-        - name
-        - id
-      properties:
-        id:
-          description: The ID of the trust framework
-          type: string
-          format: uuid
-          readOnly: true
-          examples:
-            - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
-        name:
-          description: The name of the trust framework
-          type: string
-          maxLength: 255
-          examples:
-            - TODO
     TrustFrameworkVersion:
       description: The trust framework version information
       type: object
