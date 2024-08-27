@@ -1,0 +1,8 @@
+# Resource definition for Update operations
+allOf:
+  - $ref: './Hl7StandardVersion.yaml'
+    # Extend
+  - type: object
+    properties:
+      hl7StandardId:
+        readOnly: true

@@ -60,6 +60,19 @@ tags:
   - name: api-specifications.versions.declarations-of-conformity
     description: API specification version declarations of conformity API
     x-displayName: API specification version declarations of conformity
+  - name: api-specifications.versions.hl7-standard-versions
+    description: API specification version HL7 standard versions API
+    x-displayName: API specification version HL7 standard versions
+  
+  # hl7-standards
+  - name: hl7-standards
+    description: HL7 standards API
+    x-displayName: HL7 standards
+  
+  # hl7-standard-versions
+  - name: hl7-standard-versions
+    description: HL7 standard versions API
+    x-displayName: HL7 standard versions
 
 x-tagGroups:
   - name: Users
@@ -82,6 +95,13 @@ x-tagGroups:
       - api-specifications.versions
       - api-specifications.versions.urls
       - api-specifications.versions.declarations-of-conformity
+      - api-specifications.versions.hl7-standard-versions
+  - name: HL7 standards
+    tags:
+      - hl7-standards
+  - name: HL7 standard versions
+    tags:
+      - hl7-standard-versions
 
 servers:
   - url: 'https://api.zorgapis.nl/v1beta1'
@@ -155,6 +175,21 @@ paths:
     $ref: './api-specifications/versions/declarations-of-conformity/_paths/declarations-of-conformity.yaml'
   /api-specifications/{apiSpecificationId}/versions/{versionId}/declarations-of-conformity/{declarationOfConformityId}:
     $ref: './api-specifications/versions/declarations-of-conformity/_paths/declarations-of-conformity_{declarationOfConformityId}.yaml'
+  # api-specifications/versions/hl7-standard-versions
+  /api-specifications/{apiSpecificationId}/versions/{versionId}/hl7-standard-versions/{hl7StandardVersionId}:
+    $ref: './api-specifications/versions/hl7-standard-versions/_paths/hl7-standard-versions_{hl7StandardVersionId}.yaml'
+  
+  # hl7-standards
+  /hl7-standards:
+    $ref: './hl7-standards/_paths/hl7-standards.yaml'
+  /hl7-standards/{hl7StandardId}:
+    $ref: './hl7-standards/_paths/hl7-standards_{hl7StandardId}.yaml'
+  
+  # hl7-standard-versions
+  /hl7-standard-versions:
+    $ref: './hl7-standard-versions/_paths/hl7-standard-versions.yaml'
+  /hl7-standard-versions/{hl7StandardVersionId}:
+    $ref: './hl7-standard-versions/_paths/hl7-standard-versions_{hl7StandardVersionId}.yaml'
     
 components:
   # Reusable schemas (data models)

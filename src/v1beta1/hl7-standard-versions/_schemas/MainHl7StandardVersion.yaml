@@ -1,0 +1,9 @@
+allOf:
+  - $ref: './Hl7StandardVersion.yaml'
+    # Extend
+  - type: object
+    properties:
+      hl7StandardId:
+        writeOnly: true
+      hl7Standard:
+        writeOnly: true        

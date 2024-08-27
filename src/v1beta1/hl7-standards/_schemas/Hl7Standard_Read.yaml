@@ -1,0 +1,5 @@
+# Resource definition for Read operations
+allOf:
+  - $ref: './Hl7Standard.yaml'
+    # Extend
+  - $ref: '../../_schemas/BasicResponse.yaml'

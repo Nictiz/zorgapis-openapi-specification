@@ -4,7 +4,6 @@ allOf:
     # Extend
   - type: object
     required:
-      - urls
       # Read-only
       - lastDeclarationOfConformity
     properties:
@@ -12,6 +11,10 @@ allOf:
         type: array
         items:
           $ref: '../urls/_schemas/BasicApiSpecificationVersionUrl.yaml'
+      hl7StandardVersions:
+        type: array
+        items:
+          $ref: '../../../hl7-standard-versions/_schemas/BasicHl7StandardVersion.yaml'
       lastDeclarationOfConformity:
         # Returned by GET, not used in POST/PUT/PATCH
         readOnly: true

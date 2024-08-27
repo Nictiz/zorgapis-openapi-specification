@@ -32,39 +32,43 @@ This causes results to be sorted by `createTime` in descending order (from most 
 
 The following table lists the field names and operators you can use in a filter expression.
 
-| Field                                                         | Type                    | Operator | Example                                                                                      |
-|---------------------------------------------------------------|-------------------------|----------|----------------------------------------------------------------------------------------------|
-| `id`                                                          | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                      |
-|                                                               |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                     |
-| `name`                                                        | `string`                | `eq`     | `?filter=eq(name,"Verzamelen Huisartsgegevens")`                                             |
-|                                                               |                         | `neq`    | `?filter=neq(name,"Verzamelen Huisartsgegevens")`                                            |
-|                                                               |                         | `has`    | `?filter=has(name,"Verzamelen")`                                                             |
-|                                                               |                         | `stw`    | `?filter=stw(name,"Verzamelen")`                                                             |
-|                                                               |                         | `enw`    | `?filter=enw(name,"Huisartsgegevens")`                                                       |
-|                                                               |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                                        |
-| `organizationId`                                              | `uuid`                  | `eq`     | `?filter=eq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`                          |
-|                                                               |                         | `neq`    | `?filter=neq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`                         |
-| `architecturalStyle`                                          | `ApiArchitecturalStyle` | `eq`     | `?filter=eq(architecturalStyle,"REST")`                                                      |
-|                                                               |                         | `neq`    | `?filter=neq(architecturalStyle,"REST")`                                                     |
-| `mainVersion.lastDeclarationOfConformity.requirementsVersion` | `string`                | `eq`     | `?filter=eq(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2.0")`            |
-|                                                               |                         | `neq`    | `?filter=neq(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2.0")`           |
-|                                                               |                         | `has`    | `?filter=has(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2")`             |
-|                                                               |                         | `stw`    | `?filter=stw(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2")`             |
-|                                                               |                         | `enw`    | `?filter=enw(mainVersion.lastDeclarationOfConformity.requirementsVersion,"2.0")`             |
-|                                                               |                         | `reg`    | `?filter=reg(mainVersion.lastDeclarationOfConformity.requirementsVersion,"^[a-zA-Z0-9 ]+$")` |
-| `mainVersion.lastDeclarationOfConformity.rankingLevel`        | `ApiRankingLevel`       | `eq`     | `?filter=eq(mainVersion.lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                |
-|                                                               |                         | `neq`    | `?filter=neq(mainVersion.lastDeclarationOfConformity.rankingLevel,"OPEN_API")`               |
-| `createTime`                                                  | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                                          |
-|                                                               |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                                         |
-|                                                               |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                                          |
-|                                                               |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                                         |
-|                                                               |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                                          |
-|                                                               |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                                         |
-| `updateTime`                                                  | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                                          |
-|                                                               |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                                         |
-|                                                               |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                                          |
-|                                                               |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                                         |
-|                                                               |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                                          |
-|                                                               |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                                         |
+| Field                                                         | Type                    | Operator | Example                                                                                                      |
+|---------------------------------------------------------------|-------------------------|----------|--------------------------------------------------------------------------------------------------------------|
+| `id`                                                          | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                      |
+|                                                               |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                     |
+| `name`                                                        | `string`                | `eq`     | `?filter=eq(name,"Verzamelen Huisartsgegevens")`                                                             |
+|                                                               |                         | `neq`    | `?filter=neq(name,"Verzamelen Huisartsgegevens")`                                                            |
+|                                                               |                         | `has`    | `?filter=has(name,"Verzamelen")`                                                                             |
+|                                                               |                         | `stw`    | `?filter=stw(name,"Verzamelen")`                                                                             |
+|                                                               |                         | `enw`    | `?filter=enw(name,"Huisartsgegevens")`                                                                       |
+|                                                               |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                                                        |
+| `organizationId`                                              | `uuid`                  | `eq`     | `?filter=eq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`                                          |
+|                                                               |                         | `neq`    | `?filter=neq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`                                         |
+| `architecturalStyle`                                          | `ApiArchitecturalStyle` | `eq`     | `?filter=eq(architecturalStyle,"REST")`                                                                      |
+|                                                               |                         | `neq`    | `?filter=neq(architecturalStyle,"REST")`                                                                     |
+| `mainVersion.hl7StandardVersions.$it.id`                      | `uuid`                  | `eq`     | `?filter=any(mainVersion.hl7StandardVersions,eq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`             |
+|                                                               |                         | `neq`    | `?filter=all(mainVersion.hl7StandardVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`            |
+| `mainVersion.hl7StandardVersions.$it.hl7StandardId`           | `uuid`                  | `eq`     | `?filter=any(mainVersion.hl7StandardVersions,eq($it.hl7StandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))`  |
+|                                                               |                         | `neq`    | `?filter=all(mainVersion.hl7StandardVersions,neq($it.hl7StandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))` |
+| `mainVersion.lastDeclarationOfConformity.requirementsVersion` | `string`                | `eq`     | `?filter=eq(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                            |
+|                                                               |                         | `neq`    | `?filter=neq(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                           |
+|                                                               |                         | `has`    | `?filter=has(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2")`                             |
+|                                                               |                         | `stw`    | `?filter=stw(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2")`                             |
+|                                                               |                         | `enw`    | `?filter=enw(mainVersion.lastDeclarationOfConformity.requirementsVersion,"2.0")`                             |
+|                                                               |                         | `reg`    | `?filter=reg(mainVersion.lastDeclarationOfConformity.requirementsVersion,"^[a-zA-Z0-9 ]+$")`                 |
+| `mainVersion.lastDeclarationOfConformity.rankingLevel`        | `ApiRankingLevel`       | `eq`     | `?filter=eq(mainVersion.lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                |
+|                                                               |                         | `neq`    | `?filter=neq(mainVersion.lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                               |
+| `createTime`                                                  | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                                                          |
+|                                                               |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                                                         |
+|                                                               |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                                                          |
+|                                                               |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                                                         |
+|                                                               |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                                                          |
+|                                                               |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                                                         |
+| `updateTime`                                                  | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                                                          |
+|                                                               |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                                                         |
+|                                                               |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                                                          |
+|                                                               |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                                                         |
+|                                                               |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                                                          |
+|                                                               |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                                                         |
 
 </details>

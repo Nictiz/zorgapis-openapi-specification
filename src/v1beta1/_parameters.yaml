@@ -36,3 +36,13 @@ versionName:
 # path
 apiSpecificationId:
   $ref: './api-specifications/_parameters/path/apiSpecificationId.yaml'
+
+# hl7-standards
+# path
+hl7StandardId:
+  $ref: './hl7-standards/_parameters/path/hl7StandardId.yaml'
+
+# hl7-standard-versions
+# path
+hl7StandardVersionId:
+  $ref: './hl7-standard-versions/_parameters/path/hl7StandardVersionId.yaml'

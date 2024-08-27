@@ -1,0 +1,75 @@
+# Abstract base schema
+description: The HL7 standard version information
+type: object
+required:
+  - name
+  - hl7StandardId
+  - publishTime
+  - semVer
+  - lifecycleState
+  # Read-only
+  - id
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the HL7 standard version
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 8ae84d7f-73e7-4f08-b839-c73c97128ada
+  name:
+    description: The name of the HL7 standard version
+    type: string
+    maxLength: 255
+    examples:
+      - TODO
+  description:
+    description: The description of the HL7 standard version
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - TODO
+  hl7StandardId:
+    description: The ID of the HL7 standard this version belongs to
+    type: string
+    format: uuid
+    examples:
+      - 05d8de10-1932-4e7f-badf-655c1a82fcc3
+  hl7Standard:
+    # Returned by GET, not used in POST/PUT/PATCH
+    readOnly: true
+    allOf:
+      - $ref: '../../hl7-standards/_schemas/BasicHl7Standard.yaml'
+    examples:
+      - id: 05d8de10-1932-4e7f-badf-655c1a82fcc3
+        name: TODO
+  publishTime:
+    description: The date and time at which the HL7 standard version was published
+    type: string
+    format: date-time
+    examples:
+      - '2020-09-02T00:00:00.000Z'
+  semVer:
+    allOf:
+      - $ref: '../../_schemas/SemVer.yaml'
+    examples:
+      - major: 2
+        minor: 0
+        patch: 0
+  lifecycleState:
+    description: The lifecycle state of the HL7 standard version
+    allOf:
+      - $ref: '../../_schemas/ProductLifecycleState.yaml'
+    examples:
+      - PUBLISHED
+  url:
+    description: The URL of the HL7 standard version
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - TODO
