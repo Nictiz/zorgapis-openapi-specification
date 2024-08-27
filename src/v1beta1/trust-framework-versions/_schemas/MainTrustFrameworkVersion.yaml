@@ -1,0 +1,9 @@
+allOf:
+  - $ref: './TrustFrameworkVersion.yaml'
+    # Extend
+  - type: object
+    properties:
+      trustFrameworkId:
+        writeOnly: true
+      trustFramework:
+        writeOnly: true        

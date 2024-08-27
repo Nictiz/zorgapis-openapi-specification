@@ -1,4 +1,4 @@
-﻿# Resource definition for Create operations
+﻿# Resource definition for Create, Read operations
 allOf:
   - $ref: './TrustFrameworkVersion.yaml'
     # Extend

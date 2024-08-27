@@ -6,11 +6,3 @@ allOf:
     properties:
       organizationId:
         readOnly: true
-      mainVersionId:
-        description: The ID of the main version of the trust framework
-        type:
-          - 'string'
-          - 'null'
-        format: uuid
-        examples:
-          - 78ca8495-a4f4-4b41-b97b-c912c2e96450

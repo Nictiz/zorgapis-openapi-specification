@@ -2,4 +2,11 @@
 allOf:
   - $ref: './TrustFramework.yaml'
     # Extend
+  - type: object
+    properties:
+      mainVersionId:
+        readOnly: true
+        writeOnly: true
+      mainVersion:
+        writeOnly: true
   - $ref: '../../_schemas/BasicResponse.yaml'

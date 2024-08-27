@@ -5469,150 +5469,6 @@ components:
                   SD001.001:
                     conformityType: CONFORMANT
         - $ref: '#/components/schemas/BasicResponse'
-    TrustFramework:
-      description: The trust framework information
-      type: object
-      required:
-        - name
-        - organizationId
-        - url
-        - id
-      properties:
-        id:
-          description: The ID of the trust framework
-          type: string
-          format: uuid
-          readOnly: true
-          examples:
-            - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
-        name:
-          description: The name of the trust framework
-          type: string
-          maxLength: 255
-          examples:
-            - TODO
-        description:
-          description: The description of the trust framework
-          type:
-            - string
-            - 'null'
-          maxLength: 1000
-          examples:
-            - TODO
-        organizationId:
-          description: The ID of the organization that maintains the trust framework
-          type: string
-          format: uuid
-          examples:
-            - 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
-        organization:
-          readOnly: true
-          allOf:
-            - $ref: '#/components/schemas/BasicOrganization'
-          examples:
-            - id: 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
-              name: Stichting MedMij
-        url:
-          description: The URL of the trust framework
-          type: string
-          maxLength: 1000
-          examples:
-            - TODO
-    MainTrustFrameworkVersion:
-      description: The main trust framework version information
-      type: object
-      required:
-        - name
-        - publishTime
-        - semVer
-        - lifecycleState
-        - id
-      properties:
-        id:
-          description: The ID of the trust framework version
-          type: string
-          format: uuid
-          readOnly: true
-          examples:
-            - 78ca8495-a4f4-4b41-b97b-c912c2e96450
-        name:
-          description: The name of the trust framework version
-          type: string
-          maxLength: 255
-          examples:
-            - TODO
-        description:
-          description: The description of the trust framework version
-          type:
-            - string
-            - 'null'
-          maxLength: 1000
-          examples:
-            - TODO
-        publishTime:
-          description: The date and time at which the trust framework version was published
-          type: string
-          format: date-time
-          examples:
-            - '2020-09-02T00:00:00.000Z'
-        semVer:
-          allOf:
-            - $ref: '#/components/schemas/SemVer'
-          examples:
-            - major: 2
-              minor: 0
-              patch: 0
-        lifecycleState:
-          description: The lifecycle state of the trust framework version
-          allOf:
-            - $ref: '#/components/schemas/ProductLifecycleState'
-          examples:
-            - PUBLISHED
-        url:
-          description: The URL of the trust framework version
-          type:
-            - string
-            - 'null'
-          maxLength: 1000
-          examples:
-            - TODO
-    TrustFramework_Read:
-      allOf:
-        - $ref: '#/components/schemas/TrustFramework'
-        - type: object
-          properties:
-            mainVersionId:
-              description: The ID of the main version of the trust framework
-              type:
-                - string
-                - 'null'
-              format: uuid
-              examples:
-                - 78ca8495-a4f4-4b41-b97b-c912c2e96450
-            mainVersion:
-              readOnly: true
-              allOf:
-                - $ref: '#/components/schemas/MainTrustFrameworkVersion'
-        - $ref: '#/components/schemas/BasicResponse'
-    TrustFramework_Create:
-      allOf:
-        - $ref: '#/components/schemas/TrustFramework'
-        - $ref: '#/components/schemas/BasicResponse'
-    TrustFramework_Update:
-      allOf:
-        - $ref: '#/components/schemas/TrustFramework'
-        - type: object
-          properties:
-            organizationId:
-              readOnly: true
-            mainVersionId:
-              description: The ID of the main version of the trust framework
-              type:
-                - string
-                - 'null'
-              format: uuid
-              examples:
-                - 78ca8495-a4f4-4b41-b97b-c912c2e96450
     BasicTrustFramework:
       description: The basic trust framework information
       type: object
@@ -5705,6 +5561,98 @@ components:
           maxLength: 1000
           examples:
             - TODO
+    MainTrustFrameworkVersion:
+      allOf:
+        - $ref: '#/components/schemas/TrustFrameworkVersion'
+        - type: object
+          properties:
+            trustFrameworkId:
+              writeOnly: true
+            trustFramework:
+              writeOnly: true
+    TrustFramework:
+      description: The trust framework information
+      type: object
+      required:
+        - name
+        - organizationId
+        - url
+        - id
+      properties:
+        id:
+          description: The ID of the trust framework
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
+        name:
+          description: The name of the trust framework
+          type: string
+          maxLength: 255
+          examples:
+            - TODO
+        description:
+          description: The description of the trust framework
+          type:
+            - string
+            - 'null'
+          maxLength: 1000
+          examples:
+            - TODO
+        organizationId:
+          description: The ID of the organization that maintains the trust framework
+          type: string
+          format: uuid
+          examples:
+            - 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
+        organization:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicOrganization'
+          examples:
+            - id: 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
+              name: Stichting MedMij
+        url:
+          description: The URL of the trust framework
+          type: string
+          maxLength: 1000
+          examples:
+            - TODO
+        mainVersionId:
+          description: The ID of the main version of the trust framework
+          type:
+            - string
+            - 'null'
+          format: uuid
+          examples:
+            - 78ca8495-a4f4-4b41-b97b-c912c2e96450
+        mainVersion:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/MainTrustFrameworkVersion'
+    TrustFramework_Read:
+      allOf:
+        - $ref: '#/components/schemas/TrustFramework'
+        - $ref: '#/components/schemas/BasicResponse'
+    TrustFramework_Create:
+      allOf:
+        - $ref: '#/components/schemas/TrustFramework'
+        - type: object
+          properties:
+            mainVersionId:
+              readOnly: true
+              writeOnly: true
+            mainVersion:
+              writeOnly: true
+        - $ref: '#/components/schemas/BasicResponse'
+    TrustFramework_Update:
+      allOf:
+        - $ref: '#/components/schemas/TrustFramework'
+        - type: object
+          properties:
+            organizationId:
+              readOnly: true
     TrustFrameworkVersion_CreateRead:
       allOf:
         - $ref: '#/components/schemas/TrustFrameworkVersion'
