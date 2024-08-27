@@ -60,6 +60,16 @@ tags:
   - name: api-specifications.versions.declarations-of-conformity
     description: API specification version declarations of conformity API
     x-displayName: API specification version declarations of conformity
+  
+  # trust-frameworks
+  - name: trust-frameworks
+    description: Trust frameworks API
+    x-displayName: Trust frameworks
+  
+  # trust-framework-versions
+  - name: trust-framework-versions
+    description: Trust framework versions API
+    x-displayName: Trust framework versions
 
 x-tagGroups:
   - name: Users
@@ -82,6 +92,12 @@ x-tagGroups:
       - api-specifications.versions
       - api-specifications.versions.urls
       - api-specifications.versions.declarations-of-conformity
+  - name: Trust frameworks
+    tags:
+      - trust-frameworks
+  - name: Trust framework versions
+    tags:
+      - trust-framework-versions
 
 servers:
   - url: 'https://api.zorgapis.nl/v1beta1'
@@ -155,6 +171,18 @@ paths:
     $ref: './api-specifications/versions/declarations-of-conformity/_paths/declarations-of-conformity.yaml'
   /api-specifications/{apiSpecificationId}/versions/{versionId}/declarations-of-conformity/{declarationOfConformityId}:
     $ref: './api-specifications/versions/declarations-of-conformity/_paths/declarations-of-conformity_{declarationOfConformityId}.yaml'
+  
+  # trust-frameworks
+  /trust-frameworks:
+    $ref: './trust-frameworks/_paths/trust-frameworks.yaml'
+  /trust-frameworks/{trustFrameworkId}:
+    $ref: './trust-frameworks/_paths/trust-frameworks_{trustFrameworkId}.yaml'
+  
+  # trust-framework-versions
+  /trust-framework-versions:
+    $ref: './trust-framework-versions/_paths/trust-framework-versions.yaml'
+  /trust-framework-versions/{trustFrameworkVersionId}:
+    $ref: './trust-framework-versions/_paths/trust-framework-versions_{trustFrameworkVersionId}.yaml'
     
 components:
   # Reusable schemas (data models)

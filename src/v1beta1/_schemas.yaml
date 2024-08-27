@@ -137,3 +137,21 @@ ApiSpecificationVersionUrlType:
   $ref: './api-specifications/versions/urls/_schemas/ApiSpecificationVersionUrlType.yaml'
 BasicApiSpecificationVersionUrl:
   $ref: './api-specifications/versions/urls/_schemas/BasicApiSpecificationVersionUrl.yaml'
+
+# trust-frameworks
+TrustFramework:
+  $ref: './trust-frameworks/_schemas/TrustFramework.yaml'
+TrustFramework_Create:
+  $ref: './trust-frameworks/_schemas/TrustFramework_Create.yaml'
+TrustFramework_Read:
+  $ref: './trust-frameworks/_schemas/TrustFramework_Read.yaml'
+TrustFramework_Update:
+  $ref: './trust-frameworks/_schemas/TrustFramework_Update.yaml'
+
+# trust-framework-versions
+TrustFrameworkVersion:
+  $ref: './trust-framework-versions/_schemas/TrustFrameworkVersion.yaml'
+TrustFrameworkVersion_CreateRead:
+  $ref: './trust-framework-versions/_schemas/TrustFrameworkVersion_CreateRead.yaml'
+TrustFrameworkVersion_Update:
+  $ref: './trust-framework-versions/_schemas/TrustFrameworkVersion_Update.yaml'

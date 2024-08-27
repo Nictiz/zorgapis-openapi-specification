@@ -36,3 +36,13 @@ versionName:
 # path
 apiSpecificationId:
   $ref: './api-specifications/_parameters/path/apiSpecificationId.yaml'
+
+# trust-frameworks
+# path
+trustFrameworkId:
+  $ref: './trust-frameworks/_parameters/path/trustFrameworkId.yaml'
+
+# trust-framework-versions
+# path
+trustFrameworkVersionId:
+  $ref: './trust-framework-versions/_parameters/path/trustFrameworkVersionId.yaml'

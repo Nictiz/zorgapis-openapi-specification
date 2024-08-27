@@ -1,0 +1,75 @@
+# Abstract base schema
+description: The trust framework version information
+type: object
+required:
+  - name
+  - trustFrameworkId
+  - publishTime
+  - semVer
+  - lifecycleState
+  # Read-only
+  - id
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the trust framework version
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 78ca8495-a4f4-4b41-b97b-c912c2e96450
+  name:
+    description: The name of the trust framework version
+    type: string
+    maxLength: 255
+    examples:
+      - TODO
+  description:
+    description: The description of the trust framework version
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - TODO
+  trustFrameworkId:
+    description: The ID of the trust framework this version belongs to
+    type: string
+    format: uuid
+    examples:
+      - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
+  trustFramework:
+    # Returned by GET, not used in POST/PUT/PATCH
+    readOnly: true
+    allOf:
+      - $ref: '../../trust-frameworks/_schemas/BasicTrustFramework.yaml'
+    examples:
+      - id: 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
+        name: TODO
+  publishTime:
+    description: The date and time at which the trust framework version was published
+    type: string
+    format: date-time
+    examples:
+      - '2020-09-02T00:00:00.000Z'
+  semVer:
+    allOf:
+      - $ref: '../../_schemas/SemVer.yaml'
+    examples:
+      - major: 2
+        minor: 0
+        patch: 0
+  lifecycleState:
+    description: The lifecycle state of the trust framework version
+    allOf:
+      - $ref: '../../_schemas/ProductLifecycleState.yaml'
+    examples:
+      - PUBLISHED
+  url:
+    description: The URL of the trust framework version
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - TODO

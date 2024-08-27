@@ -1,0 +1,20 @@
+# Resource definition for Read operations
+allOf:
+  - $ref: './TrustFramework.yaml'
+    # Extend
+  - type: object
+    properties:
+      mainVersionId:
+        description: The ID of the main version of the trust framework
+        type:
+          - 'string'
+          - 'null'
+        format: uuid
+        examples:
+          - 78ca8495-a4f4-4b41-b97b-c912c2e96450
+      mainVersion:
+        # Returned by GET, not used in POST/PUT/PATCH
+        readOnly: true
+        allOf:
+          - $ref: './MainTrustFrameworkVersion.yaml'
+  - $ref: '../../_schemas/BasicResponse.yaml'

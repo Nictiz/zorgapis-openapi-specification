@@ -1,0 +1,5 @@
+﻿# Resource definition for Create operations
+allOf:
+  - $ref: './TrustFramework.yaml'
+    # Extend
+  - $ref: '../../_schemas/BasicResponse.yaml'
