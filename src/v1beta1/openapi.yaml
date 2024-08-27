@@ -60,6 +60,9 @@ tags:
   - name: api-specifications.versions.declarations-of-conformity
     description: API specification version declarations of conformity API
     x-displayName: API specification version declarations of conformity
+  - name: api-specifications.versions.trust-framework-versions
+    description: API specification version trust framework versions API
+    x-displayName: API specification version trust framework versions
   
   # trust-frameworks
   - name: trust-frameworks
@@ -92,6 +95,7 @@ x-tagGroups:
       - api-specifications.versions
       - api-specifications.versions.urls
       - api-specifications.versions.declarations-of-conformity
+      - api-specifications.versions.trust-framework-versions
   - name: Trust frameworks
     tags:
       - trust-frameworks
@@ -171,6 +175,9 @@ paths:
     $ref: './api-specifications/versions/declarations-of-conformity/_paths/declarations-of-conformity.yaml'
   /api-specifications/{apiSpecificationId}/versions/{versionId}/declarations-of-conformity/{declarationOfConformityId}:
     $ref: './api-specifications/versions/declarations-of-conformity/_paths/declarations-of-conformity_{declarationOfConformityId}.yaml'
+  # api-specifications/versions/trust-framework-versions
+  /api-specifications/{apiSpecificationId}/versions/{versionId}/trust-framework-versions/{trustFrameworkVersionId}:
+    $ref: './api-specifications/versions/trust-framework-versions/_paths/trust-framework-versions_{trustFrameworkVersionId}.yaml'
   
   # trust-frameworks
   /trust-frameworks:
