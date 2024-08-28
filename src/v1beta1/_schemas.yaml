@@ -143,6 +143,8 @@ Hl7Standard:
   $ref: './hl7-standards/_schemas/Hl7Standard.yaml'
 Hl7Standard_Create:
   $ref: './hl7-standards/_schemas/Hl7Standard_Create.yaml'
+Hl7Standard_Create_Response:
+  $ref: './hl7-standards/_schemas/Hl7Standard_Create_Response.yaml'
 Hl7Standard_Read:
   $ref: './hl7-standards/_schemas/Hl7Standard_Read.yaml'
 Hl7Standard_Update:

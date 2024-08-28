@@ -61,7 +61,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../_schemas/Hl7Standard_Create.yaml'
+            $ref: '../_schemas/Hl7Standard_Create_Response.yaml'
     '400':
       $ref: '../../_responses/BadRequestError.yaml'
     '401':

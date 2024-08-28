@@ -99,8 +99,6 @@ x-tagGroups:
   - name: HL7 standards
     tags:
       - hl7-standards
-  - name: HL7 standard versions
-    tags:
       - hl7-standard-versions
 
 servers:

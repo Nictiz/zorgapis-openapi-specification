@@ -3276,7 +3276,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Hl7Standard_Create'
+                $ref: '#/components/schemas/Hl7Standard_Create_Response'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -5758,8 +5758,16 @@ components:
           properties:
             mainVersionId:
               readOnly: true
+        - $ref: '#/components/schemas/BasicResponse'
+    Hl7Standard_Create_Response:
+      allOf:
+        - $ref: '#/components/schemas/Hl7Standard'
+        - type: object
+          properties:
+            mainVersionId:
               writeOnly: true
             mainVersion:
+              readOnly: false
               writeOnly: true
         - $ref: '#/components/schemas/BasicResponse'
     Hl7Standard_Update:
@@ -6434,6 +6442,4 @@ x-tagGroups:
   - name: HL7 standards
     tags:
       - hl7-standards
-  - name: HL7 standard versions
-    tags:
       - hl7-standard-versions
