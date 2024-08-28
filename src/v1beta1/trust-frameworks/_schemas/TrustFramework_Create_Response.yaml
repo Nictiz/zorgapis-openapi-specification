@@ -5,5 +5,8 @@ allOf:
   - type: object
     properties:
       mainVersionId:
-        readOnly: true
+        writeOnly: true
+      mainVersion:
+        readOnly: false
+        writeOnly: true
   - $ref: '../../_schemas/BasicResponse.yaml'

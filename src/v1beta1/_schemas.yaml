@@ -143,6 +143,8 @@ TrustFramework:
   $ref: './trust-frameworks/_schemas/TrustFramework.yaml'
 TrustFramework_Create:
   $ref: './trust-frameworks/_schemas/TrustFramework_Create.yaml'
+TrustFramework_Create_Response:
+  $ref: './trust-frameworks/_schemas/TrustFramework_Create_Response.yaml'
 TrustFramework_Read:
   $ref: './trust-frameworks/_schemas/TrustFramework_Read.yaml'
 TrustFramework_Update:

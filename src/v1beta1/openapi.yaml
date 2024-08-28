@@ -99,8 +99,6 @@ x-tagGroups:
   - name: Trust frameworks
     tags:
       - trust-frameworks
-  - name: Trust framework versions
-    tags:
       - trust-framework-versions
 
 servers:
