@@ -1,0 +1,8 @@
+# Resource definition for Update operations
+allOf:
+  - $ref: './CommunicationStandardVersion.yaml'
+    # Extend
+  - type: object
+    properties:
+      communicationStandardId:
+        readOnly: true

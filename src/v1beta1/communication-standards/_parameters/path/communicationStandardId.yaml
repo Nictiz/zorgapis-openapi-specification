@@ -1,0 +1,9 @@
+name: communicationStandardId
+in: path
+required: true
+description: The ID of the communication standard
+schema:
+  type: string
+  format: uuid
+  examples:
+    - 05d8de10-1932-4e7f-badf-655c1a82fcc3

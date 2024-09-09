@@ -37,12 +37,12 @@ versionName:
 apiSpecificationId:
   $ref: './api-specifications/_parameters/path/apiSpecificationId.yaml'
 
-# hl7-standards
+# communication-standards
 # path
-hl7StandardId:
-  $ref: './hl7-standards/_parameters/path/hl7StandardId.yaml'
+communicationStandardId:
+  $ref: './communication-standards/_parameters/path/communicationStandardId.yaml'
 
-# hl7-standard-versions
+# communication-standard-versions
 # path
-hl7StandardVersionId:
-  $ref: './hl7-standard-versions/_parameters/path/hl7StandardVersionId.yaml'
+communicationStandardVersionId:
+  $ref: './communication-standard-versions/_parameters/path/communicationStandardVersionId.yaml'

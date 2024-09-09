@@ -1,0 +1,78 @@
+get:
+  summary: List all communication standards
+  description:
+    $ref: './communication-standards#description.md'
+  operationId: listCommunicationStandards
+  security:
+    - oauth2:
+        - communication-standards:read
+  tags:
+    - communication-standards
+  parameters:
+    - $ref: '../../_parameters/query/limit.yaml'
+    - $ref: '../../_parameters/query/skip.yaml'
+    - $ref: '../../_parameters/query/sort.yaml'
+    - $ref: '../../_parameters/query/filter.yaml'
+    - $ref: '../../_parameters/query/count.yaml'
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../_schemas/CommunicationStandard_Read.yaml'
+      headers:
+        $ref: '../../_headers/defaultListHeaders.yaml'
+    '400':
+      $ref: '../../_responses/BadRequestError.yaml'
+    '401':
+      $ref: '../../_responses/UnauthenticatedError.yaml'
+    '403':
+      $ref: '../../_responses/PermissionDeniedError.yaml'
+    '422':
+      $ref: '../../_responses/InvalidArgumentError.yaml'
+    '429':
+      $ref: '../../_responses/ResourceExhaustedError.yaml'
+    '503':
+      $ref: '../../_responses/UnavailableError.yaml'
+    '5XX':
+      $ref: '../../_responses/InternalError.yaml'
+post:
+  summary: Add a communication standard
+  description: |
+    Adds a communication standard to the collection.
+  operationId: addCommunicationStandard
+  security:
+    - oauth2:
+        - communication-standards:write
+  tags:
+    - communication-standards
+  requestBody:
+    description: Communication standard object to add
+    content:
+      application/json:
+        schema:
+          $ref: '../_schemas/CommunicationStandard_Create.yaml'
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas/CommunicationStandard_Create_Response.yaml'
+    '400':
+      $ref: '../../_responses/BadRequestError.yaml'
+    '401':
+      $ref: '../../_responses/UnauthenticatedError.yaml'
+    '403':
+      $ref: '../../_responses/PermissionDeniedError.yaml'
+    '422':
+      $ref: '../../_responses/InvalidArgumentError.yaml'
+    '429':
+      $ref: '../../_responses/ResourceExhaustedError.yaml'
+    '503':
+      $ref: '../../_responses/UnavailableError.yaml'
+    '5XX':
+      $ref: '../../_responses/InternalError.yaml'

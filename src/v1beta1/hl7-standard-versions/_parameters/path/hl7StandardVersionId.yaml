@@ -1,9 +1,0 @@
-name: hl7StandardVersionId
-in: path
-required: true
-description: The ID of the HL7 standard version
-schema:
-  type: string
-  format: uuid
-  examples:
-    - 8ae84d7f-73e7-4f08-b839-c73c97128ada

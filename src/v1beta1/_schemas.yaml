@@ -138,28 +138,28 @@ ApiSpecificationVersionUrlType:
 BasicApiSpecificationVersionUrl:
   $ref: './api-specifications/versions/urls/_schemas/BasicApiSpecificationVersionUrl.yaml'
 
-# hl7-standards
-Hl7Standard:
-  $ref: './hl7-standards/_schemas/Hl7Standard.yaml'
-Hl7Standard_Create:
-  $ref: './hl7-standards/_schemas/Hl7Standard_Create.yaml'
-Hl7Standard_Create_Response:
-  $ref: './hl7-standards/_schemas/Hl7Standard_Create_Response.yaml'
-Hl7Standard_Read:
-  $ref: './hl7-standards/_schemas/Hl7Standard_Read.yaml'
-Hl7Standard_Update:
-  $ref: './hl7-standards/_schemas/Hl7Standard_Update.yaml'
-BasicHl7Standard:
-  $ref: './hl7-standards/_schemas/BasicHl7Standard.yaml'
+# communication-standards
+CommunicationStandard:
+  $ref: './communication-standards/_schemas/CommunicationStandard.yaml'
+CommunicationStandard_Create:
+  $ref: './communication-standards/_schemas/CommunicationStandard_Create.yaml'
+CommunicationStandard_Create_Response:
+  $ref: './communication-standards/_schemas/CommunicationStandard_Create_Response.yaml'
+CommunicationStandard_Read:
+  $ref: './communication-standards/_schemas/CommunicationStandard_Read.yaml'
+CommunicationStandard_Update:
+  $ref: './communication-standards/_schemas/CommunicationStandard_Update.yaml'
+BasicCommunicationStandard:
+  $ref: './communication-standards/_schemas/BasicCommunicationStandard.yaml'
 
-# hl7-standard-versions
-Hl7StandardVersion:
-  $ref: './hl7-standard-versions/_schemas/Hl7StandardVersion.yaml'
-Hl7StandardVersion_CreateRead:
-  $ref: './hl7-standard-versions/_schemas/Hl7StandardVersion_CreateRead.yaml'
-Hl7StandardVersion_Update:
-  $ref: './hl7-standard-versions/_schemas/Hl7StandardVersion_Update.yaml'
-BasicHl7StandardVersion:
-  $ref: './hl7-standard-versions/_schemas/BasicHl7StandardVersion.yaml'
-MainHl7StandardVersion:
-  $ref: './hl7-standard-versions/_schemas/MainHl7StandardVersion.yaml'
+# communication-standard-versions
+CommunicationStandardVersion:
+  $ref: './communication-standard-versions/_schemas/CommunicationStandardVersion.yaml'
+CommunicationStandardVersion_CreateRead:
+  $ref: './communication-standard-versions/_schemas/CommunicationStandardVersion_CreateRead.yaml'
+CommunicationStandardVersion_Update:
+  $ref: './communication-standard-versions/_schemas/CommunicationStandardVersion_Update.yaml'
+BasicCommunicationStandardVersion:
+  $ref: './communication-standard-versions/_schemas/BasicCommunicationStandardVersion.yaml'
+MainCommunicationStandardVersion:
+  $ref: './communication-standard-versions/_schemas/MainCommunicationStandardVersion.yaml'

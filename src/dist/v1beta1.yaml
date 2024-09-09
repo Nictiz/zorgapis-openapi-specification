@@ -65,15 +65,15 @@ tags:
   - name: api-specifications.versions.declarations-of-conformity
     description: API specification version declarations of conformity API
     x-displayName: API specification version declarations of conformity
-  - name: api-specifications.versions.hl7-standard-versions
-    description: API specification version HL7 standard versions API
-    x-displayName: API specification version HL7 standard versions
-  - name: hl7-standards
-    description: HL7 standards API
-    x-displayName: HL7 standards
-  - name: hl7-standard-versions
-    description: HL7 standard versions API
-    x-displayName: HL7 standard versions
+  - name: api-specifications.versions.communication-standard-versions
+    description: API specification version communication standard versions API
+    x-displayName: API specification version communication standard versions
+  - name: communication-standards
+    description: Communication standards API
+    x-displayName: Communication standards
+  - name: communication-standard-versions
+    description: Communication standard versions API
+    x-displayName: Communication standard versions
 paths:
   /users/me:
     get:
@@ -1287,44 +1287,44 @@ paths:
 
         The following table lists the field names and operators you can use in a filter expression.
 
-        | Field                                                         | Type                    | Operator | Example                                                                                                      |
-        |---------------------------------------------------------------|-------------------------|----------|--------------------------------------------------------------------------------------------------------------|
-        | `id`                                                          | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                      |
-        |                                                               |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                     |
-        | `name`                                                        | `string`                | `eq`     | `?filter=eq(name,"Verzamelen Huisartsgegevens")`                                                             |
-        |                                                               |                         | `neq`    | `?filter=neq(name,"Verzamelen Huisartsgegevens")`                                                            |
-        |                                                               |                         | `has`    | `?filter=has(name,"Verzamelen")`                                                                             |
-        |                                                               |                         | `stw`    | `?filter=stw(name,"Verzamelen")`                                                                             |
-        |                                                               |                         | `enw`    | `?filter=enw(name,"Huisartsgegevens")`                                                                       |
-        |                                                               |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                                                        |
-        | `organizationId`                                              | `uuid`                  | `eq`     | `?filter=eq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`                                          |
-        |                                                               |                         | `neq`    | `?filter=neq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`                                         |
-        | `architecturalStyle`                                          | `ApiArchitecturalStyle` | `eq`     | `?filter=eq(architecturalStyle,"REST")`                                                                      |
-        |                                                               |                         | `neq`    | `?filter=neq(architecturalStyle,"REST")`                                                                     |
-        | `mainVersion.hl7StandardVersions.$it.id`                      | `uuid`                  | `eq`     | `?filter=any(mainVersion.hl7StandardVersions,eq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`             |
-        |                                                               |                         | `neq`    | `?filter=all(mainVersion.hl7StandardVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`            |
-        | `mainVersion.hl7StandardVersions.$it.hl7StandardId`           | `uuid`                  | `eq`     | `?filter=any(mainVersion.hl7StandardVersions,eq($it.hl7StandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))`  |
-        |                                                               |                         | `neq`    | `?filter=all(mainVersion.hl7StandardVersions,neq($it.hl7StandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))` |
-        | `mainVersion.lastDeclarationOfConformity.requirementsVersion` | `string`                | `eq`     | `?filter=eq(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                            |
-        |                                                               |                         | `neq`    | `?filter=neq(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                           |
-        |                                                               |                         | `has`    | `?filter=has(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2")`                             |
-        |                                                               |                         | `stw`    | `?filter=stw(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2")`                             |
-        |                                                               |                         | `enw`    | `?filter=enw(mainVersion.lastDeclarationOfConformity.requirementsVersion,"2.0")`                             |
-        |                                                               |                         | `reg`    | `?filter=reg(mainVersion.lastDeclarationOfConformity.requirementsVersion,"^[a-zA-Z0-9 ]+$")`                 |
-        | `mainVersion.lastDeclarationOfConformity.rankingLevel`        | `ApiRankingLevel`       | `eq`     | `?filter=eq(mainVersion.lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                |
-        |                                                               |                         | `neq`    | `?filter=neq(mainVersion.lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                               |
-        | `createTime`                                                  | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                                                          |
-        |                                                               |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                                                         |
-        |                                                               |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                                                          |
-        |                                                               |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                                                         |
-        |                                                               |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                                                          |
-        |                                                               |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                                                         |
-        | `updateTime`                                                  | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                                                          |
-        |                                                               |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                                                         |
-        |                                                               |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                                                          |
-        |                                                               |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                                                         |
-        |                                                               |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                                                          |
-        |                                                               |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                                                         |
+        | Field                                                                   | Type                    | Operator | Example                                                                                                                          |
+        |-------------------------------------------------------------------------|-------------------------|----------|----------------------------------------------------------------------------------------------------------------------------------|
+        | `id`                                                                    | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                                          |
+        |                                                                         |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                                         |
+        | `name`                                                                  | `string`                | `eq`     | `?filter=eq(name,"Verzamelen Huisartsgegevens")`                                                                                 |
+        |                                                                         |                         | `neq`    | `?filter=neq(name,"Verzamelen Huisartsgegevens")`                                                                                |
+        |                                                                         |                         | `has`    | `?filter=has(name,"Verzamelen")`                                                                                                 |
+        |                                                                         |                         | `stw`    | `?filter=stw(name,"Verzamelen")`                                                                                                 |
+        |                                                                         |                         | `enw`    | `?filter=enw(name,"Huisartsgegevens")`                                                                                           |
+        |                                                                         |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                                                                            |
+        | `organizationId`                                                        | `uuid`                  | `eq`     | `?filter=eq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                              |
+        |                                                                         |                         | `neq`    | `?filter=neq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                             |
+        | `architecturalStyle`                                                    | `ApiArchitecturalStyle` | `eq`     | `?filter=eq(architecturalStyle,"REST")`                                                                                          |
+        |                                                                         |                         | `neq`    | `?filter=neq(architecturalStyle,"REST")`                                                                                         |
+        | `mainVersion.communicationStandardVersions.$it.id`                      | `uuid`                  | `eq`     | `?filter=any(mainVersion.communicationStandardVersions,eq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                       |
+        |                                                                         |                         | `neq`    | `?filter=all(mainVersion.communicationStandardVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                      |
+        | `mainVersion.communicationStandardVersions.$it.communicationStandardId` | `uuid`                  | `eq`     | `?filter=any(mainVersion.communicationStandardVersions,eq($it.communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))`  |
+        |                                                                         |                         | `neq`    | `?filter=all(mainVersion.communicationStandardVersions,neq($it.communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))` |
+        | `mainVersion.lastDeclarationOfConformity.requirementsVersion`           | `string`                | `eq`     | `?filter=eq(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                                                |
+        |                                                                         |                         | `neq`    | `?filter=neq(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                                               |
+        |                                                                         |                         | `has`    | `?filter=has(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2")`                                                 |
+        |                                                                         |                         | `stw`    | `?filter=stw(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2")`                                                 |
+        |                                                                         |                         | `enw`    | `?filter=enw(mainVersion.lastDeclarationOfConformity.requirementsVersion,"2.0")`                                                 |
+        |                                                                         |                         | `reg`    | `?filter=reg(mainVersion.lastDeclarationOfConformity.requirementsVersion,"^[a-zA-Z0-9 ]+$")`                                     |
+        | `mainVersion.lastDeclarationOfConformity.rankingLevel`                  | `ApiRankingLevel`       | `eq`     | `?filter=eq(mainVersion.lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                                    |
+        |                                                                         |                         | `neq`    | `?filter=neq(mainVersion.lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                                   |
+        | `createTime`                                                            | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                                                                              |
+        |                                                                         |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                                                                             |
+        |                                                                         |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                                                                              |
+        |                                                                         |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                                                                             |
+        |                                                                         |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                                                                              |
+        |                                                                         |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                                                                             |
+        | `updateTime`                                                            | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                                                                              |
+        |                                                                         |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                                                                             |
+        |                                                                         |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                                                                              |
+        |                                                                         |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                                                                             |
+        |                                                                         |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                                                                              |
+        |                                                                         |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                                                                             |
 
         </details>
       operationId: listApiSpecifications
@@ -1529,78 +1529,78 @@ paths:
 
         The following table lists the field names and operators you can use in a filter expression.
 
-        | Field                                             | Type                    | Operator | Example                                                                                          |
-        |---------------------------------------------------|-------------------------|----------|--------------------------------------------------------------------------------------------------|
-        | `id`                                              | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                          |
-        |                                                   |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                         |
-        | `name`                                            | `string`                | `eq`     | `?filter=eq(name,"1.2.0")`                                                                       |
-        |                                                   |                         | `neq`    | `?filter=neq(name,"1.2.0")`                                                                      |
-        |                                                   |                         | `has`    | `?filter=has(name,"1.2")`                                                                        |
-        |                                                   |                         | `stw`    | `?filter=stw(name,"1.2")`                                                                        |
-        |                                                   |                         | `enw`    | `?filter=enw(name,"2.0")`                                                                        |
-        |                                                   |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                                            |
-        | `publishTime`                                     | `date-time`             | `eq`     | `?filter=eq(publishTime,"2024-03-16T14:15:30.500Z")`                                             |
-        |                                                   |                         | `neq`    | `?filter=neq(publishTime,"2024-03-16T14:15:30.500Z")`                                            |
-        |                                                   |                         | `gt`     | `?filter=gt(publishTime,"2024-03-16T14:15:30.500Z")`                                             |
-        |                                                   |                         | `gte`    | `?filter=gte(publishTime,"2024-03-16T14:15:30.500Z")`                                            |
-        |                                                   |                         | `lt`     | `?filter=lt(publishTime,"2024-03-16T14:15:30.500Z")`                                             |
-        |                                                   |                         | `lte`    | `?filter=lte(publishTime,"2024-03-16T14:15:30.500Z")`                                            |
-        | `semVer.major`                                    | `integer`               | `eq`     | `?filter=eq(semVer.major,1)`                                                                     |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.major,1)`                                                                    |
-        |                                                   |                         | `gt`     | `?filter=gt(semVer.major,1)`                                                                     |
-        |                                                   |                         | `gte`    | `?filter=gte(semVer.major,1)`                                                                    |
-        |                                                   |                         | `lt`     | `?filter=lt(semVer.major,1)`                                                                     |
-        |                                                   |                         | `lte`    | `?filter=lte(semVer.major,1)`                                                                    |
-        | `semVer.minor`                                    | `integer`               | `eq`     | `?filter=eq(semVer.minor,2)`                                                                     |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.minor,2)`                                                                    |
-        |                                                   |                         | `gt`     | `?filter=gt(semVer.minor,2)`                                                                     |
-        |                                                   |                         | `gte`    | `?filter=gte(semVer.minor,2)`                                                                    |
-        |                                                   |                         | `lt`     | `?filter=lt(semVer.minor,2)`                                                                     |
-        |                                                   |                         | `lte`    | `?filter=lte(semVer.minor,2)`                                                                    |
-        | `semVer.patch`                                    | `integer`               | `eq`     | `?filter=eq(semVer.patch,0)`                                                                     |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.patch,0)`                                                                    |
-        |                                                   |                         | `gt`     | `?filter=gt(semVer.patch,0)`                                                                     |
-        |                                                   |                         | `gte`    | `?filter=gte(semVer.patch,0)`                                                                    |
-        |                                                   |                         | `lt`     | `?filter=lt(semVer.patch,0)`                                                                     |
-        |                                                   |                         | `lte`    | `?filter=lte(semVer.patch,0)`                                                                    |
-        | `semVer.preRelease`                               | `string`                | `eq`     | `?filter=eq(semVer.preRelease,"beta")`                                                           |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.preRelease,"beta")`                                                          |
-        |                                                   |                         | `has`    | `?filter=has(semVer.preRelease,"be")`                                                            |
-        |                                                   |                         | `stw`    | `?filter=stw(semVer.preRelease,"be")`                                                            |
-        |                                                   |                         | `enw`    | `?filter=enw(semVer.preRelease,"ta")`                                                            |
-        |                                                   |                         | `reg`    | `?filter=reg(semVer.preRelease,"^[a-zA-Z0-9 ]+$")`                                               |
-        | `semVer.build`                                    | `string`                | `eq`     | `?filter=eq(semVer.build,"exp.sha.5114f85")`                                                     |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.build,"exp.sha.5114f85")`                                                    |
-        |                                                   |                         | `has`    | `?filter=has(semVer.build,"exp.sha")`                                                            |
-        |                                                   |                         | `stw`    | `?filter=stw(semVer.build,"exp.sha")`                                                            |
-        |                                                   |                         | `enw`    | `?filter=enw(semVer.build,"5114f85")`                                                            |
-        |                                                   |                         | `reg`    | `?filter=reg(semVer.build,"^[a-zA-Z0-9 ]+$")`                                                    |
-        | `lifecycleState`                                  | `ProductLifecycleState` | `eq`     | `?filter=eq(lifecycleState,"PUBLISHED")`                                                         |
-        |                                                   |                         | `neq`    | `?filter=neq(lifecycleState,"PUBLISHED")`                                                        |
-        | `hl7StandardVersions.$it.id`                      | `uuid`                  | `eq`     | `?filter=any(hl7StandardVersions,eq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`             |
-        |                                                   |                         | `neq`    | `?filter=all(hl7StandardVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`            |
-        | `hl7StandardVersions.$it.hl7StandardId`           | `uuid`                  | `eq`     | `?filter=any(hl7StandardVersions,eq($it.hl7StandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))`  |
-        |                                                   |                         | `neq`    | `?filter=all(hl7StandardVersions,neq($it.hl7StandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))` |
-        | `lastDeclarationOfConformity.requirementsVersion` | `string`                | `eq`     | `?filter=eq(lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                            |
-        |                                                   |                         | `neq`    | `?filter=neq(lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                           |
-        |                                                   |                         | `has`    | `?filter=has(lastDeclarationOfConformity.requirementsVersion,"1.2")`                             |
-        |                                                   |                         | `stw`    | `?filter=stw(lastDeclarationOfConformity.requirementsVersion,"1.2")`                             |
-        |                                                   |                         | `enw`    | `?filter=enw(lastDeclarationOfConformity.requirementsVersion,"2.0")`                             |
-        |                                                   |                         | `reg`    | `?filter=reg(lastDeclarationOfConformity.requirementsVersion,"^[a-zA-Z0-9 ]+$")`                 |
-        | `lastDeclarationOfConformity.rankingLevel`        | `ApiRankingLevel`       | `eq`     | `?filter=eq(lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                |
-        |                                                   |                         | `neq`    | `?filter=neq(lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                               |
-        | `createTime`                                      | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                                              |
-        |                                                   |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                                             |
-        |                                                   |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                                              |
-        |                                                   |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                                             |
-        |                                                   |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                                              |
-        |                                                   |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                                             |
-        | `updateTime`                                      | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                                              |
-        |                                                   |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                                             |
-        |                                                   |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                                              |
-        |                                                   |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                                             |
-        |                                                   |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                                              |
-        |                                                   |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                                             |
+        | Field                                                       | Type                    | Operator | Example                                                                                                              |
+        |-------------------------------------------------------------|-------------------------|----------|----------------------------------------------------------------------------------------------------------------------|
+        | `id`                                                        | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                              |
+        |                                                             |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                             |
+        | `name`                                                      | `string`                | `eq`     | `?filter=eq(name,"1.2.0")`                                                                                           |
+        |                                                             |                         | `neq`    | `?filter=neq(name,"1.2.0")`                                                                                          |
+        |                                                             |                         | `has`    | `?filter=has(name,"1.2")`                                                                                            |
+        |                                                             |                         | `stw`    | `?filter=stw(name,"1.2")`                                                                                            |
+        |                                                             |                         | `enw`    | `?filter=enw(name,"2.0")`                                                                                            |
+        |                                                             |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                                                                |
+        | `publishTime`                                               | `date-time`             | `eq`     | `?filter=eq(publishTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        |                                                             |                         | `neq`    | `?filter=neq(publishTime,"2024-03-16T14:15:30.500Z")`                                                                |
+        |                                                             |                         | `gt`     | `?filter=gt(publishTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        |                                                             |                         | `gte`    | `?filter=gte(publishTime,"2024-03-16T14:15:30.500Z")`                                                                |
+        |                                                             |                         | `lt`     | `?filter=lt(publishTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        |                                                             |                         | `lte`    | `?filter=lte(publishTime,"2024-03-16T14:15:30.500Z")`                                                                |
+        | `semVer.major`                                              | `integer`               | `eq`     | `?filter=eq(semVer.major,1)`                                                                                         |
+        |                                                             |                         | `neq`    | `?filter=neq(semVer.major,1)`                                                                                        |
+        |                                                             |                         | `gt`     | `?filter=gt(semVer.major,1)`                                                                                         |
+        |                                                             |                         | `gte`    | `?filter=gte(semVer.major,1)`                                                                                        |
+        |                                                             |                         | `lt`     | `?filter=lt(semVer.major,1)`                                                                                         |
+        |                                                             |                         | `lte`    | `?filter=lte(semVer.major,1)`                                                                                        |
+        | `semVer.minor`                                              | `integer`               | `eq`     | `?filter=eq(semVer.minor,2)`                                                                                         |
+        |                                                             |                         | `neq`    | `?filter=neq(semVer.minor,2)`                                                                                        |
+        |                                                             |                         | `gt`     | `?filter=gt(semVer.minor,2)`                                                                                         |
+        |                                                             |                         | `gte`    | `?filter=gte(semVer.minor,2)`                                                                                        |
+        |                                                             |                         | `lt`     | `?filter=lt(semVer.minor,2)`                                                                                         |
+        |                                                             |                         | `lte`    | `?filter=lte(semVer.minor,2)`                                                                                        |
+        | `semVer.patch`                                              | `integer`               | `eq`     | `?filter=eq(semVer.patch,0)`                                                                                         |
+        |                                                             |                         | `neq`    | `?filter=neq(semVer.patch,0)`                                                                                        |
+        |                                                             |                         | `gt`     | `?filter=gt(semVer.patch,0)`                                                                                         |
+        |                                                             |                         | `gte`    | `?filter=gte(semVer.patch,0)`                                                                                        |
+        |                                                             |                         | `lt`     | `?filter=lt(semVer.patch,0)`                                                                                         |
+        |                                                             |                         | `lte`    | `?filter=lte(semVer.patch,0)`                                                                                        |
+        | `semVer.preRelease`                                         | `string`                | `eq`     | `?filter=eq(semVer.preRelease,"beta")`                                                                               |
+        |                                                             |                         | `neq`    | `?filter=neq(semVer.preRelease,"beta")`                                                                              |
+        |                                                             |                         | `has`    | `?filter=has(semVer.preRelease,"be")`                                                                                |
+        |                                                             |                         | `stw`    | `?filter=stw(semVer.preRelease,"be")`                                                                                |
+        |                                                             |                         | `enw`    | `?filter=enw(semVer.preRelease,"ta")`                                                                                |
+        |                                                             |                         | `reg`    | `?filter=reg(semVer.preRelease,"^[a-zA-Z0-9 ]+$")`                                                                   |
+        | `semVer.build`                                              | `string`                | `eq`     | `?filter=eq(semVer.build,"exp.sha.5114f85")`                                                                         |
+        |                                                             |                         | `neq`    | `?filter=neq(semVer.build,"exp.sha.5114f85")`                                                                        |
+        |                                                             |                         | `has`    | `?filter=has(semVer.build,"exp.sha")`                                                                                |
+        |                                                             |                         | `stw`    | `?filter=stw(semVer.build,"exp.sha")`                                                                                |
+        |                                                             |                         | `enw`    | `?filter=enw(semVer.build,"5114f85")`                                                                                |
+        |                                                             |                         | `reg`    | `?filter=reg(semVer.build,"^[a-zA-Z0-9 ]+$")`                                                                        |
+        | `lifecycleState`                                            | `ProductLifecycleState` | `eq`     | `?filter=eq(lifecycleState,"PUBLISHED")`                                                                             |
+        |                                                             |                         | `neq`    | `?filter=neq(lifecycleState,"PUBLISHED")`                                                                            |
+        | `communicationStandardVersions.$it.id`                      | `uuid`                  | `eq`     | `?filter=any(communicationStandardVersions,eq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                       |
+        |                                                             |                         | `neq`    | `?filter=all(communicationStandardVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                      |
+        | `communicationStandardVersions.$it.communicationStandardId` | `uuid`                  | `eq`     | `?filter=any(communicationStandardVersions,eq($it.communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))`  |
+        |                                                             |                         | `neq`    | `?filter=all(communicationStandardVersions,neq($it.communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))` |
+        | `lastDeclarationOfConformity.requirementsVersion`           | `string`                | `eq`     | `?filter=eq(lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                                                |
+        |                                                             |                         | `neq`    | `?filter=neq(lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                                               |
+        |                                                             |                         | `has`    | `?filter=has(lastDeclarationOfConformity.requirementsVersion,"1.2")`                                                 |
+        |                                                             |                         | `stw`    | `?filter=stw(lastDeclarationOfConformity.requirementsVersion,"1.2")`                                                 |
+        |                                                             |                         | `enw`    | `?filter=enw(lastDeclarationOfConformity.requirementsVersion,"2.0")`                                                 |
+        |                                                             |                         | `reg`    | `?filter=reg(lastDeclarationOfConformity.requirementsVersion,"^[a-zA-Z0-9 ]+$")`                                     |
+        | `lastDeclarationOfConformity.rankingLevel`                  | `ApiRankingLevel`       | `eq`     | `?filter=eq(lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                                    |
+        |                                                             |                         | `neq`    | `?filter=neq(lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                                   |
+        | `createTime`                                                | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                                                                  |
+        |                                                             |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        |                                                             |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                                                                  |
+        |                                                             |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        |                                                             |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                                                                  |
+        |                                                             |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        | `updateTime`                                                | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                                                                  |
+        |                                                             |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        |                                                             |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                                                                  |
+        |                                                             |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        |                                                             |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                                                                  |
+        |                                                             |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                                                                 |
 
         </details>
       operationId: listApiSpecificationVersions
@@ -3077,21 +3077,21 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/hl7-standard-versions/{hl7StandardVersionId}:
+  /api-specifications/{apiSpecificationId}/versions/{versionId}/communication-standard-versions/{communicationStandardVersionId}:
     put:
-      summary: Set an HL7 standard version for an API specification version
+      summary: Set a communication standard version for an API specification version
       description: |
-        Sets a single HL7 standard version for an API specification version.
-      operationId: setApiSpecificationVersionHl7StandardVersion
+        Sets a single communication standard version for an API specification version.
+      operationId: setApiSpecificationVersionCommunicationStandardVersion
       security:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions.hl7-standard-versions
+        - api-specifications.versions.communication-standard-versions
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
-        - $ref: '#/components/parameters/hl7StandardVersionId'
+        - $ref: '#/components/parameters/communicationStandardVersionId'
       responses:
         '204':
           $ref: '#/components/responses/EmptyResponse'
@@ -3112,19 +3112,19 @@ paths:
         5XX:
           $ref: '#/components/responses/InternalError'
     delete:
-      summary: Delete an HL7 standard version from an API specification version
+      summary: Delete a communication standard version from an API specification version
       description: |
-        Deletes a single HL7 standard version from an API specification version.
-      operationId: deleteApiSpecificationVersionHl7StandardVersion
+        Deletes a single communication standard version from an API specification version.
+      operationId: deleteApiSpecificationVersionCommunicationStandardVersion
       security:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions.hl7-standard-versions
+        - api-specifications.versions.communication-standard-versions
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
-        - $ref: '#/components/parameters/hl7StandardVersionId'
+        - $ref: '#/components/parameters/communicationStandardVersionId'
       responses:
         '204':
           $ref: '#/components/responses/EmptyResponse'
@@ -3144,11 +3144,11 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /hl7-standards:
+  /communication-standards:
     get:
-      summary: List all HL7 standards
+      summary: List all communication standards
       description: |-
-        Returns a list of HL7 standards.
+        Returns a list of communication standards.
 
         <details>
         <summary>Details</summary>
@@ -3216,12 +3216,12 @@ paths:
         |                              |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                 |
 
         </details>
-      operationId: listHl7Standards
+      operationId: listCommunicationStandards
       security:
         - oauth2:
-            - hl7-standards:read
+            - communication-standards:read
       tags:
-        - hl7-standards
+        - communication-standards
       parameters:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/skip'
@@ -3236,7 +3236,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Hl7Standard_Read'
+                  $ref: '#/components/schemas/CommunicationStandard_Read'
           headers:
             Total-Count:
               $ref: '#/components/headers/Total-Count'
@@ -3255,28 +3255,28 @@ paths:
         5XX:
           $ref: '#/components/responses/InternalError'
     post:
-      summary: Add an HL7 standard
+      summary: Add a communication standard
       description: |
-        Adds an HL7 standard to the collection.
-      operationId: addHl7Standard
+        Adds a communication standard to the collection.
+      operationId: addCommunicationStandard
       security:
         - oauth2:
-            - hl7-standards:write
+            - communication-standards:write
       tags:
-        - hl7-standards
+        - communication-standards
       requestBody:
-        description: HL7 standard object to add
+        description: Communication standard object to add
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Hl7Standard_Create'
+              $ref: '#/components/schemas/CommunicationStandard_Create'
       responses:
         '201':
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Hl7Standard_Create_Response'
+                $ref: '#/components/schemas/CommunicationStandard_Create_Response'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -3291,26 +3291,26 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /hl7-standards/{hl7StandardId}:
+  /communication-standards/{communicationStandardId}:
     get:
-      summary: Get an HL7 standard by ID
+      summary: Get a communication standard by ID
       description: |
-        Returns a single HL7 standard.
-      operationId: getHl7StandardById
+        Returns a single communication standard.
+      operationId: getCommunicationStandardById
       security:
         - oauth2:
-            - hl7-standards:read
+            - communication-standards:read
       tags:
-        - hl7-standards
+        - communication-standards
       parameters:
-        - $ref: '#/components/parameters/hl7StandardId'
+        - $ref: '#/components/parameters/communicationStandardId'
       responses:
         '200':
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Hl7Standard_Read'
+                $ref: '#/components/schemas/CommunicationStandard_Read'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -3328,30 +3328,30 @@ paths:
         5XX:
           $ref: '#/components/responses/InternalError'
     patch:
-      summary: Update an HL7 standard
+      summary: Update a communication standard
       description: |
-        Updates a single HL7 standard.
-      operationId: updateHl7Standard
+        Updates a single communication standard.
+      operationId: updateCommunicationStandard
       security:
         - oauth2:
-            - hl7-standards:write
+            - communication-standards:write
       tags:
-        - hl7-standards
+        - communication-standards
       parameters:
-        - $ref: '#/components/parameters/hl7StandardId'
+        - $ref: '#/components/parameters/communicationStandardId'
       requestBody:
-        description: Updated HL7 standard object
+        description: Updated communication standard object
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Hl7Standard_Update'
+              $ref: '#/components/schemas/CommunicationStandard_Update'
       responses:
         '200':
           description: Updated
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Hl7Standard_Read'
+                $ref: '#/components/schemas/CommunicationStandard_Read'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -3368,11 +3368,11 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /hl7-standard-versions:
+  /communication-standard-versions:
     get:
-      summary: List all HL7 standard versions
+      summary: List all communication standard versions
       description: |-
-        Returns a list of HL7 standard versions.
+        Returns a list of communication standard versions.
 
         <details>
         <summary>Details</summary>
@@ -3418,82 +3418,82 @@ paths:
 
         The following table lists the field names and operators you can use in a filter expression.
 
-        | Field               | Type                    | Operator | Example                                                             |
-        |---------------------|-------------------------|----------|---------------------------------------------------------------------|
-        | `id`                | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`             |
-        |                     |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`            |
-        | `name`              | `string`                | `eq`     | `?filter=eq(name,"1.2.0")`                                          |
-        |                     |                         | `neq`    | `?filter=neq(name,"1.2.0")`                                         |
-        |                     |                         | `has`    | `?filter=has(name,"1.2")`                                           |
-        |                     |                         | `stw`    | `?filter=stw(name,"1.2")`                                           |
-        |                     |                         | `enw`    | `?filter=enw(name,"2.0")`                                           |
-        |                     |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                               |
-        | `description`       | `string`                | `eq`     | `?filter=eq(description,"1.2.0")`                                   |
-        |                     |                         | `neq`    | `?filter=neq(description,"1.2.0")`                                  |
-        |                     |                         | `has`    | `?filter=has(description,"1.2")`                                    |
-        |                     |                         | `stw`    | `?filter=stw(description,"1.2")`                                    |
-        |                     |                         | `enw`    | `?filter=enw(description,"2.0")`                                    |
-        |                     |                         | `reg`    | `?filter=reg(description,"^[a-zA-Z0-9 ]+$")`                        |
-        | `hl7StandardId`     | `uuid`                  | `eq`     | `?filter=eq(hl7StandardId,"533d3fe3-bccc-405a-9904-4f516e892856")`  |
-        |                     |                         | `neq`    | `?filter=neq(hl7StandardId,"533d3fe3-bccc-405a-9904-4f516e892856")` |
-        | `publishTime`       | `date-time`             | `eq`     | `?filter=eq(publishTime,"2024-03-16T14:15:30.500Z")`                |
-        |                     |                         | `neq`    | `?filter=neq(publishTime,"2024-03-16T14:15:30.500Z")`               |
-        |                     |                         | `gt`     | `?filter=gt(publishTime,"2024-03-16T14:15:30.500Z")`                |
-        |                     |                         | `gte`    | `?filter=gte(publishTime,"2024-03-16T14:15:30.500Z")`               |
-        |                     |                         | `lt`     | `?filter=lt(publishTime,"2024-03-16T14:15:30.500Z")`                |
-        |                     |                         | `lte`    | `?filter=lte(publishTime,"2024-03-16T14:15:30.500Z")`               |
-        | `semVer.major`      | `integer`               | `eq`     | `?filter=eq(semVer.major,1)`                                        |
-        |                     |                         | `neq`    | `?filter=neq(semVer.major,1)`                                       |
-        |                     |                         | `gt`     | `?filter=gt(semVer.major,1)`                                        |
-        |                     |                         | `gte`    | `?filter=gte(semVer.major,1)`                                       |
-        |                     |                         | `lt`     | `?filter=lt(semVer.major,1)`                                        |
-        |                     |                         | `lte`    | `?filter=lte(semVer.major,1)`                                       |
-        | `semVer.minor`      | `integer`               | `eq`     | `?filter=eq(semVer.minor,2)`                                        |
-        |                     |                         | `neq`    | `?filter=neq(semVer.minor,2)`                                       |
-        |                     |                         | `gt`     | `?filter=gt(semVer.minor,2)`                                        |
-        |                     |                         | `gte`    | `?filter=gte(semVer.minor,2)`                                       |
-        |                     |                         | `lt`     | `?filter=lt(semVer.minor,2)`                                        |
-        |                     |                         | `lte`    | `?filter=lte(semVer.minor,2)`                                       |
-        | `semVer.patch`      | `integer`               | `eq`     | `?filter=eq(semVer.patch,0)`                                        |
-        |                     |                         | `neq`    | `?filter=neq(semVer.patch,0)`                                       |
-        |                     |                         | `gt`     | `?filter=gt(semVer.patch,0)`                                        |
-        |                     |                         | `gte`    | `?filter=gte(semVer.patch,0)`                                       |
-        |                     |                         | `lt`     | `?filter=lt(semVer.patch,0)`                                        |
-        |                     |                         | `lte`    | `?filter=lte(semVer.patch,0)`                                       |
-        | `semVer.preRelease` | `string`                | `eq`     | `?filter=eq(semVer.preRelease,"beta")`                              |
-        |                     |                         | `neq`    | `?filter=neq(semVer.preRelease,"beta")`                             |
-        |                     |                         | `has`    | `?filter=has(semVer.preRelease,"be")`                               |
-        |                     |                         | `stw`    | `?filter=stw(semVer.preRelease,"be")`                               |
-        |                     |                         | `enw`    | `?filter=enw(semVer.preRelease,"ta")`                               |
-        |                     |                         | `reg`    | `?filter=reg(semVer.preRelease,"^[a-zA-Z0-9 ]+$")`                  |
-        | `semVer.build`      | `string`                | `eq`     | `?filter=eq(semVer.build,"exp.sha.5114f85")`                        |
-        |                     |                         | `neq`    | `?filter=neq(semVer.build,"exp.sha.5114f85")`                       |
-        |                     |                         | `has`    | `?filter=has(semVer.build,"exp.sha")`                               |
-        |                     |                         | `stw`    | `?filter=stw(semVer.build,"exp.sha")`                               |
-        |                     |                         | `enw`    | `?filter=enw(semVer.build,"5114f85")`                               |
-        |                     |                         | `reg`    | `?filter=reg(semVer.build,"^[a-zA-Z0-9 ]+$")`                       |
-        | `lifecycleState`    | `ProductLifecycleState` | `eq`     | `?filter=eq(lifecycleState,"PUBLISHED")`                            |
-        |                     |                         | `neq`    | `?filter=neq(lifecycleState,"PUBLISHED")`                           |
-        | `createTime`        | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                 |
-        |                     |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                |
-        |                     |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                 |
-        |                     |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                |
-        |                     |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                 |
-        |                     |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                |
-        | `updateTime`        | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                 |
-        |                     |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                |
-        |                     |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                 |
-        |                     |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                |
-        |                     |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                 |
-        |                     |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                |
+        | Field                     | Type                    | Operator | Example                                                                       |
+        |---------------------------|-------------------------|----------|-------------------------------------------------------------------------------|
+        | `id`                      | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                       |
+        |                           |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                      |
+        | `name`                    | `string`                | `eq`     | `?filter=eq(name,"1.2.0")`                                                    |
+        |                           |                         | `neq`    | `?filter=neq(name,"1.2.0")`                                                   |
+        |                           |                         | `has`    | `?filter=has(name,"1.2")`                                                     |
+        |                           |                         | `stw`    | `?filter=stw(name,"1.2")`                                                     |
+        |                           |                         | `enw`    | `?filter=enw(name,"2.0")`                                                     |
+        |                           |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                         |
+        | `description`             | `string`                | `eq`     | `?filter=eq(description,"1.2.0")`                                             |
+        |                           |                         | `neq`    | `?filter=neq(description,"1.2.0")`                                            |
+        |                           |                         | `has`    | `?filter=has(description,"1.2")`                                              |
+        |                           |                         | `stw`    | `?filter=stw(description,"1.2")`                                              |
+        |                           |                         | `enw`    | `?filter=enw(description,"2.0")`                                              |
+        |                           |                         | `reg`    | `?filter=reg(description,"^[a-zA-Z0-9 ]+$")`                                  |
+        | `communicationStandardId` | `uuid`                  | `eq`     | `?filter=eq(communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856")`  |
+        |                           |                         | `neq`    | `?filter=neq(communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856")` |
+        | `publishTime`             | `date-time`             | `eq`     | `?filter=eq(publishTime,"2024-03-16T14:15:30.500Z")`                          |
+        |                           |                         | `neq`    | `?filter=neq(publishTime,"2024-03-16T14:15:30.500Z")`                         |
+        |                           |                         | `gt`     | `?filter=gt(publishTime,"2024-03-16T14:15:30.500Z")`                          |
+        |                           |                         | `gte`    | `?filter=gte(publishTime,"2024-03-16T14:15:30.500Z")`                         |
+        |                           |                         | `lt`     | `?filter=lt(publishTime,"2024-03-16T14:15:30.500Z")`                          |
+        |                           |                         | `lte`    | `?filter=lte(publishTime,"2024-03-16T14:15:30.500Z")`                         |
+        | `semVer.major`            | `integer`               | `eq`     | `?filter=eq(semVer.major,1)`                                                  |
+        |                           |                         | `neq`    | `?filter=neq(semVer.major,1)`                                                 |
+        |                           |                         | `gt`     | `?filter=gt(semVer.major,1)`                                                  |
+        |                           |                         | `gte`    | `?filter=gte(semVer.major,1)`                                                 |
+        |                           |                         | `lt`     | `?filter=lt(semVer.major,1)`                                                  |
+        |                           |                         | `lte`    | `?filter=lte(semVer.major,1)`                                                 |
+        | `semVer.minor`            | `integer`               | `eq`     | `?filter=eq(semVer.minor,2)`                                                  |
+        |                           |                         | `neq`    | `?filter=neq(semVer.minor,2)`                                                 |
+        |                           |                         | `gt`     | `?filter=gt(semVer.minor,2)`                                                  |
+        |                           |                         | `gte`    | `?filter=gte(semVer.minor,2)`                                                 |
+        |                           |                         | `lt`     | `?filter=lt(semVer.minor,2)`                                                  |
+        |                           |                         | `lte`    | `?filter=lte(semVer.minor,2)`                                                 |
+        | `semVer.patch`            | `integer`               | `eq`     | `?filter=eq(semVer.patch,0)`                                                  |
+        |                           |                         | `neq`    | `?filter=neq(semVer.patch,0)`                                                 |
+        |                           |                         | `gt`     | `?filter=gt(semVer.patch,0)`                                                  |
+        |                           |                         | `gte`    | `?filter=gte(semVer.patch,0)`                                                 |
+        |                           |                         | `lt`     | `?filter=lt(semVer.patch,0)`                                                  |
+        |                           |                         | `lte`    | `?filter=lte(semVer.patch,0)`                                                 |
+        | `semVer.preRelease`       | `string`                | `eq`     | `?filter=eq(semVer.preRelease,"beta")`                                        |
+        |                           |                         | `neq`    | `?filter=neq(semVer.preRelease,"beta")`                                       |
+        |                           |                         | `has`    | `?filter=has(semVer.preRelease,"be")`                                         |
+        |                           |                         | `stw`    | `?filter=stw(semVer.preRelease,"be")`                                         |
+        |                           |                         | `enw`    | `?filter=enw(semVer.preRelease,"ta")`                                         |
+        |                           |                         | `reg`    | `?filter=reg(semVer.preRelease,"^[a-zA-Z0-9 ]+$")`                            |
+        | `semVer.build`            | `string`                | `eq`     | `?filter=eq(semVer.build,"exp.sha.5114f85")`                                  |
+        |                           |                         | `neq`    | `?filter=neq(semVer.build,"exp.sha.5114f85")`                                 |
+        |                           |                         | `has`    | `?filter=has(semVer.build,"exp.sha")`                                         |
+        |                           |                         | `stw`    | `?filter=stw(semVer.build,"exp.sha")`                                         |
+        |                           |                         | `enw`    | `?filter=enw(semVer.build,"5114f85")`                                         |
+        |                           |                         | `reg`    | `?filter=reg(semVer.build,"^[a-zA-Z0-9 ]+$")`                                 |
+        | `lifecycleState`          | `ProductLifecycleState` | `eq`     | `?filter=eq(lifecycleState,"PUBLISHED")`                                      |
+        |                           |                         | `neq`    | `?filter=neq(lifecycleState,"PUBLISHED")`                                     |
+        | `createTime`              | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                           |
+        |                           |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                          |
+        |                           |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                           |
+        |                           |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                          |
+        |                           |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                           |
+        |                           |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                          |
+        | `updateTime`              | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                           |
+        |                           |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                          |
+        |                           |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                           |
+        |                           |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                          |
+        |                           |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                           |
+        |                           |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                          |
 
         </details>
-      operationId: listHl7StandardVersions
+      operationId: listCommunicationStandardVersions
       security:
         - oauth2:
-            - hl7-standards:read
+            - communication-standards:read
       tags:
-        - hl7-standard-versions
+        - communication-standard-versions
       parameters:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/skip'
@@ -3508,7 +3508,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Hl7StandardVersion_CreateRead'
+                  $ref: '#/components/schemas/CommunicationStandardVersion_CreateRead'
           headers:
             Total-Count:
               $ref: '#/components/headers/Total-Count'
@@ -3527,28 +3527,28 @@ paths:
         5XX:
           $ref: '#/components/responses/InternalError'
     post:
-      summary: Add an HL7 standard version
+      summary: Add a communication standard version
       description: |
-        Adds an HL7 standard version to the collection.
-      operationId: addHl7StandardVersion
+        Adds a communication standard version to the collection.
+      operationId: addCommunicationStandardVersion
       security:
         - oauth2:
-            - hl7-standards:write
+            - communication-standards:write
       tags:
-        - hl7-standard-versions
+        - communication-standard-versions
       requestBody:
-        description: HL7 standard version object to add
+        description: Communication standard version object to add
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Hl7StandardVersion_CreateRead'
+              $ref: '#/components/schemas/CommunicationStandardVersion_CreateRead'
       responses:
         '201':
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Hl7StandardVersion_CreateRead'
+                $ref: '#/components/schemas/CommunicationStandardVersion_CreateRead'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -3563,26 +3563,26 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /hl7-standard-versions/{hl7StandardVersionId}:
+  /communication-standard-versions/{communicationStandardVersionId}:
     get:
-      summary: Get an HL7 standard version by ID
+      summary: Get a communication standard version by ID
       description: |
-        Returns a single HL7 standard version.
-      operationId: getHl7StandardVersionById
+        Returns a single communication standard version.
+      operationId: getCommunicationStandardVersionById
       security:
         - oauth2:
-            - hl7-standards:read
+            - communication-standards:read
       tags:
-        - hl7-standard-versions
+        - communication-standard-versions
       parameters:
-        - $ref: '#/components/parameters/hl7StandardVersionId'
+        - $ref: '#/components/parameters/communicationStandardVersionId'
       responses:
         '200':
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Hl7StandardVersion_CreateRead'
+                $ref: '#/components/schemas/CommunicationStandardVersion_CreateRead'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -3600,30 +3600,30 @@ paths:
         5XX:
           $ref: '#/components/responses/InternalError'
     patch:
-      summary: Update an HL7 standard version
+      summary: Update a communication standard version
       description: |
-        Updates a single HL7 standard version.
-      operationId: updateHl7StandardVersion
+        Updates a single communication standard version.
+      operationId: updateCommunicationStandardVersion
       security:
         - oauth2:
-            - hl7-standards:write
+            - communication-standards:write
       tags:
-        - hl7-standard-versions
+        - communication-standard-versions
       parameters:
-        - $ref: '#/components/parameters/hl7StandardVersionId'
+        - $ref: '#/components/parameters/communicationStandardVersionId'
       requestBody:
-        description: Updated HL7 standard version object
+        description: Updated communication standard version object
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Hl7StandardVersion_Update'
+              $ref: '#/components/schemas/CommunicationStandardVersion_Update'
       responses:
         '200':
           description: Updated
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Hl7StandardVersion_CreateRead'
+                $ref: '#/components/schemas/CommunicationStandardVersion_CreateRead'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -5463,58 +5463,58 @@ components:
               format: uuid
               examples:
                 - 15261fd0-b292-45d9-b6b1-266cc922fb50
-    BasicHl7Standard:
-      description: The basic HL7 standard information
+    BasicCommunicationStandard:
+      description: The basic communication standard information
       type: object
       required:
         - name
         - id
       properties:
         id:
-          description: The ID of the HL7 standard
+          description: The ID of the communication standard
           type: string
           format: uuid
           readOnly: true
           examples:
             - 05d8de10-1932-4e7f-badf-655c1a82fcc3
         name:
-          description: The name of the HL7 standard
+          description: The name of the communication standard
           type: string
           maxLength: 255
           examples:
             - TODO
-    BasicHl7StandardVersion:
-      description: The basic HL7 standard version information
+    BasicCommunicationStandardVersion:
+      description: The basic communication standard version information
       type: object
       required:
         - id
         - name
-        - hl7StandardId
+        - communicationStandardId
       properties:
         id:
-          description: The ID of the HL7 standard version
+          description: The ID of the communication standard version
           type: string
           format: uuid
           examples:
             - 8ae84d7f-73e7-4f08-b839-c73c97128ada
         name:
-          description: The name of the HL7 standard version
+          description: The name of the communication standard version
           type: string
           maxLength: 255
           readOnly: true
           examples:
             - TODO
-        hl7StandardId:
-          description: The ID of the HL7 standard this version belongs to
+        communicationStandardId:
+          description: The ID of the communication standard this version belongs to
           type: string
           format: uuid
           readOnly: true
           examples:
             - 05d8de10-1932-4e7f-badf-655c1a82fcc3
-        hl7Standard:
+        communicationStandard:
           readOnly: true
           allOf:
-            - $ref: '#/components/schemas/BasicHl7Standard'
+            - $ref: '#/components/schemas/BasicCommunicationStandard'
           examples:
             - id: 05d8de10-1932-4e7f-badf-655c1a82fcc3
               name: TODO
@@ -5529,10 +5529,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/BasicApiSpecificationVersionUrl'
-            hl7StandardVersions:
+            communicationStandardVersions:
               type: array
               items:
-                $ref: '#/components/schemas/BasicHl7StandardVersion'
+                $ref: '#/components/schemas/BasicCommunicationStandardVersion'
             lastDeclarationOfConformity:
               readOnly: true
               allOf:
@@ -5605,53 +5605,53 @@ components:
                   SD001.001:
                     conformityType: CONFORMANT
         - $ref: '#/components/schemas/BasicResponse'
-    Hl7StandardVersion:
-      description: The HL7 standard version information
+    CommunicationStandardVersion:
+      description: The communication standard version information
       type: object
       required:
         - name
-        - hl7StandardId
+        - communicationStandardId
         - publishTime
         - semVer
         - lifecycleState
         - id
       properties:
         id:
-          description: The ID of the HL7 standard version
+          description: The ID of the communication standard version
           type: string
           format: uuid
           readOnly: true
           examples:
             - 8ae84d7f-73e7-4f08-b839-c73c97128ada
         name:
-          description: The name of the HL7 standard version
+          description: The name of the communication standard version
           type: string
           maxLength: 255
           examples:
             - TODO
         description:
-          description: The description of the HL7 standard version
+          description: The description of the communication standard version
           type:
             - string
             - 'null'
           maxLength: 1000
           examples:
             - TODO
-        hl7StandardId:
-          description: The ID of the HL7 standard this version belongs to
+        communicationStandardId:
+          description: The ID of the communication standard this version belongs to
           type: string
           format: uuid
           examples:
             - 05d8de10-1932-4e7f-badf-655c1a82fcc3
-        hl7Standard:
+        communicationStandard:
           readOnly: true
           allOf:
-            - $ref: '#/components/schemas/BasicHl7Standard'
+            - $ref: '#/components/schemas/BasicCommunicationStandard'
           examples:
             - id: 05d8de10-1932-4e7f-badf-655c1a82fcc3
               name: TODO
         publishTime:
-          description: The date and time at which the HL7 standard version was published
+          description: The date and time at which the communication standard version was published
           type: string
           format: date-time
           examples:
@@ -5664,30 +5664,30 @@ components:
               minor: 0
               patch: 0
         lifecycleState:
-          description: The lifecycle state of the HL7 standard version
+          description: The lifecycle state of the communication standard version
           allOf:
             - $ref: '#/components/schemas/ProductLifecycleState'
           examples:
             - PUBLISHED
         url:
-          description: The URL of the HL7 standard version
+          description: The URL of the communication standard version
           type:
             - string
             - 'null'
           maxLength: 1000
           examples:
             - TODO
-    MainHl7StandardVersion:
+    MainCommunicationStandardVersion:
       allOf:
-        - $ref: '#/components/schemas/Hl7StandardVersion'
+        - $ref: '#/components/schemas/CommunicationStandardVersion'
         - type: object
           properties:
-            hl7StandardId:
+            communicationStandardId:
               writeOnly: true
-            hl7Standard:
+            communicationStandard:
               writeOnly: true
-    Hl7Standard:
-      description: The HL7 standard information
+    CommunicationStandard:
+      description: The communication standard information
       type: object
       required:
         - name
@@ -5696,20 +5696,20 @@ components:
         - id
       properties:
         id:
-          description: The ID of the HL7 standard
+          description: The ID of the communication standard
           type: string
           format: uuid
           readOnly: true
           examples:
             - 05d8de10-1932-4e7f-badf-655c1a82fcc3
         name:
-          description: The name of the HL7 standard
+          description: The name of the communication standard
           type: string
           maxLength: 255
           examples:
             - TODO
         description:
-          description: The description of the HL7 standard
+          description: The description of the communication standard
           type:
             - string
             - 'null'
@@ -5717,7 +5717,7 @@ components:
           examples:
             - TODO
         organizationId:
-          description: The ID of the organization that maintains the HL7 standard
+          description: The ID of the organization that maintains the communication standard
           type: string
           format: uuid
           examples:
@@ -5730,13 +5730,13 @@ components:
             - id: 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
               name: Stichting MedMij
         url:
-          description: The URL of the HL7 standard
+          description: The URL of the communication standard
           type: string
           maxLength: 1000
           examples:
             - TODO
         mainVersionId:
-          description: The ID of the main version of the HL7 standard
+          description: The ID of the main version of the communication standard
           type:
             - string
             - 'null'
@@ -5746,22 +5746,22 @@ components:
         mainVersion:
           readOnly: true
           allOf:
-            - $ref: '#/components/schemas/MainHl7StandardVersion'
-    Hl7Standard_Read:
+            - $ref: '#/components/schemas/MainCommunicationStandardVersion'
+    CommunicationStandard_Read:
       allOf:
-        - $ref: '#/components/schemas/Hl7Standard'
+        - $ref: '#/components/schemas/CommunicationStandard'
         - $ref: '#/components/schemas/BasicResponse'
-    Hl7Standard_Create:
+    CommunicationStandard_Create:
       allOf:
-        - $ref: '#/components/schemas/Hl7Standard'
+        - $ref: '#/components/schemas/CommunicationStandard'
         - type: object
           properties:
             mainVersionId:
               readOnly: true
         - $ref: '#/components/schemas/BasicResponse'
-    Hl7Standard_Create_Response:
+    CommunicationStandard_Create_Response:
       allOf:
-        - $ref: '#/components/schemas/Hl7Standard'
+        - $ref: '#/components/schemas/CommunicationStandard'
         - type: object
           properties:
             mainVersionId:
@@ -5770,23 +5770,23 @@ components:
               readOnly: false
               writeOnly: true
         - $ref: '#/components/schemas/BasicResponse'
-    Hl7Standard_Update:
+    CommunicationStandard_Update:
       allOf:
-        - $ref: '#/components/schemas/Hl7Standard'
+        - $ref: '#/components/schemas/CommunicationStandard'
         - type: object
           properties:
             organizationId:
               readOnly: true
-    Hl7StandardVersion_CreateRead:
+    CommunicationStandardVersion_CreateRead:
       allOf:
-        - $ref: '#/components/schemas/Hl7StandardVersion'
+        - $ref: '#/components/schemas/CommunicationStandardVersion'
         - $ref: '#/components/schemas/BasicResponse'
-    Hl7StandardVersion_Update:
+    CommunicationStandardVersion_Update:
       allOf:
-        - $ref: '#/components/schemas/Hl7StandardVersion'
+        - $ref: '#/components/schemas/CommunicationStandardVersion'
         - type: object
           properties:
-            hl7StandardId:
+            communicationStandardId:
               readOnly: true
     ApiRankingType:
       type: string
@@ -6242,21 +6242,21 @@ components:
         format: uuid
         examples:
           - dc944125-5269-4dd9-afda-413a37ed9733
-    hl7StandardVersionId:
-      name: hl7StandardVersionId
+    communicationStandardVersionId:
+      name: communicationStandardVersionId
       in: path
       required: true
-      description: The ID of the HL7 standard version
+      description: The ID of the communication standard version
       schema:
         type: string
         format: uuid
         examples:
           - 8ae84d7f-73e7-4f08-b839-c73c97128ada
-    hl7StandardId:
-      name: hl7StandardId
+    communicationStandardId:
+      name: communicationStandardId
       in: path
       required: true
-      description: The ID of the HL7 standard
+      description: The ID of the communication standard
       schema:
         type: string
         format: uuid
@@ -6438,8 +6438,8 @@ x-tagGroups:
       - api-specifications.versions
       - api-specifications.versions.urls
       - api-specifications.versions.declarations-of-conformity
-      - api-specifications.versions.hl7-standard-versions
-  - name: HL7 standards
+      - api-specifications.versions.communication-standard-versions
+  - name: Communication standards
     tags:
-      - hl7-standards
-      - hl7-standard-versions
+      - communication-standards
+      - communication-standard-versions

@@ -1,0 +1,9 @@
+allOf:
+  - $ref: './CommunicationStandardVersion.yaml'
+    # Extend
+  - type: object
+    properties:
+      communicationStandardId:
+        writeOnly: true
+      communicationStandard:
+        writeOnly: true        

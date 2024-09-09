@@ -1,5 +1,0 @@
-﻿# Resource definition for Create, Read operations
-allOf:
-  - $ref: './Hl7StandardVersion.yaml'
-    # Extend
-  - $ref: '../../_schemas/BasicResponse.yaml'
