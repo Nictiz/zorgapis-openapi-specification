@@ -21,7 +21,7 @@ properties:
     type: string
     maxLength: 255
     examples:
-      - TODO
+      - FHIR
   description:
     description: The description of the communication standard
     type:
@@ -29,27 +29,27 @@ properties:
       - 'null'
     maxLength: 1000
     examples:
-      - 'TODO'
+      - 'FHIR (Fast Health Interoperability Resources) is an HL7 specification for Healthcare Interoperability.'
   organizationId:
     description: The ID of the organization that maintains the communication standard
     type: string
     format: uuid
     examples:
-      - 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
+      - a70590c6-06ce-4dba-9098-ed996335bdec
   organization:
     # Returned by GET, not used in POST/PUT/PATCH
     readOnly: true
     allOf:
       - $ref: '../../organizations/_schemas/BasicOrganization.yaml'
     examples:
-      - id: 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
-        name: Stichting MedMij
+      - id: a70590c6-06ce-4dba-9098-ed996335bdec
+        name: HL7 Nederland
   url:
     description: The URL of the communication standard
     type: string
     maxLength: 1000
     examples:
-      - 'TODO'
+      - 'https://hl7.org/fhir/'
   mainVersionId:
     description: The ID of the main version of the communication standard
     type:

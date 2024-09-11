@@ -3186,17 +3186,17 @@ paths:
         |------------------------------|-------------------------|----------|----------------------------------------------------------------------|
         | `id`                         | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`              |
         |                              |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`             |
-        | `name`                       | `string`                | `eq`     | `?filter=eq(name,"Verzamelen Huisartsgegevens")`                     |
-        |                              |                         | `neq`    | `?filter=neq(name,"Verzamelen Huisartsgegevens")`                    |
-        |                              |                         | `has`    | `?filter=has(name,"Verzamelen")`                                     |
-        |                              |                         | `stw`    | `?filter=stw(name,"Verzamelen")`                                     |
-        |                              |                         | `enw`    | `?filter=enw(name,"Huisartsgegevens")`                               |
+        | `name`                       | `string`                | `eq`     | `?filter=eq(name,"FHIR")`                                            |
+        |                              |                         | `neq`    | `?filter=neq(name,"FHIR")`                                           |
+        |                              |                         | `has`    | `?filter=has(name,"FH")`                                             |
+        |                              |                         | `stw`    | `?filter=stw(name,"FH")`                                             |
+        |                              |                         | `enw`    | `?filter=enw(name,"IR")`                                             |
         |                              |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                |
-        | `description`                | `string`                | `eq`     | `?filter=eq(description,"Verzamelen Huisartsgegevens")`              |
-        |                              |                         | `neq`    | `?filter=neq(description,"Verzamelen Huisartsgegevens")`             |
-        |                              |                         | `has`    | `?filter=has(description,"Verzamelen")`                              |
-        |                              |                         | `stw`    | `?filter=stw(description,"Verzamelen")`                              |
-        |                              |                         | `enw`    | `?filter=enw(description,"Huisartsgegevens")`                        |
+        | `description`                | `string`                | `eq`     | `?filter=eq(description,"FHIR")`                                     |
+        |                              |                         | `neq`    | `?filter=neq(description,"FHIR")`                                    |
+        |                              |                         | `has`    | `?filter=has(description,"FH")`                                      |
+        |                              |                         | `stw`    | `?filter=stw(description,"FH")`                                      |
+        |                              |                         | `enw`    | `?filter=enw(description,"IR")`                                      |
         |                              |                         | `reg`    | `?filter=reg(description,"^[a-zA-Z0-9 ]+$")`                         |
         | `organizationId`             | `uuid`                  | `eq`     | `?filter=eq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`  |
         |                              |                         | `neq`    | `?filter=neq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")` |
@@ -5482,7 +5482,7 @@ components:
           type: string
           maxLength: 255
           examples:
-            - TODO
+            - FHIR
     BasicCommunicationStandardVersion:
       description: The basic communication standard version information
       type: object
@@ -5503,7 +5503,7 @@ components:
           maxLength: 255
           readOnly: true
           examples:
-            - TODO
+            - R5
         communicationStandardId:
           description: The ID of the communication standard this version belongs to
           type: string
@@ -5517,7 +5517,7 @@ components:
             - $ref: '#/components/schemas/BasicCommunicationStandard'
           examples:
             - id: 05d8de10-1932-4e7f-badf-655c1a82fcc3
-              name: TODO
+              name: FHIR
     ApiSpecificationVersion_CreateRead:
       allOf:
         - $ref: '#/components/schemas/ApiSpecificationVersion'
@@ -5628,7 +5628,7 @@ components:
           type: string
           maxLength: 255
           examples:
-            - TODO
+            - R5
         description:
           description: The description of the communication standard version
           type:
@@ -5636,7 +5636,7 @@ components:
             - 'null'
           maxLength: 1000
           examples:
-            - TODO
+            - FHIR Specification 5.0.0
         communicationStandardId:
           description: The ID of the communication standard this version belongs to
           type: string
@@ -5649,18 +5649,18 @@ components:
             - $ref: '#/components/schemas/BasicCommunicationStandard'
           examples:
             - id: 05d8de10-1932-4e7f-badf-655c1a82fcc3
-              name: TODO
+              name: FHIR
         publishTime:
           description: The date and time at which the communication standard version was published
           type: string
           format: date-time
           examples:
-            - '2020-09-02T00:00:00.000Z'
+            - '2023-03-26T12:00:00.0000000Z'
         semVer:
           allOf:
             - $ref: '#/components/schemas/SemVer'
           examples:
-            - major: 2
+            - major: 5
               minor: 0
               patch: 0
         lifecycleState:
@@ -5676,7 +5676,7 @@ components:
             - 'null'
           maxLength: 1000
           examples:
-            - TODO
+            - https://hl7.org/fhir/R5
     MainCommunicationStandardVersion:
       allOf:
         - $ref: '#/components/schemas/CommunicationStandardVersion'
@@ -5707,7 +5707,7 @@ components:
           type: string
           maxLength: 255
           examples:
-            - TODO
+            - FHIR
         description:
           description: The description of the communication standard
           type:
@@ -5715,26 +5715,26 @@ components:
             - 'null'
           maxLength: 1000
           examples:
-            - TODO
+            - FHIR (Fast Health Interoperability Resources) is an HL7 specification for Healthcare Interoperability.
         organizationId:
           description: The ID of the organization that maintains the communication standard
           type: string
           format: uuid
           examples:
-            - 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
+            - a70590c6-06ce-4dba-9098-ed996335bdec
         organization:
           readOnly: true
           allOf:
             - $ref: '#/components/schemas/BasicOrganization'
           examples:
-            - id: 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
-              name: Stichting MedMij
+            - id: a70590c6-06ce-4dba-9098-ed996335bdec
+              name: HL7 Nederland
         url:
           description: The URL of the communication standard
           type: string
           maxLength: 1000
           examples:
-            - TODO
+            - https://hl7.org/fhir/
         mainVersionId:
           description: The ID of the main version of the communication standard
           type:

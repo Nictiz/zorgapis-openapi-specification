@@ -23,7 +23,7 @@ properties:
     type: string
     maxLength: 255
     examples:
-      - TODO
+      - R5
   description:
     description: The description of the communication standard version
     type:
@@ -31,7 +31,7 @@ properties:
       - 'null'
     maxLength: 1000
     examples:
-      - TODO
+      - 'FHIR Specification 5.0.0'
   communicationStandardId:
     description: The ID of the communication standard this version belongs to
     type: string
@@ -45,18 +45,18 @@ properties:
       - $ref: '../../communication-standards/_schemas/BasicCommunicationStandard.yaml'
     examples:
       - id: 05d8de10-1932-4e7f-badf-655c1a82fcc3
-        name: TODO
+        name: FHIR
   publishTime:
     description: The date and time at which the communication standard version was published
     type: string
     format: date-time
     examples:
-      - '2020-09-02T00:00:00.000Z'
+      - '2023-03-26T12:00:00.0000000Z'
   semVer:
     allOf:
       - $ref: '../../_schemas/SemVer.yaml'
     examples:
-      - major: 2
+      - major: 5
         minor: 0
         patch: 0
   lifecycleState:
@@ -72,4 +72,4 @@ properties:
       - 'null'
     maxLength: 1000
     examples:
-      - TODO
+      - 'https://hl7.org/fhir/R5'

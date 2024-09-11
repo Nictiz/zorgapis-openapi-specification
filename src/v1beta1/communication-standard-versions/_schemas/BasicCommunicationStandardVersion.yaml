@@ -19,7 +19,7 @@ properties:
     maxLength: 255
     readOnly: true
     examples:
-      - TODO
+      - R5
   communicationStandardId:
     description: The ID of the communication standard this version belongs to
     type: string
@@ -34,4 +34,4 @@ properties:
       - $ref: '../../communication-standards/_schemas/BasicCommunicationStandard.yaml'
     examples:
       - id: 05d8de10-1932-4e7f-badf-655c1a82fcc3
-        name: TODO       
+        name: FHIR       
