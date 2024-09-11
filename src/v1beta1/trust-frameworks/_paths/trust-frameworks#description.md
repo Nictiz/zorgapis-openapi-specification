@@ -36,17 +36,17 @@ The following table lists the field names and operators you can use in a filter 
 |------------------------------|-------------------------|----------|----------------------------------------------------------------------|
 | `id`                         | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`              |
 |                              |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`             |
-| `name`                       | `string`                | `eq`     | `?filter=eq(name,"Verzamelen Huisartsgegevens")`                     |
-|                              |                         | `neq`    | `?filter=neq(name,"Verzamelen Huisartsgegevens")`                    |
-|                              |                         | `has`    | `?filter=has(name,"Verzamelen")`                                     |
-|                              |                         | `stw`    | `?filter=stw(name,"Verzamelen")`                                     |
-|                              |                         | `enw`    | `?filter=enw(name,"Huisartsgegevens")`                               |
+| `name`                       | `string`                | `eq`     | `?filter=eq(name,"MedMij Afsprakenstelsel")`                         |
+|                              |                         | `neq`    | `?filter=neq(name,"MedMij Afsprakenstelsel")`                        |
+|                              |                         | `has`    | `?filter=has(name,"MedMij")`                                         |
+|                              |                         | `stw`    | `?filter=stw(name,"MedMij")`                                         |
+|                              |                         | `enw`    | `?filter=enw(name,"Afsprakenstelsel")`                               |
 |                              |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                |
-| `description`                | `string`                | `eq`     | `?filter=eq(description,"Verzamelen Huisartsgegevens")`              |
-|                              |                         | `neq`    | `?filter=neq(description,"Verzamelen Huisartsgegevens")`             |
-|                              |                         | `has`    | `?filter=has(description,"Verzamelen")`                              |
-|                              |                         | `stw`    | `?filter=stw(description,"Verzamelen")`                              |
-|                              |                         | `enw`    | `?filter=enw(description,"Huisartsgegevens")`                        |
+| `description`                | `string`                | `eq`     | `?filter=eq(description,"MedMij Afsprakenstelsel")`                  |
+|                              |                         | `neq`    | `?filter=neq(description,"MedMij Afsprakenstelsel")`                 |
+|                              |                         | `has`    | `?filter=has(description,"MedMij")`                                  |
+|                              |                         | `stw`    | `?filter=stw(description,"MedMij")`                                  |
+|                              |                         | `enw`    | `?filter=enw(description,"Afsprakenstelsel")`                        |
 |                              |                         | `reg`    | `?filter=reg(description,"^[a-zA-Z0-9 ]+$")`                         |
 | `organizationId`             | `uuid`                  | `eq`     | `?filter=eq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`  |
 |                              |                         | `neq`    | `?filter=neq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")` |

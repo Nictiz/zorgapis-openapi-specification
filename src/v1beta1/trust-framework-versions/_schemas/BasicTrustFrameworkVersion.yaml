@@ -19,7 +19,7 @@ properties:
     maxLength: 255
     readOnly: true
     examples:
-      - TODO
+      - '2.2.2 Verplicht'
   trustFrameworkId:
     description: The ID of the trust framework this version belongs to
     type: string
@@ -34,4 +34,4 @@ properties:
       - $ref: '../../trust-frameworks/_schemas/BasicTrustFramework.yaml'
     examples:
       - id: 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
-        name: TODO       
+        name: 'MedMij Afsprakenstelsel'       

@@ -3186,17 +3186,17 @@ paths:
         |------------------------------|-------------------------|----------|----------------------------------------------------------------------|
         | `id`                         | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`              |
         |                              |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`             |
-        | `name`                       | `string`                | `eq`     | `?filter=eq(name,"Verzamelen Huisartsgegevens")`                     |
-        |                              |                         | `neq`    | `?filter=neq(name,"Verzamelen Huisartsgegevens")`                    |
-        |                              |                         | `has`    | `?filter=has(name,"Verzamelen")`                                     |
-        |                              |                         | `stw`    | `?filter=stw(name,"Verzamelen")`                                     |
-        |                              |                         | `enw`    | `?filter=enw(name,"Huisartsgegevens")`                               |
+        | `name`                       | `string`                | `eq`     | `?filter=eq(name,"MedMij Afsprakenstelsel")`                         |
+        |                              |                         | `neq`    | `?filter=neq(name,"MedMij Afsprakenstelsel")`                        |
+        |                              |                         | `has`    | `?filter=has(name,"MedMij")`                                         |
+        |                              |                         | `stw`    | `?filter=stw(name,"MedMij")`                                         |
+        |                              |                         | `enw`    | `?filter=enw(name,"Afsprakenstelsel")`                               |
         |                              |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                |
-        | `description`                | `string`                | `eq`     | `?filter=eq(description,"Verzamelen Huisartsgegevens")`              |
-        |                              |                         | `neq`    | `?filter=neq(description,"Verzamelen Huisartsgegevens")`             |
-        |                              |                         | `has`    | `?filter=has(description,"Verzamelen")`                              |
-        |                              |                         | `stw`    | `?filter=stw(description,"Verzamelen")`                              |
-        |                              |                         | `enw`    | `?filter=enw(description,"Huisartsgegevens")`                        |
+        | `description`                | `string`                | `eq`     | `?filter=eq(description,"MedMij Afsprakenstelsel")`                  |
+        |                              |                         | `neq`    | `?filter=neq(description,"MedMij Afsprakenstelsel")`                 |
+        |                              |                         | `has`    | `?filter=has(description,"MedMij")`                                  |
+        |                              |                         | `stw`    | `?filter=stw(description,"MedMij")`                                  |
+        |                              |                         | `enw`    | `?filter=enw(description,"Afsprakenstelsel")`                        |
         |                              |                         | `reg`    | `?filter=reg(description,"^[a-zA-Z0-9 ]+$")`                         |
         | `organizationId`             | `uuid`                  | `eq`     | `?filter=eq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`  |
         |                              |                         | `neq`    | `?filter=neq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")` |
@@ -3276,7 +3276,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TrustFramework_Create'
+                $ref: '#/components/schemas/TrustFramework_Create_Response'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -5482,7 +5482,7 @@ components:
           type: string
           maxLength: 255
           examples:
-            - TODO
+            - MedMij Afsprakenstelsel
     BasicTrustFrameworkVersion:
       description: The basic trust framework version information
       type: object
@@ -5503,7 +5503,7 @@ components:
           maxLength: 255
           readOnly: true
           examples:
-            - TODO
+            - 2.2.2 Verplicht
         trustFrameworkId:
           description: The ID of the trust framework this version belongs to
           type: string
@@ -5517,7 +5517,7 @@ components:
             - $ref: '#/components/schemas/BasicTrustFramework'
           examples:
             - id: 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
-              name: TODO
+              name: MedMij Afsprakenstelsel
     ApiSpecificationVersion_CreateRead:
       allOf:
         - $ref: '#/components/schemas/ApiSpecificationVersion'
@@ -5628,7 +5628,7 @@ components:
           type: string
           maxLength: 255
           examples:
-            - TODO
+            - 2.2.2 Verplicht
         description:
           description: The description of the trust framework version
           type:
@@ -5636,7 +5636,7 @@ components:
             - 'null'
           maxLength: 1000
           examples:
-            - TODO
+            - Dit is de huidige verplichte versie die door alle deelnemers moet worden ondersteund.
         trustFrameworkId:
           description: The ID of the trust framework this version belongs to
           type: string
@@ -5649,20 +5649,20 @@ components:
             - $ref: '#/components/schemas/BasicTrustFramework'
           examples:
             - id: 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
-              name: TODO
+              name: MedMij Afsprakenstelsel
         publishTime:
           description: The date and time at which the trust framework version was published
           type: string
           format: date-time
           examples:
-            - '2020-09-02T00:00:00.000Z'
+            - '2024-09-10T12:00:00.0000000Z'
         semVer:
           allOf:
             - $ref: '#/components/schemas/SemVer'
           examples:
             - major: 2
-              minor: 0
-              patch: 0
+              minor: 2
+              patch: 2
         lifecycleState:
           description: The lifecycle state of the trust framework version
           allOf:
@@ -5676,7 +5676,7 @@ components:
             - 'null'
           maxLength: 1000
           examples:
-            - TODO
+            - https://afsprakenstelsel.medmij.nl/asverplicht/mmverplicht
     MainTrustFrameworkVersion:
       allOf:
         - $ref: '#/components/schemas/TrustFrameworkVersion'
@@ -5707,7 +5707,7 @@ components:
           type: string
           maxLength: 255
           examples:
-            - TODO
+            - MedMij Afsprakenstelsel
         description:
           description: The description of the trust framework
           type:
@@ -5715,7 +5715,7 @@ components:
             - 'null'
           maxLength: 1000
           examples:
-            - TODO
+            - Het MedMij Afsprakenstelsel draagt eraan bij dat persoonsgebonden, gevoelige en vertrouwelijke gezondheidsgegevens op een veilige en gebruiksvriendelijke wijze uitgewisseld kunnen worden tussen persoonlijke gezondheidsomgevingen en aanbieders.
         organizationId:
           description: The ID of the organization that maintains the trust framework
           type: string
@@ -5734,7 +5734,7 @@ components:
           type: string
           maxLength: 1000
           examples:
-            - TODO
+            - https://afsprakenstelsel.medmij.nl/
         mainVersionId:
           description: The ID of the main version of the trust framework
           type:
@@ -5758,8 +5758,16 @@ components:
           properties:
             mainVersionId:
               readOnly: true
+        - $ref: '#/components/schemas/BasicResponse'
+    TrustFramework_Create_Response:
+      allOf:
+        - $ref: '#/components/schemas/TrustFramework'
+        - type: object
+          properties:
+            mainVersionId:
               writeOnly: true
             mainVersion:
+              readOnly: false
               writeOnly: true
         - $ref: '#/components/schemas/BasicResponse'
     TrustFramework_Update:
@@ -6434,6 +6442,4 @@ x-tagGroups:
   - name: Trust frameworks
     tags:
       - trust-frameworks
-  - name: Trust framework versions
-    tags:
       - trust-framework-versions

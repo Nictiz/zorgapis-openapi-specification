@@ -23,7 +23,7 @@ properties:
     type: string
     maxLength: 255
     examples:
-      - TODO
+      - '2.2.2 Verplicht'
   description:
     description: The description of the trust framework version
     type:
@@ -31,7 +31,7 @@ properties:
       - 'null'
     maxLength: 1000
     examples:
-      - TODO
+      - 'Dit is de huidige verplichte versie die door alle deelnemers moet worden ondersteund.'
   trustFrameworkId:
     description: The ID of the trust framework this version belongs to
     type: string
@@ -45,20 +45,20 @@ properties:
       - $ref: '../../trust-frameworks/_schemas/BasicTrustFramework.yaml'
     examples:
       - id: 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
-        name: TODO
+        name: 'MedMij Afsprakenstelsel'
   publishTime:
     description: The date and time at which the trust framework version was published
     type: string
     format: date-time
     examples:
-      - '2020-09-02T00:00:00.000Z'
+      - '2024-09-10T12:00:00.0000000Z'
   semVer:
     allOf:
       - $ref: '../../_schemas/SemVer.yaml'
     examples:
       - major: 2
-        minor: 0
-        patch: 0
+        minor: 2
+        patch: 2
   lifecycleState:
     description: The lifecycle state of the trust framework version
     allOf:
@@ -72,4 +72,4 @@ properties:
       - 'null'
     maxLength: 1000
     examples:
-      - TODO
+      - 'https://afsprakenstelsel.medmij.nl/asverplicht/mmverplicht'
