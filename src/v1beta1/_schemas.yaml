@@ -138,6 +138,32 @@ ApiSpecificationVersionUrlType:
 BasicApiSpecificationVersionUrl:
   $ref: './api-specifications/versions/urls/_schemas/BasicApiSpecificationVersionUrl.yaml'
 
+# communication-standards
+CommunicationStandard:
+  $ref: './communication-standards/_schemas/CommunicationStandard.yaml'
+CommunicationStandard_Create:
+  $ref: './communication-standards/_schemas/CommunicationStandard_Create.yaml'
+CommunicationStandard_Create_Response:
+  $ref: './communication-standards/_schemas/CommunicationStandard_Create_Response.yaml'
+CommunicationStandard_Read:
+  $ref: './communication-standards/_schemas/CommunicationStandard_Read.yaml'
+CommunicationStandard_Update:
+  $ref: './communication-standards/_schemas/CommunicationStandard_Update.yaml'
+BasicCommunicationStandard:
+  $ref: './communication-standards/_schemas/BasicCommunicationStandard.yaml'
+
+# communication-standard-versions
+CommunicationStandardVersion:
+  $ref: './communication-standard-versions/_schemas/CommunicationStandardVersion.yaml'
+CommunicationStandardVersion_CreateRead:
+  $ref: './communication-standard-versions/_schemas/CommunicationStandardVersion_CreateRead.yaml'
+CommunicationStandardVersion_Update:
+  $ref: './communication-standard-versions/_schemas/CommunicationStandardVersion_Update.yaml'
+BasicCommunicationStandardVersion:
+  $ref: './communication-standard-versions/_schemas/BasicCommunicationStandardVersion.yaml'
+MainCommunicationStandardVersion:
+  $ref: './communication-standard-versions/_schemas/MainCommunicationStandardVersion.yaml'
+
 # trust-frameworks
 TrustFramework:
   $ref: './trust-frameworks/_schemas/TrustFramework.yaml'

@@ -37,6 +37,16 @@ versionName:
 apiSpecificationId:
   $ref: './api-specifications/_parameters/path/apiSpecificationId.yaml'
 
+# communication-standards
+# path
+communicationStandardId:
+  $ref: './communication-standards/_parameters/path/communicationStandardId.yaml'
+
+# communication-standard-versions
+# path
+communicationStandardVersionId:
+  $ref: './communication-standard-versions/_parameters/path/communicationStandardVersionId.yaml'
+
 # trust-frameworks
 # path
 trustFrameworkId:

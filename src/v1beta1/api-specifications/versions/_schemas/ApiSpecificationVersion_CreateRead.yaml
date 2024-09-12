@@ -11,6 +11,10 @@ allOf:
         type: array
         items:
           $ref: '../urls/_schemas/BasicApiSpecificationVersionUrl.yaml'
+      communicationStandardVersions:
+        type: array
+        items:
+          $ref: '../../../communication-standard-versions/_schemas/BasicCommunicationStandardVersion.yaml'
       trustFrameworkVersions:
         type: array
         items:

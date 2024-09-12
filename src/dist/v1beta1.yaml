@@ -65,15 +65,15 @@ tags:
   - name: api-specifications.versions.declarations-of-conformity
     description: API specification version declarations of conformity API
     x-displayName: API specification version declarations of conformity
-  - name: api-specifications.versions.trust-framework-versions
-    description: API specification version trust framework versions API
-    x-displayName: API specification version trust framework versions
-  - name: trust-frameworks
-    description: Trust frameworks API
-    x-displayName: Trust frameworks
-  - name: trust-framework-versions
-    description: Trust framework versions API
-    x-displayName: Trust framework versions
+  - name: api-specifications.versions.communication-standard-versions
+    description: API specification version communication standard versions API
+    x-displayName: API specification version communication standard versions
+  - name: communication-standards
+    description: Communication standards API
+    x-displayName: Communication standards
+  - name: communication-standard-versions
+    description: Communication standard versions API
+    x-displayName: Communication standard versions
 paths:
   /users/me:
     get:
@@ -1287,44 +1287,44 @@ paths:
 
         The following table lists the field names and operators you can use in a filter expression.
 
-        | Field                                                         | Type                    | Operator | Example                                                                                                            |
-        |---------------------------------------------------------------|-------------------------|----------|--------------------------------------------------------------------------------------------------------------------|
-        | `id`                                                          | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                            |
-        |                                                               |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                           |
-        | `name`                                                        | `string`                | `eq`     | `?filter=eq(name,"Verzamelen Huisartsgegevens")`                                                                   |
-        |                                                               |                         | `neq`    | `?filter=neq(name,"Verzamelen Huisartsgegevens")`                                                                  |
-        |                                                               |                         | `has`    | `?filter=has(name,"Verzamelen")`                                                                                   |
-        |                                                               |                         | `stw`    | `?filter=stw(name,"Verzamelen")`                                                                                   |
-        |                                                               |                         | `enw`    | `?filter=enw(name,"Huisartsgegevens")`                                                                             |
-        |                                                               |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                                                              |
-        | `organizationId`                                              | `uuid`                  | `eq`     | `?filter=eq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                |
-        |                                                               |                         | `neq`    | `?filter=neq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`                                               |
-        | `architecturalStyle`                                          | `ApiArchitecturalStyle` | `eq`     | `?filter=eq(architecturalStyle,"REST")`                                                                            |
-        |                                                               |                         | `neq`    | `?filter=neq(architecturalStyle,"REST")`                                                                           |
-        | `mainVersion.trustFrameworkVersions.$it.id`                   | `uuid`                  | `eq`     | `?filter=any(mainVersion.trustFrameworkVersions,eq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                |
-        |                                                               |                         | `neq`    | `?filter=all(mainVersion.trustFrameworkVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`               |
-        | `mainVersion.trustFrameworkVersions.$it.trustFrameworkId`     | `uuid`                  | `eq`     | `?filter=any(mainVersion.trustFrameworkVersions,eq($it.trustFrameworkId,"533d3fe3-bccc-405a-9904-4f516e892856"))`  |
-        |                                                               |                         | `neq`    | `?filter=all(mainVersion.trustFrameworkVersions,neq($it.trustFrameworkId,"533d3fe3-bccc-405a-9904-4f516e892856"))` |
-        | `mainVersion.lastDeclarationOfConformity.requirementsVersion` | `string`                | `eq`     | `?filter=eq(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                                  |
-        |                                                               |                         | `neq`    | `?filter=neq(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                                 |
-        |                                                               |                         | `has`    | `?filter=has(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2")`                                   |
-        |                                                               |                         | `stw`    | `?filter=stw(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2")`                                   |
-        |                                                               |                         | `enw`    | `?filter=enw(mainVersion.lastDeclarationOfConformity.requirementsVersion,"2.0")`                                   |
-        |                                                               |                         | `reg`    | `?filter=reg(mainVersion.lastDeclarationOfConformity.requirementsVersion,"^[a-zA-Z0-9 ]+$")`                       |
-        | `mainVersion.lastDeclarationOfConformity.rankingLevel`        | `ApiRankingLevel`       | `eq`     | `?filter=eq(mainVersion.lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                      |
-        |                                                               |                         | `neq`    | `?filter=neq(mainVersion.lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                     |
-        | `createTime`                                                  | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                                                                |
-        |                                                               |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                                                               |
-        |                                                               |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                                                                |
-        |                                                               |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                                                               |
-        |                                                               |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                                                                |
-        |                                                               |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                                                               |
-        | `updateTime`                                                  | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                                                                |
-        |                                                               |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                                                               |
-        |                                                               |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                                                                |
-        |                                                               |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                                                               |
-        |                                                               |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                                                                |
-        |                                                               |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                                                               |
+        | Field                                                                   | Type                    | Operator | Example                                                                                                                          |
+        |-------------------------------------------------------------------------|-------------------------|----------|----------------------------------------------------------------------------------------------------------------------------------|
+        | `id`                                                                    | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                                          |
+        |                                                                         |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                                         |
+        | `name`                                                                  | `string`                | `eq`     | `?filter=eq(name,"Verzamelen Huisartsgegevens")`                                                                                 |
+        |                                                                         |                         | `neq`    | `?filter=neq(name,"Verzamelen Huisartsgegevens")`                                                                                |
+        |                                                                         |                         | `has`    | `?filter=has(name,"Verzamelen")`                                                                                                 |
+        |                                                                         |                         | `stw`    | `?filter=stw(name,"Verzamelen")`                                                                                                 |
+        |                                                                         |                         | `enw`    | `?filter=enw(name,"Huisartsgegevens")`                                                                                           |
+        |                                                                         |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                                                                            |
+        | `organizationId`                                                        | `uuid`                  | `eq`     | `?filter=eq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                              |
+        |                                                                         |                         | `neq`    | `?filter=neq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                             |
+        | `architecturalStyle`                                                    | `ApiArchitecturalStyle` | `eq`     | `?filter=eq(architecturalStyle,"REST")`                                                                                          |
+        |                                                                         |                         | `neq`    | `?filter=neq(architecturalStyle,"REST")`                                                                                         |
+        | `mainVersion.communicationStandardVersions.$it.id`                      | `uuid`                  | `eq`     | `?filter=any(mainVersion.communicationStandardVersions,eq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                       |
+        |                                                                         |                         | `neq`    | `?filter=all(mainVersion.communicationStandardVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                      |
+        | `mainVersion.communicationStandardVersions.$it.communicationStandardId` | `uuid`                  | `eq`     | `?filter=any(mainVersion.communicationStandardVersions,eq($it.communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))`  |
+        |                                                                         |                         | `neq`    | `?filter=all(mainVersion.communicationStandardVersions,neq($it.communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))` |
+        | `mainVersion.lastDeclarationOfConformity.requirementsVersion`           | `string`                | `eq`     | `?filter=eq(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                                                |
+        |                                                                         |                         | `neq`    | `?filter=neq(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                                               |
+        |                                                                         |                         | `has`    | `?filter=has(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2")`                                                 |
+        |                                                                         |                         | `stw`    | `?filter=stw(mainVersion.lastDeclarationOfConformity.requirementsVersion,"1.2")`                                                 |
+        |                                                                         |                         | `enw`    | `?filter=enw(mainVersion.lastDeclarationOfConformity.requirementsVersion,"2.0")`                                                 |
+        |                                                                         |                         | `reg`    | `?filter=reg(mainVersion.lastDeclarationOfConformity.requirementsVersion,"^[a-zA-Z0-9 ]+$")`                                     |
+        | `mainVersion.lastDeclarationOfConformity.rankingLevel`                  | `ApiRankingLevel`       | `eq`     | `?filter=eq(mainVersion.lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                                    |
+        |                                                                         |                         | `neq`    | `?filter=neq(mainVersion.lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                                   |
+        | `createTime`                                                            | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                                                                              |
+        |                                                                         |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                                                                             |
+        |                                                                         |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                                                                              |
+        |                                                                         |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                                                                             |
+        |                                                                         |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                                                                              |
+        |                                                                         |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                                                                             |
+        | `updateTime`                                                            | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                                                                              |
+        |                                                                         |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                                                                             |
+        |                                                                         |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                                                                              |
+        |                                                                         |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                                                                             |
+        |                                                                         |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                                                                              |
+        |                                                                         |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                                                                             |
 
         </details>
       operationId: listApiSpecifications
@@ -1529,78 +1529,78 @@ paths:
 
         The following table lists the field names and operators you can use in a filter expression.
 
-        | Field                                             | Type                    | Operator | Example                                                                                                |
-        |---------------------------------------------------|-------------------------|----------|--------------------------------------------------------------------------------------------------------|
-        | `id`                                              | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                |
-        |                                                   |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                               |
-        | `name`                                            | `string`                | `eq`     | `?filter=eq(name,"1.2.0")`                                                                             |
-        |                                                   |                         | `neq`    | `?filter=neq(name,"1.2.0")`                                                                            |
-        |                                                   |                         | `has`    | `?filter=has(name,"1.2")`                                                                              |
-        |                                                   |                         | `stw`    | `?filter=stw(name,"1.2")`                                                                              |
-        |                                                   |                         | `enw`    | `?filter=enw(name,"2.0")`                                                                              |
-        |                                                   |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                                                  |
-        | `publishTime`                                     | `date-time`             | `eq`     | `?filter=eq(publishTime,"2024-03-16T14:15:30.500Z")`                                                   |
-        |                                                   |                         | `neq`    | `?filter=neq(publishTime,"2024-03-16T14:15:30.500Z")`                                                  |
-        |                                                   |                         | `gt`     | `?filter=gt(publishTime,"2024-03-16T14:15:30.500Z")`                                                   |
-        |                                                   |                         | `gte`    | `?filter=gte(publishTime,"2024-03-16T14:15:30.500Z")`                                                  |
-        |                                                   |                         | `lt`     | `?filter=lt(publishTime,"2024-03-16T14:15:30.500Z")`                                                   |
-        |                                                   |                         | `lte`    | `?filter=lte(publishTime,"2024-03-16T14:15:30.500Z")`                                                  |
-        | `semVer.major`                                    | `integer`               | `eq`     | `?filter=eq(semVer.major,1)`                                                                           |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.major,1)`                                                                          |
-        |                                                   |                         | `gt`     | `?filter=gt(semVer.major,1)`                                                                           |
-        |                                                   |                         | `gte`    | `?filter=gte(semVer.major,1)`                                                                          |
-        |                                                   |                         | `lt`     | `?filter=lt(semVer.major,1)`                                                                           |
-        |                                                   |                         | `lte`    | `?filter=lte(semVer.major,1)`                                                                          |
-        | `semVer.minor`                                    | `integer`               | `eq`     | `?filter=eq(semVer.minor,2)`                                                                           |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.minor,2)`                                                                          |
-        |                                                   |                         | `gt`     | `?filter=gt(semVer.minor,2)`                                                                           |
-        |                                                   |                         | `gte`    | `?filter=gte(semVer.minor,2)`                                                                          |
-        |                                                   |                         | `lt`     | `?filter=lt(semVer.minor,2)`                                                                           |
-        |                                                   |                         | `lte`    | `?filter=lte(semVer.minor,2)`                                                                          |
-        | `semVer.patch`                                    | `integer`               | `eq`     | `?filter=eq(semVer.patch,0)`                                                                           |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.patch,0)`                                                                          |
-        |                                                   |                         | `gt`     | `?filter=gt(semVer.patch,0)`                                                                           |
-        |                                                   |                         | `gte`    | `?filter=gte(semVer.patch,0)`                                                                          |
-        |                                                   |                         | `lt`     | `?filter=lt(semVer.patch,0)`                                                                           |
-        |                                                   |                         | `lte`    | `?filter=lte(semVer.patch,0)`                                                                          |
-        | `semVer.preRelease`                               | `string`                | `eq`     | `?filter=eq(semVer.preRelease,"beta")`                                                                 |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.preRelease,"beta")`                                                                |
-        |                                                   |                         | `has`    | `?filter=has(semVer.preRelease,"be")`                                                                  |
-        |                                                   |                         | `stw`    | `?filter=stw(semVer.preRelease,"be")`                                                                  |
-        |                                                   |                         | `enw`    | `?filter=enw(semVer.preRelease,"ta")`                                                                  |
-        |                                                   |                         | `reg`    | `?filter=reg(semVer.preRelease,"^[a-zA-Z0-9 ]+$")`                                                     |
-        | `semVer.build`                                    | `string`                | `eq`     | `?filter=eq(semVer.build,"exp.sha.5114f85")`                                                           |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.build,"exp.sha.5114f85")`                                                          |
-        |                                                   |                         | `has`    | `?filter=has(semVer.build,"exp.sha")`                                                                  |
-        |                                                   |                         | `stw`    | `?filter=stw(semVer.build,"exp.sha")`                                                                  |
-        |                                                   |                         | `enw`    | `?filter=enw(semVer.build,"5114f85")`                                                                  |
-        |                                                   |                         | `reg`    | `?filter=reg(semVer.build,"^[a-zA-Z0-9 ]+$")`                                                          |
-        | `lifecycleState`                                  | `ProductLifecycleState` | `eq`     | `?filter=eq(lifecycleState,"PUBLISHED")`                                                               |
-        |                                                   |                         | `neq`    | `?filter=neq(lifecycleState,"PUBLISHED")`                                                              |
-        | `trustFrameworkVersions.$it.id`                   | `uuid`                  | `eq`     | `?filter=any(trustFrameworkVersions,eq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                |
-        |                                                   |                         | `neq`    | `?filter=all(trustFrameworkVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`               |
-        | `trustFrameworkVersions.$it.trustFrameworkId`     | `uuid`                  | `eq`     | `?filter=any(trustFrameworkVersions,eq($it.trustFrameworkId,"533d3fe3-bccc-405a-9904-4f516e892856"))`  |
-        |                                                   |                         | `neq`    | `?filter=all(trustFrameworkVersions,neq($it.trustFrameworkId,"533d3fe3-bccc-405a-9904-4f516e892856"))` |
-        | `lastDeclarationOfConformity.requirementsVersion` | `string`                | `eq`     | `?filter=eq(lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                                  |
-        |                                                   |                         | `neq`    | `?filter=neq(lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                                 |
-        |                                                   |                         | `has`    | `?filter=has(lastDeclarationOfConformity.requirementsVersion,"1.2")`                                   |
-        |                                                   |                         | `stw`    | `?filter=stw(lastDeclarationOfConformity.requirementsVersion,"1.2")`                                   |
-        |                                                   |                         | `enw`    | `?filter=enw(lastDeclarationOfConformity.requirementsVersion,"2.0")`                                   |
-        |                                                   |                         | `reg`    | `?filter=reg(lastDeclarationOfConformity.requirementsVersion,"^[a-zA-Z0-9 ]+$")`                       |
-        | `lastDeclarationOfConformity.rankingLevel`        | `ApiRankingLevel`       | `eq`     | `?filter=eq(lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                      |
-        |                                                   |                         | `neq`    | `?filter=neq(lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                     |
-        | `createTime`                                      | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                                                    |
-        |                                                   |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                                                   |
-        |                                                   |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                                                    |
-        |                                                   |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                                                   |
-        |                                                   |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                                                    |
-        |                                                   |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                                                   |
-        | `updateTime`                                      | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                                                    |
-        |                                                   |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                                                   |
-        |                                                   |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                                                    |
-        |                                                   |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                                                   |
-        |                                                   |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                                                    |
-        |                                                   |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                                                   |
+        | Field                                                       | Type                    | Operator | Example                                                                                                              |
+        |-------------------------------------------------------------|-------------------------|----------|----------------------------------------------------------------------------------------------------------------------|
+        | `id`                                                        | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                              |
+        |                                                             |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                                                             |
+        | `name`                                                      | `string`                | `eq`     | `?filter=eq(name,"1.2.0")`                                                                                           |
+        |                                                             |                         | `neq`    | `?filter=neq(name,"1.2.0")`                                                                                          |
+        |                                                             |                         | `has`    | `?filter=has(name,"1.2")`                                                                                            |
+        |                                                             |                         | `stw`    | `?filter=stw(name,"1.2")`                                                                                            |
+        |                                                             |                         | `enw`    | `?filter=enw(name,"2.0")`                                                                                            |
+        |                                                             |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                                                                |
+        | `publishTime`                                               | `date-time`             | `eq`     | `?filter=eq(publishTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        |                                                             |                         | `neq`    | `?filter=neq(publishTime,"2024-03-16T14:15:30.500Z")`                                                                |
+        |                                                             |                         | `gt`     | `?filter=gt(publishTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        |                                                             |                         | `gte`    | `?filter=gte(publishTime,"2024-03-16T14:15:30.500Z")`                                                                |
+        |                                                             |                         | `lt`     | `?filter=lt(publishTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        |                                                             |                         | `lte`    | `?filter=lte(publishTime,"2024-03-16T14:15:30.500Z")`                                                                |
+        | `semVer.major`                                              | `integer`               | `eq`     | `?filter=eq(semVer.major,1)`                                                                                         |
+        |                                                             |                         | `neq`    | `?filter=neq(semVer.major,1)`                                                                                        |
+        |                                                             |                         | `gt`     | `?filter=gt(semVer.major,1)`                                                                                         |
+        |                                                             |                         | `gte`    | `?filter=gte(semVer.major,1)`                                                                                        |
+        |                                                             |                         | `lt`     | `?filter=lt(semVer.major,1)`                                                                                         |
+        |                                                             |                         | `lte`    | `?filter=lte(semVer.major,1)`                                                                                        |
+        | `semVer.minor`                                              | `integer`               | `eq`     | `?filter=eq(semVer.minor,2)`                                                                                         |
+        |                                                             |                         | `neq`    | `?filter=neq(semVer.minor,2)`                                                                                        |
+        |                                                             |                         | `gt`     | `?filter=gt(semVer.minor,2)`                                                                                         |
+        |                                                             |                         | `gte`    | `?filter=gte(semVer.minor,2)`                                                                                        |
+        |                                                             |                         | `lt`     | `?filter=lt(semVer.minor,2)`                                                                                         |
+        |                                                             |                         | `lte`    | `?filter=lte(semVer.minor,2)`                                                                                        |
+        | `semVer.patch`                                              | `integer`               | `eq`     | `?filter=eq(semVer.patch,0)`                                                                                         |
+        |                                                             |                         | `neq`    | `?filter=neq(semVer.patch,0)`                                                                                        |
+        |                                                             |                         | `gt`     | `?filter=gt(semVer.patch,0)`                                                                                         |
+        |                                                             |                         | `gte`    | `?filter=gte(semVer.patch,0)`                                                                                        |
+        |                                                             |                         | `lt`     | `?filter=lt(semVer.patch,0)`                                                                                         |
+        |                                                             |                         | `lte`    | `?filter=lte(semVer.patch,0)`                                                                                        |
+        | `semVer.preRelease`                                         | `string`                | `eq`     | `?filter=eq(semVer.preRelease,"beta")`                                                                               |
+        |                                                             |                         | `neq`    | `?filter=neq(semVer.preRelease,"beta")`                                                                              |
+        |                                                             |                         | `has`    | `?filter=has(semVer.preRelease,"be")`                                                                                |
+        |                                                             |                         | `stw`    | `?filter=stw(semVer.preRelease,"be")`                                                                                |
+        |                                                             |                         | `enw`    | `?filter=enw(semVer.preRelease,"ta")`                                                                                |
+        |                                                             |                         | `reg`    | `?filter=reg(semVer.preRelease,"^[a-zA-Z0-9 ]+$")`                                                                   |
+        | `semVer.build`                                              | `string`                | `eq`     | `?filter=eq(semVer.build,"exp.sha.5114f85")`                                                                         |
+        |                                                             |                         | `neq`    | `?filter=neq(semVer.build,"exp.sha.5114f85")`                                                                        |
+        |                                                             |                         | `has`    | `?filter=has(semVer.build,"exp.sha")`                                                                                |
+        |                                                             |                         | `stw`    | `?filter=stw(semVer.build,"exp.sha")`                                                                                |
+        |                                                             |                         | `enw`    | `?filter=enw(semVer.build,"5114f85")`                                                                                |
+        |                                                             |                         | `reg`    | `?filter=reg(semVer.build,"^[a-zA-Z0-9 ]+$")`                                                                        |
+        | `lifecycleState`                                            | `ProductLifecycleState` | `eq`     | `?filter=eq(lifecycleState,"PUBLISHED")`                                                                             |
+        |                                                             |                         | `neq`    | `?filter=neq(lifecycleState,"PUBLISHED")`                                                                            |
+        | `communicationStandardVersions.$it.id`                      | `uuid`                  | `eq`     | `?filter=any(communicationStandardVersions,eq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                       |
+        |                                                             |                         | `neq`    | `?filter=all(communicationStandardVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                      |
+        | `communicationStandardVersions.$it.communicationStandardId` | `uuid`                  | `eq`     | `?filter=any(communicationStandardVersions,eq($it.communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))`  |
+        |                                                             |                         | `neq`    | `?filter=all(communicationStandardVersions,neq($it.communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))` |
+        | `lastDeclarationOfConformity.requirementsVersion`           | `string`                | `eq`     | `?filter=eq(lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                                                |
+        |                                                             |                         | `neq`    | `?filter=neq(lastDeclarationOfConformity.requirementsVersion,"1.2.0")`                                               |
+        |                                                             |                         | `has`    | `?filter=has(lastDeclarationOfConformity.requirementsVersion,"1.2")`                                                 |
+        |                                                             |                         | `stw`    | `?filter=stw(lastDeclarationOfConformity.requirementsVersion,"1.2")`                                                 |
+        |                                                             |                         | `enw`    | `?filter=enw(lastDeclarationOfConformity.requirementsVersion,"2.0")`                                                 |
+        |                                                             |                         | `reg`    | `?filter=reg(lastDeclarationOfConformity.requirementsVersion,"^[a-zA-Z0-9 ]+$")`                                     |
+        | `lastDeclarationOfConformity.rankingLevel`                  | `ApiRankingLevel`       | `eq`     | `?filter=eq(lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                                    |
+        |                                                             |                         | `neq`    | `?filter=neq(lastDeclarationOfConformity.rankingLevel,"OPEN_API")`                                                   |
+        | `createTime`                                                | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                                                                  |
+        |                                                             |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        |                                                             |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                                                                  |
+        |                                                             |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        |                                                             |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                                                                  |
+        |                                                             |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        | `updateTime`                                                | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                                                                  |
+        |                                                             |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        |                                                             |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                                                                  |
+        |                                                             |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                                                                 |
+        |                                                             |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                                                                  |
+        |                                                             |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                                                                 |
 
         </details>
       operationId: listApiSpecificationVersions
@@ -3077,21 +3077,21 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/trust-framework-versions/{trustFrameworkVersionId}:
+  /api-specifications/{apiSpecificationId}/versions/{versionId}/communication-standard-versions/{communicationStandardVersionId}:
     put:
-      summary: Set a trust framework version for an API specification version
+      summary: Set a communication standard version for an API specification version
       description: |
-        Sets a single trust framework version for an API specification version.
-      operationId: setApiSpecificationVersionTrustFrameworkVersion
+        Sets a single communication standard version for an API specification version.
+      operationId: setApiSpecificationVersionCommunicationStandardVersion
       security:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions.trust-framework-versions
+        - api-specifications.versions.communication-standard-versions
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
-        - $ref: '#/components/parameters/trustFrameworkVersionId'
+        - $ref: '#/components/parameters/communicationStandardVersionId'
       responses:
         '204':
           $ref: '#/components/responses/EmptyResponse'
@@ -3112,19 +3112,19 @@ paths:
         5XX:
           $ref: '#/components/responses/InternalError'
     delete:
-      summary: Delete a trust framework version from an API specification version
+      summary: Delete a communication standard version from an API specification version
       description: |
-        Deletes a single trust framework version from an API specification version.
-      operationId: deleteApiSpecificationVersionTrustFrameworkVersion
+        Deletes a single communication standard version from an API specification version.
+      operationId: deleteApiSpecificationVersionCommunicationStandardVersion
       security:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions.trust-framework-versions
+        - api-specifications.versions.communication-standard-versions
       parameters:
         - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/versionId'
-        - $ref: '#/components/parameters/trustFrameworkVersionId'
+        - $ref: '#/components/parameters/communicationStandardVersionId'
       responses:
         '204':
           $ref: '#/components/responses/EmptyResponse'
@@ -3144,11 +3144,11 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /trust-frameworks:
+  /communication-standards:
     get:
-      summary: List all trust frameworks
+      summary: List all communication standards
       description: |-
-        Returns a list of trust frameworks.
+        Returns a list of communication standards.
 
         <details>
         <summary>Details</summary>
@@ -3186,17 +3186,17 @@ paths:
         |------------------------------|-------------------------|----------|----------------------------------------------------------------------|
         | `id`                         | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`              |
         |                              |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`             |
-        | `name`                       | `string`                | `eq`     | `?filter=eq(name,"MedMij Afsprakenstelsel")`                         |
-        |                              |                         | `neq`    | `?filter=neq(name,"MedMij Afsprakenstelsel")`                        |
-        |                              |                         | `has`    | `?filter=has(name,"MedMij")`                                         |
-        |                              |                         | `stw`    | `?filter=stw(name,"MedMij")`                                         |
-        |                              |                         | `enw`    | `?filter=enw(name,"Afsprakenstelsel")`                               |
+        | `name`                       | `string`                | `eq`     | `?filter=eq(name,"FHIR")`                                            |
+        |                              |                         | `neq`    | `?filter=neq(name,"FHIR")`                                           |
+        |                              |                         | `has`    | `?filter=has(name,"FH")`                                             |
+        |                              |                         | `stw`    | `?filter=stw(name,"FH")`                                             |
+        |                              |                         | `enw`    | `?filter=enw(name,"IR")`                                             |
         |                              |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                |
-        | `description`                | `string`                | `eq`     | `?filter=eq(description,"MedMij Afsprakenstelsel")`                  |
-        |                              |                         | `neq`    | `?filter=neq(description,"MedMij Afsprakenstelsel")`                 |
-        |                              |                         | `has`    | `?filter=has(description,"MedMij")`                                  |
-        |                              |                         | `stw`    | `?filter=stw(description,"MedMij")`                                  |
-        |                              |                         | `enw`    | `?filter=enw(description,"Afsprakenstelsel")`                        |
+        | `description`                | `string`                | `eq`     | `?filter=eq(description,"FHIR")`                                     |
+        |                              |                         | `neq`    | `?filter=neq(description,"FHIR")`                                    |
+        |                              |                         | `has`    | `?filter=has(description,"FH")`                                      |
+        |                              |                         | `stw`    | `?filter=stw(description,"FH")`                                      |
+        |                              |                         | `enw`    | `?filter=enw(description,"IR")`                                      |
         |                              |                         | `reg`    | `?filter=reg(description,"^[a-zA-Z0-9 ]+$")`                         |
         | `organizationId`             | `uuid`                  | `eq`     | `?filter=eq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`  |
         |                              |                         | `neq`    | `?filter=neq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")` |
@@ -3216,12 +3216,12 @@ paths:
         |                              |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                 |
 
         </details>
-      operationId: listTrustFrameworks
+      operationId: listCommunicationStandards
       security:
         - oauth2:
-            - trust-frameworks:read
+            - communication-standards:read
       tags:
-        - trust-frameworks
+        - communication-standards
       parameters:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/skip'
@@ -3236,7 +3236,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/TrustFramework_Read'
+                  $ref: '#/components/schemas/CommunicationStandard_Read'
           headers:
             Total-Count:
               $ref: '#/components/headers/Total-Count'
@@ -3255,28 +3255,28 @@ paths:
         5XX:
           $ref: '#/components/responses/InternalError'
     post:
-      summary: Add a trust framework
+      summary: Add a communication standard
       description: |
-        Adds a trust framework to the collection.
-      operationId: addTrustFramework
+        Adds a communication standard to the collection.
+      operationId: addCommunicationStandard
       security:
         - oauth2:
-            - trust-frameworks:write
+            - communication-standards:write
       tags:
-        - trust-frameworks
+        - communication-standards
       requestBody:
-        description: Trust framework object to add
+        description: Communication standard object to add
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TrustFramework_Create'
+              $ref: '#/components/schemas/CommunicationStandard_Create'
       responses:
         '201':
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TrustFramework_Create_Response'
+                $ref: '#/components/schemas/CommunicationStandard_Create_Response'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -3291,26 +3291,26 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /trust-frameworks/{trustFrameworkId}:
+  /communication-standards/{communicationStandardId}:
     get:
-      summary: Get a trust framework by ID
+      summary: Get a communication standard by ID
       description: |
-        Returns a single trust framework.
-      operationId: getTrustFrameworkById
+        Returns a single communication standard.
+      operationId: getCommunicationStandardById
       security:
         - oauth2:
-            - trust-frameworks:read
+            - communication-standards:read
       tags:
-        - trust-frameworks
+        - communication-standards
       parameters:
-        - $ref: '#/components/parameters/trustFrameworkId'
+        - $ref: '#/components/parameters/communicationStandardId'
       responses:
         '200':
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TrustFramework_Read'
+                $ref: '#/components/schemas/CommunicationStandard_Read'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -3328,30 +3328,30 @@ paths:
         5XX:
           $ref: '#/components/responses/InternalError'
     patch:
-      summary: Update a trust framework
+      summary: Update a communication standard
       description: |
-        Updates a single trust framework.
-      operationId: updateTrustFramework
+        Updates a single communication standard.
+      operationId: updateCommunicationStandard
       security:
         - oauth2:
-            - trust-frameworks:write
+            - communication-standards:write
       tags:
-        - trust-frameworks
+        - communication-standards
       parameters:
-        - $ref: '#/components/parameters/trustFrameworkId'
+        - $ref: '#/components/parameters/communicationStandardId'
       requestBody:
-        description: Updated trust framework object
+        description: Updated communication standard object
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TrustFramework_Update'
+              $ref: '#/components/schemas/CommunicationStandard_Update'
       responses:
         '200':
           description: Updated
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TrustFramework_Read'
+                $ref: '#/components/schemas/CommunicationStandard_Read'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -3368,11 +3368,11 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /trust-framework-versions:
+  /communication-standard-versions:
     get:
-      summary: List all trust framework versions
+      summary: List all communication standard versions
       description: |-
-        Returns a list of trust framework versions.
+        Returns a list of communication standard versions.
 
         <details>
         <summary>Details</summary>
@@ -3418,82 +3418,82 @@ paths:
 
         The following table lists the field names and operators you can use in a filter expression.
 
-        | Field                                             | Type                    | Operator | Example                                                                          |
-        |---------------------------------------------------|-------------------------|----------|----------------------------------------------------------------------------------|
-        | `id`                                              | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                          |
-        |                                                   |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                         |
-        | `name`                                            | `string`                | `eq`     | `?filter=eq(name,"1.2.0")`                                                       |
-        |                                                   |                         | `neq`    | `?filter=neq(name,"1.2.0")`                                                      |
-        |                                                   |                         | `has`    | `?filter=has(name,"1.2")`                                                        |
-        |                                                   |                         | `stw`    | `?filter=stw(name,"1.2")`                                                        |
-        |                                                   |                         | `enw`    | `?filter=enw(name,"2.0")`                                                        |
-        |                                                   |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                            |
-        | `description`                                     | `string`                | `eq`     | `?filter=eq(description,"1.2.0")`                                                |
-        |                                                   |                         | `neq`    | `?filter=neq(description,"1.2.0")`                                               |
-        |                                                   |                         | `has`    | `?filter=has(description,"1.2")`                                                 |
-        |                                                   |                         | `stw`    | `?filter=stw(description,"1.2")`                                                 |
-        |                                                   |                         | `enw`    | `?filter=enw(description,"2.0")`                                                 |
-        |                                                   |                         | `reg`    | `?filter=reg(description,"^[a-zA-Z0-9 ]+$")`                                     |
-        | `trustFrameworkId`                                | `uuid`                  | `eq`     | `?filter=eq(trustFrameworkId,"533d3fe3-bccc-405a-9904-4f516e892856")`            |
-        |                                                   |                         | `neq`    | `?filter=neq(trustFrameworkId,"533d3fe3-bccc-405a-9904-4f516e892856")`           |
-        | `publishTime`                                     | `date-time`             | `eq`     | `?filter=eq(publishTime,"2024-03-16T14:15:30.500Z")`                             |
-        |                                                   |                         | `neq`    | `?filter=neq(publishTime,"2024-03-16T14:15:30.500Z")`                            |
-        |                                                   |                         | `gt`     | `?filter=gt(publishTime,"2024-03-16T14:15:30.500Z")`                             |
-        |                                                   |                         | `gte`    | `?filter=gte(publishTime,"2024-03-16T14:15:30.500Z")`                            |
-        |                                                   |                         | `lt`     | `?filter=lt(publishTime,"2024-03-16T14:15:30.500Z")`                             |
-        |                                                   |                         | `lte`    | `?filter=lte(publishTime,"2024-03-16T14:15:30.500Z")`                            |
-        | `semVer.major`                                    | `integer`               | `eq`     | `?filter=eq(semVer.major,1)`                                                     |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.major,1)`                                                    |
-        |                                                   |                         | `gt`     | `?filter=gt(semVer.major,1)`                                                     |
-        |                                                   |                         | `gte`    | `?filter=gte(semVer.major,1)`                                                    |
-        |                                                   |                         | `lt`     | `?filter=lt(semVer.major,1)`                                                     |
-        |                                                   |                         | `lte`    | `?filter=lte(semVer.major,1)`                                                    |
-        | `semVer.minor`                                    | `integer`               | `eq`     | `?filter=eq(semVer.minor,2)`                                                     |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.minor,2)`                                                    |
-        |                                                   |                         | `gt`     | `?filter=gt(semVer.minor,2)`                                                     |
-        |                                                   |                         | `gte`    | `?filter=gte(semVer.minor,2)`                                                    |
-        |                                                   |                         | `lt`     | `?filter=lt(semVer.minor,2)`                                                     |
-        |                                                   |                         | `lte`    | `?filter=lte(semVer.minor,2)`                                                    |
-        | `semVer.patch`                                    | `integer`               | `eq`     | `?filter=eq(semVer.patch,0)`                                                     |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.patch,0)`                                                    |
-        |                                                   |                         | `gt`     | `?filter=gt(semVer.patch,0)`                                                     |
-        |                                                   |                         | `gte`    | `?filter=gte(semVer.patch,0)`                                                    |
-        |                                                   |                         | `lt`     | `?filter=lt(semVer.patch,0)`                                                     |
-        |                                                   |                         | `lte`    | `?filter=lte(semVer.patch,0)`                                                    |
-        | `semVer.preRelease`                               | `string`                | `eq`     | `?filter=eq(semVer.preRelease,"beta")`                                           |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.preRelease,"beta")`                                          |
-        |                                                   |                         | `has`    | `?filter=has(semVer.preRelease,"be")`                                            |
-        |                                                   |                         | `stw`    | `?filter=stw(semVer.preRelease,"be")`                                            |
-        |                                                   |                         | `enw`    | `?filter=enw(semVer.preRelease,"ta")`                                            |
-        |                                                   |                         | `reg`    | `?filter=reg(semVer.preRelease,"^[a-zA-Z0-9 ]+$")`                               |
-        | `semVer.build`                                    | `string`                | `eq`     | `?filter=eq(semVer.build,"exp.sha.5114f85")`                                     |
-        |                                                   |                         | `neq`    | `?filter=neq(semVer.build,"exp.sha.5114f85")`                                    |
-        |                                                   |                         | `has`    | `?filter=has(semVer.build,"exp.sha")`                                            |
-        |                                                   |                         | `stw`    | `?filter=stw(semVer.build,"exp.sha")`                                            |
-        |                                                   |                         | `enw`    | `?filter=enw(semVer.build,"5114f85")`                                            |
-        |                                                   |                         | `reg`    | `?filter=reg(semVer.build,"^[a-zA-Z0-9 ]+$")`                                    |
-        | `lifecycleState`                                  | `ProductLifecycleState` | `eq`     | `?filter=eq(lifecycleState,"PUBLISHED")`                                         |
-        |                                                   |                         | `neq`    | `?filter=neq(lifecycleState,"PUBLISHED")`                                        |
-        | `createTime`                                      | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                              |
-        |                                                   |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                             |
-        |                                                   |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                              |
-        |                                                   |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                             |
-        |                                                   |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                              |
-        |                                                   |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                             |
-        | `updateTime`                                      | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                              |
-        |                                                   |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                             |
-        |                                                   |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                              |
-        |                                                   |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                             |
-        |                                                   |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                              |
-        |                                                   |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                             |
+        | Field                     | Type                    | Operator | Example                                                                       |
+        |---------------------------|-------------------------|----------|-------------------------------------------------------------------------------|
+        | `id`                      | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                       |
+        |                           |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                      |
+        | `name`                    | `string`                | `eq`     | `?filter=eq(name,"1.2.0")`                                                    |
+        |                           |                         | `neq`    | `?filter=neq(name,"1.2.0")`                                                   |
+        |                           |                         | `has`    | `?filter=has(name,"1.2")`                                                     |
+        |                           |                         | `stw`    | `?filter=stw(name,"1.2")`                                                     |
+        |                           |                         | `enw`    | `?filter=enw(name,"2.0")`                                                     |
+        |                           |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                         |
+        | `description`             | `string`                | `eq`     | `?filter=eq(description,"1.2.0")`                                             |
+        |                           |                         | `neq`    | `?filter=neq(description,"1.2.0")`                                            |
+        |                           |                         | `has`    | `?filter=has(description,"1.2")`                                              |
+        |                           |                         | `stw`    | `?filter=stw(description,"1.2")`                                              |
+        |                           |                         | `enw`    | `?filter=enw(description,"2.0")`                                              |
+        |                           |                         | `reg`    | `?filter=reg(description,"^[a-zA-Z0-9 ]+$")`                                  |
+        | `communicationStandardId` | `uuid`                  | `eq`     | `?filter=eq(communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856")`  |
+        |                           |                         | `neq`    | `?filter=neq(communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856")` |
+        | `publishTime`             | `date-time`             | `eq`     | `?filter=eq(publishTime,"2024-03-16T14:15:30.500Z")`                          |
+        |                           |                         | `neq`    | `?filter=neq(publishTime,"2024-03-16T14:15:30.500Z")`                         |
+        |                           |                         | `gt`     | `?filter=gt(publishTime,"2024-03-16T14:15:30.500Z")`                          |
+        |                           |                         | `gte`    | `?filter=gte(publishTime,"2024-03-16T14:15:30.500Z")`                         |
+        |                           |                         | `lt`     | `?filter=lt(publishTime,"2024-03-16T14:15:30.500Z")`                          |
+        |                           |                         | `lte`    | `?filter=lte(publishTime,"2024-03-16T14:15:30.500Z")`                         |
+        | `semVer.major`            | `integer`               | `eq`     | `?filter=eq(semVer.major,1)`                                                  |
+        |                           |                         | `neq`    | `?filter=neq(semVer.major,1)`                                                 |
+        |                           |                         | `gt`     | `?filter=gt(semVer.major,1)`                                                  |
+        |                           |                         | `gte`    | `?filter=gte(semVer.major,1)`                                                 |
+        |                           |                         | `lt`     | `?filter=lt(semVer.major,1)`                                                  |
+        |                           |                         | `lte`    | `?filter=lte(semVer.major,1)`                                                 |
+        | `semVer.minor`            | `integer`               | `eq`     | `?filter=eq(semVer.minor,2)`                                                  |
+        |                           |                         | `neq`    | `?filter=neq(semVer.minor,2)`                                                 |
+        |                           |                         | `gt`     | `?filter=gt(semVer.minor,2)`                                                  |
+        |                           |                         | `gte`    | `?filter=gte(semVer.minor,2)`                                                 |
+        |                           |                         | `lt`     | `?filter=lt(semVer.minor,2)`                                                  |
+        |                           |                         | `lte`    | `?filter=lte(semVer.minor,2)`                                                 |
+        | `semVer.patch`            | `integer`               | `eq`     | `?filter=eq(semVer.patch,0)`                                                  |
+        |                           |                         | `neq`    | `?filter=neq(semVer.patch,0)`                                                 |
+        |                           |                         | `gt`     | `?filter=gt(semVer.patch,0)`                                                  |
+        |                           |                         | `gte`    | `?filter=gte(semVer.patch,0)`                                                 |
+        |                           |                         | `lt`     | `?filter=lt(semVer.patch,0)`                                                  |
+        |                           |                         | `lte`    | `?filter=lte(semVer.patch,0)`                                                 |
+        | `semVer.preRelease`       | `string`                | `eq`     | `?filter=eq(semVer.preRelease,"beta")`                                        |
+        |                           |                         | `neq`    | `?filter=neq(semVer.preRelease,"beta")`                                       |
+        |                           |                         | `has`    | `?filter=has(semVer.preRelease,"be")`                                         |
+        |                           |                         | `stw`    | `?filter=stw(semVer.preRelease,"be")`                                         |
+        |                           |                         | `enw`    | `?filter=enw(semVer.preRelease,"ta")`                                         |
+        |                           |                         | `reg`    | `?filter=reg(semVer.preRelease,"^[a-zA-Z0-9 ]+$")`                            |
+        | `semVer.build`            | `string`                | `eq`     | `?filter=eq(semVer.build,"exp.sha.5114f85")`                                  |
+        |                           |                         | `neq`    | `?filter=neq(semVer.build,"exp.sha.5114f85")`                                 |
+        |                           |                         | `has`    | `?filter=has(semVer.build,"exp.sha")`                                         |
+        |                           |                         | `stw`    | `?filter=stw(semVer.build,"exp.sha")`                                         |
+        |                           |                         | `enw`    | `?filter=enw(semVer.build,"5114f85")`                                         |
+        |                           |                         | `reg`    | `?filter=reg(semVer.build,"^[a-zA-Z0-9 ]+$")`                                 |
+        | `lifecycleState`          | `ProductLifecycleState` | `eq`     | `?filter=eq(lifecycleState,"PUBLISHED")`                                      |
+        |                           |                         | `neq`    | `?filter=neq(lifecycleState,"PUBLISHED")`                                     |
+        | `createTime`              | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                           |
+        |                           |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                          |
+        |                           |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                           |
+        |                           |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                          |
+        |                           |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                           |
+        |                           |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                          |
+        | `updateTime`              | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                           |
+        |                           |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                          |
+        |                           |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                           |
+        |                           |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                          |
+        |                           |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                           |
+        |                           |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                          |
 
         </details>
-      operationId: listTrustFrameworkVersions
+      operationId: listCommunicationStandardVersions
       security:
         - oauth2:
-            - trust-frameworks:read
+            - communication-standards:read
       tags:
-        - trust-framework-versions
+        - communication-standard-versions
       parameters:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/skip'
@@ -3508,7 +3508,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/TrustFrameworkVersion_CreateRead'
+                  $ref: '#/components/schemas/CommunicationStandardVersion_CreateRead'
           headers:
             Total-Count:
               $ref: '#/components/headers/Total-Count'
@@ -3527,28 +3527,28 @@ paths:
         5XX:
           $ref: '#/components/responses/InternalError'
     post:
-      summary: Add a trust framework version
+      summary: Add a communication standard version
       description: |
-        Adds a trust framework version to the collection.
-      operationId: addTrustFrameworkVersion
+        Adds a communication standard version to the collection.
+      operationId: addCommunicationStandardVersion
       security:
         - oauth2:
-            - trust-frameworks:write
+            - communication-standards:write
       tags:
-        - trust-framework-versions
+        - communication-standard-versions
       requestBody:
-        description: Trust framework version object to add
+        description: Communication standard version object to add
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TrustFrameworkVersion_CreateRead'
+              $ref: '#/components/schemas/CommunicationStandardVersion_CreateRead'
       responses:
         '201':
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TrustFrameworkVersion_CreateRead'
+                $ref: '#/components/schemas/CommunicationStandardVersion_CreateRead'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -3563,26 +3563,26 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /trust-framework-versions/{trustFrameworkVersionId}:
+  /communication-standard-versions/{communicationStandardVersionId}:
     get:
-      summary: Get a trust framework version by ID
+      summary: Get a communication standard version by ID
       description: |
-        Returns a single trust framework version.
-      operationId: getTrustFrameworkVersionById
+        Returns a single communication standard version.
+      operationId: getCommunicationStandardVersionById
       security:
         - oauth2:
-            - trust-frameworks:read
+            - communication-standards:read
       tags:
-        - trust-framework-versions
+        - communication-standard-versions
       parameters:
-        - $ref: '#/components/parameters/trustFrameworkVersionId'
+        - $ref: '#/components/parameters/communicationStandardVersionId'
       responses:
         '200':
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TrustFrameworkVersion_CreateRead'
+                $ref: '#/components/schemas/CommunicationStandardVersion_CreateRead'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -3600,30 +3600,30 @@ paths:
         5XX:
           $ref: '#/components/responses/InternalError'
     patch:
-      summary: Update a trust framework version
+      summary: Update a communication standard version
       description: |
-        Updates a single trust framework version.
-      operationId: updateTrustFrameworkVersion
+        Updates a single communication standard version.
+      operationId: updateCommunicationStandardVersion
       security:
         - oauth2:
-            - trust-frameworks:write
+            - communication-standards:write
       tags:
-        - trust-framework-versions
+        - communication-standard-versions
       parameters:
-        - $ref: '#/components/parameters/trustFrameworkVersionId'
+        - $ref: '#/components/parameters/communicationStandardVersionId'
       requestBody:
-        description: Updated trust framework version object
+        description: Updated communication standard version object
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TrustFrameworkVersion_Update'
+              $ref: '#/components/schemas/CommunicationStandardVersion_Update'
       responses:
         '200':
           description: Updated
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TrustFrameworkVersion_CreateRead'
+                $ref: '#/components/schemas/CommunicationStandardVersion_CreateRead'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -5463,61 +5463,61 @@ components:
               format: uuid
               examples:
                 - 15261fd0-b292-45d9-b6b1-266cc922fb50
-    BasicTrustFramework:
-      description: The basic trust framework information
+    BasicCommunicationStandard:
+      description: The basic communication standard information
       type: object
       required:
         - name
         - id
       properties:
         id:
-          description: The ID of the trust framework
+          description: The ID of the communication standard
           type: string
           format: uuid
           readOnly: true
           examples:
-            - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
+            - 05d8de10-1932-4e7f-badf-655c1a82fcc3
         name:
-          description: The name of the trust framework
+          description: The name of the communication standard
           type: string
           maxLength: 255
           examples:
-            - MedMij Afsprakenstelsel
-    BasicTrustFrameworkVersion:
-      description: The basic trust framework version information
+            - FHIR
+    BasicCommunicationStandardVersion:
+      description: The basic communication standard version information
       type: object
       required:
         - id
         - name
-        - trustFrameworkId
+        - communicationStandardId
       properties:
         id:
-          description: The ID of the trust framework version
+          description: The ID of the communication standard version
           type: string
           format: uuid
           examples:
-            - 78ca8495-a4f4-4b41-b97b-c912c2e96450
+            - 8ae84d7f-73e7-4f08-b839-c73c97128ada
         name:
-          description: The name of the trust framework version
+          description: The name of the communication standard version
           type: string
           maxLength: 255
           readOnly: true
           examples:
-            - 2.2.2 Verplicht
-        trustFrameworkId:
-          description: The ID of the trust framework this version belongs to
+            - R5
+        communicationStandardId:
+          description: The ID of the communication standard this version belongs to
           type: string
           format: uuid
           readOnly: true
           examples:
-            - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
-        trustFramework:
+            - 05d8de10-1932-4e7f-badf-655c1a82fcc3
+        communicationStandard:
           readOnly: true
           allOf:
-            - $ref: '#/components/schemas/BasicTrustFramework'
+            - $ref: '#/components/schemas/BasicCommunicationStandard'
           examples:
-            - id: 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
-              name: MedMij Afsprakenstelsel
+            - id: 05d8de10-1932-4e7f-badf-655c1a82fcc3
+              name: FHIR
     ApiSpecificationVersion_CreateRead:
       allOf:
         - $ref: '#/components/schemas/ApiSpecificationVersion'
@@ -5529,10 +5529,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/BasicApiSpecificationVersionUrl'
-            trustFrameworkVersions:
+            communicationStandardVersions:
               type: array
               items:
-                $ref: '#/components/schemas/BasicTrustFrameworkVersion'
+                $ref: '#/components/schemas/BasicCommunicationStandardVersion'
             lastDeclarationOfConformity:
               readOnly: true
               allOf:
@@ -5605,89 +5605,89 @@ components:
                   SD001.001:
                     conformityType: CONFORMANT
         - $ref: '#/components/schemas/BasicResponse'
-    TrustFrameworkVersion:
-      description: The trust framework version information
+    CommunicationStandardVersion:
+      description: The communication standard version information
       type: object
       required:
         - name
-        - trustFrameworkId
+        - communicationStandardId
         - publishTime
         - semVer
         - lifecycleState
         - id
       properties:
         id:
-          description: The ID of the trust framework version
+          description: The ID of the communication standard version
           type: string
           format: uuid
           readOnly: true
           examples:
-            - 78ca8495-a4f4-4b41-b97b-c912c2e96450
+            - 8ae84d7f-73e7-4f08-b839-c73c97128ada
         name:
-          description: The name of the trust framework version
+          description: The name of the communication standard version
           type: string
           maxLength: 255
           examples:
-            - 2.2.2 Verplicht
+            - R5
         description:
-          description: The description of the trust framework version
+          description: The description of the communication standard version
           type:
             - string
             - 'null'
           maxLength: 1000
           examples:
-            - Dit is de huidige verplichte versie die door alle deelnemers moet worden ondersteund.
-        trustFrameworkId:
-          description: The ID of the trust framework this version belongs to
+            - FHIR Specification 5.0.0
+        communicationStandardId:
+          description: The ID of the communication standard this version belongs to
           type: string
           format: uuid
           examples:
-            - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
-        trustFramework:
+            - 05d8de10-1932-4e7f-badf-655c1a82fcc3
+        communicationStandard:
           readOnly: true
           allOf:
-            - $ref: '#/components/schemas/BasicTrustFramework'
+            - $ref: '#/components/schemas/BasicCommunicationStandard'
           examples:
-            - id: 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
-              name: MedMij Afsprakenstelsel
+            - id: 05d8de10-1932-4e7f-badf-655c1a82fcc3
+              name: FHIR
         publishTime:
-          description: The date and time at which the trust framework version was published
+          description: The date and time at which the communication standard version was published
           type: string
           format: date-time
           examples:
-            - '2024-09-10T12:00:00.0000000Z'
+            - '2023-03-26T12:00:00.0000000Z'
         semVer:
           allOf:
             - $ref: '#/components/schemas/SemVer'
           examples:
-            - major: 2
-              minor: 2
-              patch: 2
+            - major: 5
+              minor: 0
+              patch: 0
         lifecycleState:
-          description: The lifecycle state of the trust framework version
+          description: The lifecycle state of the communication standard version
           allOf:
             - $ref: '#/components/schemas/ProductLifecycleState'
           examples:
             - PUBLISHED
         url:
-          description: The URL of the trust framework version
+          description: The URL of the communication standard version
           type:
             - string
             - 'null'
           maxLength: 1000
           examples:
-            - https://afsprakenstelsel.medmij.nl/asverplicht/mmverplicht
-    MainTrustFrameworkVersion:
+            - https://hl7.org/fhir/R5
+    MainCommunicationStandardVersion:
       allOf:
-        - $ref: '#/components/schemas/TrustFrameworkVersion'
+        - $ref: '#/components/schemas/CommunicationStandardVersion'
         - type: object
           properties:
-            trustFrameworkId:
+            communicationStandardId:
               writeOnly: true
-            trustFramework:
+            communicationStandard:
               writeOnly: true
-    TrustFramework:
-      description: The trust framework information
+    CommunicationStandard:
+      description: The communication standard information
       type: object
       required:
         - name
@@ -5696,72 +5696,72 @@ components:
         - id
       properties:
         id:
-          description: The ID of the trust framework
+          description: The ID of the communication standard
           type: string
           format: uuid
           readOnly: true
           examples:
-            - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
+            - 05d8de10-1932-4e7f-badf-655c1a82fcc3
         name:
-          description: The name of the trust framework
+          description: The name of the communication standard
           type: string
           maxLength: 255
           examples:
-            - MedMij Afsprakenstelsel
+            - FHIR
         description:
-          description: The description of the trust framework
+          description: The description of the communication standard
           type:
             - string
             - 'null'
           maxLength: 1000
           examples:
-            - Het MedMij Afsprakenstelsel draagt eraan bij dat persoonsgebonden, gevoelige en vertrouwelijke gezondheidsgegevens op een veilige en gebruiksvriendelijke wijze uitgewisseld kunnen worden tussen persoonlijke gezondheidsomgevingen en aanbieders.
+            - FHIR (Fast Health Interoperability Resources) is an HL7 specification for Healthcare Interoperability.
         organizationId:
-          description: The ID of the organization that maintains the trust framework
+          description: The ID of the organization that maintains the communication standard
           type: string
           format: uuid
           examples:
-            - 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
+            - a70590c6-06ce-4dba-9098-ed996335bdec
         organization:
           readOnly: true
           allOf:
             - $ref: '#/components/schemas/BasicOrganization'
           examples:
-            - id: 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
-              name: Stichting MedMij
+            - id: a70590c6-06ce-4dba-9098-ed996335bdec
+              name: HL7 Nederland
         url:
-          description: The URL of the trust framework
+          description: The URL of the communication standard
           type: string
           maxLength: 1000
           examples:
-            - https://afsprakenstelsel.medmij.nl/
+            - https://hl7.org/fhir/
         mainVersionId:
-          description: The ID of the main version of the trust framework
+          description: The ID of the main version of the communication standard
           type:
             - string
             - 'null'
           format: uuid
           examples:
-            - 78ca8495-a4f4-4b41-b97b-c912c2e96450
+            - 8ae84d7f-73e7-4f08-b839-c73c97128ada
         mainVersion:
           readOnly: true
           allOf:
-            - $ref: '#/components/schemas/MainTrustFrameworkVersion'
-    TrustFramework_Read:
+            - $ref: '#/components/schemas/MainCommunicationStandardVersion'
+    CommunicationStandard_Read:
       allOf:
-        - $ref: '#/components/schemas/TrustFramework'
+        - $ref: '#/components/schemas/CommunicationStandard'
         - $ref: '#/components/schemas/BasicResponse'
-    TrustFramework_Create:
+    CommunicationStandard_Create:
       allOf:
-        - $ref: '#/components/schemas/TrustFramework'
+        - $ref: '#/components/schemas/CommunicationStandard'
         - type: object
           properties:
             mainVersionId:
               readOnly: true
         - $ref: '#/components/schemas/BasicResponse'
-    TrustFramework_Create_Response:
+    CommunicationStandard_Create_Response:
       allOf:
-        - $ref: '#/components/schemas/TrustFramework'
+        - $ref: '#/components/schemas/CommunicationStandard'
         - type: object
           properties:
             mainVersionId:
@@ -5770,23 +5770,23 @@ components:
               readOnly: false
               writeOnly: true
         - $ref: '#/components/schemas/BasicResponse'
-    TrustFramework_Update:
+    CommunicationStandard_Update:
       allOf:
-        - $ref: '#/components/schemas/TrustFramework'
+        - $ref: '#/components/schemas/CommunicationStandard'
         - type: object
           properties:
             organizationId:
               readOnly: true
-    TrustFrameworkVersion_CreateRead:
+    CommunicationStandardVersion_CreateRead:
       allOf:
-        - $ref: '#/components/schemas/TrustFrameworkVersion'
+        - $ref: '#/components/schemas/CommunicationStandardVersion'
         - $ref: '#/components/schemas/BasicResponse'
-    TrustFrameworkVersion_Update:
+    CommunicationStandardVersion_Update:
       allOf:
-        - $ref: '#/components/schemas/TrustFrameworkVersion'
+        - $ref: '#/components/schemas/CommunicationStandardVersion'
         - type: object
           properties:
-            trustFrameworkId:
+            communicationStandardId:
               readOnly: true
     ApiRankingType:
       type: string
@@ -6242,26 +6242,26 @@ components:
         format: uuid
         examples:
           - dc944125-5269-4dd9-afda-413a37ed9733
-    trustFrameworkVersionId:
-      name: trustFrameworkVersionId
+    communicationStandardVersionId:
+      name: communicationStandardVersionId
       in: path
       required: true
-      description: The ID of the trust framework version
+      description: The ID of the communication standard version
       schema:
         type: string
         format: uuid
         examples:
-          - 78ca8495-a4f4-4b41-b97b-c912c2e96450
-    trustFrameworkId:
-      name: trustFrameworkId
+          - 8ae84d7f-73e7-4f08-b839-c73c97128ada
+    communicationStandardId:
+      name: communicationStandardId
       in: path
       required: true
-      description: The ID of the trust framework
+      description: The ID of the communication standard
       schema:
         type: string
         format: uuid
         examples:
-          - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
+          - 05d8de10-1932-4e7f-badf-655c1a82fcc3
   responses:
     BadRequestError:
       description: Bad request error. This is mostly for syntax errors (e.g. incorrect JSON format), for semantic errors see status `422`.
@@ -6438,8 +6438,8 @@ x-tagGroups:
       - api-specifications.versions
       - api-specifications.versions.urls
       - api-specifications.versions.declarations-of-conformity
-      - api-specifications.versions.trust-framework-versions
-  - name: Trust frameworks
+      - api-specifications.versions.communication-standard-versions
+  - name: Communication standards
     tags:
-      - trust-frameworks
-      - trust-framework-versions
+      - communication-standards
+      - communication-standard-versions
