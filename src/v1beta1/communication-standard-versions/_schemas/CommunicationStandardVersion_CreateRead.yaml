@@ -1,0 +1,5 @@
+﻿# Resource definition for Create, Read operations
+allOf:
+  - $ref: './CommunicationStandardVersion.yaml'
+    # Extend
+  - $ref: '../../_schemas/BasicResponse.yaml'

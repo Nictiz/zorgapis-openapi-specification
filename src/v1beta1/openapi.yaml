@@ -60,6 +60,19 @@ tags:
   - name: api-specifications.versions.declarations-of-conformity
     description: API specification version declarations of conformity API
     x-displayName: API specification version declarations of conformity
+  - name: api-specifications.versions.communication-standard-versions
+    description: API specification version communication standard versions API
+    x-displayName: API specification version communication standard versions
+  
+  # communication-standards
+  - name: communication-standards
+    description: Communication standards API
+    x-displayName: Communication standards
+  
+  # communication-standard-versions
+  - name: communication-standard-versions
+    description: Communication standard versions API
+    x-displayName: Communication standard versions
 
 x-tagGroups:
   - name: Users
@@ -82,6 +95,11 @@ x-tagGroups:
       - api-specifications.versions
       - api-specifications.versions.urls
       - api-specifications.versions.declarations-of-conformity
+      - api-specifications.versions.communication-standard-versions
+  - name: Communication standards
+    tags:
+      - communication-standards
+      - communication-standard-versions
 
 servers:
   - url: 'https://api.zorgapis.nl/v1beta1'
@@ -155,6 +173,21 @@ paths:
     $ref: './api-specifications/versions/declarations-of-conformity/_paths/declarations-of-conformity.yaml'
   /api-specifications/{apiSpecificationId}/versions/{versionId}/declarations-of-conformity/{declarationOfConformityId}:
     $ref: './api-specifications/versions/declarations-of-conformity/_paths/declarations-of-conformity_{declarationOfConformityId}.yaml'
+  # api-specifications/versions/communication-standard-versions
+  /api-specifications/{apiSpecificationId}/versions/{versionId}/communication-standard-versions/{communicationStandardVersionId}:
+    $ref: './api-specifications/versions/communication-standard-versions/_paths/communication-standard-versions_{communicationStandardVersionId}.yaml'
+  
+  # communication-standards
+  /communication-standards:
+    $ref: './communication-standards/_paths/communication-standards.yaml'
+  /communication-standards/{communicationStandardId}:
+    $ref: './communication-standards/_paths/communication-standards_{communicationStandardId}.yaml'
+  
+  # communication-standard-versions
+  /communication-standard-versions:
+    $ref: './communication-standard-versions/_paths/communication-standard-versions.yaml'
+  /communication-standard-versions/{communicationStandardVersionId}:
+    $ref: './communication-standard-versions/_paths/communication-standard-versions_{communicationStandardVersionId}.yaml'
     
 components:
   # Reusable schemas (data models)

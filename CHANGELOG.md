@@ -9,6 +9,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Changed
+
+- Change `/api-specifications/{apiSpecificationId}/versions` endpoints to support `communicationStandardVersions` 
+  property
+
+### Added
+
+- Add `/communication-standards` endpoints
+- Add `/communication-standard-versions` endpoints
+- Add `/api-specifications/{apiSpecificationId}/versions/{versionId}/communication-standard-versions/{communicationStandardVersionId}`
+  endpoints to support setting and deleting `communicationStandardVersions` for an `ApiSpecificationVersion`
+
 ## [0.3.2] - 2024-07-11
 
 This release adds optional properties `githubUrl` and `gitlabUrl` to schema `Organization`.
