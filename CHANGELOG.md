@@ -9,6 +9,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## [0.4.0] - 2024-09-12
+
+This release adds support for communication standards and trust frameworks.
+
 ### Changed
 
 - Change `/api-specifications/{apiSpecificationId}/versions` endpoints to support `communicationStandardVersions` and 
@@ -67,7 +71,8 @@ This release changes server and OAuth 2.0 URLs from `v1alpha2` sandbox environme
 - Add property `summary` to `info` object
 - Add manual trigger to workflow "Publish docs"
 
-[unreleased]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.3.2...HEAD
+[unreleased]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.3.2...v0.4.0
 [0.3.2]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/Nictiz/zorgapis-openapi-specification/releases/tag/v0.3.0
