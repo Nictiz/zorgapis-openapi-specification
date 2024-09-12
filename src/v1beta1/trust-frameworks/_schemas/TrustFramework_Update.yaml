@@ -1,0 +1,8 @@
+# Resource definition for Update operations
+allOf:
+  - $ref: './TrustFramework.yaml'
+    # Extend
+  - type: object
+    properties:
+      organizationId:
+        readOnly: true

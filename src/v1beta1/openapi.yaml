@@ -63,6 +63,9 @@ tags:
   - name: api-specifications.versions.communication-standard-versions
     description: API specification version communication standard versions API
     x-displayName: API specification version communication standard versions
+  - name: api-specifications.versions.trust-framework-versions
+    description: API specification version trust framework versions API
+    x-displayName: API specification version trust framework versions
   
   # communication-standards
   - name: communication-standards
@@ -73,6 +76,16 @@ tags:
   - name: communication-standard-versions
     description: Communication standard versions API
     x-displayName: Communication standard versions
+  
+  # trust-frameworks
+  - name: trust-frameworks
+    description: Trust frameworks API
+    x-displayName: Trust frameworks
+  
+  # trust-framework-versions
+  - name: trust-framework-versions
+    description: Trust framework versions API
+    x-displayName: Trust framework versions
 
 x-tagGroups:
   - name: Users
@@ -96,10 +109,15 @@ x-tagGroups:
       - api-specifications.versions.urls
       - api-specifications.versions.declarations-of-conformity
       - api-specifications.versions.communication-standard-versions
+      - api-specifications.versions.trust-framework-versions
   - name: Communication standards
     tags:
       - communication-standards
       - communication-standard-versions
+  - name: Trust frameworks
+    tags:
+      - trust-frameworks
+      - trust-framework-versions
 
 servers:
   - url: 'https://api.zorgapis.nl/v1beta1'
@@ -176,6 +194,9 @@ paths:
   # api-specifications/versions/communication-standard-versions
   /api-specifications/{apiSpecificationId}/versions/{versionId}/communication-standard-versions/{communicationStandardVersionId}:
     $ref: './api-specifications/versions/communication-standard-versions/_paths/communication-standard-versions_{communicationStandardVersionId}.yaml'
+  # api-specifications/versions/trust-framework-versions
+  /api-specifications/{apiSpecificationId}/versions/{versionId}/trust-framework-versions/{trustFrameworkVersionId}:
+    $ref: './api-specifications/versions/trust-framework-versions/_paths/trust-framework-versions_{trustFrameworkVersionId}.yaml'
   
   # communication-standards
   /communication-standards:
@@ -188,6 +209,18 @@ paths:
     $ref: './communication-standard-versions/_paths/communication-standard-versions.yaml'
   /communication-standard-versions/{communicationStandardVersionId}:
     $ref: './communication-standard-versions/_paths/communication-standard-versions_{communicationStandardVersionId}.yaml'
+    
+  # trust-frameworks
+  /trust-frameworks:
+    $ref: './trust-frameworks/_paths/trust-frameworks.yaml'
+  /trust-frameworks/{trustFrameworkId}:
+    $ref: './trust-frameworks/_paths/trust-frameworks_{trustFrameworkId}.yaml'
+  
+  # trust-framework-versions
+  /trust-framework-versions:
+    $ref: './trust-framework-versions/_paths/trust-framework-versions.yaml'
+  /trust-framework-versions/{trustFrameworkVersionId}:
+    $ref: './trust-framework-versions/_paths/trust-framework-versions_{trustFrameworkVersionId}.yaml'
     
 components:
   # Reusable schemas (data models)

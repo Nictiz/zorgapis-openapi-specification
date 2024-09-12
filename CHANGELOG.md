@@ -11,8 +11,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Changed
 
-- Change `/api-specifications/{apiSpecificationId}/versions` endpoints to support `communicationStandardVersions` 
-  property
+- Change `/api-specifications/{apiSpecificationId}/versions` endpoints to support `communicationStandardVersions` and 
+  `trustFrameworkVersions` properties
 
 ### Added
 
@@ -20,6 +20,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `/communication-standard-versions` endpoints
 - Add `/api-specifications/{apiSpecificationId}/versions/{versionId}/communication-standard-versions/{communicationStandardVersionId}`
   endpoints to support setting and deleting `communicationStandardVersions` for an `ApiSpecificationVersion`
+- Add `/trust-frameworks` endpoints
+- Add `/trust-framework-versions` endpoints
+- Add `/api-specifications/{apiSpecificationId}/versions/{versionId}/trust-framework-versions/{trustFrameworkVersionId}`
+  endpoints to support setting and deleting `trustFrameworkVersions` for an `ApiSpecificationVersion`
 
 ## [0.3.2] - 2024-07-11
 

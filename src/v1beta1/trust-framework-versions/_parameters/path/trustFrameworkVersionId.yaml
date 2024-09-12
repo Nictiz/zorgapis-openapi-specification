@@ -1,0 +1,9 @@
+name: trustFrameworkVersionId
+in: path
+required: true
+description: The ID of the trust framework version
+schema:
+  type: string
+  format: uuid
+  examples:
+    - 78ca8495-a4f4-4b41-b97b-c912c2e96450

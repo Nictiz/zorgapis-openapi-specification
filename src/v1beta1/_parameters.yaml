@@ -46,3 +46,13 @@ communicationStandardId:
 # path
 communicationStandardVersionId:
   $ref: './communication-standard-versions/_parameters/path/communicationStandardVersionId.yaml'
+
+# trust-frameworks
+# path
+trustFrameworkId:
+  $ref: './trust-frameworks/_parameters/path/trustFrameworkId.yaml'
+
+# trust-framework-versions
+# path
+trustFrameworkVersionId:
+  $ref: './trust-framework-versions/_parameters/path/trustFrameworkVersionId.yaml'

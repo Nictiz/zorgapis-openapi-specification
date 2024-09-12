@@ -15,6 +15,10 @@ allOf:
         type: array
         items:
           $ref: '../../../communication-standard-versions/_schemas/BasicCommunicationStandardVersion.yaml'
+      trustFrameworkVersions:
+        type: array
+        items:
+          $ref: '../../../trust-framework-versions/_schemas/BasicTrustFrameworkVersion.yaml'
       lastDeclarationOfConformity:
         # Returned by GET, not used in POST/PUT/PATCH
         readOnly: true

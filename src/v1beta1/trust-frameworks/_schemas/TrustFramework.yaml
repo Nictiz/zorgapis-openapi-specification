@@ -1,0 +1,65 @@
+# Abstract base schema
+description: The trust framework information
+type: object
+required:
+  - name
+  - organizationId
+  - url
+  # Read-only
+  - id
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the trust framework
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
+  name:
+    description: The name of the trust framework
+    type: string
+    maxLength: 255
+    examples:
+      - 'MedMij Afsprakenstelsel'
+  description:
+    description: The description of the trust framework
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - 'Het MedMij Afsprakenstelsel draagt eraan bij dat persoonsgebonden, gevoelige en vertrouwelijke gezondheidsgegevens op een veilige en gebruiksvriendelijke wijze uitgewisseld kunnen worden tussen persoonlijke gezondheidsomgevingen en aanbieders.'
+  organizationId:
+    description: The ID of the organization that maintains the trust framework
+    type: string
+    format: uuid
+    examples:
+      - 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
+  organization:
+    # Returned by GET, not used in POST/PUT/PATCH
+    readOnly: true
+    allOf:
+      - $ref: '../../organizations/_schemas/BasicOrganization.yaml'
+    examples:
+      - id: 4a7c2c17-6514-46f8-aa05-6a22fb18b4ad
+        name: Stichting MedMij
+  url:
+    description: The URL of the trust framework
+    type: string
+    maxLength: 1000
+    examples:
+      - 'https://afsprakenstelsel.medmij.nl/'
+  mainVersionId:
+    description: The ID of the main version of the trust framework
+    type:
+      - 'string'
+      - 'null'
+    format: uuid
+    examples:
+      - 78ca8495-a4f4-4b41-b97b-c912c2e96450
+  mainVersion:
+    # Returned by GET, not used in POST/PUT/PATCH
+    readOnly: true
+    allOf:
+      - $ref: '../../trust-framework-versions/_schemas/MainTrustFrameworkVersion.yaml'

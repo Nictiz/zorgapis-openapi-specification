@@ -1,0 +1,21 @@
+description: The basic trust framework information
+type: object
+required:
+  - name
+  # Read-only
+  - id
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the trust framework
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
+  name:
+    description: The name of the trust framework
+    type: string
+    maxLength: 255
+    examples:
+      - 'MedMij Afsprakenstelsel'

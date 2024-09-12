@@ -163,3 +163,29 @@ BasicCommunicationStandardVersion:
   $ref: './communication-standard-versions/_schemas/BasicCommunicationStandardVersion.yaml'
 MainCommunicationStandardVersion:
   $ref: './communication-standard-versions/_schemas/MainCommunicationStandardVersion.yaml'
+
+# trust-frameworks
+TrustFramework:
+  $ref: './trust-frameworks/_schemas/TrustFramework.yaml'
+TrustFramework_Create:
+  $ref: './trust-frameworks/_schemas/TrustFramework_Create.yaml'
+TrustFramework_Create_Response:
+  $ref: './trust-frameworks/_schemas/TrustFramework_Create_Response.yaml'
+TrustFramework_Read:
+  $ref: './trust-frameworks/_schemas/TrustFramework_Read.yaml'
+TrustFramework_Update:
+  $ref: './trust-frameworks/_schemas/TrustFramework_Update.yaml'
+BasicTrustFramework:
+  $ref: './trust-frameworks/_schemas/BasicTrustFramework.yaml'
+
+# trust-framework-versions
+TrustFrameworkVersion:
+  $ref: './trust-framework-versions/_schemas/TrustFrameworkVersion.yaml'
+TrustFrameworkVersion_CreateRead:
+  $ref: './trust-framework-versions/_schemas/TrustFrameworkVersion_CreateRead.yaml'
+TrustFrameworkVersion_Update:
+  $ref: './trust-framework-versions/_schemas/TrustFrameworkVersion_Update.yaml'
+BasicTrustFrameworkVersion:
+  $ref: './trust-framework-versions/_schemas/BasicTrustFrameworkVersion.yaml'
+MainTrustFrameworkVersion:
+  $ref: './trust-framework-versions/_schemas/MainTrustFrameworkVersion.yaml'
