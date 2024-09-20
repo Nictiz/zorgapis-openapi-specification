@@ -15,6 +15,10 @@ allOf:
         type: array
         items:
           $ref: '../../../communication-standard-versions/_schemas/BasicCommunicationStandardVersion.yaml'
+      informationStandardVersions:
+        type: array
+        items:
+          $ref: '../../../information-standard-versions/_schemas/BasicInformationStandardVersion.yaml'
       trustFrameworkVersions:
         type: array
         items:

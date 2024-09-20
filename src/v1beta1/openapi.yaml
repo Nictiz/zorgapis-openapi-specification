@@ -63,6 +63,9 @@ tags:
   - name: api-specifications.versions.communication-standard-versions
     description: API specification version communication standard versions API
     x-displayName: API specification version communication standard versions
+  - name: api-specifications.versions.information-standard-versions
+    description: API specification version information standard versions API
+    x-displayName: API specification version information standard versions
   - name: api-specifications.versions.trust-framework-versions
     description: API specification version trust framework versions API
     x-displayName: API specification version trust framework versions
@@ -76,6 +79,16 @@ tags:
   - name: communication-standard-versions
     description: Communication standard versions API
     x-displayName: Communication standard versions
+
+  # information-standards
+  - name: information-standards
+    description: Information standards API
+    x-displayName: Information standards
+
+  # information-standard-versions
+  - name: information-standard-versions
+    description: Information standard versions API
+    x-displayName: Information standard versions
   
   # trust-frameworks
   - name: trust-frameworks
@@ -109,11 +122,16 @@ x-tagGroups:
       - api-specifications.versions.urls
       - api-specifications.versions.declarations-of-conformity
       - api-specifications.versions.communication-standard-versions
+      - api-specifications.versions.information-standard-versions
       - api-specifications.versions.trust-framework-versions
   - name: Communication standards
     tags:
       - communication-standards
       - communication-standard-versions
+  - name: Information standards
+    tags:
+      - information-standards
+      - information-standard-versions
   - name: Trust frameworks
     tags:
       - trust-frameworks
@@ -194,6 +212,9 @@ paths:
   # api-specifications/versions/communication-standard-versions
   /api-specifications/{apiSpecificationId}/versions/{versionId}/communication-standard-versions/{communicationStandardVersionId}:
     $ref: './api-specifications/versions/communication-standard-versions/_paths/communication-standard-versions_{communicationStandardVersionId}.yaml'
+  # api-specifications/versions/information-standard-versions
+  /api-specifications/{apiSpecificationId}/versions/{versionId}/information-standard-versions/{informationStandardVersionId}:
+    $ref: './api-specifications/versions/information-standard-versions/_paths/information-standard-versions_{informationStandardVersionId}.yaml'
   # api-specifications/versions/trust-framework-versions
   /api-specifications/{apiSpecificationId}/versions/{versionId}/trust-framework-versions/{trustFrameworkVersionId}:
     $ref: './api-specifications/versions/trust-framework-versions/_paths/trust-framework-versions_{trustFrameworkVersionId}.yaml'
@@ -209,6 +230,18 @@ paths:
     $ref: './communication-standard-versions/_paths/communication-standard-versions.yaml'
   /communication-standard-versions/{communicationStandardVersionId}:
     $ref: './communication-standard-versions/_paths/communication-standard-versions_{communicationStandardVersionId}.yaml'
+
+  # information-standards
+  /information-standards:
+    $ref: './information-standards/_paths/information-standards.yaml'
+  /information-standards/{informationStandardId}:
+    $ref: './information-standards/_paths/information-standards_{informationStandardId}.yaml'
+
+  # information-standard-versions
+  /information-standard-versions:
+    $ref: './information-standard-versions/_paths/information-standard-versions.yaml'
+  /information-standard-versions/{informationStandardVersionId}:
+    $ref: './information-standard-versions/_paths/information-standard-versions_{informationStandardVersionId}.yaml'
     
   # trust-frameworks
   /trust-frameworks:

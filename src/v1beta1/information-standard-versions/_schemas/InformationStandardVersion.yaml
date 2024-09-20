@@ -1,0 +1,75 @@
+# Abstract base schema
+description: The information standard version information
+type: object
+required:
+  - name
+  - informationStandardId
+  - publishTime
+  - semVer
+  - lifecycleState
+  # Read-only
+  - id
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the information standard version
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 8ae84d7f-73e7-4f08-b839-c73c97128ada
+  name:
+    description: The name of the information standard version
+    type: string
+    maxLength: 255
+    examples:
+      - R5
+  description:
+    description: The description of the information standard version
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - 'FHIR Specification 5.0.0'
+  informationStandardId:
+    description: The ID of the information standard this version belongs to
+    type: string
+    format: uuid
+    examples:
+      - 05d8de10-1932-4e7f-badf-655c1a82fcc3
+  informationStandard:
+    # Returned by GET, not used in POST/PUT/PATCH
+    readOnly: true
+    allOf:
+      - $ref: '../../information-standards/_schemas/BasicInformationStandard.yaml'
+    examples:
+      - id: 05d8de10-1932-4e7f-badf-655c1a82fcc3
+        name: FHIR
+  publishTime:
+    description: The date and time at which the information standard version was published
+    type: string
+    format: date-time
+    examples:
+      - '2023-03-26T12:00:00.0000000Z'
+  semVer:
+    allOf:
+      - $ref: '../../_schemas/SemVer.yaml'
+    examples:
+      - major: 5
+        minor: 0
+        patch: 0
+  lifecycleState:
+    description: The lifecycle state of the information standard version
+    allOf:
+      - $ref: '../../_schemas/ProductLifecycleState.yaml'
+    examples:
+      - PUBLISHED
+  url:
+    description: The URL of the information standard version
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - 'https://hl7.org/fhir/R5'

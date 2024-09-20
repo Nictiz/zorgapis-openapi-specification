@@ -1,0 +1,76 @@
+get:
+  summary: Get an information standard version by ID
+  description: |
+    Returns a single information standard version.
+  operationId: getInformationStandardVersionById
+  security:
+    - oauth2:
+        - information-standards:read
+  tags:
+    - information-standard-versions
+  parameters:
+    - $ref: '../_parameters/path/informationStandardVersionId.yaml'
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas/InformationStandardVersion_CreateRead.yaml'
+    '400':
+      $ref: '../../_responses/BadRequestError.yaml'
+    '401':
+      $ref: '../../_responses/UnauthenticatedError.yaml'
+    '403':
+      $ref: '../../_responses/PermissionDeniedError.yaml'
+    '404':
+      $ref: '../../_responses/NotFoundError.yaml'
+    '422':
+      $ref: '../../_responses/InvalidArgumentError.yaml'
+    '429':
+      $ref: '../../_responses/ResourceExhaustedError.yaml'
+    '503':
+      $ref: '../../_responses/UnavailableError.yaml'
+    5XX:
+      $ref: '../../_responses/InternalError.yaml'
+patch:
+  summary: Update an information standard version
+  description: |
+    Updates a single information standard version.
+  operationId: updateInformationStandardVersion
+  security:
+    - oauth2:
+        - information-standards:write
+  tags:
+    - information-standard-versions
+  parameters:
+    - $ref: '../_parameters/path/informationStandardVersionId.yaml'
+  requestBody:
+    description: Updated information standard version object
+    content:
+      application/json:
+        schema:
+          $ref: '../_schemas/InformationStandardVersion_Update.yaml'
+  responses:
+    '200':
+      description: Updated
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas/InformationStandardVersion_CreateRead.yaml'
+    '400':
+      $ref: '../../_responses/BadRequestError.yaml'
+    '401':
+      $ref: '../../_responses/UnauthenticatedError.yaml'
+    '403':
+      $ref: '../../_responses/PermissionDeniedError.yaml'
+    '404':
+      $ref: '../../_responses/NotFoundError.yaml'
+    '422':
+      $ref: '../../_responses/InvalidArgumentError.yaml'
+    '429':
+      $ref: '../../_responses/ResourceExhaustedError.yaml'
+    '503':
+      $ref: '../../_responses/UnavailableError.yaml'
+    5XX:
+      $ref: '../../_responses/InternalError.yaml'
