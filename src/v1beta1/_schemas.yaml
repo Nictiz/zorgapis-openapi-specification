@@ -9,6 +9,8 @@ ApiErrorType:
   $ref: './_schemas/ApiErrorType.yaml'
 BasicResponse:
   $ref: './_schemas/BasicResponse.yaml'
+CareType:
+  $ref: './_schemas/CareType.yaml'
 ConformityType:
   $ref: './_schemas/ConformityType.yaml'
 Country:

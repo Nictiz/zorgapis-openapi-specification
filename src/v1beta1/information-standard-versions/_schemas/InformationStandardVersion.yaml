@@ -73,3 +73,12 @@ properties:
     maxLength: 1000
     examples:
       - 'https://hl7.org/fhir/R5'
+  careTypes:
+    description: The care types that apply to the information standard version
+    type: array
+    items:
+      $ref: '../../_schemas/CareType.yaml'
+    examples:
+      -
+        - GENERAL_PRACTITIONERS
+        - HOSPITALS
