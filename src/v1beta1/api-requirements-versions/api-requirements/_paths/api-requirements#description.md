@@ -7,16 +7,18 @@ Returns a list of API requirements.
 
 The following table lists the field names and directions you can use in a sort expression.
 
-| Field               | Type        | Direction | Example                         |
-|---------------------|-------------|-----------|---------------------------------|
-| `id`                | `uuid`      | `asc`     | `?sort=asc(id)`                 |
-|                     |             | `desc`    | `?sort=desc(id)`                |
-| `code`              | `string`    | `asc`     | `?sort=asc(code)`               |
-|                     |             | `desc`    | `?sort=desc(code)`              |
-| `createTime`        | `date-time` | `asc`     | `?sort=asc(createTime)`         |
-|                     |             | `desc`    | `?sort=desc(createTime)`        |
-| `updateTime`        | `date-time` | `asc`     | `?sort=asc(updateTime)`         |
-|                     |             | `desc`    | `?sort=desc(updateTime)`        |
+| Field        | Type                     | Direction | Example                  |
+|--------------|--------------------------|-----------|--------------------------|
+| `id`         | `uuid`                   | `asc`     | `?sort=asc(id)`          |
+|              |                          | `desc`    | `?sort=desc(id)`         |
+| `code`       | `string`                 | `asc`     | `?sort=asc(code)`        |
+|              |                          | `desc`    | `?sort=desc(code)`       |
+| `category`   | `ApiRequirementCategory` | `asc`     | `?sort=asc(category)`    |
+|              |                          | `desc`    | `?sort=desc(category)`   |
+| `createTime` | `date-time`              | `asc`     | `?sort=asc(createTime)`  |
+|              |                          | `desc`    | `?sort=desc(createTime)` |
+| `updateTime` | `date-time`              | `asc`     | `?sort=asc(updateTime)`  |
+|              |                          | `desc`    | `?sort=desc(updateTime)` |
 
 ### Default sort expression
 
@@ -42,6 +44,12 @@ The following table lists the field names and operators you can use in a filter 
 |                             |                           | `stw`    | `?filter=stw(code,"SD0")`                                     |
 |                             |                           | `enw`    | `?filter=enw(code,"001")`                                     |
 |                             |                           | `reg`    | `?filter=reg(code,"^[a-zA-Z0-9 ]+$")`                         |
+| `description`               | `string`                  | `eq`     | `?filter=eq(description,"The description")`                   |
+|                             |                           | `neq`    | `?filter=neq(description,"The description")`                  |
+|                             |                           | `has`    | `?filter=has(description,"The")`                              |
+|                             |                           | `stw`    | `?filter=stw(description,"The")`                              |
+|                             |                           | `enw`    | `?filter=enw(description,"description")`                      |
+|                             |                           | `reg`    | `?filter=reg(description,"^[a-zA-Z0-9 ]+$")`                  |
 | `requirementLevel`          | `RequirementLevel`        | `eq`     | `?filter=eq(requirementLevel,"MUST")`                         |
 |                             |                           | `neq`    | `?filter=neq(requirementLevel,"MUST")`                        |
 | `score`                     | `integer`                 | `eq`     | `?filter=eq(score,1)`                                         |
