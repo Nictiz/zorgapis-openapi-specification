@@ -9,6 +9,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Changed
+
+- Change `/api-specifications/{apiSpecificationId}/versions` endpoints to support `informationStandardVersions` property
+
+### Added
+
+- Add `/information-standards` endpoints
+- Add `/information-standard-versions` endpoints
+- Add `/api-specifications/{apiSpecificationId}/versions/{versionId}/information-standard-versions/{informationStandardVersionId}`
+  endpoints to support setting and deleting `informationStandardVersions` for an `ApiSpecificationVersion`
+
 ## [0.4.0] - 2024-09-12
 
 This release adds support for communication standards and trust frameworks.
