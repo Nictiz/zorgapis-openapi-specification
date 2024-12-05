@@ -36,17 +36,17 @@ The following table lists the field names and operators you can use in a filter 
 |------------------------------|-------------------------|----------|-----------------------------------------------------------------------|
 | `id`                         | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`               |
 |                              |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`              |
-| `name`                       | `string`                | `eq`     | `?filter=eq(name,"FHIR")`                                             |
-|                              |                         | `neq`    | `?filter=neq(name,"FHIR")`                                            |
-|                              |                         | `has`    | `?filter=has(name,"FH")`                                              |
-|                              |                         | `stw`    | `?filter=stw(name,"FH")`                                              |
-|                              |                         | `enw`    | `?filter=enw(name,"IR")`                                              |
+| `name`                       | `string`                | `eq`     | `?filter=eq(name,"MedMij Huisartsgegevens")`                          |
+|                              |                         | `neq`    | `?filter=neq(name,"MedMij Huisartsgegevens")`                         |
+|                              |                         | `has`    | `?filter=has(name,"MedMij")`                                          |
+|                              |                         | `stw`    | `?filter=stw(name,"MedMij")`                                          |
+|                              |                         | `enw`    | `?filter=enw(name,"Huisartsgegevens")`                                |
 |                              |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                 |
-| `description`                | `string`                | `eq`     | `?filter=eq(description,"FHIR")`                                      |
-|                              |                         | `neq`    | `?filter=neq(description,"FHIR")`                                     |
-|                              |                         | `has`    | `?filter=has(description,"FH")`                                       |
-|                              |                         | `stw`    | `?filter=stw(description,"FH")`                                       |
-|                              |                         | `enw`    | `?filter=enw(description,"IR")`                                       |
+| `description`                | `string`                | `eq`     | `?filter=eq(description,"MedMij Huisartsgegevens")`                   |
+|                              |                         | `neq`    | `?filter=neq(description,"MedMij Huisartsgegevens")`                  |
+|                              |                         | `has`    | `?filter=has(description,"MedMij")`                                   |
+|                              |                         | `stw`    | `?filter=stw(description,"MedMij")`                                   |
+|                              |                         | `enw`    | `?filter=enw(description,"Huisartsgegevens")`                         |
 |                              |                         | `reg`    | `?filter=reg(description,"^[a-zA-Z0-9 ]+$")`                          |
 | `organizationId`             | `uuid`                  | `eq`     | `?filter=eq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`   |
 |                              |                         | `neq`    | `?filter=neq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`  |
