@@ -68,6 +68,9 @@ tags:
   - name: api-specifications.versions.communication-standard-versions
     description: API specification version communication standard versions API
     x-displayName: API specification version communication standard versions
+  - name: api-specifications.versions.information-standard-versions
+    description: API specification version information standard versions API
+    x-displayName: API specification version information standard versions
   - name: api-specifications.versions.trust-framework-versions
     description: API specification version trust framework versions API
     x-displayName: API specification version trust framework versions
@@ -77,6 +80,12 @@ tags:
   - name: communication-standard-versions
     description: Communication standard versions API
     x-displayName: Communication standard versions
+  - name: information-standards
+    description: Information standards API
+    x-displayName: Information standards
+  - name: information-standard-versions
+    description: Information standard versions API
+    x-displayName: Information standard versions
   - name: trust-frameworks
     description: Trust frameworks API
     x-displayName: Trust frameworks
@@ -1330,6 +1339,10 @@ paths:
         |                                                                         |                         | `neq`    | `?filter=all(mainVersion.communicationStandardVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                      |
         | `mainVersion.communicationStandardVersions.$it.communicationStandardId` | `uuid`                  | `eq`     | `?filter=any(mainVersion.communicationStandardVersions,eq($it.communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))`  |
         |                                                                         |                         | `neq`    | `?filter=all(mainVersion.communicationStandardVersions,neq($it.communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))` |
+        | `mainVersion.informationStandardVersions.$it.id`                        | `uuid`                  | `eq`     | `?filter=any(mainVersion.informationStandardVersions,eq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                         |
+        |                                                                         |                         | `neq`    | `?filter=all(mainVersion.informationStandardVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                        |
+        | `mainVersion.informationStandardVersions.$it.informationStandardId`     | `uuid`                  | `eq`     | `?filter=any(mainVersion.informationStandardVersions,eq($it.informationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))`      |
+        |                                                                         |                         | `neq`    | `?filter=all(mainVersion.informationStandardVersions,neq($it.informationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))`     |
         | `mainVersion.trustFrameworkVersions.$it.id`                             | `uuid`                  | `eq`     | `?filter=any(mainVersion.trustFrameworkVersions,eq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                              |
         |                                                                         |                         | `neq`    | `?filter=all(mainVersion.trustFrameworkVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                             |
         | `mainVersion.trustFrameworkVersions.$it.trustFrameworkId`               | `uuid`                  | `eq`     | `?filter=any(mainVersion.trustFrameworkVersions,eq($it.trustFrameworkId,"533d3fe3-bccc-405a-9904-4f516e892856"))`                |
@@ -1618,6 +1631,10 @@ paths:
         |                                                             |                                  | `neq`    | `?filter=all(communicationStandardVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                      |
         | `communicationStandardVersions.$it.communicationStandardId` | `uuid`                           | `eq`     | `?filter=any(communicationStandardVersions,eq($it.communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))`  |
         |                                                             |                                  | `neq`    | `?filter=all(communicationStandardVersions,neq($it.communicationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))` |
+        | `informationStandardVersions.$it.id`                        | `uuid`                           | `eq`     | `?filter=any(informationStandardVersions,eq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                         |
+        |                                                             |                                  | `neq`    | `?filter=all(informationStandardVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                        |
+        | `informationStandardVersions.$it.informationStandardId`     | `uuid`                           | `eq`     | `?filter=any(informationStandardVersions,eq($it.informationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))`      |
+        |                                                             |                                  | `neq`    | `?filter=all(informationStandardVersions,neq($it.informationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856"))`     |
         | `trustFrameworkVersions.$it.id`                             | `uuid`                           | `eq`     | `?filter=any(trustFrameworkVersions,eq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                              |
         |                                                             |                                  | `neq`    | `?filter=all(trustFrameworkVersions,neq($it.id,"533d3fe3-bccc-405a-9904-4f516e892856"))`                             |
         | `trustFrameworkVersions.$it.trustFrameworkId`               | `uuid`                           | `eq`     | `?filter=any(trustFrameworkVersions,eq($it.trustFrameworkId,"533d3fe3-bccc-405a-9904-4f516e892856"))`                |
@@ -3185,6 +3202,73 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
+  /api-specifications/{apiSpecificationId}/versions/{versionId}/information-standard-versions/{informationStandardVersionId}:
+    put:
+      summary: Set an information standard version for an API specification version
+      description: |
+        Sets a single information standard version for an API specification version.
+      operationId: setApiSpecificationVersionInformationStandardVersion
+      security:
+        - oauth2:
+            - api-specifications:write
+      tags:
+        - api-specifications.versions.information-standard-versions
+      parameters:
+        - $ref: '#/components/parameters/apiSpecificationId'
+        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/informationStandardVersionId'
+      responses:
+        '204':
+          $ref: '#/components/responses/EmptyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+    delete:
+      summary: Delete an information standard version from an API specification version
+      description: |
+        Deletes a single information standard version from an API specification version.
+      operationId: deleteApiSpecificationVersionInformationStandardVersion
+      security:
+        - oauth2:
+            - api-specifications:write
+      tags:
+        - api-specifications.versions.information-standard-versions
+      parameters:
+        - $ref: '#/components/parameters/apiSpecificationId'
+        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/informationStandardVersionId'
+      responses:
+        '204':
+          $ref: '#/components/responses/EmptyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
   /api-specifications/{apiSpecificationId}/versions/{versionId}/trust-framework-versions/{trustFrameworkVersionId}:
     put:
       summary: Set a trust framework version for an API specification version
@@ -3732,6 +3816,506 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CommunicationStandardVersion_CreateRead'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /information-standards:
+    get:
+      summary: List all information standards
+      description: |-
+        Returns a list of information standards.
+
+        <details>
+        <summary>Details</summary>
+
+        ## Sort expressions
+
+        The following table lists the field names and directions you can use in a sort expression.
+
+        | Field               | Type        | Direction | Example                         |
+        |---------------------|-------------|-----------|---------------------------------|
+        | `id`                | `uuid`      | `asc`     | `?sort=asc(id)`                 |
+        |                     |             | `desc`    | `?sort=desc(id)`                |
+        | `name`              | `string`    | `asc`     | `?sort=asc(name)`               |
+        |                     |             | `desc`    | `?sort=desc(name)`              |
+        | `createTime`        | `date-time` | `asc`     | `?sort=asc(createTime)`         |
+        |                     |             | `desc`    | `?sort=desc(createTime)`        |
+        | `updateTime`        | `date-time` | `asc`     | `?sort=asc(updateTime)`         |
+        |                     |             | `desc`    | `?sort=desc(updateTime)`        |
+
+        ### Default sort expression
+
+        If the `sort` parameter is omitted, the default sort expression is used:
+
+        ```
+        ?sort=desc(createTime)
+        ```
+
+        This causes results to be sorted by `createTime` in descending order (from most recent to oldest).
+
+        ## Filter expressions
+
+        The following table lists the field names and operators you can use in a filter expression.
+
+        | Field                        | Type                    | Operator | Example                                                               |
+        |------------------------------|-------------------------|----------|-----------------------------------------------------------------------|
+        | `id`                         | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`               |
+        |                              |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`              |
+        | `name`                       | `string`                | `eq`     | `?filter=eq(name,"MedMij Huisartsgegevens")`                          |
+        |                              |                         | `neq`    | `?filter=neq(name,"MedMij Huisartsgegevens")`                         |
+        |                              |                         | `has`    | `?filter=has(name,"MedMij")`                                          |
+        |                              |                         | `stw`    | `?filter=stw(name,"MedMij")`                                          |
+        |                              |                         | `enw`    | `?filter=enw(name,"Huisartsgegevens")`                                |
+        |                              |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                 |
+        | `description`                | `string`                | `eq`     | `?filter=eq(description,"MedMij Huisartsgegevens")`                   |
+        |                              |                         | `neq`    | `?filter=neq(description,"MedMij Huisartsgegevens")`                  |
+        |                              |                         | `has`    | `?filter=has(description,"MedMij")`                                   |
+        |                              |                         | `stw`    | `?filter=stw(description,"MedMij")`                                   |
+        |                              |                         | `enw`    | `?filter=enw(description,"Huisartsgegevens")`                         |
+        |                              |                         | `reg`    | `?filter=reg(description,"^[a-zA-Z0-9 ]+$")`                          |
+        | `organizationId`             | `uuid`                  | `eq`     | `?filter=eq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`   |
+        |                              |                         | `neq`    | `?filter=neq(organizationId,"533d3fe3-bccc-405a-9904-4f516e892856")`  |
+        | `mainVersion.lifecycleState` | `ProductLifecycleState` | `eq`     | `?filter=eq(mainVersion.lifecycleState,"PUBLISHED")`                  |
+        |                              |                         | `neq`    | `?filter=neq(mainVersion.lifecycleState,"PUBLISHED")`                 |
+        | `mainVersion.careTypes.$it`  | `CareType`              | `eq`     | `?filter=any(mainVersion.careTypes,eq($it,"GENERAL_PRACTITIONERS"))`  |
+        |                              |                         | `neq`    | `?filter=all(mainVersion.careTypes,neq($it,"GENERAL_PRACTITIONERS"))` |
+        | `createTime`                 | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                   |
+        |                              |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                  |
+        |                              |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                   |
+        |                              |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                  |
+        |                              |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                   |
+        |                              |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                  |
+        | `updateTime`                 | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                   |
+        |                              |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                  |
+        |                              |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                   |
+        |                              |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                  |
+        |                              |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                   |
+        |                              |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                  |
+
+        </details>
+      operationId: listInformationStandards
+      security:
+        - oauth2:
+            - information-standards:read
+      tags:
+        - information-standards
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InformationStandard_Read'
+          headers:
+            Total-Count:
+              $ref: '#/components/headers/Total-Count'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+    post:
+      summary: Add an information standard
+      description: |
+        Adds an information standard to the collection.
+      operationId: addInformationStandard
+      security:
+        - oauth2:
+            - information-standards:write
+      tags:
+        - information-standards
+      requestBody:
+        description: Information standard object to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InformationStandard_Create'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InformationStandard_Create_Response'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /information-standards/{informationStandardId}:
+    get:
+      summary: Get an information standard by ID
+      description: |
+        Returns a single information standard.
+      operationId: getInformationStandardById
+      security:
+        - oauth2:
+            - information-standards:read
+      tags:
+        - information-standards
+      parameters:
+        - $ref: '#/components/parameters/informationStandardId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InformationStandard_Read'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+    patch:
+      summary: Update an information standard
+      description: |
+        Updates a single information standard.
+      operationId: updateInformationStandard
+      security:
+        - oauth2:
+            - information-standards:write
+      tags:
+        - information-standards
+      parameters:
+        - $ref: '#/components/parameters/informationStandardId'
+      requestBody:
+        description: Updated information standard object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InformationStandard_Update'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InformationStandard_Read'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /information-standard-versions:
+    get:
+      summary: List all information standard versions
+      description: |-
+        Returns a list of information standard versions.
+
+        <details>
+        <summary>Details</summary>
+
+        ## Sort expressions
+
+        The following table lists the field names and directions you can use in a sort expression.
+
+        | Field               | Type        | Direction | Example                         |
+        |---------------------|-------------|-----------|---------------------------------|
+        | `id`                | `uuid`      | `asc`     | `?sort=asc(id)`                 |
+        |                     |             | `desc`    | `?sort=desc(id)`                |
+        | `name`              | `string`    | `asc`     | `?sort=asc(name)`               |
+        |                     |             | `desc`    | `?sort=desc(name)`              |
+        | `publishTime`       | `date-time` | `asc`     | `?sort=asc(publishTime)`        |
+        |                     |             | `desc`    | `?sort=desc(publishTime)`       |
+        | `semVer.major`      | `integer`   | `asc`     | `?sort=asc(semVer.major)`       |
+        |                     |             | `desc`    | `?sort=desc(semVer.major)`      |
+        | `semVer.minor`      | `integer`   | `asc`     | `?sort=asc(semVer.minor)`       |
+        |                     |             | `desc`    | `?sort=desc(semVer.minor)`      |
+        | `semVer.patch`      | `integer`   | `asc`     | `?sort=asc(semVer.patch)`       |
+        |                     |             | `desc`    | `?sort=desc(semVer.patch)`      |
+        | `semVer.preRelease` | `string`    | `asc`     | `?sort=asc(semVer.preRelease)`  |
+        |                     |             | `desc`    | `?sort=desc(semVer.preRelease)` |
+        | `semVer.build`      | `string`    | `asc`     | `?sort=asc(semVer.build)`       |
+        |                     |             | `desc`    | `?sort=desc(semVer.build)`      |
+        | `createTime`        | `date-time` | `asc`     | `?sort=asc(createTime)`         |
+        |                     |             | `desc`    | `?sort=desc(createTime)`        |
+        | `updateTime`        | `date-time` | `asc`     | `?sort=asc(updateTime)`         |
+        |                     |             | `desc`    | `?sort=desc(updateTime)`        |
+
+        ### Default sort expression
+
+        If the `sort` parameter is omitted, the default sort expression is used:
+
+        ```
+        ?sort=desc(publishTime)
+        ```
+
+        This causes results to be sorted by `publishTime` in descending order (from most recent to oldest).
+
+        ## Filter expressions
+
+        The following table lists the field names and operators you can use in a filter expression.
+
+        | Field                   | Type                    | Operator | Example                                                                     |
+        |-------------------------|-------------------------|----------|-----------------------------------------------------------------------------|
+        | `id`                    | `uuid`                  | `eq`     | `?filter=eq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                     |
+        |                         |                         | `neq`    | `?filter=neq(id,"533d3fe3-bccc-405a-9904-4f516e892856")`                    |
+        | `name`                  | `string`                | `eq`     | `?filter=eq(name,"1.2.0")`                                                  |
+        |                         |                         | `neq`    | `?filter=neq(name,"1.2.0")`                                                 |
+        |                         |                         | `has`    | `?filter=has(name,"1.2")`                                                   |
+        |                         |                         | `stw`    | `?filter=stw(name,"1.2")`                                                   |
+        |                         |                         | `enw`    | `?filter=enw(name,"2.0")`                                                   |
+        |                         |                         | `reg`    | `?filter=reg(name,"^[a-zA-Z0-9 ]+$")`                                       |
+        | `description`           | `string`                | `eq`     | `?filter=eq(description,"1.2.0")`                                           |
+        |                         |                         | `neq`    | `?filter=neq(description,"1.2.0")`                                          |
+        |                         |                         | `has`    | `?filter=has(description,"1.2")`                                            |
+        |                         |                         | `stw`    | `?filter=stw(description,"1.2")`                                            |
+        |                         |                         | `enw`    | `?filter=enw(description,"2.0")`                                            |
+        |                         |                         | `reg`    | `?filter=reg(description,"^[a-zA-Z0-9 ]+$")`                                |
+        | `informationStandardId` | `uuid`                  | `eq`     | `?filter=eq(informationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856")`  |
+        |                         |                         | `neq`    | `?filter=neq(informationStandardId,"533d3fe3-bccc-405a-9904-4f516e892856")` |
+        | `publishTime`           | `date-time`             | `eq`     | `?filter=eq(publishTime,"2024-03-16T14:15:30.500Z")`                        |
+        |                         |                         | `neq`    | `?filter=neq(publishTime,"2024-03-16T14:15:30.500Z")`                       |
+        |                         |                         | `gt`     | `?filter=gt(publishTime,"2024-03-16T14:15:30.500Z")`                        |
+        |                         |                         | `gte`    | `?filter=gte(publishTime,"2024-03-16T14:15:30.500Z")`                       |
+        |                         |                         | `lt`     | `?filter=lt(publishTime,"2024-03-16T14:15:30.500Z")`                        |
+        |                         |                         | `lte`    | `?filter=lte(publishTime,"2024-03-16T14:15:30.500Z")`                       |
+        | `semVer.major`          | `integer`               | `eq`     | `?filter=eq(semVer.major,1)`                                                |
+        |                         |                         | `neq`    | `?filter=neq(semVer.major,1)`                                               |
+        |                         |                         | `gt`     | `?filter=gt(semVer.major,1)`                                                |
+        |                         |                         | `gte`    | `?filter=gte(semVer.major,1)`                                               |
+        |                         |                         | `lt`     | `?filter=lt(semVer.major,1)`                                                |
+        |                         |                         | `lte`    | `?filter=lte(semVer.major,1)`                                               |
+        | `semVer.minor`          | `integer`               | `eq`     | `?filter=eq(semVer.minor,2)`                                                |
+        |                         |                         | `neq`    | `?filter=neq(semVer.minor,2)`                                               |
+        |                         |                         | `gt`     | `?filter=gt(semVer.minor,2)`                                                |
+        |                         |                         | `gte`    | `?filter=gte(semVer.minor,2)`                                               |
+        |                         |                         | `lt`     | `?filter=lt(semVer.minor,2)`                                                |
+        |                         |                         | `lte`    | `?filter=lte(semVer.minor,2)`                                               |
+        | `semVer.patch`          | `integer`               | `eq`     | `?filter=eq(semVer.patch,0)`                                                |
+        |                         |                         | `neq`    | `?filter=neq(semVer.patch,0)`                                               |
+        |                         |                         | `gt`     | `?filter=gt(semVer.patch,0)`                                                |
+        |                         |                         | `gte`    | `?filter=gte(semVer.patch,0)`                                               |
+        |                         |                         | `lt`     | `?filter=lt(semVer.patch,0)`                                                |
+        |                         |                         | `lte`    | `?filter=lte(semVer.patch,0)`                                               |
+        | `semVer.preRelease`     | `string`                | `eq`     | `?filter=eq(semVer.preRelease,"beta")`                                      |
+        |                         |                         | `neq`    | `?filter=neq(semVer.preRelease,"beta")`                                     |
+        |                         |                         | `has`    | `?filter=has(semVer.preRelease,"be")`                                       |
+        |                         |                         | `stw`    | `?filter=stw(semVer.preRelease,"be")`                                       |
+        |                         |                         | `enw`    | `?filter=enw(semVer.preRelease,"ta")`                                       |
+        |                         |                         | `reg`    | `?filter=reg(semVer.preRelease,"^[a-zA-Z0-9 ]+$")`                          |
+        | `semVer.build`          | `string`                | `eq`     | `?filter=eq(semVer.build,"exp.sha.5114f85")`                                |
+        |                         |                         | `neq`    | `?filter=neq(semVer.build,"exp.sha.5114f85")`                               |
+        |                         |                         | `has`    | `?filter=has(semVer.build,"exp.sha")`                                       |
+        |                         |                         | `stw`    | `?filter=stw(semVer.build,"exp.sha")`                                       |
+        |                         |                         | `enw`    | `?filter=enw(semVer.build,"5114f85")`                                       |
+        |                         |                         | `reg`    | `?filter=reg(semVer.build,"^[a-zA-Z0-9 ]+$")`                               |
+        | `lifecycleState`        | `ProductLifecycleState` | `eq`     | `?filter=eq(lifecycleState,"PUBLISHED")`                                    |
+        |                         |                         | `neq`    | `?filter=neq(lifecycleState,"PUBLISHED")`                                   |
+        | `careTypes.$it`         | `CareType`              | `eq`     | `?filter=any(careTypes,eq($it,"GENERAL_PRACTITIONERS"))`                    |
+        |                         |                         | `neq`    | `?filter=all(careTypes,neq($it,"GENERAL_PRACTITIONERS"))`                   |
+        | `createTime`            | `date-time`             | `eq`     | `?filter=eq(createTime,"2024-03-16T14:15:30.500Z")`                         |
+        |                         |                         | `neq`    | `?filter=neq(createTime,"2024-03-16T14:15:30.500Z")`                        |
+        |                         |                         | `gt`     | `?filter=gt(createTime,"2024-03-16T14:15:30.500Z")`                         |
+        |                         |                         | `gte`    | `?filter=gte(createTime,"2024-03-16T14:15:30.500Z")`                        |
+        |                         |                         | `lt`     | `?filter=lt(createTime,"2024-03-16T14:15:30.500Z")`                         |
+        |                         |                         | `lte`    | `?filter=lte(createTime,"2024-03-16T14:15:30.500Z")`                        |
+        | `updateTime`            | `date-time`             | `eq`     | `?filter=eq(updateTime,"2024-03-16T14:15:30.500Z")`                         |
+        |                         |                         | `neq`    | `?filter=neq(updateTime,"2024-03-16T14:15:30.500Z")`                        |
+        |                         |                         | `gt`     | `?filter=gt(updateTime,"2024-03-16T14:15:30.500Z")`                         |
+        |                         |                         | `gte`    | `?filter=gte(updateTime,"2024-03-16T14:15:30.500Z")`                        |
+        |                         |                         | `lt`     | `?filter=lt(updateTime,"2024-03-16T14:15:30.500Z")`                         |
+        |                         |                         | `lte`    | `?filter=lte(updateTime,"2024-03-16T14:15:30.500Z")`                        |
+
+        </details>
+      operationId: listInformationStandardVersions
+      security:
+        - oauth2:
+            - information-standards:read
+      tags:
+        - information-standard-versions
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InformationStandardVersion_CreateRead'
+          headers:
+            Total-Count:
+              $ref: '#/components/headers/Total-Count'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+    post:
+      summary: Add an information standard version
+      description: |
+        Adds an information standard version to the collection.
+      operationId: addInformationStandardVersion
+      security:
+        - oauth2:
+            - information-standards:write
+      tags:
+        - information-standard-versions
+      requestBody:
+        description: Information standard version object to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InformationStandardVersion_CreateRead'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InformationStandardVersion_CreateRead'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /information-standard-versions/{informationStandardVersionId}:
+    get:
+      summary: Get an information standard version by ID
+      description: |
+        Returns a single information standard version.
+      operationId: getInformationStandardVersionById
+      security:
+        - oauth2:
+            - information-standards:read
+      tags:
+        - information-standard-versions
+      parameters:
+        - $ref: '#/components/parameters/informationStandardVersionId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InformationStandardVersion_CreateRead'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+    patch:
+      summary: Update an information standard version
+      description: |
+        Updates a single information standard version.
+      operationId: updateInformationStandardVersion
+      security:
+        - oauth2:
+            - information-standards:write
+      tags:
+        - information-standard-versions
+      parameters:
+        - $ref: '#/components/parameters/informationStandardVersionId'
+      requestBody:
+        description: Updated information standard version object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InformationStandardVersion_Update'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InformationStandardVersion_CreateRead'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -5882,6 +6466,171 @@ components:
       allOf:
         - $ref: '#/components/schemas/ApiSpecificationVersionUrl'
         - description: The basic API specification version URL information
+    BasicCommunicationStandard:
+      description: The basic communication standard information
+      type: object
+      required:
+        - name
+        - id
+      properties:
+        id:
+          description: The ID of the communication standard
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 05d8de10-1932-4e7f-badf-655c1a82fcc3
+        name:
+          description: The name of the communication standard
+          type: string
+          maxLength: 255
+          examples:
+            - FHIR
+    BasicCommunicationStandardVersion:
+      description: The basic communication standard version information
+      type: object
+      required:
+        - id
+        - name
+        - communicationStandardId
+      properties:
+        id:
+          description: The ID of the communication standard version
+          type: string
+          format: uuid
+          examples:
+            - 8ae84d7f-73e7-4f08-b839-c73c97128ada
+        name:
+          description: The name of the communication standard version
+          type: string
+          maxLength: 255
+          readOnly: true
+          examples:
+            - R5
+        communicationStandardId:
+          description: The ID of the communication standard this version belongs to
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 05d8de10-1932-4e7f-badf-655c1a82fcc3
+        communicationStandard:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicCommunicationStandard'
+          examples:
+            - id: 05d8de10-1932-4e7f-badf-655c1a82fcc3
+              name: FHIR
+    BasicInformationStandard:
+      description: The basic information standard information
+      type: object
+      required:
+        - name
+        - id
+      properties:
+        id:
+          description: The ID of the information standard
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 7bc962b1-601d-4759-9a87-68953e7b75e2
+        name:
+          description: The name of the information standard
+          type: string
+          maxLength: 255
+          examples:
+            - MedMij Huisartsgegevens
+    BasicInformationStandardVersion:
+      description: The basic information standard version information
+      type: object
+      required:
+        - id
+        - name
+        - informationStandardId
+      properties:
+        id:
+          description: The ID of the information standard version
+          type: string
+          format: uuid
+          examples:
+            - 20685da1-0e1d-40b9-a0f6-5a89c444f48c
+        name:
+          description: The name of the information standard version
+          type: string
+          maxLength: 255
+          readOnly: true
+          examples:
+            - 2.0.41
+        informationStandardId:
+          description: The ID of the information standard this version belongs to
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 7bc962b1-601d-4759-9a87-68953e7b75e2
+        informationStandard:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicInformationStandard'
+          examples:
+            - id: 7bc962b1-601d-4759-9a87-68953e7b75e2
+              name: MedMij Huisartsgegevens
+    BasicTrustFramework:
+      description: The basic trust framework information
+      type: object
+      required:
+        - name
+        - id
+      properties:
+        id:
+          description: The ID of the trust framework
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
+        name:
+          description: The name of the trust framework
+          type: string
+          maxLength: 255
+          examples:
+            - MedMij Afsprakenstelsel
+    BasicTrustFrameworkVersion:
+      description: The basic trust framework version information
+      type: object
+      required:
+        - id
+        - name
+        - trustFrameworkId
+      properties:
+        id:
+          description: The ID of the trust framework version
+          type: string
+          format: uuid
+          examples:
+            - 78ca8495-a4f4-4b41-b97b-c912c2e96450
+        name:
+          description: The name of the trust framework version
+          type: string
+          maxLength: 255
+          readOnly: true
+          examples:
+            - 2.2.2 Verplicht
+        trustFrameworkId:
+          description: The ID of the trust framework this version belongs to
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
+        trustFramework:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicTrustFramework'
+          examples:
+            - id: 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
+              name: MedMij Afsprakenstelsel
     ApiRankingLevel:
       type: string
       enum:
@@ -5982,6 +6731,18 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/BasicApiSpecificationVersionUrl'
+            communicationStandardVersions:
+              type: array
+              items:
+                $ref: '#/components/schemas/BasicCommunicationStandardVersion'
+            informationStandardVersions:
+              type: array
+              items:
+                $ref: '#/components/schemas/BasicInformationStandardVersion'
+            trustFrameworkVersions:
+              type: array
+              items:
+                $ref: '#/components/schemas/BasicTrustFrameworkVersion'
             lastDeclarationOfConformity:
               readOnly: true
               allOf:
@@ -6067,116 +6828,6 @@ components:
               format: uuid
               examples:
                 - 15261fd0-b292-45d9-b6b1-266cc922fb50
-    BasicCommunicationStandard:
-      description: The basic communication standard information
-      type: object
-      required:
-        - name
-        - id
-      properties:
-        id:
-          description: The ID of the communication standard
-          type: string
-          format: uuid
-          readOnly: true
-          examples:
-            - 05d8de10-1932-4e7f-badf-655c1a82fcc3
-        name:
-          description: The name of the communication standard
-          type: string
-          maxLength: 255
-          examples:
-            - FHIR
-    BasicCommunicationStandardVersion:
-      description: The basic communication standard version information
-      type: object
-      required:
-        - id
-        - name
-        - communicationStandardId
-      properties:
-        id:
-          description: The ID of the communication standard version
-          type: string
-          format: uuid
-          examples:
-            - 8ae84d7f-73e7-4f08-b839-c73c97128ada
-        name:
-          description: The name of the communication standard version
-          type: string
-          maxLength: 255
-          readOnly: true
-          examples:
-            - R5
-        communicationStandardId:
-          description: The ID of the communication standard this version belongs to
-          type: string
-          format: uuid
-          readOnly: true
-          examples:
-            - 05d8de10-1932-4e7f-badf-655c1a82fcc3
-        communicationStandard:
-          readOnly: true
-          allOf:
-            - $ref: '#/components/schemas/BasicCommunicationStandard'
-          examples:
-            - id: 05d8de10-1932-4e7f-badf-655c1a82fcc3
-              name: FHIR
-    BasicTrustFramework:
-      description: The basic trust framework information
-      type: object
-      required:
-        - name
-        - id
-      properties:
-        id:
-          description: The ID of the trust framework
-          type: string
-          format: uuid
-          readOnly: true
-          examples:
-            - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
-        name:
-          description: The name of the trust framework
-          type: string
-          maxLength: 255
-          examples:
-            - MedMij Afsprakenstelsel
-    BasicTrustFrameworkVersion:
-      description: The basic trust framework version information
-      type: object
-      required:
-        - id
-        - name
-        - trustFrameworkId
-      properties:
-        id:
-          description: The ID of the trust framework version
-          type: string
-          format: uuid
-          examples:
-            - 78ca8495-a4f4-4b41-b97b-c912c2e96450
-        name:
-          description: The name of the trust framework version
-          type: string
-          maxLength: 255
-          readOnly: true
-          examples:
-            - 2.2.2 Verplicht
-        trustFrameworkId:
-          description: The ID of the trust framework this version belongs to
-          type: string
-          format: uuid
-          readOnly: true
-          examples:
-            - 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
-        trustFramework:
-          readOnly: true
-          allOf:
-            - $ref: '#/components/schemas/BasicTrustFramework'
-          examples:
-            - id: 3b49f2e6-fd5c-48a8-a59c-5fcbed78e5ae
-              name: MedMij Afsprakenstelsel
     ApiSpecificationVersion_CreateRead:
       allOf:
         - $ref: '#/components/schemas/ApiSpecificationVersion'
@@ -6192,6 +6843,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/BasicCommunicationStandardVersion'
+            informationStandardVersions:
+              type: array
+              items:
+                $ref: '#/components/schemas/BasicInformationStandardVersion'
             trustFrameworkVersions:
               type: array
               items:
@@ -6450,6 +7105,352 @@ components:
         - type: object
           properties:
             communicationStandardId:
+              readOnly: true
+    CareType:
+      type: string
+      enum:
+        - GENERAL_PRACTITIONERS
+        - PHARMACISTS
+        - MEDICAL_SPECIALISTS
+        - PHYSIOTHERAPISTS
+        - SPEECH_THERAPISTS
+        - HOSPITALS
+        - EXERCISE_THERAPISTS
+        - MIDWIVES
+        - DENTAL_SPECIALISTS_ORAL_DISEASES_AND_MAXILLOFACIAL_SURGERY
+        - DENTISTS
+        - DENTAL_SPECIALISTS_DENTOMAXILLOFACIAL_ORTHOPEDICS
+        - OCCUPATIONAL_PHYSICIANS
+        - LEGAL_ENTITIES
+        - DIALYSIS_CENTERS
+        - AUDIOLOGY_CENTERS
+        - RADIOTHERAPY_CENTERS
+        - SERVICE_STRUCTURES_AFTER_HOURS_SERVICES
+        - INDEPENDENT_TREATMENT_CENTERS
+        - INSTITUTIONS_FOR_REHABILITATION_DAY_TREATMENT
+        - DIETITIANS
+        - INSTITUTIONS_FOR_PSYCHIATRIC_DAY_TREATMENT
+        - PODIATRISTS
+        - INSTITUTIONS_FOR_PEOPLE_WITH_INTELLECTUAL_DISABILITIES
+        - BLOOD_BANKS
+        - MUNICIPAL_HEALTH_SERVICES_INSTITUTIONS
+        - MATERNITY_CENTERS
+        - THROMBOSIS_SERVICES
+        - ORGANIZATIONS_FOR_THE_VISUALLY_IMPAIRED
+        - AMBULANCE_SERVICES
+        - HEALTH_CENTERS
+        - DENTAL_CENTERS
+        - INSTITUTIONS_FOR_YOUTH_DENTAL_CARE
+        - INSTITUTIONS_FOR_THE_HEARING_IMPAIRED
+        - SELF_EMPLOYED_PROFESSIONALS_IN_COMMUNITY_NURSING
+        - NURSING_HOMES
+        - MANAGEMENT_FOUNDATIONS_FOR_NURSING_HOMES
+        - OPTOMETRISTS
+        - NURSING_HOMES_FOR_SOMATIC_ILLNESSES
+        - NURSING_HOMES_FOR_PSYCHOGERIATRIC_PATIENTS
+        - COMBINED_NURSING_HOMES
+        - OTHER_INSTITUTIONS
+        - ABORTION_CLINICS
+        - LABORATORIES
+        - CLINICAL_GENETICS_CENTERS
+        - EUROTRANSPLANT
+        - VARIOUS_PARTNERSHIPS
+        - MENTAL_HEALTH_INSTITUTIONS
+        - ALCOHOL_AND_DRUG_COUNSELING_CENTERS
+        - PHYSICIAN_ASSISTANT
+        - CENTRAL_AMBULANCE_DISPATCH
+        - DAY_CARE_FACILITIES_FOR_THE_ELDERLY
+        - MANAGEMENT_FOUNDATIONS_FOR_DAY_CARE_CENTERS
+        - FAMILY_REPLACEMENT_HOMES
+        - UMBRELLA_ORGANIZATIONS_LONG_TERM_CARE_ACT
+        - NETWORK_ORGANIZATIONS
+        - DAYCARE_CENTERS
+        - REGIONAL_INSTITUTIONS_FOR_PROTECTED_LIVING
+        - LONG_TERM_CARE_ACT_COMBINED
+        - OCCUPATIONAL_HEALTH_SERVICES
+        - HOME_CARE_ORGANIZATIONS
+        - SUPPLIERS_OF_ASSISTIVE_DEVICES
+        - SOCIAL_PEDAGOGICAL_SERVICES
+        - REGIONAL_INSTITUTIONS_FOR_OUTPATIENT_MENTAL_HEALTH_CARE
+        - OTHER_PHYSICIANS
+        - TAXI_OPERATORS
+        - DENTAL_HYGIENISTS
+        - OCCUPATIONAL_THERAPISTS
+        - BEAUTY_SPECIALISTS
+        - OTHER_THERAPISTS_AND_COMPLEMENTARY_AND_ALTERNATIVE_MEDICINE
+        - NURSES
+        - DENTAL_TECHNICIANS_DENTAL_PROSTHETISTS
+        - PSYCHOLOGICAL_CARE_PROVIDERS
+        - PEDICURISTS
+        - CLAIMANTS_SERVICE_AGENCIES_HEALTH_INSURERS
+      description: |
+        Care type:
+
+        - `GENERAL_PRACTITIONERS` - General Practitioners
+        - `PHARMACISTS` - Pharmacists
+        - `MEDICAL_SPECIALISTS` - Medical Specialists
+        - `PHYSIOTHERAPISTS` - Physiotherapists
+        - `SPEECH_THERAPISTS` - Speech Therapists
+        - `HOSPITALS` - Hospitals
+        - `EXERCISE_THERAPISTS` - Exercise Therapists
+        - `MIDWIVES` - Midwives
+        - `DENTAL_SPECIALISTS_ORAL_DISEASES_AND_MAXILLOFACIAL_SURGERY` - Dental Specialists (Oral Diseases and Maxillofacial Surgery)
+        - `DENTISTS` - Dentists
+        - `DENTAL_SPECIALISTS_DENTOMAXILLOFACIAL_ORTHOPEDICS` - Dental Specialists (Dentomaxillofacial Orthopedics)
+        - `OCCUPATIONAL_PHYSICIANS` - Occupational Physicians
+        - `LEGAL_ENTITIES` - Legal Entities
+        - `DIALYSIS_CENTERS` - Dialysis Centers
+        - `AUDIOLOGY_CENTERS` - Audiology Centers
+        - `RADIOTHERAPY_CENTERS` - Radiotherapy Centers
+        - `SERVICE_STRUCTURES_AFTER_HOURS_SERVICES` - Service Structures (After-Hours Services)
+        - `INDEPENDENT_TREATMENT_CENTERS` - Independent Treatment Centers
+        - `INSTITUTIONS_FOR_REHABILITATION_DAY_TREATMENT` - Institutions for Rehabilitation Day Treatment
+        - `DIETITIANS` - Dietitians
+        - `INSTITUTIONS_FOR_PSYCHIATRIC_DAY_TREATMENT` - Institutions for Psychiatric Day Treatment
+        - `PODIATRISTS` - Podiatrists
+        - `INSTITUTIONS_FOR_PEOPLE_WITH_INTELLECTUAL_DISABILITIES` - Institutions for People with Intellectual Disabilities
+        - `BLOOD_BANKS` - Blood Banks
+        - `MUNICIPAL_HEALTH_SERVICES_INSTITUTIONS` - Municipal Health Services (MHS) Institutions
+        - `MATERNITY_CENTERS` - Maternity Centers
+        - `THROMBOSIS_SERVICES` - Thrombosis Services
+        - `ORGANIZATIONS_FOR_THE_VISUALLY_IMPAIRED` - Organizations for the Visually Impaired
+        - `AMBULANCE_SERVICES` - Ambulance Services
+        - `HEALTH_CENTERS` - Health Centers
+        - `DENTAL_CENTERS` - Dental Centers
+        - `INSTITUTIONS_FOR_YOUTH_DENTAL_CARE` - Institutions for Youth Dental Care
+        - `INSTITUTIONS_FOR_THE_HEARING_IMPAIRED` - Institutions for the Hearing Impaired
+        - `SELF_EMPLOYED_PROFESSIONALS_IN_COMMUNITY_NURSING` - Self-employed Professionals in Community Nursing / Personal Budget Providers / Management Foundations
+        - `NURSING_HOMES` - Nursing Homes
+        - `MANAGEMENT_FOUNDATIONS_FOR_NURSING_HOMES` - Management Foundations for Nursing Homes
+        - `OPTOMETRISTS` - Optometrists
+        - `NURSING_HOMES_FOR_SOMATIC_ILLNESSES` - Nursing Homes for Somatic Illnesses
+        - `NURSING_HOMES_FOR_PSYCHOGERIATRIC_PATIENTS` - Nursing Homes for Psychogeriatric Patients
+        - `COMBINED_NURSING_HOMES` - Combined Nursing Homes
+        - `OTHER_INSTITUTIONS` - Other Institutions
+        - `ABORTION_CLINICS` - Abortion Clinics
+        - `LABORATORIES` - Laboratories
+        - `CLINICAL_GENETICS_CENTERS` - Clinical Genetics Centers
+        - `EUROTRANSPLANT` - Eurotransplant
+        - `VARIOUS_PARTNERSHIPS` - Various Partnerships
+        - `MENTAL_HEALTH_INSTITUTIONS` - Mental Health Institutions (Crisis Services / Acute Psychiatric Admission Units)
+        - `ALCOHOL_AND_DRUG_COUNSELING_CENTERS` - Alcohol and Drug Counseling Centers
+        - `PHYSICIAN_ASSISTANT` - Physician Assistant
+        - `CENTRAL_AMBULANCE_DISPATCH` - Central Ambulance Dispatch (CAD)
+        - `DAY_CARE_FACILITIES_FOR_THE_ELDERLY` - Day Care Facilities for the Elderly
+        - `MANAGEMENT_FOUNDATIONS_FOR_DAY_CARE_CENTERS` - Management Foundations for Day Care Centers
+        - `FAMILY_REPLACEMENT_HOMES` - Family Replacement Homes
+        - `UMBRELLA_ORGANIZATIONS_LONG_TERM_CARE_ACT` - Umbrella Organizations and Management Foundations Long-Term Care Act (WLZ)
+        - `NETWORK_ORGANIZATIONS` - Network Organizations
+        - `DAYCARE_CENTERS` - Daycare Centers
+        - `REGIONAL_INSTITUTIONS_FOR_PROTECTED_LIVING` - Regional Institutions for Protected Living (RIBW)
+        - `LONG_TERM_CARE_ACT_COMBINED` - Long-Term Care Act (WLZ) Combined
+        - `OCCUPATIONAL_HEALTH_SERVICES` - Occupational Health Services
+        - `HOME_CARE_ORGANIZATIONS` - Home Care Organizations
+        - `SUPPLIERS_OF_ASSISTIVE_DEVICES` - Suppliers of Assistive Devices
+        - `SOCIAL_PEDAGOGICAL_SERVICES` - Social Pedagogical Services
+        - `REGIONAL_INSTITUTIONS_FOR_OUTPATIENT_MENTAL_HEALTH_CARE` - Regional Institutions for Outpatient Mental Health Care (RIAGG)
+        - `OTHER_PHYSICIANS` - Other Physicians
+        - `TAXI_OPERATORS` - Taxi Operators
+        - `DENTAL_HYGIENISTS` - Dental Hygienists
+        - `OCCUPATIONAL_THERAPISTS` - Occupational Therapists
+        - `BEAUTY_SPECIALISTS` - Beauty Specialists
+        - `OTHER_THERAPISTS_AND_COMPLEMENTARY_AND_ALTERNATIVE_MEDICINE` - Other Therapists and Complementary and Alternative Medicine
+        - `NURSES` - Nurses
+        - `DENTAL_TECHNICIANS_DENTAL_PROSTHETISTS` - Dental Technicians / Dental Prosthetists
+        - `PSYCHOLOGICAL_CARE_PROVIDERS` - Psychological Care Providers
+        - `PEDICURISTS` - Pedicurists
+        - `CLAIMANTS_SERVICE_AGENCIES_HEALTH_INSURERS` - Claimants / Service Agencies / Health Insurers
+      examples:
+        - GENERAL_PRACTITIONERS
+    InformationStandardVersion:
+      description: The information standard version information
+      type: object
+      required:
+        - name
+        - informationStandardId
+        - publishTime
+        - semVer
+        - lifecycleState
+        - id
+      properties:
+        id:
+          description: The ID of the information standard version
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 20685da1-0e1d-40b9-a0f6-5a89c444f48c
+        name:
+          description: The name of the information standard version
+          type: string
+          maxLength: 255
+          examples:
+            - 2.0.41
+        description:
+          description: The description of the information standard version
+          type:
+            - string
+            - 'null'
+          maxLength: 1000
+          examples:
+            - Drie aanpassingen in het Medmij Huisartsgegevens kwalificatie materiaal zodat het overeen komt met het kwalificatiescript.
+        informationStandardId:
+          description: The ID of the information standard this version belongs to
+          type: string
+          format: uuid
+          examples:
+            - 7bc962b1-601d-4759-9a87-68953e7b75e2
+        informationStandard:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicInformationStandard'
+          examples:
+            - id: 7bc962b1-601d-4759-9a87-68953e7b75e2
+              name: MedMij Huisartsgegevens
+        publishTime:
+          description: The date and time at which the information standard version was published
+          type: string
+          format: date-time
+          examples:
+            - '2024-11-20T12:00:00.0000000Z'
+        semVer:
+          allOf:
+            - $ref: '#/components/schemas/SemVer'
+          examples:
+            - major: 2
+              minor: 0
+              patch: 41
+        lifecycleState:
+          description: The lifecycle state of the information standard version
+          allOf:
+            - $ref: '#/components/schemas/ProductLifecycleState'
+          examples:
+            - PUBLISHED
+        url:
+          description: The URL of the information standard version
+          type:
+            - string
+            - 'null'
+          maxLength: 1000
+          examples:
+            - https://informatiestandaarden.nictiz.nl/wiki/MedMij:V2020.01/OntwerpHuisartsgegevens
+        careTypes:
+          description: The care types that apply to the information standard version
+          type: array
+          items:
+            $ref: '#/components/schemas/CareType'
+          examples:
+            - - GENERAL_PRACTITIONERS
+    MainInformationStandardVersion:
+      allOf:
+        - $ref: '#/components/schemas/InformationStandardVersion'
+        - type: object
+          properties:
+            informationStandardId:
+              writeOnly: true
+            informationStandard:
+              writeOnly: true
+    InformationStandard:
+      description: The information standard information
+      type: object
+      required:
+        - name
+        - organizationId
+        - url
+        - id
+      properties:
+        id:
+          description: The ID of the information standard
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - 7bc962b1-601d-4759-9a87-68953e7b75e2
+        name:
+          description: The name of the information standard
+          type: string
+          maxLength: 255
+          examples:
+            - MedMij Huisartsgegevens
+        description:
+          description: The description of the information standard
+          type:
+            - string
+            - 'null'
+          maxLength: 1000
+          examples:
+            - 'Het verzamelen van huisartsgegevens: je medische dossier bij je huisarts.'
+        organizationId:
+          description: The ID of the organization that maintains the information standard
+          type: string
+          format: uuid
+          examples:
+            - b9b95cd7-8d6e-4c91-8861-854828cf1730
+        organization:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicOrganization'
+          examples:
+            - id: b9b95cd7-8d6e-4c91-8861-854828cf1730
+              name: Nictiz
+        url:
+          description: The URL of the information standard
+          type: string
+          maxLength: 1000
+          examples:
+            - https://informatiestandaarden.nictiz.nl/wiki/MedMij:Landingspagina_MedMij
+        mainVersionId:
+          description: The ID of the main version of the information standard
+          type:
+            - string
+            - 'null'
+          format: uuid
+          examples:
+            - 20685da1-0e1d-40b9-a0f6-5a89c444f48c
+        mainVersion:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/MainInformationStandardVersion'
+    InformationStandard_Read:
+      allOf:
+        - $ref: '#/components/schemas/InformationStandard'
+        - $ref: '#/components/schemas/BasicResponse'
+    InformationStandard_Create:
+      allOf:
+        - $ref: '#/components/schemas/InformationStandard'
+        - type: object
+          properties:
+            mainVersionId:
+              readOnly: true
+        - $ref: '#/components/schemas/BasicResponse'
+    InformationStandard_Create_Response:
+      allOf:
+        - $ref: '#/components/schemas/InformationStandard'
+        - type: object
+          properties:
+            mainVersionId:
+              writeOnly: true
+            mainVersion:
+              readOnly: false
+              writeOnly: true
+        - $ref: '#/components/schemas/BasicResponse'
+    InformationStandard_Update:
+      allOf:
+        - $ref: '#/components/schemas/InformationStandard'
+        - type: object
+          properties:
+            organizationId:
+              readOnly: true
+    InformationStandardVersion_CreateRead:
+      allOf:
+        - $ref: '#/components/schemas/InformationStandardVersion'
+        - $ref: '#/components/schemas/BasicResponse'
+    InformationStandardVersion_Update:
+      allOf:
+        - $ref: '#/components/schemas/InformationStandardVersion'
+        - type: object
+          properties:
+            informationStandardId:
               readOnly: true
     TrustFrameworkVersion:
       description: The trust framework version information
@@ -7098,6 +8099,16 @@ components:
         format: uuid
         examples:
           - 8ae84d7f-73e7-4f08-b839-c73c97128ada
+    informationStandardVersionId:
+      name: informationStandardVersionId
+      in: path
+      required: true
+      description: The ID of the information standard version
+      schema:
+        type: string
+        format: uuid
+        examples:
+          - 20685da1-0e1d-40b9-a0f6-5a89c444f48c
     trustFrameworkVersionId:
       name: trustFrameworkVersionId
       in: path
@@ -7118,6 +8129,16 @@ components:
         format: uuid
         examples:
           - 05d8de10-1932-4e7f-badf-655c1a82fcc3
+    informationStandardId:
+      name: informationStandardId
+      in: path
+      required: true
+      description: The ID of the information standard
+      schema:
+        type: string
+        format: uuid
+        examples:
+          - 7bc962b1-601d-4759-9a87-68953e7b75e2
     trustFrameworkId:
       name: trustFrameworkId
       in: path
@@ -7305,11 +8326,16 @@ x-tagGroups:
       - api-specifications.versions.urls
       - api-specifications.versions.declarations-of-conformity
       - api-specifications.versions.communication-standard-versions
+      - api-specifications.versions.information-standard-versions
       - api-specifications.versions.trust-framework-versions
   - name: Communication standards
     tags:
       - communication-standards
       - communication-standard-versions
+  - name: Information standards
+    tags:
+      - information-standards
+      - information-standard-versions
   - name: Trust frameworks
     tags:
       - trust-frameworks
