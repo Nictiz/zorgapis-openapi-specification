@@ -11,6 +11,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [0.5.0] - 2024-12-05
 
+This release adds support for information standards.
+
 ### Changed
 
 - Change `/api-specifications/{apiSpecificationId}/versions` endpoints to support `informationStandardVersions` property
