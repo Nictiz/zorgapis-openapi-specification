@@ -12,26 +12,26 @@ properties:
     type: string
     format: uuid
     examples:
-      - 8ae84d7f-73e7-4f08-b839-c73c97128ada
+      - 20685da1-0e1d-40b9-a0f6-5a89c444f48c
   name:
     description: The name of the information standard version
     type: string
     maxLength: 255
     readOnly: true
     examples:
-      - R5
+      - 2.0.41
   informationStandardId:
     description: The ID of the information standard this version belongs to
     type: string
     format: uuid
     readOnly: true
     examples:
-      - 05d8de10-1932-4e7f-badf-655c1a82fcc3
+      - 7bc962b1-601d-4759-9a87-68953e7b75e2
   informationStandard:
     # Returned by GET, not used in POST/PUT/PATCH
     readOnly: true
     allOf:
       - $ref: '../../information-standards/_schemas/BasicInformationStandard.yaml'
     examples:
-      - id: 05d8de10-1932-4e7f-badf-655c1a82fcc3
-        name: FHIR       
+      - id: 7bc962b1-601d-4759-9a87-68953e7b75e2
+        name: MedMij Huisartsgegevens
