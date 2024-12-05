@@ -13,6 +13,18 @@ allOf:
         type: array
         items:
           $ref: '../urls/_schemas/BasicApiSpecificationVersionUrl.yaml'
+      communicationStandardVersions:
+        type: array
+        items:
+          $ref: '../../../communication-standard-versions/_schemas/BasicCommunicationStandardVersion.yaml'
+      informationStandardVersions:
+        type: array
+        items:
+          $ref: '../../../information-standard-versions/_schemas/BasicInformationStandardVersion.yaml'
+      trustFrameworkVersions:
+        type: array
+        items:
+          $ref: '../../../trust-framework-versions/_schemas/BasicTrustFrameworkVersion.yaml'
       lastDeclarationOfConformity:
         # Returned by GET, not used in POST/PUT/PATCH
         readOnly: true

@@ -1,0 +1,8 @@
+# Resource definition for Update operations
+allOf:
+  - $ref: './InformationStandardVersion.yaml'
+    # Extend
+  - type: object
+    properties:
+      informationStandardId:
+        readOnly: true

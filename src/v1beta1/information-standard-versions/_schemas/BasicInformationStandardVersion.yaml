@@ -1,0 +1,37 @@
+description: The basic information standard version information
+type: object
+required:
+  - id
+  # Read-only
+  - name
+  - informationStandardId
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the information standard version
+    type: string
+    format: uuid
+    examples:
+      - 20685da1-0e1d-40b9-a0f6-5a89c444f48c
+  name:
+    description: The name of the information standard version
+    type: string
+    maxLength: 255
+    readOnly: true
+    examples:
+      - 2.0.41
+  informationStandardId:
+    description: The ID of the information standard this version belongs to
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 7bc962b1-601d-4759-9a87-68953e7b75e2
+  informationStandard:
+    # Returned by GET, not used in POST/PUT/PATCH
+    readOnly: true
+    allOf:
+      - $ref: '../../information-standards/_schemas/BasicInformationStandard.yaml'
+    examples:
+      - id: 7bc962b1-601d-4759-9a87-68953e7b75e2
+        name: MedMij Huisartsgegevens

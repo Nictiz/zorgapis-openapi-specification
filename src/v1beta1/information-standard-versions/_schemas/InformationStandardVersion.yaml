@@ -1,0 +1,83 @@
+# Abstract base schema
+description: The information standard version information
+type: object
+required:
+  - name
+  - informationStandardId
+  - publishTime
+  - semVer
+  - lifecycleState
+  # Read-only
+  - id
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the information standard version
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 20685da1-0e1d-40b9-a0f6-5a89c444f48c
+  name:
+    description: The name of the information standard version
+    type: string
+    maxLength: 255
+    examples:
+      - 2.0.41
+  description:
+    description: The description of the information standard version
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - 'Drie aanpassingen in het Medmij Huisartsgegevens kwalificatie materiaal zodat het overeen komt met het kwalificatiescript.'
+  informationStandardId:
+    description: The ID of the information standard this version belongs to
+    type: string
+    format: uuid
+    examples:
+      - 7bc962b1-601d-4759-9a87-68953e7b75e2
+  informationStandard:
+    # Returned by GET, not used in POST/PUT/PATCH
+    readOnly: true
+    allOf:
+      - $ref: '../../information-standards/_schemas/BasicInformationStandard.yaml'
+    examples:
+      - id: 7bc962b1-601d-4759-9a87-68953e7b75e2
+        name: MedMij Huisartsgegevens
+  publishTime:
+    description: The date and time at which the information standard version was published
+    type: string
+    format: date-time
+    examples:
+      - '2024-11-20T12:00:00.0000000Z'
+  semVer:
+    allOf:
+      - $ref: '../../_schemas/SemVer.yaml'
+    examples:
+      - major: 2
+        minor: 0
+        patch: 41
+  lifecycleState:
+    description: The lifecycle state of the information standard version
+    allOf:
+      - $ref: '../../_schemas/ProductLifecycleState.yaml'
+    examples:
+      - PUBLISHED
+  url:
+    description: The URL of the information standard version
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - 'https://informatiestandaarden.nictiz.nl/wiki/MedMij:V2020.01/OntwerpHuisartsgegevens'
+  careTypes:
+    description: The care types that apply to the information standard version
+    type: array
+    items:
+      $ref: '../../_schemas/CareType.yaml'
+    examples:
+      -
+        - GENERAL_PRACTITIONERS

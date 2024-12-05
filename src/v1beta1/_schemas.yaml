@@ -9,6 +9,8 @@ ApiErrorType:
   $ref: './_schemas/ApiErrorType.yaml'
 BasicResponse:
   $ref: './_schemas/BasicResponse.yaml'
+CareType:
+  $ref: './_schemas/CareType.yaml'
 ConformityType:
   $ref: './_schemas/ConformityType.yaml'
 Country:
@@ -163,6 +165,32 @@ BasicCommunicationStandardVersion:
   $ref: './communication-standard-versions/_schemas/BasicCommunicationStandardVersion.yaml'
 MainCommunicationStandardVersion:
   $ref: './communication-standard-versions/_schemas/MainCommunicationStandardVersion.yaml'
+
+# information-standards
+InformationStandard:
+  $ref: './information-standards/_schemas/InformationStandard.yaml'
+InformationStandard_Create:
+  $ref: './information-standards/_schemas/InformationStandard_Create.yaml'
+InformationStandard_Create_Response:
+  $ref: './information-standards/_schemas/InformationStandard_Create_Response.yaml'
+InformationStandard_Read:
+  $ref: './information-standards/_schemas/InformationStandard_Read.yaml'
+InformationStandard_Update:
+  $ref: './information-standards/_schemas/InformationStandard_Update.yaml'
+BasicInformationStandard:
+  $ref: './information-standards/_schemas/BasicInformationStandard.yaml'
+
+# information-standard-versions
+InformationStandardVersion:
+  $ref: './information-standard-versions/_schemas/InformationStandardVersion.yaml'
+InformationStandardVersion_CreateRead:
+  $ref: './information-standard-versions/_schemas/InformationStandardVersion_CreateRead.yaml'
+InformationStandardVersion_Update:
+  $ref: './information-standard-versions/_schemas/InformationStandardVersion_Update.yaml'
+BasicInformationStandardVersion:
+  $ref: './information-standard-versions/_schemas/BasicInformationStandardVersion.yaml'
+MainInformationStandardVersion:
+  $ref: './information-standard-versions/_schemas/MainInformationStandardVersion.yaml'
 
 # trust-frameworks
 TrustFramework:

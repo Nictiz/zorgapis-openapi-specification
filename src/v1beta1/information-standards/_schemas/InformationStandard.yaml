@@ -1,0 +1,65 @@
+# Abstract base schema
+description: The information standard information
+type: object
+required:
+  - name
+  - organizationId
+  - url
+  # Read-only
+  - id
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the information standard
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - 7bc962b1-601d-4759-9a87-68953e7b75e2
+  name:
+    description: The name of the information standard
+    type: string
+    maxLength: 255
+    examples:
+      - MedMij Huisartsgegevens
+  description:
+    description: The description of the information standard
+    type:
+      - 'string'
+      - 'null'
+    maxLength: 1000
+    examples:
+      - 'Het verzamelen van huisartsgegevens: je medische dossier bij je huisarts.'
+  organizationId:
+    description: The ID of the organization that maintains the information standard
+    type: string
+    format: uuid
+    examples:
+      - b9b95cd7-8d6e-4c91-8861-854828cf1730
+  organization:
+    # Returned by GET, not used in POST/PUT/PATCH
+    readOnly: true
+    allOf:
+      - $ref: '../../organizations/_schemas/BasicOrganization.yaml'
+    examples:
+      - id: b9b95cd7-8d6e-4c91-8861-854828cf1730
+        name: Nictiz
+  url:
+    description: The URL of the information standard
+    type: string
+    maxLength: 1000
+    examples:
+      - 'https://informatiestandaarden.nictiz.nl/wiki/MedMij:Landingspagina_MedMij'
+  mainVersionId:
+    description: The ID of the main version of the information standard
+    type:
+      - 'string'
+      - 'null'
+    format: uuid
+    examples:
+      - 20685da1-0e1d-40b9-a0f6-5a89c444f48c
+  mainVersion:
+    # Returned by GET, not used in POST/PUT/PATCH
+    readOnly: true
+    allOf:
+      - $ref: '../../information-standard-versions/_schemas/MainInformationStandardVersion.yaml'

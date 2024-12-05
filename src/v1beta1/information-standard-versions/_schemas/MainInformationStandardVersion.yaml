@@ -1,0 +1,9 @@
+allOf:
+  - $ref: './InformationStandardVersion.yaml'
+    # Extend
+  - type: object
+    properties:
+      informationStandardId:
+        writeOnly: true
+      informationStandard:
+        writeOnly: true        

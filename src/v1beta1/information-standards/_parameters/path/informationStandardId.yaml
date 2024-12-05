@@ -1,0 +1,9 @@
+name: informationStandardId
+in: path
+required: true
+description: The ID of the information standard
+schema:
+  type: string
+  format: uuid
+  examples:
+    - 7bc962b1-601d-4759-9a87-68953e7b75e2
