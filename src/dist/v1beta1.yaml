@@ -86,6 +86,12 @@ tags:
   - name: information-standard-versions
     description: Information standard versions API
     x-displayName: Information standard versions
+  - name: information-standard-versions.communication-standard-versions
+    description: Information standard version communication standard versions API
+    x-displayName: Information standard version communication standard versions
+  - name: information-standard-versions.trust-framework-versions
+    description: Information standard version trust framework versions API
+    x-displayName: Information standard version trust framework versions
   - name: trust-frameworks
     description: Trust frameworks API
     x-displayName: Trust frameworks
@@ -4332,6 +4338,136 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
+  /information-standard-versions/{informationStandardVersionId}/communication-standard-versions/{communicationStandardVersionId}:
+    put:
+      summary: Set a communication standard version for an information standard version
+      description: |
+        Sets a single communication standard version for an information standard version.
+      operationId: setInformationStandardVersionCommunicationStandardVersion
+      security:
+        - oauth2:
+            - information-standards:write
+      tags:
+        - information-standard-versions.communication-standard-versions
+      parameters:
+        - $ref: '#/components/parameters/informationStandardVersionId'
+        - $ref: '#/components/parameters/communicationStandardVersionId'
+      responses:
+        '204':
+          $ref: '#/components/responses/EmptyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+    delete:
+      summary: Delete a communication standard version from an information standard version
+      description: |
+        Deletes a single communication standard version from an information standard version.
+      operationId: deleteInformationStandardVersionCommunicationStandardVersion
+      security:
+        - oauth2:
+            - information-standards:write
+      tags:
+        - information-standard-versions.communication-standard-versions
+      parameters:
+        - $ref: '#/components/parameters/informationStandardVersionId'
+        - $ref: '#/components/parameters/communicationStandardVersionId'
+      responses:
+        '204':
+          $ref: '#/components/responses/EmptyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+  /information-standard-versions/{informationStandardVersionId}/trust-framework-versions/{trustFrameworkVersionId}:
+    put:
+      summary: Set a trust framework version for an information standard version
+      description: |
+        Sets a single trust framework version for an information standard version.
+      operationId: setInformationStandardVersionTrustFrameworkVersion
+      security:
+        - oauth2:
+            - information-standards:write
+      tags:
+        - information-standard-versions.trust-framework-versions
+      parameters:
+        - $ref: '#/components/parameters/informationStandardVersionId'
+        - $ref: '#/components/parameters/trustFrameworkVersionId'
+      responses:
+        '204':
+          $ref: '#/components/responses/EmptyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
+    delete:
+      summary: Delete a trust framework version from an information standard version
+      description: |
+        Deletes a single trust framework version from an information standard version.
+      operationId: deleteInformationStandardVersionTrustFrameworkVersion
+      security:
+        - oauth2:
+            - information-standards:write
+      tags:
+        - information-standard-versions.trust-framework-versions
+      parameters:
+        - $ref: '#/components/parameters/informationStandardVersionId'
+        - $ref: '#/components/parameters/trustFrameworkVersionId'
+      responses:
+        '204':
+          $ref: '#/components/responses/EmptyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthenticatedError'
+        '403':
+          $ref: '#/components/responses/PermissionDeniedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '422':
+          $ref: '#/components/responses/InvalidArgumentError'
+        '429':
+          $ref: '#/components/responses/ResourceExhaustedError'
+        '503':
+          $ref: '#/components/responses/UnavailableError'
+        5XX:
+          $ref: '#/components/responses/InternalError'
   /trust-frameworks:
     get:
       summary: List all trust frameworks
@@ -8336,6 +8472,8 @@ x-tagGroups:
     tags:
       - information-standards
       - information-standard-versions
+      - information-standard-versions.communication-standard-versions
+      - information-standard-versions.trust-framework-versions
   - name: Trust frameworks
     tags:
       - trust-frameworks
