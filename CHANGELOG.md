@@ -9,6 +9,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Changed
+
+- Change `/information-standard-versions` endpoints to support `communicationStandardVersions` and
+  `trustFrameworkVersions` properties
+
 ### Added
 
 - Add `/information-standard-versions/{informationStandardVersionId}/communication-standard-versions/{communicationStandardVersionId}`
