@@ -89,6 +89,12 @@ tags:
   - name: information-standard-versions
     description: Information standard versions API
     x-displayName: Information standard versions
+  - name: information-standard-versions.communication-standard-versions
+    description: Information standard version communication standard versions API
+    x-displayName: Information standard version communication standard versions
+  - name: information-standard-versions.trust-framework-versions
+    description: Information standard version trust framework versions API
+    x-displayName: Information standard version trust framework versions
   
   # trust-frameworks
   - name: trust-frameworks
@@ -132,6 +138,8 @@ x-tagGroups:
     tags:
       - information-standards
       - information-standard-versions
+      - information-standard-versions.communication-standard-versions
+      - information-standard-versions.trust-framework-versions
   - name: Trust frameworks
     tags:
       - trust-frameworks
@@ -242,6 +250,12 @@ paths:
     $ref: './information-standard-versions/_paths/information-standard-versions.yaml'
   /information-standard-versions/{informationStandardVersionId}:
     $ref: './information-standard-versions/_paths/information-standard-versions_{informationStandardVersionId}.yaml'
+  # information-standard-versions/communication-standard-versions
+  /information-standard-versions/{informationStandardVersionId}/communication-standard-versions/{communicationStandardVersionId}:
+    $ref: './information-standard-versions/communication-standard-versions/_paths/communication-standard-versions_{communicationStandardVersionId}.yaml'
+  # information-standard-versions/trust-framework-versions
+  /information-standard-versions/{informationStandardVersionId}/trust-framework-versions/{trustFrameworkVersionId}:
+    $ref: './information-standard-versions/trust-framework-versions/_paths/trust-framework-versions_{trustFrameworkVersionId}.yaml'
     
   # trust-frameworks
   /trust-frameworks:

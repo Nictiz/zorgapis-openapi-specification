@@ -9,6 +9,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Changed
+
+- Change `/information-standard-versions` endpoints to support `communicationStandardVersions` and
+  `trustFrameworkVersions` properties
+
+### Added
+
+- Add `/information-standard-versions/{informationStandardVersionId}/communication-standard-versions/{communicationStandardVersionId}`
+  endpoints to support setting and deleting `communicationStandardVersions` for an `InformationStandardVersion`
+- Add `/information-standard-versions/{informationStandardVersionId}/trust-framework-versions/{trustFrameworkVersionId}`
+  endpoints to support setting and deleting `trustFrameworkVersions` for an `InformationStandardVersion`
+
 ## [0.5.0] - 2024-12-05
 
 This release adds support for information standards.

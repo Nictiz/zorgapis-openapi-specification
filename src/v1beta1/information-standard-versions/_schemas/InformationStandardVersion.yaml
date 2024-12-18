@@ -81,3 +81,11 @@ properties:
     examples:
       -
         - GENERAL_PRACTITIONERS
+  communicationStandardVersions:
+    type: array
+    items:
+      $ref: '../../communication-standard-versions/_schemas/BasicCommunicationStandardVersion.yaml'
+  trustFrameworkVersions:
+    type: array
+    items:
+      $ref: '../../trust-framework-versions/_schemas/BasicTrustFrameworkVersion.yaml'
