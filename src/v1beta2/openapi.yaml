@@ -148,9 +148,9 @@ x-tagGroups:
       - trust-framework-versions
 
 servers:
-  - url: 'https://api.zorgapis.nl/v1beta1'
+  - url: 'https://api.zorgapis.nl/v1beta2'
     description: Production environment
-  - url: 'https://api.sandbox.zorgapis.nl/v1beta1'
+  - url: 'https://api.sandbox.zorgapis.nl/v1beta2'
     description: Sandbox environment
 
 paths:
