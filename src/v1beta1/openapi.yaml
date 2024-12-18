@@ -51,22 +51,24 @@ tags:
   - name: api-specifications
     description: API specifications API
     x-displayName: API specifications
-  - name: api-specifications.versions
+
+  # api-specification-versions
+  - name: api-specification-versions
     description: API specification versions API
     x-displayName: API specification versions
-  - name: api-specifications.versions.urls
+  - name: api-specification-versions.urls
     description: API specification version URLs API
     x-displayName: API specification version URLs
-  - name: api-specifications.versions.declarations-of-conformity
+  - name: api-specification-versions.declarations-of-conformity
     description: API specification version declarations of conformity API
     x-displayName: API specification version declarations of conformity
-  - name: api-specifications.versions.communication-standard-versions
+  - name: api-specification-versions.communication-standard-versions
     description: API specification version communication standard versions API
     x-displayName: API specification version communication standard versions
-  - name: api-specifications.versions.information-standard-versions
+  - name: api-specification-versions.information-standard-versions
     description: API specification version information standard versions API
     x-displayName: API specification version information standard versions
-  - name: api-specifications.versions.trust-framework-versions
+  - name: api-specification-versions.trust-framework-versions
     description: API specification version trust framework versions API
     x-displayName: API specification version trust framework versions
   
@@ -124,12 +126,12 @@ x-tagGroups:
   - name: API specifications
     tags:
       - api-specifications
-      - api-specifications.versions
-      - api-specifications.versions.urls
-      - api-specifications.versions.declarations-of-conformity
-      - api-specifications.versions.communication-standard-versions
-      - api-specifications.versions.information-standard-versions
-      - api-specifications.versions.trust-framework-versions
+      - api-specification-versions
+      - api-specification-versions.urls
+      - api-specification-versions.declarations-of-conformity
+      - api-specification-versions.communication-standard-versions
+      - api-specification-versions.information-standard-versions
+      - api-specification-versions.trust-framework-versions
   - name: Communication standards
     tags:
       - communication-standards
@@ -202,30 +204,31 @@ paths:
     $ref: './api-specifications/_paths/api-specifications.yaml'
   /api-specifications/{apiSpecificationId}:
     $ref: './api-specifications/_paths/api-specifications_{apiSpecificationId}.yaml'
-  # api-specifications/versions
-  /api-specifications/{apiSpecificationId}/versions:
-    $ref: './api-specifications/versions/_paths/versions.yaml'
-  /api-specifications/{apiSpecificationId}/versions/{versionId}:
-    $ref: './api-specifications/versions/_paths/versions_{versionId}.yaml'
-  # api-specifications/versions/urls
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/urls:
-    $ref: './api-specifications/versions/urls/_paths/urls.yaml'
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/urls/{urlId}:
-    $ref: './api-specifications/versions/urls/_paths/urls_{urlId}.yaml'
-  # api-specifications/versions/declarations-of-conformity
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/declarations-of-conformity:
-    $ref: './api-specifications/versions/declarations-of-conformity/_paths/declarations-of-conformity.yaml'
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/declarations-of-conformity/{declarationOfConformityId}:
-    $ref: './api-specifications/versions/declarations-of-conformity/_paths/declarations-of-conformity_{declarationOfConformityId}.yaml'
-  # api-specifications/versions/communication-standard-versions
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/communication-standard-versions/{communicationStandardVersionId}:
-    $ref: './api-specifications/versions/communication-standard-versions/_paths/communication-standard-versions_{communicationStandardVersionId}.yaml'
-  # api-specifications/versions/information-standard-versions
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/information-standard-versions/{informationStandardVersionId}:
-    $ref: './api-specifications/versions/information-standard-versions/_paths/information-standard-versions_{informationStandardVersionId}.yaml'
-  # api-specifications/versions/trust-framework-versions
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/trust-framework-versions/{trustFrameworkVersionId}:
-    $ref: './api-specifications/versions/trust-framework-versions/_paths/trust-framework-versions_{trustFrameworkVersionId}.yaml'
+
+  # api-specification-versions
+  /api-specification-versions:
+    $ref: './api-specification-versions/_paths/api-specification-versions.yaml'
+  /api-specification-versions/{apiSpecificationVersionId}:
+    $ref: './api-specification-versions/_paths/api-specification-versions_{apiSpecificationVersionId}.yaml'
+  # api-specification-versions/urls
+  /api-specification-versions/{apiSpecificationVersionId}/urls:
+    $ref: './api-specification-versions/urls/_paths/urls.yaml'
+  /api-specification-versions/{apiSpecificationVersionId}/urls/{urlId}:
+    $ref: './api-specification-versions/urls/_paths/urls_{urlId}.yaml'
+  # api-specification-versions/declarations-of-conformity
+  /api-specification-versions/{apiSpecificationVersionId}/declarations-of-conformity:
+    $ref: './api-specification-versions/declarations-of-conformity/_paths/declarations-of-conformity.yaml'
+  /api-specification-versions/{apiSpecificationVersionId}/declarations-of-conformity/{declarationOfConformityId}:
+    $ref: './api-specification-versions/declarations-of-conformity/_paths/declarations-of-conformity_{declarationOfConformityId}.yaml'
+  # api-specification-versions/communication-standard-versions
+  /api-specification-versions/{apiSpecificationVersionId}/communication-standard-versions/{communicationStandardVersionId}:
+    $ref: './api-specification-versions/communication-standard-versions/_paths/communication-standard-versions_{communicationStandardVersionId}.yaml'
+  # api-specification-versions/information-standard-versions
+  /api-specification-versions/{apiSpecificationVersionId}/information-standard-versions/{informationStandardVersionId}:
+    $ref: './api-specification-versions/information-standard-versions/_paths/information-standard-versions_{informationStandardVersionId}.yaml'
+  # api-specification-versions/trust-framework-versions
+  /api-specification-versions/{apiSpecificationVersionId}/trust-framework-versions/{trustFrameworkVersionId}:
+    $ref: './api-specification-versions/trust-framework-versions/_paths/trust-framework-versions_{trustFrameworkVersionId}.yaml'
   
   # communication-standards
   /communication-standards:

@@ -112,33 +112,36 @@ ApiSpecification_Read:
   $ref: './api-specifications/_schemas/ApiSpecification_Read.yaml'
 ApiSpecification_Update:
   $ref: './api-specifications/_schemas/ApiSpecification_Update.yaml'
-# api-specifications/versions
+BasicApiSpecification:
+  $ref: './api-specifications/_schemas/BasicApiSpecification.yaml'
+
+# api-specification-versions
 ApiSpecificationVersion:
-  $ref: './api-specifications/versions/_schemas/ApiSpecificationVersion.yaml'
+  $ref: './api-specification-versions/_schemas/ApiSpecificationVersion.yaml'
 ApiSpecificationVersion_CreateRead:
-  $ref: './api-specifications/versions/_schemas/ApiSpecificationVersion_CreateRead.yaml'
+  $ref: './api-specification-versions/_schemas/ApiSpecificationVersion_CreateRead.yaml'
 ApiSpecificationVersion_Update:
-  $ref: './api-specifications/versions/_schemas/ApiSpecificationVersion_Update.yaml'
-BasicApiSpecificationVersion:
-  $ref: './api-specifications/versions/_schemas/BasicApiSpecificationVersion.yaml'
+  $ref: './api-specification-versions/_schemas/ApiSpecificationVersion_Update.yaml'
+MainApiSpecificationVersion:
+  $ref: './api-specification-versions/_schemas/MainApiSpecificationVersion.yaml'
 # api-specifications/versions/declarations-of-conformity
 ApiSpecificationVersionDeclarationOfConformity:
-  $ref: './api-specifications/versions/declarations-of-conformity/_schemas/ApiSpecificationVersionDeclarationOfConformity.yaml'
+  $ref: './api-specification-versions/declarations-of-conformity/_schemas/ApiSpecificationVersionDeclarationOfConformity.yaml'
 ApiSpecificationVersionDeclarationOfConformity_CreateRead:
-  $ref: './api-specifications/versions/declarations-of-conformity/_schemas/ApiSpecificationVersionDeclarationOfConformity_CreateRead.yaml'
+  $ref: './api-specification-versions/declarations-of-conformity/_schemas/ApiSpecificationVersionDeclarationOfConformity_CreateRead.yaml'
 BasicApiSpecificationVersionDeclarationOfConformity:
-  $ref: './api-specifications/versions/declarations-of-conformity/_schemas/BasicApiSpecificationVersionDeclarationOfConformity.yaml'
+  $ref: './api-specification-versions/declarations-of-conformity/_schemas/BasicApiSpecificationVersionDeclarationOfConformity.yaml'
 # api-specifications/versions/urls
 ApiSpecificationVersionUrl:
-  $ref: './api-specifications/versions/urls/_schemas/ApiSpecificationVersionUrl.yaml'
+  $ref: './api-specification-versions/urls/_schemas/ApiSpecificationVersionUrl.yaml'
 ApiSpecificationVersionUrl_CreateRead:
-  $ref: './api-specifications/versions/urls/_schemas/ApiSpecificationVersionUrl_CreateRead.yaml'
+  $ref: './api-specification-versions/urls/_schemas/ApiSpecificationVersionUrl_CreateRead.yaml'
 ApiSpecificationVersionUrl_Update:
-  $ref: './api-specifications/versions/urls/_schemas/ApiSpecificationVersionUrl_Update.yaml'
+  $ref: './api-specification-versions/urls/_schemas/ApiSpecificationVersionUrl_Update.yaml'
 ApiSpecificationVersionUrlType:
-  $ref: './api-specifications/versions/urls/_schemas/ApiSpecificationVersionUrlType.yaml'
+  $ref: './api-specification-versions/urls/_schemas/ApiSpecificationVersionUrlType.yaml'
 BasicApiSpecificationVersionUrl:
-  $ref: './api-specifications/versions/urls/_schemas/BasicApiSpecificationVersionUrl.yaml'
+  $ref: './api-specification-versions/urls/_schemas/BasicApiSpecificationVersionUrl.yaml'
 
 # communication-standards
 CommunicationStandard:

@@ -56,22 +56,22 @@ tags:
   - name: api-specifications
     description: API specifications API
     x-displayName: API specifications
-  - name: api-specifications.versions
+  - name: api-specification-versions
     description: API specification versions API
     x-displayName: API specification versions
-  - name: api-specifications.versions.urls
+  - name: api-specification-versions.urls
     description: API specification version URLs API
     x-displayName: API specification version URLs
-  - name: api-specifications.versions.declarations-of-conformity
+  - name: api-specification-versions.declarations-of-conformity
     description: API specification version declarations of conformity API
     x-displayName: API specification version declarations of conformity
-  - name: api-specifications.versions.communication-standard-versions
+  - name: api-specification-versions.communication-standard-versions
     description: API specification version communication standard versions API
     x-displayName: API specification version communication standard versions
-  - name: api-specifications.versions.information-standard-versions
+  - name: api-specification-versions.information-standard-versions
     description: API specification version information standard versions API
     x-displayName: API specification version information standard versions
-  - name: api-specifications.versions.trust-framework-versions
+  - name: api-specification-versions.trust-framework-versions
     description: API specification version trust framework versions API
     x-displayName: API specification version trust framework versions
   - name: communication-standards
@@ -1527,7 +1527,7 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /api-specifications/{apiSpecificationId}/versions:
+  /api-specification-versions:
     get:
       summary: List all API specification versions
       description: |-
@@ -1593,6 +1593,8 @@ paths:
         |                                                             |                                  | `stw`    | `?filter=stw(description,"The")`                                                                                     |
         |                                                             |                                  | `enw`    | `?filter=enw(description,"description")`                                                                             |
         |                                                             |                                  | `reg`    | `?filter=reg(description,"^[a-zA-Z0-9 ]+$")`                                                                         |
+        | `apiSpecificationId`                                        | `uuid`                           | `eq`     | `?filter=eq(apiSpecificationId,"533d3fe3-bccc-405a-9904-4f516e892856")`                                              |
+        |                                                             |                                  | `neq`    | `?filter=neq(apiSpecificationId,"533d3fe3-bccc-405a-9904-4f516e892856")`                                             |
         | `publishTime`                                               | `date-time`                      | `eq`     | `?filter=eq(publishTime,"2024-03-16T14:15:30.500Z")`                                                                 |
         |                                                             |                                  | `neq`    | `?filter=neq(publishTime,"2024-03-16T14:15:30.500Z")`                                                                |
         |                                                             |                                  | `gt`     | `?filter=gt(publishTime,"2024-03-16T14:15:30.500Z")`                                                                 |
@@ -1672,9 +1674,8 @@ paths:
         - oauth2:
             - api-specifications:read
       tags:
-        - api-specifications.versions
+        - api-specification-versions
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/sort'
@@ -1715,9 +1716,7 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions
-      parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
+        - api-specification-versions
       requestBody:
         description: API specification version object to add
         content:
@@ -1745,7 +1744,7 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /api-specifications/{apiSpecificationId}/versions/{versionId}:
+  /api-specification-versions/{apiSpecificationVersionId}:
     get:
       summary: Get an API specification version by ID
       description: |
@@ -1755,10 +1754,9 @@ paths:
         - oauth2:
             - api-specifications:read
       tags:
-        - api-specifications.versions
+        - api-specification-versions
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
       responses:
         '200':
           description: Success
@@ -1791,10 +1789,9 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions
+        - api-specification-versions
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
       requestBody:
         description: Updated API specification version object
         content:
@@ -1824,7 +1821,7 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/urls:
+  /api-specification-versions/{apiSpecificationVersionId}/urls:
     get:
       summary: List all API specification version URLs
       description: |-
@@ -1885,10 +1882,9 @@ paths:
         - oauth2:
             - api-specifications:read
       tags:
-        - api-specifications.versions.urls
+        - api-specification-versions.urls
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/sort'
@@ -1929,10 +1925,9 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions.urls
+        - api-specification-versions.urls
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
       requestBody:
         description: API specification version URL object to add
         content:
@@ -1960,7 +1955,7 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/urls/{urlId}:
+  /api-specification-versions/{apiSpecificationVersionId}/urls/{urlId}:
     get:
       summary: Get an API specification version URL by ID
       description: |
@@ -1970,10 +1965,9 @@ paths:
         - oauth2:
             - api-specifications:read
       tags:
-        - api-specifications.versions.urls
+        - api-specification-versions.urls
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
         - $ref: '#/components/parameters/urlId'
       responses:
         '200':
@@ -2007,10 +2001,9 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions.urls
+        - api-specification-versions.urls
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
         - $ref: '#/components/parameters/urlId'
       requestBody:
         description: Updated API specification version URL object
@@ -2050,10 +2043,9 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions.urls
+        - api-specification-versions.urls
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
         - $ref: '#/components/parameters/urlId'
       responses:
         '204':
@@ -2074,7 +2066,7 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/declarations-of-conformity:
+  /api-specification-versions/{apiSpecificationVersionId}/declarations-of-conformity:
     get:
       summary: List all API specification version declarations of conformity
       description: |-
@@ -2141,10 +2133,9 @@ paths:
         - oauth2:
             - api-specifications:read
       tags:
-        - api-specifications.versions.declarations-of-conformity
+        - api-specification-versions.declarations-of-conformity
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/sort'
@@ -2185,10 +2176,9 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions.declarations-of-conformity
+        - api-specification-versions.declarations-of-conformity
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
       requestBody:
         description: API specification version declaration of conformity object to add
         content:
@@ -3103,7 +3093,7 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/declarations-of-conformity/{declarationOfConformityId}:
+  /api-specification-versions/{apiSpecificationVersionId}/declarations-of-conformity/{declarationOfConformityId}:
     get:
       summary: Get an API specification version declaration of conformity by ID
       description: |
@@ -3113,10 +3103,9 @@ paths:
         - oauth2:
             - api-specifications:read
       tags:
-        - api-specifications.versions.declarations-of-conformity
+        - api-specification-versions.declarations-of-conformity
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
         - $ref: '#/components/parameters/declarationOfConformityId'
       responses:
         '200':
@@ -3141,7 +3130,7 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/communication-standard-versions/{communicationStandardVersionId}:
+  /api-specification-versions/{apiSpecificationVersionId}/communication-standard-versions/{communicationStandardVersionId}:
     put:
       summary: Set a communication standard version for an API specification version
       description: |
@@ -3151,10 +3140,9 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions.communication-standard-versions
+        - api-specification-versions.communication-standard-versions
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
         - $ref: '#/components/parameters/communicationStandardVersionId'
       responses:
         '204':
@@ -3184,10 +3172,9 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions.communication-standard-versions
+        - api-specification-versions.communication-standard-versions
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
         - $ref: '#/components/parameters/communicationStandardVersionId'
       responses:
         '204':
@@ -3208,7 +3195,7 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/information-standard-versions/{informationStandardVersionId}:
+  /api-specification-versions/{apiSpecificationVersionId}/information-standard-versions/{informationStandardVersionId}:
     put:
       summary: Set an information standard version for an API specification version
       description: |
@@ -3218,10 +3205,9 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions.information-standard-versions
+        - api-specification-versions.information-standard-versions
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
         - $ref: '#/components/parameters/informationStandardVersionId'
       responses:
         '204':
@@ -3251,10 +3237,9 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions.information-standard-versions
+        - api-specification-versions.information-standard-versions
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
         - $ref: '#/components/parameters/informationStandardVersionId'
       responses:
         '204':
@@ -3275,7 +3260,7 @@ paths:
           $ref: '#/components/responses/UnavailableError'
         5XX:
           $ref: '#/components/responses/InternalError'
-  /api-specifications/{apiSpecificationId}/versions/{versionId}/trust-framework-versions/{trustFrameworkVersionId}:
+  /api-specification-versions/{apiSpecificationVersionId}/trust-framework-versions/{trustFrameworkVersionId}:
     put:
       summary: Set a trust framework version for an API specification version
       description: |
@@ -3285,10 +3270,9 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions.trust-framework-versions
+        - api-specification-versions.trust-framework-versions
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
         - $ref: '#/components/parameters/trustFrameworkVersionId'
       responses:
         '204':
@@ -3318,10 +3302,9 @@ paths:
         - oauth2:
             - api-specifications:write
       tags:
-        - api-specifications.versions.trust-framework-versions
+        - api-specification-versions.trust-framework-versions
       parameters:
-        - $ref: '#/components/parameters/apiSpecificationId'
-        - $ref: '#/components/parameters/versionId'
+        - $ref: '#/components/parameters/apiSpecificationVersionId'
         - $ref: '#/components/parameters/trustFrameworkVersionId'
       responses:
         '204':
@@ -6501,6 +6484,26 @@ components:
           maxLength: 1000
           examples:
             - 'Het verzamelen van huisartsgegevens: je medische dossier bij je huisarts.'
+    BasicApiSpecification:
+      description: The basic API specification information
+      type: object
+      required:
+        - name
+        - id
+      properties:
+        id:
+          description: The ID of the API specification
+          type: string
+          format: uuid
+          readOnly: true
+          examples:
+            - fe30bf05-de07-4556-9b17-1f82d62fe45f
+        name:
+          description: The name of the API specification
+          type: string
+          maxLength: 255
+          examples:
+            - Verzamelen Huisartsgegevens
     ApiLifecycleState:
       type: string
       enum:
@@ -6526,6 +6529,7 @@ components:
       type: object
       required:
         - name
+        - apiSpecificationId
         - publishTime
         - semVer
         - lifecycleState
@@ -6552,6 +6556,19 @@ components:
           maxLength: 1000
           examples:
             - Verzamelen Huisartsgegevens 2.0
+        apiSpecificationId:
+          description: The ID of the API specification this version belongs to
+          type: string
+          format: uuid
+          examples:
+            - fe30bf05-de07-4556-9b17-1f82d62fe45f
+        apiSpecification:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/BasicApiSpecification'
+          examples:
+            - id: fe30bf05-de07-4556-9b17-1f82d62fe45f
+              name: Verzamelen Huisartsgegevens
         publishTime:
           description: The date and time at which the API specification version was published
           type: string
@@ -6870,7 +6887,7 @@ components:
       allOf:
         - $ref: '#/components/schemas/ApiSpecificationVersionDeclarationOfConformity'
         - description: The basic API specification version declaration of conformity information
-    BasicApiSpecificationVersion:
+    MainApiSpecificationVersion:
       allOf:
         - $ref: '#/components/schemas/ApiSpecificationVersion'
         - description: The basic API specification version information
@@ -6879,6 +6896,11 @@ components:
             - urls
             - lastDeclarationOfConformity
           properties:
+            apiSpecificationId:
+              writeOnly: true
+            apiSpecification:
+              readOnly: false
+              writeOnly: true
             urls:
               type: array
               items:
@@ -6937,7 +6959,7 @@ components:
             mainVersion:
               readOnly: true
               allOf:
-                - $ref: '#/components/schemas/BasicApiSpecificationVersion'
+                - $ref: '#/components/schemas/MainApiSpecificationVersion'
         - $ref: '#/components/schemas/BasicResponse'
     ApiSpecification_Create:
       allOf:
@@ -7011,6 +7033,10 @@ components:
     ApiSpecificationVersion_Update:
       allOf:
         - $ref: '#/components/schemas/ApiSpecificationVersion'
+        - type: object
+          properties:
+            apiSpecificationId:
+              readOnly: true
     ApiSpecificationVersionUrl_CreateRead:
       allOf:
         - $ref: '#/components/schemas/ApiSpecificationVersionUrl'
@@ -8223,11 +8249,11 @@ components:
         format: uuid
         examples:
           - fe30bf05-de07-4556-9b17-1f82d62fe45f
-    versionId:
-      name: versionId
+    apiSpecificationVersionId:
+      name: apiSpecificationVersionId
       in: path
       required: true
-      description: The ID of the version
+      description: The ID of the API specification version
       schema:
         type: string
         format: uuid
@@ -8486,12 +8512,12 @@ x-tagGroups:
   - name: API specifications
     tags:
       - api-specifications
-      - api-specifications.versions
-      - api-specifications.versions.urls
-      - api-specifications.versions.declarations-of-conformity
-      - api-specifications.versions.communication-standard-versions
-      - api-specifications.versions.information-standard-versions
-      - api-specifications.versions.trust-framework-versions
+      - api-specification-versions
+      - api-specification-versions.urls
+      - api-specification-versions.declarations-of-conformity
+      - api-specification-versions.communication-standard-versions
+      - api-specification-versions.information-standard-versions
+      - api-specification-versions.trust-framework-versions
   - name: Communication standards
     tags:
       - communication-standards

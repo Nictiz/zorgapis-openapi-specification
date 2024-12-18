@@ -39,5 +39,5 @@ allOf:
         # Returned by GET, not used in POST/PUT/PATCH
         readOnly: true
         allOf:
-          - $ref: '../versions/_schemas/BasicApiSpecificationVersion.yaml'
+          - $ref: '../../api-specification-versions/_schemas/MainApiSpecificationVersion.yaml'
   - $ref: '../../_schemas/BasicResponse.yaml'

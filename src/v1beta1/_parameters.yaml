@@ -8,8 +8,6 @@ membershipId:
   $ref: './_parameters/path/membershipId.yaml'
 urlId:
   $ref: './_parameters/path/urlId.yaml'
-versionId:
-  $ref: './_parameters/path/versionId.yaml'
 # query
 count:
   $ref: './_parameters/query/count.yaml'
@@ -36,6 +34,11 @@ versionName:
 # path
 apiSpecificationId:
   $ref: './api-specifications/_parameters/path/apiSpecificationId.yaml'
+
+# api-specification-versions
+# path
+apiSpecificationVersionId:
+  $ref: './api-specification-versions/_parameters/path/apiSpecificationVersionId.yaml'
 
 # communication-standards
 # path
