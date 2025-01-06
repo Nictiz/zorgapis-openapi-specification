@@ -9,6 +9,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## [0.7.0] - 2025-01-06
+
 This release refactors `/api-specifications/{apiSpecificationId}/versions` endpoints to 
 `/api-specification-versions/{apiSpecificationVersionId}` endpoints to allow for querying versions without needing the 
 `apiSpecificationId`, which brings it in line with other endpoints, like `/information-standard-versions` and 
@@ -125,7 +127,8 @@ This release changes server and OAuth 2.0 URLs from `v1alpha2` sandbox environme
 - Add property `summary` to `info` object
 - Add manual trigger to workflow "Publish docs"
 
-[unreleased]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.6.0...HEAD
+[unreleased]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/Nictiz/zorgapis-openapi-specification/compare/v0.3.2...v0.4.0
