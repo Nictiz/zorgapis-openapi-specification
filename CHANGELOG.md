@@ -9,6 +9,28 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+This release refactors `/api-specifications/{apiSpecificationId}/versions` endpoints to 
+`/api-specification-versions/{apiSpecificationVersionId}` endpoints to allow for querying versions without needing the 
+`apiSpecificationId`, which brings it in line with other endpoints, like `/information-standard-versions` and 
+`/trust-framework-versions`. As this is a breaking change, the version has been updated to `v1beta2`.
+
+### Changed
+
+- Change `/api-specifications/{apiSpecificationId}/versions` endpoints to 
+  `/api-specification-versions/{apiSpecificationVersionId}`
+- Change `/api-specifications/{apiSpecificationId}/versions/{versionId}/urls` endpoints to
+  `/api-specification-versions/{apiSpecificationVersionId}/urls`
+- Change `/api-specifications/{apiSpecificationId}/versions/{versionId}/declarations-of-conformity` endpoints to
+  `/api-specification-versions/{apiSpecificationVersionId}/declarations-of-conformity`
+- Change `/api-specifications/{apiSpecificationId}/versions/{versionId}/communication-standard-versions` endpoints to
+  `/api-specification-versions/{apiSpecificationVersionId}/communication-standard-versions`
+- Change `/api-specifications/{apiSpecificationId}/versions/{versionId}/information-standard-versions` endpoints to
+  `/api-specification-versions/{apiSpecificationVersionId}/information-standard-versions`
+- Change `/api-specifications/{apiSpecificationId}/versions/{versionId}/trust-framework-versions` endpoints to
+  `/api-specification-versions/{apiSpecificationVersionId}/trust-framework-versions`
+- Change `ApiSpecificationVersion` schema to include `apiSpecificationId` and `apiSpecification`
+- Change base path in server URL from `v1beta1` to `v1beta2`
+
 ## [0.6.0] - 2024-12-18
 
 This release adds optional properties `communicationStandardVersions` and `trustFrameworkVersions` to
