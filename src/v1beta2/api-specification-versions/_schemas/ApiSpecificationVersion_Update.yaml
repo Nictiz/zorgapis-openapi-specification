@@ -1,0 +1,8 @@
+# Resource definition for Update operations
+allOf:
+  - $ref: './ApiSpecificationVersion.yaml'
+    # Extend
+  - type: object
+    properties:
+      apiSpecificationId:
+        readOnly: true

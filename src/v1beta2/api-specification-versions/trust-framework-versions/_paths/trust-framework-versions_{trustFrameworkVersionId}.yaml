@@ -1,0 +1,64 @@
+put:
+  summary: Set a trust framework version for an API specification version
+  description: |
+    Sets a single trust framework version for an API specification version.
+  operationId: setApiSpecificationVersionTrustFrameworkVersion
+  security:
+    - oauth2:
+        - api-specifications:write
+  tags:
+    - api-specification-versions.trust-framework-versions
+  parameters:
+    - $ref: '../../_parameters/path/apiSpecificationVersionId.yaml'
+    - $ref: '../../../trust-framework-versions/_parameters/path/trustFrameworkVersionId.yaml'
+  responses:
+    '204':
+      $ref: '../../../_responses/EmptyResponse.yaml'
+    '400':
+      $ref: '../../../_responses/BadRequestError.yaml'
+    '401':
+      $ref: '../../../_responses/UnauthenticatedError.yaml'
+    '403':
+      $ref: '../../../_responses/PermissionDeniedError.yaml'
+    '404':
+      $ref: '../../../_responses/NotFoundError.yaml'
+    '422':
+      $ref: '../../../_responses/InvalidArgumentError.yaml'
+    '429':
+      $ref: '../../../_responses/ResourceExhaustedError.yaml'
+    '503':
+      $ref: '../../../_responses/UnavailableError.yaml'
+    5XX:
+      $ref: '../../../_responses/InternalError.yaml'
+delete:
+  summary: Delete a trust framework version from an API specification version
+  description: |
+    Deletes a single trust framework version from an API specification version.
+  operationId: deleteApiSpecificationVersionTrustFrameworkVersion
+  security:
+    - oauth2:
+        - api-specifications:write
+  tags:
+    - api-specification-versions.trust-framework-versions
+  parameters:
+    - $ref: '../../_parameters/path/apiSpecificationVersionId.yaml'
+    - $ref: '../../../trust-framework-versions/_parameters/path/trustFrameworkVersionId.yaml'
+  responses:
+    '204':
+      $ref: '../../../_responses/EmptyResponse.yaml'
+    '400':
+      $ref: '../../../_responses/BadRequestError.yaml'
+    '401':
+      $ref: '../../../_responses/UnauthenticatedError.yaml'
+    '403':
+      $ref: '../../../_responses/PermissionDeniedError.yaml'
+    '404':
+      $ref: '../../../_responses/NotFoundError.yaml'
+    '422':
+      $ref: '../../../_responses/InvalidArgumentError.yaml'
+    '429':
+      $ref: '../../../_responses/ResourceExhaustedError.yaml'
+    '503':
+      $ref: '../../../_responses/UnavailableError.yaml'
+    5XX:
+      $ref: '../../../_responses/InternalError.yaml'

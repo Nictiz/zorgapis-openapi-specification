@@ -1,0 +1,290 @@
+openapi: 3.1.0
+
+info:
+  title: ZorgAPIs API
+  version: 0.6.0
+  summary: Definition of the API Library for Dutch Healthcare (ZorgAPIs) API.
+  description:
+    $ref: './info#description.md'
+  contact:
+    name: ZorgAPIs Developer Portal
+    url: https://developer.zorgapis.nl/
+  license:
+    name: MIT License
+    url: https://choosealicense.com/licenses/mit/
+    
+security:
+  - oauth2: []
+
+tags:
+  # users
+  - name: users
+    description: Users API
+    x-displayName: Users
+  - name: users.invitations
+    description: User invitations API
+    x-displayName: User invitations
+  - name: users.memberships
+    description: User memberships API
+    x-displayName: User memberships
+    
+  # organizations
+  - name: organizations
+    description: Organizations API
+    x-displayName: Organizations
+  - name: organizations.invitations
+    description: Organization invitations API
+    x-displayName: Organization invitations
+  - name: organizations.memberships
+    description: Organization memberships API
+    x-displayName: Organization memberships
+    
+  # api-requirements-versions
+  - name: api-requirements-versions
+    description: API requirements versions API
+    x-displayName: API requirements versions
+  - name: api-requirements-versions.api-requirements
+    description: API requirements version API requirements API
+    x-displayName: API requirements version API requirements
+    
+  # api-specifications
+  - name: api-specifications
+    description: API specifications API
+    x-displayName: API specifications
+
+  # api-specification-versions
+  - name: api-specification-versions
+    description: API specification versions API
+    x-displayName: API specification versions
+  - name: api-specification-versions.urls
+    description: API specification version URLs API
+    x-displayName: API specification version URLs
+  - name: api-specification-versions.declarations-of-conformity
+    description: API specification version declarations of conformity API
+    x-displayName: API specification version declarations of conformity
+  - name: api-specification-versions.communication-standard-versions
+    description: API specification version communication standard versions API
+    x-displayName: API specification version communication standard versions
+  - name: api-specification-versions.information-standard-versions
+    description: API specification version information standard versions API
+    x-displayName: API specification version information standard versions
+  - name: api-specification-versions.trust-framework-versions
+    description: API specification version trust framework versions API
+    x-displayName: API specification version trust framework versions
+  
+  # communication-standards
+  - name: communication-standards
+    description: Communication standards API
+    x-displayName: Communication standards
+  
+  # communication-standard-versions
+  - name: communication-standard-versions
+    description: Communication standard versions API
+    x-displayName: Communication standard versions
+
+  # information-standards
+  - name: information-standards
+    description: Information standards API
+    x-displayName: Information standards
+
+  # information-standard-versions
+  - name: information-standard-versions
+    description: Information standard versions API
+    x-displayName: Information standard versions
+  - name: information-standard-versions.communication-standard-versions
+    description: Information standard version communication standard versions API
+    x-displayName: Information standard version communication standard versions
+  - name: information-standard-versions.trust-framework-versions
+    description: Information standard version trust framework versions API
+    x-displayName: Information standard version trust framework versions
+  
+  # trust-frameworks
+  - name: trust-frameworks
+    description: Trust frameworks API
+    x-displayName: Trust frameworks
+  
+  # trust-framework-versions
+  - name: trust-framework-versions
+    description: Trust framework versions API
+    x-displayName: Trust framework versions
+
+x-tagGroups:
+  - name: Users
+    tags:
+      - users
+      - users.invitations
+      - users.memberships
+  - name: Organizations
+    tags:
+      - organizations
+      - organizations.invitations
+      - organizations.memberships
+  - name: API requirements
+    tags:
+      - api-requirements-versions
+      - api-requirements-versions.api-requirements
+  - name: API specifications
+    tags:
+      - api-specifications
+      - api-specification-versions
+      - api-specification-versions.urls
+      - api-specification-versions.declarations-of-conformity
+      - api-specification-versions.communication-standard-versions
+      - api-specification-versions.information-standard-versions
+      - api-specification-versions.trust-framework-versions
+  - name: Communication standards
+    tags:
+      - communication-standards
+      - communication-standard-versions
+  - name: Information standards
+    tags:
+      - information-standards
+      - information-standard-versions
+      - information-standard-versions.communication-standard-versions
+      - information-standard-versions.trust-framework-versions
+  - name: Trust frameworks
+    tags:
+      - trust-frameworks
+      - trust-framework-versions
+
+servers:
+  - url: 'https://api.zorgapis.nl/v1beta2'
+    description: Production environment
+  - url: 'https://api.sandbox.zorgapis.nl/v1beta2'
+    description: Sandbox environment
+
+paths:
+  # users
+  /users/me:
+    $ref: './users/_paths/users_me.yaml'
+  # users/invitations
+  /users/me/invitations:
+    $ref: './users/invitations/_paths/invitations.yaml'
+  /users/me/invitations/{invitationId}:
+    $ref: './users/invitations/_paths/invitations_{invitationId}.yaml'
+  /users/me/invitations/{invitationId}:accept:
+    $ref: './users/invitations/_paths/invitations_{invitationId}_accept.yaml'
+  /users/me/invitations/{invitationId}:decline:
+    $ref: './users/invitations/_paths/invitations_{invitationId}_decline.yaml'
+  # users/memberships
+  /users/me/memberships:
+    $ref: './users/memberships/_paths/memberships.yaml'
+  /users/me/memberships/{membershipId}:
+    $ref: './users/memberships/_paths/memberships_{membershipId}.yaml'
+    
+  # organizations
+  /organizations:
+    $ref: './organizations/_paths/organizations.yaml'
+  /organizations/{organizationId}:
+    $ref: './organizations/_paths/organizations_{organizationId}.yaml'
+  # organizations/invitations
+  /organizations/{organizationId}/invitations:
+    $ref: './organizations/invitations/_paths/invitations.yaml'
+  /organizations/{organizationId}/invitations/{invitationId}:
+    $ref: './organizations/invitations/_paths/invitations_{invitationId}.yaml'
+  /organizations/{organizationId}/invitations/{invitationId}:cancel:
+    $ref: './organizations/invitations/_paths/invitations_{invitationId}_cancel.yaml'
+  # organizations/memberships
+  /organizations/{organizationId}/memberships:
+    $ref: './organizations/memberships/_paths/memberships.yaml'
+  /organizations/{organizationId}/memberships/{membershipId}:
+    $ref: './organizations/memberships/_paths/memberships_{membershipId}.yaml'
+    
+  # api-requirements-versions
+  /api-requirements-versions:
+    $ref: './api-requirements-versions/_paths/api-requirements-versions.yaml'
+  /api-requirements-versions/{versionName}:
+    $ref: './api-requirements-versions/_paths/api-requirements-versions_{versionName}.yaml'
+  # api-requirements-versions/api-requirements
+  /api-requirements-versions/{versionName}/api-requirements:
+    $ref: './api-requirements-versions/api-requirements/_paths/api-requirements.yaml'
+    
+  # api-specifications
+  /api-specifications:
+    $ref: './api-specifications/_paths/api-specifications.yaml'
+  /api-specifications/{apiSpecificationId}:
+    $ref: './api-specifications/_paths/api-specifications_{apiSpecificationId}.yaml'
+
+  # api-specification-versions
+  /api-specification-versions:
+    $ref: './api-specification-versions/_paths/api-specification-versions.yaml'
+  /api-specification-versions/{apiSpecificationVersionId}:
+    $ref: './api-specification-versions/_paths/api-specification-versions_{apiSpecificationVersionId}.yaml'
+  # api-specification-versions/urls
+  /api-specification-versions/{apiSpecificationVersionId}/urls:
+    $ref: './api-specification-versions/urls/_paths/urls.yaml'
+  /api-specification-versions/{apiSpecificationVersionId}/urls/{urlId}:
+    $ref: './api-specification-versions/urls/_paths/urls_{urlId}.yaml'
+  # api-specification-versions/declarations-of-conformity
+  /api-specification-versions/{apiSpecificationVersionId}/declarations-of-conformity:
+    $ref: './api-specification-versions/declarations-of-conformity/_paths/declarations-of-conformity.yaml'
+  /api-specification-versions/{apiSpecificationVersionId}/declarations-of-conformity/{declarationOfConformityId}:
+    $ref: './api-specification-versions/declarations-of-conformity/_paths/declarations-of-conformity_{declarationOfConformityId}.yaml'
+  # api-specification-versions/communication-standard-versions
+  /api-specification-versions/{apiSpecificationVersionId}/communication-standard-versions/{communicationStandardVersionId}:
+    $ref: './api-specification-versions/communication-standard-versions/_paths/communication-standard-versions_{communicationStandardVersionId}.yaml'
+  # api-specification-versions/information-standard-versions
+  /api-specification-versions/{apiSpecificationVersionId}/information-standard-versions/{informationStandardVersionId}:
+    $ref: './api-specification-versions/information-standard-versions/_paths/information-standard-versions_{informationStandardVersionId}.yaml'
+  # api-specification-versions/trust-framework-versions
+  /api-specification-versions/{apiSpecificationVersionId}/trust-framework-versions/{trustFrameworkVersionId}:
+    $ref: './api-specification-versions/trust-framework-versions/_paths/trust-framework-versions_{trustFrameworkVersionId}.yaml'
+  
+  # communication-standards
+  /communication-standards:
+    $ref: './communication-standards/_paths/communication-standards.yaml'
+  /communication-standards/{communicationStandardId}:
+    $ref: './communication-standards/_paths/communication-standards_{communicationStandardId}.yaml'
+  
+  # communication-standard-versions
+  /communication-standard-versions:
+    $ref: './communication-standard-versions/_paths/communication-standard-versions.yaml'
+  /communication-standard-versions/{communicationStandardVersionId}:
+    $ref: './communication-standard-versions/_paths/communication-standard-versions_{communicationStandardVersionId}.yaml'
+
+  # information-standards
+  /information-standards:
+    $ref: './information-standards/_paths/information-standards.yaml'
+  /information-standards/{informationStandardId}:
+    $ref: './information-standards/_paths/information-standards_{informationStandardId}.yaml'
+
+  # information-standard-versions
+  /information-standard-versions:
+    $ref: './information-standard-versions/_paths/information-standard-versions.yaml'
+  /information-standard-versions/{informationStandardVersionId}:
+    $ref: './information-standard-versions/_paths/information-standard-versions_{informationStandardVersionId}.yaml'
+  # information-standard-versions/communication-standard-versions
+  /information-standard-versions/{informationStandardVersionId}/communication-standard-versions/{communicationStandardVersionId}:
+    $ref: './information-standard-versions/communication-standard-versions/_paths/communication-standard-versions_{communicationStandardVersionId}.yaml'
+  # information-standard-versions/trust-framework-versions
+  /information-standard-versions/{informationStandardVersionId}/trust-framework-versions/{trustFrameworkVersionId}:
+    $ref: './information-standard-versions/trust-framework-versions/_paths/trust-framework-versions_{trustFrameworkVersionId}.yaml'
+    
+  # trust-frameworks
+  /trust-frameworks:
+    $ref: './trust-frameworks/_paths/trust-frameworks.yaml'
+  /trust-frameworks/{trustFrameworkId}:
+    $ref: './trust-frameworks/_paths/trust-frameworks_{trustFrameworkId}.yaml'
+  
+  # trust-framework-versions
+  /trust-framework-versions:
+    $ref: './trust-framework-versions/_paths/trust-framework-versions.yaml'
+  /trust-framework-versions/{trustFrameworkVersionId}:
+    $ref: './trust-framework-versions/_paths/trust-framework-versions_{trustFrameworkVersionId}.yaml'
+    
+components:
+  # Reusable schemas (data models)
+  schemas:
+    $ref: './_schemas.yaml'
+  # Reusable path, query, header and cookie parameters
+  parameters:
+    $ref: './_parameters.yaml'
+  # Reusable responses, such as 400 Bad Request
+  responses:
+    $ref: './_responses.yaml'
+  # Reusable response headers
+  headers:
+    $ref: './_headers.yaml'
+  # Reusable security schemes
+  securitySchemes: 
+    $ref: './_securitySchemes.yaml'

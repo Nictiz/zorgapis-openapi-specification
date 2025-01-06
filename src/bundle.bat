@@ -3,7 +3,7 @@ set Self=%~dp0
 set MyPath=%self:~0,-1%
 
 :: Variables
-set Version=v1beta1
+set Version=v1beta2
 set Ext=yaml
 set Input=%MyPath%\%Version%\openapi.yaml
 set Output=%MyPath%\dist\%Version%

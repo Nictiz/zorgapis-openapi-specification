@@ -1,3 +1,0 @@
-# Resource definition for Update operations
-allOf:
-  - $ref: './ApiSpecificationVersion.yaml'

@@ -1,0 +1,21 @@
+description: The basic API specification information
+type: object
+required:
+  - name
+  # Read-only
+  - id
+properties:
+  id:
+    # Returned by GET, not used in POST/PUT/PATCH
+    description: The ID of the API specification
+    type: string
+    format: uuid
+    readOnly: true
+    examples:
+      - fe30bf05-de07-4556-9b17-1f82d62fe45f
+  name:
+    description: The name of the API specification
+    type: string
+    maxLength: 255
+    examples:
+      - Verzamelen Huisartsgegevens

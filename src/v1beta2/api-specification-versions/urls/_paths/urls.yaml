@@ -1,0 +1,81 @@
+get:
+  summary: List all API specification version URLs
+  description:
+    $ref: './urls#description.md'
+  operationId: listApiSpecificationVersionUrls
+  security:
+    - oauth2:
+        - api-specifications:read
+  tags:
+    - api-specification-versions.urls
+  parameters:
+    - $ref: '../../_parameters/path/apiSpecificationVersionId.yaml'
+    - $ref: '../../../_parameters/query/limit.yaml'
+    - $ref: '../../../_parameters/query/skip.yaml'
+    - $ref: '../../../_parameters/query/sort.yaml'
+    - $ref: '../../../_parameters/query/filter.yaml'
+    - $ref: '../../../_parameters/query/count.yaml'
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../_schemas/ApiSpecificationVersionUrl_CreateRead.yaml'
+      headers:
+        $ref: '../../../_headers/defaultListHeaders.yaml'
+    '400':
+      $ref: '../../../_responses/BadRequestError.yaml'
+    '401':
+      $ref: '../../../_responses/UnauthenticatedError.yaml'
+    '403':
+      $ref: '../../../_responses/PermissionDeniedError.yaml'
+    '422':
+      $ref: '../../../_responses/InvalidArgumentError.yaml'
+    '429':
+      $ref: '../../../_responses/ResourceExhaustedError.yaml'
+    '503':
+      $ref: '../../../_responses/UnavailableError.yaml'
+    '5XX':
+      $ref: '../../../_responses/InternalError.yaml'
+post:
+  summary: Add an API specification version URL
+  description: |
+    Adds an API specification version URL to the collection.
+  operationId: addApiSpecificationVersionUrl
+  security:
+    - oauth2:
+        - api-specifications:write
+  tags:
+    - api-specification-versions.urls
+  parameters:
+    - $ref: '../../_parameters/path/apiSpecificationVersionId.yaml'
+  requestBody:
+    description: API specification version URL object to add
+    content:
+      application/json:
+        schema:
+          $ref: '../_schemas/ApiSpecificationVersionUrl_CreateRead.yaml'
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas/ApiSpecificationVersionUrl_CreateRead.yaml'
+    '400':
+      $ref: '../../../_responses/BadRequestError.yaml'
+    '401':
+      $ref: '../../../_responses/UnauthenticatedError.yaml'
+    '403':
+      $ref: '../../../_responses/PermissionDeniedError.yaml'
+    '422':
+      $ref: '../../../_responses/InvalidArgumentError.yaml'
+    '429':
+      $ref: '../../../_responses/ResourceExhaustedError.yaml'
+    '503':
+      $ref: '../../../_responses/UnavailableError.yaml'
+    '5XX':
+      $ref: '../../../_responses/InternalError.yaml'
